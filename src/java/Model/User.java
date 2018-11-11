@@ -14,7 +14,7 @@ public class User {
     public User(){}
     
     private void s(){
-    System.out.println("gggggggg");
+    System.out.print("gggggggg");
     }
    
     
