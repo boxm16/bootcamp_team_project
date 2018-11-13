@@ -16,6 +16,7 @@ public class User {
     private void s(){
     System.out.print("ggggggzzgg");
         System.out.println("test1");
+        System.out.println("test2");
     }
    
     
