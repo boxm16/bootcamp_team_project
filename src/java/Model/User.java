@@ -11,4 +11,11 @@ package Model;
  */
 public class User {
     
+    public User(){}
+    
+    private void s(){
+    System.out.print("ggggggzzgg");
+    }
+   
+    
 }
