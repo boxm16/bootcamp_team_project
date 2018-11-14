@@ -10,6 +10,7 @@
 
     <body>
         <p>Welcome to Seek & Play!</p>
+        <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a>
        
     </body>
 </html>
