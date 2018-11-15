@@ -23,6 +23,7 @@
     <context:component-scan base-package="Controller"/>
     <context:component-scan base-package="Dao"/>
     <context:component-scan base-package="Model"/>
+     <context:component-scan base-package="Validation"/>
 
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
@@ -46,6 +47,13 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
+    
+        <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/message_en" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    
     <bean id="SpringJPA" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="java:comp/env/jdbc/seek_play" />
     </bean>

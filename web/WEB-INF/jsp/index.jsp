@@ -10,7 +10,9 @@
 
     <body>
         <p>Welcome to Seek & Play!</p>
-        <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a>
-       
+        <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a><br/>
+        <a href="http://localhost:8080/seek_play/goToRegisterForm.htm">Go to register page</a><br/>
+         <a href="http://localhost:8080/seek_play/trialLink.htm">Trial link</a>
+        
     </body>
 </html>
