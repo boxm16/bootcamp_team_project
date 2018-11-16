@@ -60,7 +60,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.POST)
     public String adduser(HttpSession session, ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
         User user = userDao.checkUserByUsername(username);
         if (user != null) {
