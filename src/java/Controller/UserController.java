@@ -69,7 +69,7 @@ public class UserController {
                 user.setPassword(null);
                 session.setAttribute("user", user);
                 String message = "HI " + user.getUsername();
-                model.addAttribute("message", message);
+               // model.addAttribute("message", message);
                 return "user_page";
             } else {
                 String message = "password is wrong";
