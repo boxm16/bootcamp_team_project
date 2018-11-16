@@ -5,7 +5,7 @@
  */
 package Validation;
 
-import Model.Users;
+import Model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -19,12 +19,12 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> type) {
-        return Users.class.equals(type);
+        return User.class.equals(type);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Users u = (Users) o;
+        User u = (User) o;
 
         String username = u.getUsername().trim();
         //System.out.println("vname:"+username);

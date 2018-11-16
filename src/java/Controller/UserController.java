@@ -6,8 +6,8 @@
 package Controller;
 
 import Dao.UserDao;
-import Model.Sports;
-import Model.Users;
+import Model.Sport;
+import Model.User;
 import Validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,14 +31,14 @@ public class UserController {
 
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
-        Users users = new Users();
-        model.addAttribute(users);
+        User user = new User();
+        model.addAttribute(user);
 
         return "register";
     }
 
     @RequestMapping(value = "/registerFormHandling.htm", method = RequestMethod.POST)
-    public String authentication1(ModelMap model, Users user, BindingResult bindingResult) {
+    public String authentication1(ModelMap model, User user, BindingResult bindingResult) {
         //  String username = user.getFirstname();
         //  System.out.println(username);
 
@@ -46,7 +46,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        Sports sport = new Sports(1, "football");
+        Sport sport = new Sport(1, "football");
         user.setSports(sport);
 
         userDao.insert(user);
@@ -57,12 +57,12 @@ public class UserController {
 
     @RequestMapping(value = "/adduser.htm", method = RequestMethod.GET)
     public String adduser(ModelMap model) {
-        Users user = new Users();
+        User user = new User();
         user.setFirstname("v");
         user.setLastname("dv");
         user.setPassword("1");
         user.setUsername("bbb");
-        Sports sport = new Sports();
+        Sport sport = new Sport();
         sport.setSportsId(1);
         sport.setSports("football");
         user.setSports(sport);
@@ -73,7 +73,7 @@ public class UserController {
 
     @RequestMapping(value = "/trialLink.htm", method = RequestMethod.GET)
     public String Try(ModelMap model) {
-        Users user = userDao.check_username("adfdf1");
+        User user = userDao.check_username("adfdf1");
         if (user != null) {
             model.addAttribute("userFromDB", user);
             return "success_registration";
