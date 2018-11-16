@@ -24,13 +24,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Michail Sitmalidis
  */
 @Entity
-@Table(name = "sports")
+@Table(name = "sport")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sports.findAll", query = "SELECT s FROM Sports s")
-    , @NamedQuery(name = "Sports.findBySportsId", query = "SELECT s FROM Sports s WHERE s.sportsId = :sportsId")
-    , @NamedQuery(name = "Sports.findBySports", query = "SELECT s FROM Sports s WHERE s.sports = :sports")})
-public class Sports implements Serializable {
+    @NamedQuery(name = "Sport.findAll", query = "SELECT s FROM Sport s")
+    , @NamedQuery(name = "Sport.findBySportsId", query = "SELECT s FROM Sport s WHERE s.sportsId = :sportsId")
+    , @NamedQuery(name = "Sport.findBySports", query = "SELECT s FROM Sport s WHERE s.sports = :sports")})
+public class Sport implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,17 +40,17 @@ public class Sports implements Serializable {
     @Basic(optional = false)
     @Column(name = "sports")
     private String sports;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sports")
-    private Collection<Users> usersCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sport")
+    private Collection<User> userCollection;
 
-    public Sports() {
+    public Sport() {
     }
 
-    public Sports(Integer sportsId) {
+    public Sport(Integer sportsId) {
         this.sportsId = sportsId;
     }
 
-    public Sports(Integer sportsId, String sports) {
+    public Sport(Integer sportsId, String sports) {
         this.sportsId = sportsId;
         this.sports = sports;
     }
@@ -72,12 +72,12 @@ public class Sports implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Users> getUsersCollection() {
-        return usersCollection;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    public void setUsersCollection(Collection<Users> usersCollection) {
-        this.usersCollection = usersCollection;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
     @Override
@@ -90,10 +90,10 @@ public class Sports implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sports)) {
+        if (!(object instanceof Sport)) {
             return false;
         }
-        Sports other = (Sports) object;
+        Sport other = (Sport) object;
         if ((this.sportsId == null && other.sportsId != null) || (this.sportsId != null && !this.sportsId.equals(other.sportsId))) {
             return false;
         }
@@ -102,7 +102,7 @@ public class Sports implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.Sports[ sportsId=" + sportsId + " ]";
+        return "Model.Sport[ sportsId=" + sportsId + " ]";
     }
     
 }

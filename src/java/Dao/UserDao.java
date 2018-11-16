@@ -1,6 +1,6 @@
 package Dao;
 
-import Model.Users;
+import Model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -17,7 +17,7 @@ public class UserDao {
     private EntityManager em;
 
     @Transactional
-    public void insert(Users user) {
+    public void insert(User user) {
 
         em.persist(user);
 
@@ -25,8 +25,8 @@ public class UserDao {
 
     //method checked, GOOD
     @Transactional
-    public Users checkUserByUsername(String username) {
-        Users user = em.find(Users.class, username);
+    public User checkUserByUsername(String username) {
+        User user = em.find(User.class, username);
         return user;
     }
 
