@@ -15,7 +15,7 @@
     <body>
         <h1>Register JSP</h1>
 
-        <spring:form modelAttribute="users" action="${pageContext.request.contextPath}/registerFormHandling.htm" method="POST">  
+        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/registerFormHandling.htm" method="POST">  
             <table>
                 <tr>
                     <td> <spring:label path="username">Username</spring:label></td>   
