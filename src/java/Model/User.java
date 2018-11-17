@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Herc
+ * @author Michail Sitmalidis
  */
 @Entity
 @Table(name = "user")
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
-
+//111111111111111
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -51,20 +51,13 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+
+    @Transient
+    private String password_confirmation;
+
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")
     @ManyToOne(optional = false)
-    private Sport sports;
-
-    public String getPassword_confirmation() {
-        return password_confirmation;
-    }
-
-    public void setPassword_confirmation(String password_confirmation) {
-        this.password_confirmation = password_confirmation;
-    }
-    
-        @Transient
-    private String password_confirmation;
+    private Sport sport;
 
     public User() {
     }
@@ -109,7 +102,7 @@ public class User implements Serializable {
     }
 
     public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
+        //this.profileimage = profileimage;
     }
 
     public String getPassword() {
@@ -120,12 +113,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Sport getSports() {
-        return sports;
+    public String getPassword_confirmation() {
+        return password_confirmation;
     }
 
-    public void setSports(Sport sports) {
-        this.sports = sports;
+    public void setPassword_confirmation(String password_confirmation) {
+        this.password_confirmation = password_confirmation;
+    }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
     }
 
     @Override
@@ -152,5 +153,5 @@ public class User implements Serializable {
     public String toString() {
         return "Model.User[ username=" + username + " ]";
     }
-    
+
 }

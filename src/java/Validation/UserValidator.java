@@ -5,7 +5,9 @@
  */
 package Validation;
 
+import Dao.UserDao;
 import Model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -16,6 +18,9 @@ import org.springframework.validation.Validator;
  */
 @Component
 public class UserValidator implements Validator {
+    
+      @Autowired
+    private UserDao userDao;
 
     @Override
     public boolean supports(Class<?> type) {
@@ -31,6 +36,11 @@ public class UserValidator implements Validator {
         //if (!username.startsWith("t")) {
         //    errors.rejectValue("username", "name.notStartWithT");
        // }
+       if (userDao.checkUserByUsername(username)!=null) {
+       errors.rejectValue("username", "username.Exists");
+       }
+       
+       
         String password = u.getPassword();
         if (password.length() < 3) {
             errors.rejectValue("password", "pwd.Short");

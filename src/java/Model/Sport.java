@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Herc
+ * @author Michail Sitmalidis
  */
 @Entity
 @Table(name = "sport")
@@ -40,7 +40,7 @@ public class Sport implements Serializable {
     @Basic(optional = false)
     @Column(name = "sports")
     private String sports;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sports")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sport")
     private Collection<User> userCollection;
 
     public Sport() {

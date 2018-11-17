@@ -10,9 +10,31 @@
 
     <body>
         <p>Welcome to Seek & Play!</p>
+
+
+        <form autocomplete="on" modelAttribute="user" action="${pageContext.request.contextPath}/loginFormHandling.htm" method="POST">
+            <h1>Log in</h1> 
+            <p> 
+                <label  > Your username </label>
+                <input id="username" name="username" required="required" type="text" placeholder="myusername"/>
+            </p>
+            <p> 
+                <label > Your password </label>
+                <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+            </p>
+            <div>${message}</div>
+            <p class="login button"> 
+                <input type="submit" id="submit" value="Login" /> 
+            </p>
+            <p class="change_link">
+                Not a member yet ?
+                <a href="http://localhost:8080/seek_play/goToRegisterForm.htm">Go to register page</a>
+            </p>
+        </form>
         <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a><br/>
-        <a href="http://localhost:8080/seek_play/goToRegisterForm.htm">Go to register page</a><br/>
-         <a href="http://localhost:8080/seek_play/trialLink.htm">Trial link</a>
-        
+
+
+        <a href="http://localhost:8080/seek_play/trialLink.htm">Trial link</a>
+
     </body>
 </html>
