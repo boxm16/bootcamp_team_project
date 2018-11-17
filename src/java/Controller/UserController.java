@@ -6,8 +6,8 @@
 package Controller;
 
 import Dao.UserDao;
-import Model.Sports;
-import Model.Users;
+import Model.Sport;
+import Model.User;
 import Validation.UserValidator;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
@@ -34,14 +34,14 @@ public class UserController {
 
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
-        Users users = new Users();
+        User users = new User();
         model.addAttribute(users);
 
         return "register";
     }
 
     @RequestMapping(value = "/registerFormHandling.htm", method = RequestMethod.POST)
-    public String authentication1(ModelMap model, Users user, BindingResult bindingResult) {
+    public String register(ModelMap model, User user, BindingResult bindingResult) {
         //  String username = user.getFirstname();
         //  System.out.println(username);
 
@@ -49,25 +49,26 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        Sports sport = new Sports(1, "football");
-        user.setSports(sport);
-
+        Sport sport = new Sport(1, "football");
+        user.setSport(sport);
+        
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         userDao.insert(user);
         model.addAttribute("user", user);
         return "success_registration";
 
     }
 
-    @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.GET)
-    public String adduser(HttpSession session, ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
-        Users user = userDao.checkUserByUsername(username);
+    @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.POST)
+    public String login(HttpSession session, ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
+        User user = userDao.checkUserByUsername(username);
         if (user != null) {
-                  //BCrypt.checkpw(password, user.getPassword())
-            if (password.equals(user.getPassword())) {
+            //BCrypt.checkpw(password, user.getPassword())
+            if (BCrypt.checkpw(password, user.getPassword())) {
                 user.setPassword(null);
                 session.setAttribute("user", user);
                 String message = "HI " + user.getUsername();
-                model.addAttribute("message", message);
+                // model.addAttribute("message", message);
                 return "user_page";
             } else {
                 String message = "password is wrong";
@@ -85,7 +86,7 @@ public class UserController {
 
     @RequestMapping(value = "/trialLink.htm", method = RequestMethod.GET)
     public String Try(ModelMap model) {
-        Users user = userDao.checkUserByUsername("adfdf1");
+        User user = userDao.checkUserByUsername("adfdf1");
         if (user != null) {
             model.addAttribute("userFromDB", user);
             return "success_registration";

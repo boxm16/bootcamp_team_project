@@ -24,15 +24,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Michail Sitmalidis
  */
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
-    , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
-    , @NamedQuery(name = "Users.findByFirstname", query = "SELECT u FROM Users u WHERE u.firstname = :firstname")
-    , @NamedQuery(name = "Users.findByLastname", query = "SELECT u FROM Users u WHERE u.lastname = :lastname")
-    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
-public class Users implements Serializable {
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+    , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
+    , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
+    , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,16 +57,16 @@ public class Users implements Serializable {
 
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")
     @ManyToOne(optional = false)
-    private Sports sports;
+    private Sport sport;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String username) {
+    public User(String username) {
         this.username = username;
     }
 
-    public Users(String username, String firstname, String lastname, String password) {
+    public User(String username, String firstname, String lastname, String password) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -121,12 +121,12 @@ public class Users implements Serializable {
         this.password_confirmation = password_confirmation;
     }
 
-    public Sports getSports() {
-        return sports;
+    public Sport getSport() {
+        return sport;
     }
 
-    public void setSports(Sports sports) {
-        this.sports = sports;
+    public void setSport(Sport sport) {
+        this.sport = sport;
     }
 
     @Override
@@ -139,10 +139,10 @@ public class Users implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        Users other = (Users) object;
+        User other = (User) object;
         if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
             return false;
         }
@@ -151,7 +151,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.Users[ username=" + username + " ]";
+        return "Model.User[ username=" + username + " ]";
     }
 
 }
