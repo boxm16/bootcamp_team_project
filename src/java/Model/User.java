@@ -5,20 +5,140 @@
  */
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
- * @author Herc
+ * @author aroum
  */
-public class User {
-    
-    public User(){}
-    
-    private void s(){
-    System.out.print("ilias test");
-    System.out.print("ggggggzzgg");
-    System.out.print("alex is here");
-    System.out.print("alex look behind you.....");
-    System.out.print("im looking, knock knock...who are you...?");
-    }   
+@Entity
+@Table(name = "user")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+    , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
+    , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
+    , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "username")
+    private String username;
+    @Basic(optional = false)
+    @Column(name = "firstname")
+    private String firstname;
+    @Basic(optional = false)
+    @Column(name = "lastname")
+    private String lastname;
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
+    @Basic(optional = false)
+    @Column(name = "password")
+    private String password;
+    @JoinColumn(name = "sports", referencedColumnName = "sports_id")
+    @ManyToOne(optional = false)
+    private Sport sports;
+
+    public User() {
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public User(String username, String firstname, String lastname, String password) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Sport getSports() {
+        return sports;
+    }
+
+    public void setSports(Sport sports) {
+        this.sports = sports;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (username != null ? username.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof User)) {
+            return false;
+        }
+        User other = (User) object;
+        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Model.User[ username=" + username + " ]";
+    }
     
 }

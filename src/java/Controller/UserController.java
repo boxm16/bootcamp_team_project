@@ -6,8 +6,8 @@
 package Controller;
 
 import Dao.UserDao;
-import Model.Sports;
-import Model.Users;
+import Model.Sport;
+import Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,20 +24,37 @@ public class UserController {
      @Autowired
     private UserDao userDao;
      
-     @RequestMapping(value = "/adduser.htm", method = RequestMethod.GET)
+     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String adduser(ModelMap model) {
-       Users user=new Users();
+       User user=new User();
        user.setFirstname("v");
        user.setLastname("dv");
        user.setPassword("1");
        user.setUsername("bbb");
-       Sports sport=new Sports();
+       Sport sport=new Sport();
        sport.setSportsId(1);
        sport.setSports("football");
        user.setSports(sport);
-         userDao.insert(user);
-        return "index";
+       // userDao.insert(user);
+       model.addAttribute("users", user);
+       model.addAttribute("sports", sport);
+        return "menupage";
 
     }
-    
+     @RequestMapping(value = "/person", method = RequestMethod.GET)
+    public String edituser(ModelMap model) {
+       User user=new User();
+       user.setFirstname("v");
+       user.setLastname("dv");
+       user.setPassword("1");
+       user.setUsername("bbb");
+       Sport sport=new Sport();
+       sport.setSportsId(1);
+       sport.setSports("football");
+       user.setSports(sport);
+       // userDao.insert(user);
+       model.addAttribute("users", user);
+       model.addAttribute("sports", sport);
+        return "personpage";
+    }
 }
