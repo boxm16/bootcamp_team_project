@@ -18,8 +18,8 @@ import org.springframework.validation.Validator;
  */
 @Component
 public class UserValidator implements Validator {
-    
-      @Autowired
+
+    @Autowired
     private UserDao userDao;
 
     @Override
@@ -35,19 +35,32 @@ public class UserValidator implements Validator {
         //System.out.println("vname:"+username);
         //if (!username.startsWith("t")) {
         //    errors.rejectValue("username", "name.notStartWithT");
-       // }
-       if (userDao.checkUserByUsername(username)!=null) {
-       errors.rejectValue("username", "username.Exists");
-       }
-       
-       
+        // }
+        if (userDao.checkUserByUsername(username) != null) {
+            errors.rejectValue("username", "username.Exists");
+        }
+
         String password = u.getPassword();
         if (password.length() < 3) {
             errors.rejectValue("password", "pwd.Short");
         }
-        String password_confirmation=u.getPassword_confirmation();
-        if(!password.equals(password_confirmation)) {
-        errors.rejectValue("password_confirmation", "pwds.NotMatch");
+        String password_confirmation = u.getPassword_confirmation();
+        if (!password.equals(password_confirmation)) {
+            errors.rejectValue("password_confirmation", "pwds.NotMatch");
+        }
+        
+         char[] chars = u.getUsername().toCharArray();
+         for (char ch : chars) {
+            
+            if(Character.isWhitespace(ch)){
+                 errors.rejectValue("username", "username.WhiteSpace");
+            }
+            
+            if (ch == '\\') {
+                errors.rejectValue("username", "username.SpecChar1");
+            }
+            //if we have time, better sanitarization. maybe using regex.
+           
         }
 
         //errors.rejectValue("password", "password.less7");
