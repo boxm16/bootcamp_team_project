@@ -7,44 +7,160 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="userjs.js"></script>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <head>        
+        <style rel="stylesheet" id="bootstrap-css">
+            /* USER PROFILE PAGE */
+ .card {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(214, 224, 226, 0.2);
+    -webkit-border-top-left-radius:5px;
+    -moz-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 1);
+}
+.card.hovercard .card-background {
+    height: 130px;
+}
+.card-background img {
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(1px);
+    margin-left: -100px;
+    margin-top: -200px;
+    min-width: 130%;
+}
+.card.hovercard .useravatar {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .useravatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+.card.hovercard .card-info {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .card-info .card-title {
+    padding:0 5px;
+    font-size: 20px;
+    line-height: 1;
+    color: #262626;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.card.hovercard .card-info {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-pref .btn {
+    -webkit-border-radius:0 !important;
+}
+    
+        </style>
+       
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Page</title>
     </head>
     <body>
-        <h1>Hello ${users.getUsername()}</h1>
-        
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/football-player-2-607908.png" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>${sports.getSports()}</h3>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="http://localhost:8080/seek_play/person.htm">
-                            <span class="glyphicon glyphicon-user">personal infos</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a data-toggle="tab" href="#events">
-                            <span class="glyphicon glyphicon-calendar"> plan </span>
-                        </a>
-                    </li>
-                </ul>
-                                
-            </div>
+        <script>$(document).ready(function() {
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).removeClass("btn-default").addClass("btn-primary");   
+});
+});
+        </script>    
+        <div class="col-lg-6 col-sm-6">
+    <div class="card hovercard">
+        <div class="card-background">
+            <img class="card-bkimg" alt="" src="https://ak5.picdn.net/shutterstock/videos/3017425/thumb/1.jpg">
+            <!-- http://lorempixel.com/850/280/people/9/ -->
         </div>
-	</div>
-</div>
+        <div class="useravatar">
+            <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
+        </div>
+        <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
+        
+    </div>
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <div class="hidden-xs">Rank</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Personal Infos</div>
+            </button></a>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <div class="hidden-xs">Search</div>
+            </button>
+        </div>
+    </div>
+         
+        <div class="well">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+          <h3>This is tab 1</h3>
+        </div>
+        <div class="tab-pane fade in" id="tab2">
+          <h3>This is tab 2</h3>
+        </div>
+        <div class="tab-pane fade in" id="tab3">
+            <h3>${users.getFirstname()} ${users.getLastname()}</h3>
+            <a data-toggle="tab" href=""> EDIT </a>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+          
+    
     </body>
 </html>

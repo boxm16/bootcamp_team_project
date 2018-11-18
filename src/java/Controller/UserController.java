@@ -8,11 +8,14 @@ package Controller;
 import Dao.UserDao;
 import Model.Sport;
 import Model.User;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -35,13 +38,12 @@ public class UserController {
        sport.setSportsId(1);
        sport.setSports("football");
        user.setSports(sport);
-       // userDao.insert(user);
        model.addAttribute("users", user);
        model.addAttribute("sports", sport);
         return "menupage";
 
     }
-     @RequestMapping(value = "/person", method = RequestMethod.GET)
+    @RequestMapping(value = "/person", method = RequestMethod.GET)
     public String edituser(ModelMap model) {
        User user=new User();
        user.setFirstname("v");
@@ -52,9 +54,18 @@ public class UserController {
        sport.setSportsId(1);
        sport.setSports("football");
        user.setSports(sport);
-       // userDao.insert(user);
        model.addAttribute("users", user);
        model.addAttribute("sports", sport);
         return "personpage";
     }
+    
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
+    User user=new User();
+    modelMap.addAttribute("file", file);
+    user.setUsername("bbb");
+    userDao.updatepic(user.getUsername(),file);
+    return "menupage";
+}
+    
 }

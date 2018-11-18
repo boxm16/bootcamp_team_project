@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -22,9 +23,9 @@ public class UserDao {
     public void insert(User user) {
         em.persist(user);
     }
-    public void updatepic(User u,String us, Part file) throws IOException{
+    public void updatepic(String us, MultipartFile file) throws IOException{
         em.find(User.class,us);
-        em.createQuery("Update User SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
+        em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
     }
     
 
