@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Welcome user ${user.username}</h1>
+        <h1>Welcome user ${user.username}</h1><br>
+        
+         <a href="http://localhost:8080/seek_play/listPlayersForReview.htm">Review Player</a>
     </body>
 </html>
