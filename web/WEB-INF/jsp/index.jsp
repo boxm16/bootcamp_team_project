@@ -32,9 +32,7 @@
             </p>
         </form>
         <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a><br/>
-
-
-        <a href="http://localhost:8080/seek_play/trialLink.htm">Trial link</a>
+      
 
     </body>
 </html>

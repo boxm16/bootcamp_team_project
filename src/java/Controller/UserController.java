@@ -67,6 +67,7 @@ public class UserController {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.setPassword(null);
                 session.setAttribute("user", user);
+                
                 String message = "HI " + user.getUsername();
                 // model.addAttribute("message", message);
                 return "user_page";

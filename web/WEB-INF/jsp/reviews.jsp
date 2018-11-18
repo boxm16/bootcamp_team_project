@@ -31,6 +31,9 @@
     <body>
         <h1>Review your co-players</h1>
 
+        
+          <a href="http://localhost:8080/seek_play/AAA.htm">Trial link</a>
+        
         <div>
 
             Select a Player;

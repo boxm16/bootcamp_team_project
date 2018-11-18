@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Model.User</class>
     <class>Model.Sport</class>
+    <class>Model.Grade</class>
+    <class>Model.FootballReview</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://5.189.135.166:3011/seek_play?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

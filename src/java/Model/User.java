@@ -6,7 +6,9 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,9 +17,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
 
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<FootballReview> footballReviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    private Collection<FootballReview> footballReviewCollection1;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -45,9 +57,6 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
@@ -97,13 +106,6 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public byte[] getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(byte[] profileimage) {
-        //this.profileimage = profileimage;
-    }
 
     public String getPassword() {
         return password;
@@ -152,6 +154,32 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "Model.User[ username=" + username + " ]";
+    }
+
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
+    }
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection() {
+        return footballReviewCollection;
+    }
+
+    public void setFootballReviewCollection(Collection<FootballReview> footballReviewCollection) {
+        this.footballReviewCollection = footballReviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection1() {
+        return footballReviewCollection1;
+    }
+
+    public void setFootballReviewCollection1(Collection<FootballReview> footballReviewCollection1) {
+        this.footballReviewCollection1 = footballReviewCollection1;
     }
 
 }
