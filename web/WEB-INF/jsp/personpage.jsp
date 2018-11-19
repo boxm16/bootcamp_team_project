@@ -149,10 +149,9 @@ $(".btn-pref .btn").click(function () {
         <div class="tab-pane fade in active" id="tab1">
             <h3><div>First Name: ${users.getFirstname()}</div>
                 <div> Last Name: ${users.getLastname()}</div></h3>
-                <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 <div class="hidden-xs">EDIT</div>
                 </button> </a>
-          
            
                 <H3><div> Change your profile picture</div></h3>
                         <forms:form method="POST" action="uploadFile" enctype="multipart/form-data">

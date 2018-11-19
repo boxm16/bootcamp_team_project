@@ -60,7 +60,7 @@ public class UserController {
     }
     
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
+    public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
     User user=new User();
     modelMap.addAttribute("file", file);
     user.setUsername("bbb");
