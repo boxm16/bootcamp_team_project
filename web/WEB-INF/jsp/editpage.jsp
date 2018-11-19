@@ -1,9 +1,4 @@
-<%-- 
-    Document   : menupage
-    Created on : 14 Νοε 2018, 11:44:58 μμ
-    Author     : aroum
---%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="forms"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -99,6 +94,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Page</title>
+        
         <script>$(document).ready(function() {
 $(".btn-pref .btn").click(function () {
     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -106,10 +102,11 @@ $(".btn-pref .btn").click(function () {
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
 });
-        </script>
+        </script>  
+        
     </head>
     <body>
-            
+          
         <div class="col-lg-6 col-sm-6">
     <div class="card hovercard">
         <div class="card-background">
@@ -124,9 +121,9 @@ $(".btn-pref .btn").click(function () {
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Rank</div>
-            </button>
+            </button></a>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -136,7 +133,7 @@ $(".btn-pref .btn").click(function () {
         <div class="btn-group" role="group">
             <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Personal Infos</div>
-            </button></a>
+                </button></a>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -148,14 +145,51 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3>Welcome</h3>
+           
+                <div class="container">
+			<div class="col-lg-6 col-sm-6">
+				
+				<h5>Edit Personal Infos</h5>
+					<forms:form modelAttribute="User" action="edit.htm" method="GET">
+						
+						<div class="btn-group">
+                                                    <forms:label path="firstname" class="cols-sm-2 control-label"><b>Name</b></forms:label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<forms:input path="firstname" class="form-control" id="firstname"  placeholder="Enter your Name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="btn-group">
+							 <forms:label path="lastname" class="cols-sm-2 control-label"><b>Last Name</b></forms:label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<forms:input path="lastname" class="form-control" id="lastname"  placeholder="Enter your Last Name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">CONFIRM</a>
+						</div>
+						
+					</forms:form>
+				
+			</div>
+		</div>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
         </div>
-        
       </div>
     </div>
     
-    </div>
-          
-    
-    </body>
+    </div>       
+   </body>
 </html>

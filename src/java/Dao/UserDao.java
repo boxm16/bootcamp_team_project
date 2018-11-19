@@ -27,6 +27,10 @@ public class UserDao {
         em.find(User.class,us);
         em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
     }
+    public void updateinfos(String us, String n, String ln) throws IOException{
+        em.find(User.class,us);
+        em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
+    }
     
 
 }

@@ -44,7 +44,7 @@ public class UserController {
 
     }
     @RequestMapping(value = "/person", method = RequestMethod.GET)
-    public String edituser(ModelMap model) {
+    public String showuser(ModelMap model) {
        User user=new User();
        user.setFirstname("v");
        user.setLastname("dv");
@@ -58,6 +58,30 @@ public class UserController {
        model.addAttribute("sports", sport);
         return "personpage";
     }
+    @RequestMapping(value = "/editpersinf", method = RequestMethod.GET)
+    public String edituser(ModelMap model) {
+       User user=new User();
+       user.setFirstname("v");
+       user.setLastname("dv");
+       user.setPassword("1");
+       user.setUsername("bbb");
+       Sport sport=new Sport();
+       sport.setSportsId(1);
+       sport.setSports("football");
+       user.setSports(sport);
+       model.addAttribute("users", user);
+       model.addAttribute("sports", sport);
+        return "editpage";
+    }
+    
+    @RequestMapping(value="/voltron.htm",method=RequestMethod.GET)
+    
+    public String homenew(ModelMap model,User u){
+        model.addAttribute("user", u);
+//       ???
+        return "userpage";
+    }
+    
     
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
