@@ -18,6 +18,9 @@ import javax.persistence.Embeddable;
 public class FootballReviewPK implements Serializable {
 
     @Basic(optional = false)
+    @Column(name = "game")
+    private int game;
+    @Basic(optional = false)
     @Column(name = "reviewed")
     private String reviewed;
     @Basic(optional = false)
@@ -27,9 +30,18 @@ public class FootballReviewPK implements Serializable {
     public FootballReviewPK() {
     }
 
-    public FootballReviewPK(String reviewed, String reviewer) {
+    public FootballReviewPK(int game, String reviewed, String reviewer) {
+        this.game = game;
         this.reviewed = reviewed;
         this.reviewer = reviewer;
+    }
+
+    public int getGame() {
+        return game;
+    }
+
+    public void setGame(int game) {
+        this.game = game;
     }
 
     public String getReviewed() {
@@ -51,6 +63,7 @@ public class FootballReviewPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
+        hash += (int) game;
         hash += (reviewed != null ? reviewed.hashCode() : 0);
         hash += (reviewer != null ? reviewer.hashCode() : 0);
         return hash;
@@ -63,6 +76,9 @@ public class FootballReviewPK implements Serializable {
             return false;
         }
         FootballReviewPK other = (FootballReviewPK) object;
+        if (this.game != other.game) {
+            return false;
+        }
         if ((this.reviewed == null && other.reviewed != null) || (this.reviewed != null && !this.reviewed.equals(other.reviewed))) {
             return false;
         }
@@ -74,7 +90,7 @@ public class FootballReviewPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.FootballReviewPK[ reviewed=" + reviewed + ", reviewer=" + reviewer + " ]";
+        return "Model.FootballReviewPK[ game=" + game + ", reviewed=" + reviewed + ", reviewer=" + reviewer + " ]";
     }
     
 }

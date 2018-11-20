@@ -39,11 +39,11 @@ public class Grade implements Serializable {
     @Basic(optional = false)
     @Column(name = "grade")
     private int grade;
-    @OneToMany(mappedBy = "teamwork")
+    @OneToMany(mappedBy = "technique")
     private Collection<FootballReview> footballReviewCollection;
     @OneToMany(mappedBy = "athletism")
     private Collection<FootballReview> footballReviewCollection1;
-    @OneToMany(mappedBy = "technique")
+    @OneToMany(mappedBy = "teamwork")
     private Collection<FootballReview> footballReviewCollection2;
 
     public Grade() {

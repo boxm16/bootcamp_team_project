@@ -38,14 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
 
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Collection<FootballReview> footballReviewCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
-    private Collection<FootballReview> footballReviewCollection1;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -57,13 +49,21 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-
-    @Transient
+    
+     @Transient
     private String password_confirmation;
-
+     
+     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<FootballReview> footballReviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    private Collection<FootballReview> footballReviewCollection1;
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")
     @ManyToOne(optional = false)
     private Sport sport;
@@ -106,6 +106,13 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
+    }
 
     public String getPassword() {
         return password;
@@ -115,12 +122,37 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getPassword_confirmation() {
         return password_confirmation;
     }
 
     public void setPassword_confirmation(String password_confirmation) {
         this.password_confirmation = password_confirmation;
+    }
+
+   
+    
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection() {
+        return footballReviewCollection;
+    }
+
+    public void setFootballReviewCollection(Collection<FootballReview> footballReviewCollection) {
+        this.footballReviewCollection = footballReviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection1() {
+        return footballReviewCollection1;
+    }
+
+    public void setFootballReviewCollection1(Collection<FootballReview> footballReviewCollection1) {
+        this.footballReviewCollection1 = footballReviewCollection1;
     }
 
     public Sport getSport() {
@@ -155,31 +187,5 @@ public class User implements Serializable {
     public String toString() {
         return "Model.User[ username=" + username + " ]";
     }
-
-    public byte[] getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
-    }
-
-    @XmlTransient
-    public Collection<FootballReview> getFootballReviewCollection() {
-        return footballReviewCollection;
-    }
-
-    public void setFootballReviewCollection(Collection<FootballReview> footballReviewCollection) {
-        this.footballReviewCollection = footballReviewCollection;
-    }
-
-    @XmlTransient
-    public Collection<FootballReview> getFootballReviewCollection1() {
-        return footballReviewCollection1;
-    }
-
-    public void setFootballReviewCollection1(Collection<FootballReview> footballReviewCollection1) {
-        this.footballReviewCollection1 = footballReviewCollection1;
-    }
-
+    
 }

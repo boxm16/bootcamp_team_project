@@ -63,7 +63,7 @@ public class UserValidator implements Validator {
            
         }
 
-        //errors.rejectValue("password", "password.less7");
+        
     }
 
 }

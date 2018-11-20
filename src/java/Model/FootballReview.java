@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FootballReview.findAll", query = "SELECT f FROM FootballReview f")
+    , @NamedQuery(name = "FootballReview.findByGame", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.game = :game")
     , @NamedQuery(name = "FootballReview.findByReviewed", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.reviewed = :reviewed")
     , @NamedQuery(name = "FootballReview.findByReviewer", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.reviewer = :reviewer")
     , @NamedQuery(name = "FootballReview.findByComments", query = "SELECT f FROM FootballReview f WHERE f.comments = :comments")})
@@ -35,19 +36,19 @@ public class FootballReview implements Serializable {
     protected FootballReviewPK footballReviewPK;
     @Column(name = "comments")
     private String comments;
-    @JoinColumn(name = "teamwork", referencedColumnName = "id")
-    @ManyToOne
-    private Grade teamwork;
-    @JoinColumn(name = "athletism", referencedColumnName = "id")
-    @ManyToOne
-    private Grade athletism;
     @JoinColumn(name = "technique", referencedColumnName = "id")
     @ManyToOne
     private Grade technique;
-    @JoinColumn(name = "reviewer", referencedColumnName = "username", insertable = false, updatable = false)
+    @JoinColumn(name = "athletism", referencedColumnName = "id")
+    @ManyToOne
+    private Grade athletism;
+    @JoinColumn(name = "teamwork", referencedColumnName = "id")
+    @ManyToOne
+    private Grade teamwork;
+    @JoinColumn(name = "reviewed", referencedColumnName = "username", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private User user;
-    @JoinColumn(name = "reviewed", referencedColumnName = "username", insertable = false, updatable = false)
+    @JoinColumn(name = "reviewer", referencedColumnName = "username", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private User user1;
 
@@ -58,8 +59,8 @@ public class FootballReview implements Serializable {
         this.footballReviewPK = footballReviewPK;
     }
 
-    public FootballReview(String reviewed, String reviewer) {
-        this.footballReviewPK = new FootballReviewPK(reviewed, reviewer);
+    public FootballReview(int game, String reviewed, String reviewer) {
+        this.footballReviewPK = new FootballReviewPK(game, reviewed, reviewer);
     }
 
     public FootballReviewPK getFootballReviewPK() {
@@ -78,12 +79,12 @@ public class FootballReview implements Serializable {
         this.comments = comments;
     }
 
-    public Grade getTeamwork() {
-        return teamwork;
+    public Grade getTechnique() {
+        return technique;
     }
 
-    public void setTeamwork(Grade teamwork) {
-        this.teamwork = teamwork;
+    public void setTechnique(Grade technique) {
+        this.technique = technique;
     }
 
     public Grade getAthletism() {
@@ -94,12 +95,12 @@ public class FootballReview implements Serializable {
         this.athletism = athletism;
     }
 
-    public Grade getTechnique() {
-        return technique;
+    public Grade getTeamwork() {
+        return teamwork;
     }
 
-    public void setTechnique(Grade technique) {
-        this.technique = technique;
+    public void setTeamwork(Grade teamwork) {
+        this.teamwork = teamwork;
     }
 
     public User getUser() {
