@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class UserController {
 // 22222222222
+
     @Autowired
     private UserDao userDao;
     @Autowired
@@ -34,8 +35,8 @@ public class UserController {
 
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
-        User users = new User();
-        model.addAttribute(users);
+        User user = new User();
+        model.addAttribute(user);
 
         return "register";
     }
@@ -51,7 +52,7 @@ public class UserController {
         }
         Sport sport = new Sport(1, "football");
         user.setSport(sport);
-        
+
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         userDao.insert(user);
         model.addAttribute("user", user);
@@ -67,7 +68,7 @@ public class UserController {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.setPassword(null);
                 session.setAttribute("user", user);
-                
+
                 String message = "HI " + user.getUsername();
                 // model.addAttribute("message", message);
                 return "user_page";

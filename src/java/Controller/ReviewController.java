@@ -29,40 +29,47 @@ public class ReviewController {
 
     @Autowired
     private UserDao userDao;
-    
-     @Autowired
+
+    @Autowired
     private FootballReviewDao footballReviewDao;
 
-    //delete 
+    @RequestMapping(value = "/bbb.htm", method = RequestMethod.GET)
+    public String bbb(ModelMap model) {
+
+        List<User> playersList = userDao.listAllUsers();
+        model.addAttribute("playersList", playersList);
+
+        FootballReview fr = new FootballReview();
+        model.addAttribute("fr", fr);
+
+        return "reviews";
+    }
+
+    //delete this is really massy
     @RequestMapping(value = "/AAA.htm", method = RequestMethod.GET)
     public String AAA(ModelMap model, HttpSession session) {
 
         User reviewer = (User) session.getAttribute("user");
 
         User user1 = userDao.checkUserByUsername("alex");
-        
+
         FootballReview fr = new FootballReview();
-        FootballReviewPK footballReviewPK=new FootballReviewPK();
+        FootballReviewPK footballReviewPK = new FootballReviewPK();
         footballReviewPK.setReviewed("alex");
         footballReviewPK.setReviewer(reviewer.getUsername());
         fr.setFootballReviewPK(footballReviewPK);
         fr.setUser(reviewer);
         fr.setUser1(user1);
-        fr.setAthletism(new Grade(1,1));
-        fr.setTeamwork(new Grade(4,4));
-        fr.setTechnique(new Grade(5,5));
+        fr.setAthletism(new Grade(1, 1));
+        fr.setTeamwork(new Grade(4, 4));
+        fr.setTechnique(new Grade(5, 5));
         fr.setComments("Bravo");
-        
+
         footballReviewDao.insert(fr);
-        
-
-        
-
-       
 
         return "reviews";
     }
-
+//dublicate with bbb, for deletion
     @RequestMapping(value = "/listPlayersForReview.htm", method = RequestMethod.GET)
     public String listPlayers(ModelMap model) {
 
