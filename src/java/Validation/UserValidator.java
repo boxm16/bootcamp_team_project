@@ -32,10 +32,7 @@ public class UserValidator implements Validator {
         User u = (User) o;
 
         String username = u.getUsername().trim();
-        //System.out.println("vname:"+username);
-        //if (!username.startsWith("t")) {
-        //    errors.rejectValue("username", "name.notStartWithT");
-       // }
+      
        if (userDao.checkUserByUsername(username)!=null) {
        errors.rejectValue("username", "username.Exists");
        }
@@ -50,7 +47,6 @@ public class UserValidator implements Validator {
         errors.rejectValue("password_confirmation", "pwds.NotMatch");
         }
 
-        //errors.rejectValue("password", "password.less7");
     }
 
 }

@@ -6,9 +6,11 @@
 package Controller;
 
 import Dao.UserDao;
+import Model.Message;
 import Model.Sport;
 import Model.User;
 import Validation.UserValidator;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,71 +31,19 @@ public class UserController {
 // 22222222222
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private UserValidator userValidator;
 
-    @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
-    public String emptyForm(ModelMap model) {
-        User users = new User();
-        model.addAttribute(users);
 
-        return "register";
-    }
-
-    @RequestMapping(value = "/registerFormHandling.htm", method = RequestMethod.POST)
-    public String authentication1(ModelMap model, User user, BindingResult bindingResult) {
-        //  String username = user.getFirstname();
-        //  System.out.println(username);
-
-        userValidator.validate(user, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "register";
-        }
-        Sport sport = new Sport(1, "football");
-        user.setSport(sport);
 
        
-        
-        userDao.insert(user);
-        model.addAttribute("user", user);
-        return "success_registration";
+    @RequestMapping(value = "messenger", method = RequestMethod.GET)
+    public String showmessages(ModelMap model) {
 
-    }
+        List<Message> msg = userDao.fetchmessages();
+        model.addAttribute("messages", msg);
 
-    @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.POST)
-    public String adduser(HttpSession session, ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
-        User user = userDao.checkUserByUsername(username);
-        if (user != null) {
-                  //BCrypt.checkpw(password, user.getPassword())
-            if (password.equals(user.getPassword())) {
-                user.setPassword(null);
-                session.setAttribute("user", user);
-                String message = "HI " + user.getUsername();
-               // model.addAttribute("message", message);
-                return "user_page";
-            } else {
-                String message = "password is wrong";
-                model.addAttribute("message", message);
-                return "index";
-            }
-        } else {
-
-            String message = "Username doesn't exist";
-            model.addAttribute("message", message);
-            return "index";
-        }
-
-    }
-
-    @RequestMapping(value = "/trialLink.htm", method = RequestMethod.GET)
-    public String Try(ModelMap model) {
-        User user = userDao.checkUserByUsername("adfdf1");
-        if (user != null) {
-            model.addAttribute("userFromDB", user);
-            return "success_registration";
-        } else {
-            return "error_page";
-        }
-    }
-
+        return "messenger";
+}
+    
+    
+    
 }
