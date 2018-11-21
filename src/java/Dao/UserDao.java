@@ -25,15 +25,17 @@ public class UserDao {
    public List<Message> fetchmessages(){
                List<Message> Conversation;
         Query q=em.createNativeQuery("SELECT * from message where ((sender='herc' and receiver='alex')"
-                + "or(sender='alex' and receiver='herc')) order by message.date");
+                + "or(sender='alex' and receiver='herc')) order by message.date", Message.class);
+        Conversation=q.getResultList();
+
+        return Conversation;
+   }
+
+public List<Message> conversation(){
+               List<Message> Conversation;
+        Query q=em.createNativeQuery("SELECT * FROM seek_play.message where(sender='herc' or receiver='herc') order by date desc limit 1",Message.class);
         Conversation=q.getResultList();
         return Conversation;
    }
 
-public List<Message> Messenger(String username){
-               List<Message> Conversation;
-        Query q=em.createNativeQuery("SELECT * FROM seek_play.message where(sender='"+username+"' or receiver='"+username+"') order by date desc limit 1");
-        Conversation=q.getResultList();
-        return Conversation;
-   }
 }
