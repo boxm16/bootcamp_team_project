@@ -10,12 +10,21 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link href="<c:url value="/resources/newcss.css" />" rel="stylesheet">
+        
+        <script type="text/javascript" src="<c:url value="/resources/newjavascript.js" />">
+            
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <title>beta Messenger</title>
+
     </head>
+
     <body>
 
         <div id="frame">
