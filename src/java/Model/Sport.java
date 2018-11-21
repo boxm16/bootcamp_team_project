@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model;
 
-import Model.Court;
-import Model.User;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -42,8 +40,6 @@ public class Sport implements Serializable {
     @Basic(optional = false)
     @Column(name = "sports")
     private String sports;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "type")
-    private Collection<Court> courtCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sports")
     private Collection<User> userCollection;
 
@@ -73,15 +69,6 @@ public class Sport implements Serializable {
 
     public void setSports(String sports) {
         this.sports = sports;
-    }
-
-    @XmlTransient
-    public Collection<Court> getCourtCollection() {
-        return courtCollection;
-    }
-
-    public void setCourtCollection(Collection<Court> courtCollection) {
-        this.courtCollection = courtCollection;
     }
 
     @XmlTransient
@@ -115,7 +102,7 @@ public class Sport implements Serializable {
 
     @Override
     public String toString() {
-        return "Controller.Sport[ sportsId=" + sportsId + " ]";
+        return "Model.Sport[ sportsId=" + sportsId + " ]";
     }
     
 }
