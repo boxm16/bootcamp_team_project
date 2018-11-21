@@ -2,8 +2,15 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="seek_playPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Model.User</class>
+    <class>Model.Grade</class>
+    <class>Model.Court</class>
     <class>Model.Sport</class>
+    <class>Model.CourtReservation</class>
+    <class>Model.Message</class>
+    <class>Model.ReviewFilter</class>
+    <class>Model.Hours</class>
+    <class>Model.FootballReview</class>
+    <class>Model.User</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://5.189.135.166:3011/seek_play?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

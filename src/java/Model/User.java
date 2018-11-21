@@ -6,7 +6,9 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,13 +17,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Michail Sitmalidis
+ * @author Herc
  */
 @Entity
 @Table(name = "user")
@@ -33,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
-//111111111111111
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -51,13 +54,23 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-
-    @Transient
-    private String password_confirmation;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<ReviewFilter> reviewFilterCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    private Collection<ReviewFilter> reviewFilterCollection1;
+    @OneToMany(mappedBy = "booker")
+    private Collection<CourtReservation> courtReservationCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<FootballReview> footballReviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    private Collection<FootballReview> footballReviewCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    private Collection<Message> messageCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    private Collection<Message> messageCollection1;
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")
     @ManyToOne(optional = false)
-    private Sport sport;
+    private Sport sports;
 
     public User() {
     }
@@ -102,7 +115,7 @@ public class User implements Serializable {
     }
 
     public void setProfileimage(byte[] profileimage) {
-        //this.profileimage = profileimage;
+        this.profileimage = profileimage;
     }
 
     public String getPassword() {
@@ -113,20 +126,75 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPassword_confirmation() {
-        return password_confirmation;
+    @XmlTransient
+    public Collection<ReviewFilter> getReviewFilterCollection() {
+        return reviewFilterCollection;
     }
 
-    public void setPassword_confirmation(String password_confirmation) {
-        this.password_confirmation = password_confirmation;
+    public void setReviewFilterCollection(Collection<ReviewFilter> reviewFilterCollection) {
+        this.reviewFilterCollection = reviewFilterCollection;
     }
 
-    public Sport getSport() {
-        return sport;
+    @XmlTransient
+    public Collection<ReviewFilter> getReviewFilterCollection1() {
+        return reviewFilterCollection1;
     }
 
-    public void setSport(Sport sport) {
-        this.sport = sport;
+    public void setReviewFilterCollection1(Collection<ReviewFilter> reviewFilterCollection1) {
+        this.reviewFilterCollection1 = reviewFilterCollection1;
+    }
+
+    @XmlTransient
+    public Collection<CourtReservation> getCourtReservationCollection() {
+        return courtReservationCollection;
+    }
+
+    public void setCourtReservationCollection(Collection<CourtReservation> courtReservationCollection) {
+        this.courtReservationCollection = courtReservationCollection;
+    }
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection() {
+        return footballReviewCollection;
+    }
+
+    public void setFootballReviewCollection(Collection<FootballReview> footballReviewCollection) {
+        this.footballReviewCollection = footballReviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<FootballReview> getFootballReviewCollection1() {
+        return footballReviewCollection1;
+    }
+
+    public void setFootballReviewCollection1(Collection<FootballReview> footballReviewCollection1) {
+        this.footballReviewCollection1 = footballReviewCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Message> getMessageCollection() {
+        return messageCollection;
+    }
+
+    public void setMessageCollection(Collection<Message> messageCollection) {
+        this.messageCollection = messageCollection;
+    }
+
+    @XmlTransient
+    public Collection<Message> getMessageCollection1() {
+        return messageCollection1;
+    }
+
+    public void setMessageCollection1(Collection<Message> messageCollection1) {
+        this.messageCollection1 = messageCollection1;
+    }
+
+    public Sport getSports() {
+        return sports;
+    }
+
+    public void setSports(Sport sports) {
+        this.sports = sports;
     }
 
     @Override
@@ -153,5 +221,5 @@ public class User implements Serializable {
     public String toString() {
         return "Model.User[ username=" + username + " ]";
     }
-
+    
 }
