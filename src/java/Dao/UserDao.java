@@ -24,8 +24,8 @@ public class UserDao {
    @Transactional
    public List<Message> fetchmessages(){
                List<Message> Conversation;
-        Query q=em.createNativeQuery("SELECT * from message where ((sender='herc' and receiver='alex')"
-                + "or(sender='alex' and receiver='herc')) order by message.date", Message.class);
+        Query q=em.createNativeQuery("SELECT * FROM seek_play.message where receiver='herc'"
+                + " and request is null order by date;", Message.class);
         Conversation=q.getResultList();
 
         return Conversation;

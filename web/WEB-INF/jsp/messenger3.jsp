@@ -41,16 +41,15 @@
           <div class="inbox_chat">
 
             <div class="chat_list active_chat">
-             <c:forEach items="${messages}" var="user">
+             <c:forEach items="${messages}" var="message">
 
                 <div class="chat_people">
                   
 
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5> ${user.receiver.username} <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
+                  <h5> ${message.sender.username} <span class="chat_date">${message.date}</span></h5>
+                  <p>${message.text}</p>
                 </div>
               </div>
            </c:forEach> 

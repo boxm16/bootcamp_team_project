@@ -17,7 +17,7 @@
         <div class="wrapper">
             <div class="chat-box">
                 <div class="chat-head">
-                    <h2>Chat Box ${message.sender.username}</h2>
+                    <h2>Chat Box ${message.receiver.username}</h2>
                     <img src="https://maxcdn.icons8.com/windows10/PNG/16/Arrows/angle_down-16.png" title="Expand Arrow" width="16">
                 </div>
                 <div class="chat-body">
