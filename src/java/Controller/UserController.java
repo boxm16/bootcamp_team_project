@@ -33,14 +33,14 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping(value = "messenger", method = RequestMethod.GET)
+    @RequestMapping(value = "messenger3", method = RequestMethod.GET)
     public String showmessages(ModelMap model) {
 
         List<Message> msg = userDao.fetchmessages();
         model.addAttribute("messages", msg);
         List<Message> msg2 = userDao.conversation();
         model.addAttribute("conversation", msg2);
-        return "messenger";
+        return "messenger3";
     }
 
 }
