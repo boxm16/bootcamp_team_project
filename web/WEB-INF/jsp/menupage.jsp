@@ -124,9 +124,9 @@ $(".btn-pref .btn").click(function () {
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Rank</div>
-            </button>
+                </button></a>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -136,6 +136,11 @@ $(".btn-pref .btn").click(function () {
         <div class="btn-group" role="group">
             <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Personal Infos</div>
+            </button></a>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <div class="hidden-xs">Events</div>
             </button></a>
         </div>
         <div class="btn-group" role="group">

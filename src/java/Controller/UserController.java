@@ -6,6 +6,8 @@
 package Controller;
 
 import Dao.UserDao;
+import Model.FootballReview;
+import Model.Grade;
 import Model.Sport;
 import Model.User;
 import java.io.IOException;
@@ -74,14 +76,34 @@ public class UserController {
         return "editpage";
     }
     
-    @RequestMapping(value="/voltron.htm",method=RequestMethod.GET)
-    
-    public String homenew(ModelMap model,User u){
+    @RequestMapping(value="/edit.htm",method=RequestMethod.GET)
+        public String homenew(ModelMap model,User u) throws IOException{
+        User user=new User();    
+         user.setUsername("bbb");
         model.addAttribute("user", u);
-//       ???
+        userDao.updateinfos(user.getUsername(), u.getFirstname(), u.getLastname());
         return "userpage";
     }
-    
+        
+    @RequestMapping(value="/star.htm",method=RequestMethod.GET)
+        public String starnew(ModelMap model,User u){
+        User user=new User();
+        FootballReview fr=new FootballReview();
+        Grade g= new Grade();
+       user.setUsername("bbb");
+       Sport sport=new Sport();
+       sport.setSportsId(1);
+       sport.setSports("football");
+       user.setSports(sport);
+       g.setId(5);
+       g.setGrade(5);       
+       fr.setTeamwork(g);
+       model.addAttribute("users", user);
+       model.addAttribute("sports", sport);
+       model.addAttribute("grade",fr);
+       model.addAttribute("star",g);
+        return "starpage";
+    }
     
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {

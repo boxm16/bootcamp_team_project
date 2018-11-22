@@ -99,7 +99,6 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Page</title>
-        
         <script>$(document).ready(function() {
 $(".btn-pref .btn").click(function () {
     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -107,10 +106,10 @@ $(".btn-pref .btn").click(function () {
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
 });
-        </script>  
+        </script>
     </head>
     <body>
-          
+            
         <div class="col-lg-6 col-sm-6">
     <div class="card hovercard">
         <div class="card-background">
@@ -125,7 +124,7 @@ $(".btn-pref .btn").click(function () {
     </div>
      <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+           <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Rank</div>
                 </button></a>
         </div>
@@ -151,28 +150,39 @@ $(".btn-pref .btn").click(function () {
         </div>
     </div>
          
-        <div class="well">
+    <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-            <h3><div>First Name: ${users.getFirstname()}</div>
-                <div> Last Name: ${users.getLastname()}</div></h3>
-                <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                <div class="hidden-xs">EDIT</div>
-                </button> </a>
-           
-                <H3><div> Change your profile picture</div></h3>
-                        <forms:form method="POST" action="uploadFile" enctype="multipart/form-data">
-                            File to upload: <input type="file" name="file"><br /> 
-                            
-                            <input type="submit" value="Upload">
-                        </forms:form>	
-            
-          </h3>
-                        
+          <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="well well-sm">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 text-center">
+                                <h1 class="rating-num">${grade.getTeamwork().getGrade()}</h1>
+                                <div class="rating">
+                                    <%int i;%>
+                                    <% for(i=0;i<5;i++){;%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <%}%>
+                                    <%int s=5-5;%>
+                                    <% for(i=0;i<s;i++){;%>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <%}%>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
       </div>
     </div>
     
-    </div>       
-   </body>
+    </div>
+          
+    
+    </body>
 </html>

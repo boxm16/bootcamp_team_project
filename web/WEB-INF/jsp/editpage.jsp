@@ -86,7 +86,30 @@
 .btn-pref .btn {
     -webkit-border-radius:0 !important;
 }
-    
+ .main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 400px;
+    padding: 10px 40px;
+	background:#009edf;
+	    color: #FFF;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+ }
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+   
         </style>
        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -106,9 +129,11 @@ $(".btn-pref .btn").click(function () {
         
     </head>
     <body>
-          
-        <div class="col-lg-6 col-sm-6">
+        
+        <div class="col-lg-6 col-sm-6 ">
+           
     <div class="card hovercard">
+     
         <div class="card-background">
             <img class="card-bkimg" alt="" src="https://ak5.picdn.net/shutterstock/videos/3017425/thumb/1.jpg">
             <!-- http://lorempixel.com/850/280/people/9/ -->
@@ -121,9 +146,9 @@ $(".btn-pref .btn").click(function () {
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Rank</div>
-            </button></a>
+                </button></a>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -136,6 +161,11 @@ $(".btn-pref .btn").click(function () {
                 </button></a>
         </div>
         <div class="btn-group" role="group">
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <div class="hidden-xs">Events</div>
+            </button></a>
+        </div>
+        <div class="btn-group" role="group">
             <button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <div class="hidden-xs">Search</div>
             </button>
@@ -146,47 +176,42 @@ $(".btn-pref .btn").click(function () {
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
            
-                <div class="container">
-			<div class="col-lg-6 col-sm-6">
+                
+			
 				
 				<h5>Edit Personal Infos</h5>
-					<forms:form modelAttribute="User" action="edit.htm" method="GET">
-						
-						<div class="btn-group">
-                                                    <forms:label path="firstname" class="cols-sm-2 control-label"><b>Name</b></forms:label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<forms:input path="firstname" class="form-control" id="firstname"  placeholder="Enter your Name"/>
-								</div>
-							</div>
-						</div>
+					<forms:form modelAttribute="users" action="edit.htm" method="GET">
+												
+                                            <forms:label path="firstname" class="cols-sm-2 control-label"><b>Name</b></forms:label>
+                                                <div class="cols-sm-10">
+                                                        <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                                <forms:input path="firstname" class="form-control" id="firstname" placeholder="Enter your Last Name"/>
+                                                        </div>
+                                                </div>
 
-						<div class="btn-group">
-							 <forms:label path="lastname" class="cols-sm-2 control-label"><b>Last Name</b></forms:label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<forms:input path="lastname" class="form-control" id="lastname"  placeholder="Enter your Last Name"/>
-								</div>
-							</div>
-						</div>
+                                            <forms:label path="lastname" class="cols-sm-2 control-label"><b>Last Name</b></forms:label>
+                                            <div class="cols-sm-10">
+                                                    <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                                            <forms:input path="lastname" class="form-control" id="lastname"  placeholder="Enter your Last Name"/>
+                                                    </div>
+                                            </div>
 
-						<div class="form-group ">
-							<a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">CONFIRM</a>
-						</div>
+                                            <div class="form-group ">
+                                                    <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">CONFIRM</a>
+                                            </div>
 						
 					</forms:form>
-				
-			</div>
-		</div>
+                                
+			
+		
 
 		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	
-        </div>
       </div>
     </div>
     
