@@ -1,0 +1,150 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Model;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+/**
+ *
+ * @author Herc
+ */
+@Entity
+@Table(name = "court_reservation")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "CourtReservation.findAll", query = "SELECT c FROM CourtReservation c")
+    , @NamedQuery(name = "CourtReservation.findByCourtReservationID", query = "SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID")
+    , @NamedQuery(name = "CourtReservation.findByDate", query = "SELECT c FROM CourtReservation c WHERE c.date = :date")})
+public class CourtReservation implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "CourtReservationID")
+    private Integer courtReservationID;
+    @Basic(optional = false)
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    @JoinColumn(name = "booker", referencedColumnName = "username")
+    @ManyToOne
+    private User booker;
+    @JoinColumn(name = "courtname", referencedColumnName = "name")
+    @ManyToOne(optional = false)
+    private Court courtname;
+    @JoinColumn(name = "hours", referencedColumnName = "hours_id")
+    @ManyToOne(optional = false)
+    private Hours hours;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
+    private Collection<GameRequests> gameRequestsCollection;
+
+    public CourtReservation() {
+    }
+
+    public CourtReservation(Integer courtReservationID) {
+        this.courtReservationID = courtReservationID;
+    }
+
+    public CourtReservation(Integer courtReservationID, Date date) {
+        this.courtReservationID = courtReservationID;
+        this.date = date;
+    }
+
+    public Integer getCourtReservationID() {
+        return courtReservationID;
+    }
+
+    public void setCourtReservationID(Integer courtReservationID) {
+        this.courtReservationID = courtReservationID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public User getBooker() {
+        return booker;
+    }
+
+    public void setBooker(User booker) {
+        this.booker = booker;
+    }
+
+    public Court getCourtname() {
+        return courtname;
+    }
+
+    public void setCourtname(Court courtname) {
+        this.courtname = courtname;
+    }
+
+    public Hours getHours() {
+        return hours;
+    }
+
+    public void setHours(Hours hours) {
+        this.hours = hours;
+    }
+
+    @XmlTransient
+    public Collection<GameRequests> getGameRequestsCollection() {
+        return gameRequestsCollection;
+    }
+
+    public void setGameRequestsCollection(Collection<GameRequests> gameRequestsCollection) {
+        this.gameRequestsCollection = gameRequestsCollection;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (courtReservationID != null ? courtReservationID.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof CourtReservation)) {
+            return false;
+        }
+        CourtReservation other = (CourtReservation) object;
+        if ((this.courtReservationID == null && other.courtReservationID != null) || (this.courtReservationID != null && !this.courtReservationID.equals(other.courtReservationID))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Model.CourtReservation[ courtReservationID=" + courtReservationID + " ]";
+    }
+    
+}

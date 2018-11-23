@@ -37,6 +37,18 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
 
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
+    @OneToMany(mappedBy = "booker")
+    private Collection<CourtReservation> courtReservationCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
+    private Collection<GameRequests> gameRequestsCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
+    private Collection<Review> reviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
+    private Collection<Review> reviewCollection1;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -48,9 +60,6 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
@@ -100,13 +109,6 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public byte[] getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
-    }
 
     public String getPassword() {
         return password;
@@ -165,6 +167,50 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "Model.User[ username=" + username + " ]";
+    }
+
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
+    }
+
+    @XmlTransient
+    public Collection<CourtReservation> getCourtReservationCollection() {
+        return courtReservationCollection;
+    }
+
+    public void setCourtReservationCollection(Collection<CourtReservation> courtReservationCollection) {
+        this.courtReservationCollection = courtReservationCollection;
+    }
+
+    @XmlTransient
+    public Collection<GameRequests> getGameRequestsCollection() {
+        return gameRequestsCollection;
+    }
+
+    public void setGameRequestsCollection(Collection<GameRequests> gameRequestsCollection) {
+        this.gameRequestsCollection = gameRequestsCollection;
+    }
+
+    @XmlTransient
+    public Collection<Review> getReviewCollection() {
+        return reviewCollection;
+    }
+
+    public void setReviewCollection(Collection<Review> reviewCollection) {
+        this.reviewCollection = reviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<Review> getReviewCollection1() {
+        return reviewCollection1;
+    }
+
+    public void setReviewCollection1(Collection<Review> reviewCollection1) {
+        this.reviewCollection1 = reviewCollection1;
     }
     
 }

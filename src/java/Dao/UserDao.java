@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Model.GameRequests;
 import Model.Message;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -24,8 +25,8 @@ public class UserDao {
    @Transactional
    public List<Message> fetchmessages(){
                List<Message> Conversation;
-        Query q=em.createNativeQuery("SELECT * FROM seek_play.message where receiver='herc'"
-                + " and request is null order by date;", Message.class);
+        Query q=em.createNativeQuery("SELECT * FROM seek_play.game_requests where request_receiver='herc'"
+                + " and status is null order by date;", GameRequests.class);
         Conversation=q.getResultList();
 
         return Conversation;
