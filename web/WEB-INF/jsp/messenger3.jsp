@@ -7,11 +7,12 @@
 
         <title> beta Messenger</title>
         
+
+        <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+<script src="<c:url value="/resources/newjavascript.js" />"> </script> 
 
 </head>
 <body>
@@ -26,16 +27,16 @@
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Recent</h4>
+              <h4>Recent requests</h4>
             </div>
 
-            <div class="srch_bar">
+<!--            <div class="srch_bar">
               <div class="stylish-input-group">
                 <input type="text" class="search-bar"  placeholder="Search" >
                 <span class="input-group-addon">
                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                 </span> </div>
-            </div>
+            </div>-->
           </div>
 
           <div class="inbox_chat">
@@ -99,20 +100,24 @@
               </div>
             </div>
 
-            <div class="outgoing_msg">
+<!--            <div class="outgoing_msg">
               <div class="sent_msg">
-                <p>${message.text}</p>
-                <span class="time_date">${message.date}  </span> </div>
+                <p></p>
+                <span class="time_date">  </span> </div>
 
             </div>
                                 </c:forEach> 
 
-          </div>
+          </div>-->
+<br>
+          <div >
+            <div class="input_msg_write text-center">
+<!--              <input type="text" class="write_msg" placeholder="Type a message" />-->
+                 
+                    <button type="button" class="btn btn-outline-primary btn-rounded waves-effect">Accept</button>
+ 
+                    <button type="button" class="btn btn-outline-danger btn-rounded waves-effect" >Deny</button>
 
-          <div class="type_msg">
-            <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>
 
@@ -122,7 +127,8 @@
             
     
     </div></div>
-         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+ 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
     </body>
     </html>
