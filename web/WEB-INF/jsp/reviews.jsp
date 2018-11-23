@@ -45,124 +45,50 @@
                     <option value="${user.username}">${user.username}</option>
                 </c:forEach>
             </select>
-            <div id="demo">Evaluate</div>
-            <form>
-                <!-- <table boredr="1">
-                     <tbody>
-                         <tr>
-                             <td>TEAMWORK</td>
-                             <td><input type="radio" name="radio_tw" value="option1">1</td>
-                             <td><input type="radio" name="radio_tw" value="option2">2</td>
-                             <td><input type="radio" name="radio_tw" value="option3">3</td>
-                             <td><input type="radio" name="radio_tw" value="option4">4</td>
-                             <td><input type="radio" name="radio_tw" value="option5">5</td>
-                             <td><input type="radio" name="radio_tw" value="option6">6</td>
-                             <td><input type="radio" name="radio_tw" value="option7">7</td>
-                             <td><input type="radio" name="radio_tw" value="option8">8</td>
-                             <td><input type="radio" name="radio_tw" value="option9">9</td>
-                             <td><input type="radio" name="radio_tw" value="option10">10</td>
-                         </tr>
-                         <tr>
-                             <td>ATHLETISM</td>
-                             <td><input type="radio" name="optradio_a" value="option1">1</td>
-                             <td><input type="radio" name="optradio_a" value="option2">2</td>
-                             <td><input type="radio" name="optradio_a" value="option3">3</td>
-                             <td><input type="radio" name="optradio_a" value="option4">4</td>
-                             <td><input type="radio" name="optradio_a" value="option5">5</td>
-                             <td><input type="radio" name="optradio_a" value="option6">6</td>
-                             <td><input type="radio" name="optradio_a" value="option7">7</td>
-                             <td><input type="radio" name="optradio_a" value="option8">8</td>
-                             <td><input type="radio" name="optradio_a" value="option9">9</td>
-                             <td><input type="radio" name="optradio_a" value="option10">10</td>
-                         </tr>
-                         <tr>
-                             <td>TECHNIQUE</td>
-                             <td><input type="radio" name="optradio_t" value="option1">1</td>
-                             <td><input type="radio" name="optradio_t" value="option2">2</td>
-                             <td><input type="radio" name="optradio_t" value="option3">3</td>
-                             <td><input type="radio" name="optradio_t" value="option4">4</td>
-                             <td><input type="radio" name="optradio_t" value="option5">5</td>
-                             <td><input type="radio" name="optradio_t" value="option6">6</td>
-                             <td><input type="radio" name="optradio_t" value="option7">7</td>
-                             <td><input type="radio" name="optradio_t" value="option8">8</td>
-                             <td><input type="radio" name="optradio_t" value="option9">9</td>
-                             <td><input type="radio" name="optradio_t" value="option10">10</td>
-                         </tr>
-                         <tr>
-                             <td>COMMENTS</td>
-                             <td colspan="10"><textarea  maxlength="250" rows="4" cols="100"></textarea></td>
-                         </tr>
-                     </tbody>
-                 </table>
-                 <input type="submit">
-             </form>
-         </div>
- 
-         <hr>
-         <div>  -->
+
+            <div id="demo">
+
+            </div>
 
 
 
-                <spring:form modelAttribute="fr" action="${pageContext.request.contextPath}/registerFormHandling.htm" method="POST">  
-                    <table>
+            <spring:form commandName="fr" action="http://localhost:8080/seek_play/reviewFormHandling.htm" method="POST">  
+                <table>
 
 
+                    <td><spring:textarea  path="user1.username" id="1"/></td>
 
-                        <tr>
-                            <td> <spring:label path="teamwork">Teamwork</spring:label></td>  
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
-                            <td> <spring:radiobutton name="radio_tw" path="teamwork"/> </td>
+                    <tr>
 
-                        </tr>
-                        <tr>
-                            <td> <spring:label path="athletism">Athletism</spring:label></td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="athletism"/> </td>
+                        <td> <spring:radiobuttons path="teamwork.grade" items="${Grades}"/> </td>
 
-                        </tr>
+                    </tr>
 
-                        <tr>
-                            <td> <spring:label path="technique">Technique</spring:label></td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                            <td> <spring:radiobutton name="radio_a" path="technique"/> </td>
-                        </tr>
+                    <tr>
 
-                        <tr> 
-                            <td> <spring:label path="comments">Comments</spring:label></td>  
-                            <td colspan="10"> <spring:textarea  path="comments"  rows="3" cols="100"/> </td>
-                        </tr>
-                    </table>
-                </spring:form>
+                        <td> <spring:radiobuttons path="athletism.grade" items="${Grades}"/> </td>
+
+                    </tr> 
+                    <tr>
+
+                        <td> <spring:radiobuttons path="technique.grade" items="${Grades}"/> </td>
+
+                    </tr>
+                    <tr> 
+                        <td> <spring:label path="comments">Comments</spring:label></td>  
+                        <td colspan="10"> <spring:textarea  path="comments"  rows="3" cols="100"/> </td>
+                    </tr>
+                </table>
+                <input type="submit">
+            </spring:form>
         </div>
         <script>
             function myFunction() {
 
                 var x = document.getElementById("player").value;
                 document.getElementById("demo").innerHTML = " <h1>Evaluate: " + x + "</h1>";
+                document.getElementById("1").innerHTML = " <h1>Avaluate: " + x + "</h1>";
+                document.getElementById("1").value = x;
             }
         </script>
     </body>

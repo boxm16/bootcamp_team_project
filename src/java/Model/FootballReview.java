@@ -6,6 +6,7 @@
 package Model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class FootballReview implements Serializable {
     @Column(name = "comments")
     private String comments;
     @JoinColumn(name = "technique", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Grade technique;
     @JoinColumn(name = "athletism", referencedColumnName = "id")
     @ManyToOne

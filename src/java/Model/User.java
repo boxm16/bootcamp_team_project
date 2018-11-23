@@ -62,6 +62,7 @@ public class User implements Serializable {
      
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<FootballReview> footballReviewCollection;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
     private Collection<FootballReview> footballReviewCollection1;
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")

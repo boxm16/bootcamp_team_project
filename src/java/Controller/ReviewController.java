@@ -11,11 +11,14 @@ import Model.FootballReview;
 import Model.FootballReviewPK;
 import Model.Grade;
 import Model.User;
+import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +29,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class ReviewController {
+
+    @Autowired
+    ServletContext servletContext;
 
     @Autowired
     private UserDao userDao;
@@ -40,36 +46,48 @@ public class ReviewController {
         model.addAttribute("playersList", playersList);
 
         FootballReview fr = new FootballReview();
+        List<String> Grades = new ArrayList<String>();
+        Grades.add("1");
+        Grades.add("2");
+        Grades.add("3");
+        Grades.add("4");
+        Grades.add("5");
+        Grades.add("6");
+        Grades.add("7");
+        Grades.add("8");
+        Grades.add("9");
+        Grades.add("10");
+
+        servletContext.setAttribute("Grades", Grades);
         model.addAttribute("fr", fr);
 
         return "reviews";
     }
 
-    //delete this is really massy
-    @RequestMapping(value = "/AAA.htm", method = RequestMethod.GET)
-    public String AAA(ModelMap model, HttpSession session) {
+    @RequestMapping(value = "/reviewFormHandling.htm", method = RequestMethod.POST)
+    public String AAA(@ModelAttribute FootballReview fr, HttpSession session, ModelMap model) {
 
         User reviewer = (User) session.getAttribute("user");
+        //User user = userDao.checkUserByUsername(fr.getUser1().getUsername());
 
-        User user1 = userDao.checkUserByUsername("alex");
-
-        FootballReview fr = new FootballReview();
+        // FootballReview fr = new FootballReview();
         FootballReviewPK footballReviewPK = new FootballReviewPK();
-        footballReviewPK.setReviewed("alex");
+        footballReviewPK.setReviewed(fr.getUser1().getUsername());
+      
         footballReviewPK.setReviewer(reviewer.getUsername());
         fr.setFootballReviewPK(footballReviewPK);
-        fr.setUser(reviewer);
-        fr.setUser1(user1);
-        fr.setAthletism(new Grade(1, 1));
-        fr.setTeamwork(new Grade(4, 4));
-        fr.setTechnique(new Grade(5, 5));
-        fr.setComments("Bravo");
-
+         fr.setUser(reviewer);
+        // fr.setUser1(user1);
+        // fr.setAthletism(new Grade(1, 1));
+        // fr.setTeamwork(new Grade(4, 4));
+        //fr.setTechnique(new Grade(5, 5));
+        // fr.setComments("Bravo");
         footballReviewDao.insert(fr);
-
+        model.addAttribute("fr", fr);
         return "reviews";
     }
 //dublicate with bbb, for deletion
+
     @RequestMapping(value = "/listPlayersForReview.htm", method = RequestMethod.GET)
     public String listPlayers(ModelMap model) {
 
