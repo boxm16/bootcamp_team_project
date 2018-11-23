@@ -32,11 +32,6 @@
     <body>
         <h1>Review your co-players</h1>
 
-
-        <a href="http://localhost:8080/seek_play/AAA.htm">Trial link</a><hr>
-
-        <a href="http://localhost:8080/seek_play/BBB.htm">Create review Form</a>
-
         <div>
 
             Select a Player;
@@ -55,28 +50,28 @@
             <spring:form commandName="fr" action="http://localhost:8080/seek_play/reviewFormHandling.htm" method="POST">  
                 <table>
 
-
-                    <td><spring:textarea  path="reviewed.username" id="1"/></td>
+                    <td><spring:hidden  path="reviewed.username" id="1"/></td>
+                  
 
                     <tr>
-
-                        <td> <spring:radiobuttons path="teamwork" items="${Grades}"/> </td>
+                        <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
+                        <td> <spring:radiobuttons path="teamwork" items="${Grades}" label="Teamwork"/> </td>
 
                     </tr>
 
                     <tr>
-
-                        <td> <spring:radiobuttons path="athletism" items="${Grades}"/> </td>
+                        <td> <spring:label path="athletism">Athletism</spring:label></td> 
+                        <td> <spring:radiobuttons path="athletism" items="${Grades}" label="Athletism"/> </td>
 
                     </tr> 
                     <tr>
-
-                        <td> <spring:radiobuttons path="technique" items="${Grades}"/> </td>
+                        <td> <spring:label path="technique">Technique</spring:label></td> 
+                        <td> <spring:radiobuttons path="technique" items="${Grades}" label="Technique"/> </td>
 
                     </tr>
                     <tr> 
                         <td> <spring:label path="comments">Comments</spring:label></td>  
-                        <td colspan="10"> <spring:textarea  path="comments"  rows="3" cols="100"/> </td>
+                        <td> <spring:textarea  path="comments"  rows="3" cols="100"/></td>
                     </tr>
                 </table>
                 <input type="submit">
@@ -88,6 +83,7 @@
                 var x = document.getElementById("player").value;
                 document.getElementById("demo").innerHTML = " <h1>Evaluate: " + x + "</h1>";
                 document.getElementById("1").innerHTML = " <h1>Avaluate: " + x + "</h1>";
+                document.getElementById("1").value = x;
                 document.getElementById("1").value = x;
             }
         </script>

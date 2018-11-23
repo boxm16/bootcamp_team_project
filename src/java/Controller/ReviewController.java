@@ -66,17 +66,15 @@ public class ReviewController {
     public String reviewFormHandler(@ModelAttribute FootballReview fr, HttpSession session, ModelMap model) {
 
         User reviewer = (User) session.getAttribute("user");
-        //User user = userDao.checkUserByUsername(fr.getUser1().getUsername());
 
-        // FootballReview fr = new FootballReview();
         fr.setReviewer(reviewer);
-        // fr.setUser1(user1);
-        // fr.setAthletism(new Grade(1, 1));
-        // fr.setTeamwork(new Grade(4, 4));
-        //fr.setTechnique(new Grade(5, 5));
-        // fr.setComments("Bravo");
+
         footballReviewDao.insert(fr);
         model.addAttribute("fr", fr);
+
+        List<User> playersList = userDao.listAllUsers();
+        model.addAttribute("playersList", playersList);
+
         return "reviews";
     }
 //dublicate with bbb, for deletion
