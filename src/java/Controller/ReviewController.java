@@ -8,8 +8,6 @@ package Controller;
 import Dao.FootballReviewDao;
 import Dao.UserDao;
 import Model.FootballReview;
-import Model.FootballReviewPK;
-import Model.Grade;
 import Model.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +44,7 @@ public class ReviewController {
         model.addAttribute("playersList", playersList);
 
         FootballReview fr = new FootballReview();
-        List<String> Grades = new ArrayList<String>();
+        List<String> Grades = new ArrayList<>();
         Grades.add("1");
         Grades.add("2");
         Grades.add("3");
@@ -65,18 +63,13 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/reviewFormHandling.htm", method = RequestMethod.POST)
-    public String AAA(@ModelAttribute FootballReview fr, HttpSession session, ModelMap model) {
+    public String reviewFormHandler(@ModelAttribute FootballReview fr, HttpSession session, ModelMap model) {
 
         User reviewer = (User) session.getAttribute("user");
         //User user = userDao.checkUserByUsername(fr.getUser1().getUsername());
 
         // FootballReview fr = new FootballReview();
-        FootballReviewPK footballReviewPK = new FootballReviewPK();
-        footballReviewPK.setReviewed(fr.getUser1().getUsername());
-      
-        footballReviewPK.setReviewer(reviewer.getUsername());
-        fr.setFootballReviewPK(footballReviewPK);
-         fr.setUser(reviewer);
+        fr.setReviewer(reviewer);
         // fr.setUser1(user1);
         // fr.setAthletism(new Grade(1, 1));
         // fr.setTeamwork(new Grade(4, 4));

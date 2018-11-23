@@ -56,22 +56,22 @@
                 <table>
 
 
-                    <td><spring:textarea  path="user1.username" id="1"/></td>
+                    <td><spring:textarea  path="reviewed.username" id="1"/></td>
 
                     <tr>
 
-                        <td> <spring:radiobuttons path="teamwork.grade" items="${Grades}"/> </td>
+                        <td> <spring:radiobuttons path="teamwork" items="${Grades}"/> </td>
 
                     </tr>
 
                     <tr>
 
-                        <td> <spring:radiobuttons path="athletism.grade" items="${Grades}"/> </td>
+                        <td> <spring:radiobuttons path="athletism" items="${Grades}"/> </td>
 
                     </tr> 
                     <tr>
 
-                        <td> <spring:radiobuttons path="technique.grade" items="${Grades}"/> </td>
+                        <td> <spring:radiobuttons path="technique" items="${Grades}"/> </td>
 
                     </tr>
                     <tr> 

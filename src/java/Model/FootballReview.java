@@ -6,10 +6,12 @@
 package Model;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -26,50 +28,88 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FootballReview.findAll", query = "SELECT f FROM FootballReview f")
-    , @NamedQuery(name = "FootballReview.findByGame", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.game = :game")
-    , @NamedQuery(name = "FootballReview.findByReviewed", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.reviewed = :reviewed")
-    , @NamedQuery(name = "FootballReview.findByReviewer", query = "SELECT f FROM FootballReview f WHERE f.footballReviewPK.reviewer = :reviewer")
+    , @NamedQuery(name = "FootballReview.findByFbreviewID", query = "SELECT f FROM FootballReview f WHERE f.fbreviewID = :fbreviewID")
+    , @NamedQuery(name = "FootballReview.findByGame", query = "SELECT f FROM FootballReview f WHERE f.game = :game")
+    , @NamedQuery(name = "FootballReview.findByTeamwork", query = "SELECT f FROM FootballReview f WHERE f.teamwork = :teamwork")
+    , @NamedQuery(name = "FootballReview.findByAthletism", query = "SELECT f FROM FootballReview f WHERE f.athletism = :athletism")
+    , @NamedQuery(name = "FootballReview.findByTechnique", query = "SELECT f FROM FootballReview f WHERE f.technique = :technique")
     , @NamedQuery(name = "FootballReview.findByComments", query = "SELECT f FROM FootballReview f WHERE f.comments = :comments")})
 public class FootballReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected FootballReviewPK footballReviewPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "fb_reviewID")
+    private Integer fbreviewID;
+    @Basic(optional = false)
+    @Column(name = "game")
+    private int game;
+    @Column(name = "teamwork")
+    private Integer teamwork;
+    @Column(name = "athletism")
+    private Integer athletism;
+    @Column(name = "technique")
+    private Integer technique;
     @Column(name = "comments")
     private String comments;
-    @JoinColumn(name = "technique", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Grade technique;
-    @JoinColumn(name = "athletism", referencedColumnName = "id")
-    @ManyToOne
-    private Grade athletism;
-    @JoinColumn(name = "teamwork", referencedColumnName = "id")
-    @ManyToOne
-    private Grade teamwork;
-    @JoinColumn(name = "reviewed", referencedColumnName = "username", insertable = false, updatable = false)
+    @JoinColumn(name = "reviewed", referencedColumnName = "username")
     @ManyToOne(optional = false)
-    private User user;
-    @JoinColumn(name = "reviewer", referencedColumnName = "username", insertable = false, updatable = false)
+    private User reviewed;
+    @JoinColumn(name = "reviewer", referencedColumnName = "username")
     @ManyToOne(optional = false)
-    private User user1;
+    private User reviewer;
 
     public FootballReview() {
     }
 
-    public FootballReview(FootballReviewPK footballReviewPK) {
-        this.footballReviewPK = footballReviewPK;
+    public FootballReview(Integer fbreviewID) {
+        this.fbreviewID = fbreviewID;
     }
 
-    public FootballReview(int game, String reviewed, String reviewer) {
-        this.footballReviewPK = new FootballReviewPK(game, reviewed, reviewer);
+    public FootballReview(Integer fbreviewID, int game) {
+        this.fbreviewID = fbreviewID;
+        this.game = game;
     }
 
-    public FootballReviewPK getFootballReviewPK() {
-        return footballReviewPK;
+    public Integer getFbreviewID() {
+        return fbreviewID;
     }
 
-    public void setFootballReviewPK(FootballReviewPK footballReviewPK) {
-        this.footballReviewPK = footballReviewPK;
+    public void setFbreviewID(Integer fbreviewID) {
+        this.fbreviewID = fbreviewID;
+    }
+
+    public int getGame() {
+        return game;
+    }
+
+    public void setGame(int game) {
+        this.game = game;
+    }
+
+    public Integer getTeamwork() {
+        return teamwork;
+    }
+
+    public void setTeamwork(Integer teamwork) {
+        this.teamwork = teamwork;
+    }
+
+    public Integer getAthletism() {
+        return athletism;
+    }
+
+    public void setAthletism(Integer athletism) {
+        this.athletism = athletism;
+    }
+
+    public Integer getTechnique() {
+        return technique;
+    }
+
+    public void setTechnique(Integer technique) {
+        this.technique = technique;
     }
 
     public String getComments() {
@@ -80,50 +120,26 @@ public class FootballReview implements Serializable {
         this.comments = comments;
     }
 
-    public Grade getTechnique() {
-        return technique;
+    public User getReviewed() {
+        return reviewed;
     }
 
-    public void setTechnique(Grade technique) {
-        this.technique = technique;
+    public void setReviewed(User reviewed) {
+        this.reviewed = reviewed;
     }
 
-    public Grade getAthletism() {
-        return athletism;
+    public User getReviewer() {
+        return reviewer;
     }
 
-    public void setAthletism(Grade athletism) {
-        this.athletism = athletism;
-    }
-
-    public Grade getTeamwork() {
-        return teamwork;
-    }
-
-    public void setTeamwork(Grade teamwork) {
-        this.teamwork = teamwork;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public User getUser1() {
-        return user1;
-    }
-
-    public void setUser1(User user1) {
-        this.user1 = user1;
+    public void setReviewer(User reviewer) {
+        this.reviewer = reviewer;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (footballReviewPK != null ? footballReviewPK.hashCode() : 0);
+        hash += (fbreviewID != null ? fbreviewID.hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +150,7 @@ public class FootballReview implements Serializable {
             return false;
         }
         FootballReview other = (FootballReview) object;
-        if ((this.footballReviewPK == null && other.footballReviewPK != null) || (this.footballReviewPK != null && !this.footballReviewPK.equals(other.footballReviewPK))) {
+        if ((this.fbreviewID == null && other.fbreviewID != null) || (this.fbreviewID != null && !this.fbreviewID.equals(other.fbreviewID))) {
             return false;
         }
         return true;
@@ -142,7 +158,7 @@ public class FootballReview implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.FootballReview[ footballReviewPK=" + footballReviewPK + " ]";
+        return "Model.FootballReview[ fbreviewID=" + fbreviewID + " ]";
     }
     
 }

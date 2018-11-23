@@ -55,15 +55,13 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-    
-     @Transient
+
+    @Transient
     private String password_confirmation;
-     
-     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Collection<FootballReview> footballReviewCollection;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
+    private Collection<FootballReview> footballReviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
     private Collection<FootballReview> footballReviewCollection1;
     @JoinColumn(name = "sports", referencedColumnName = "sports_id")
     @ManyToOne(optional = false)
@@ -123,10 +121,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public String getPassword_confirmation() {
         return password_confirmation;
     }
@@ -134,8 +128,6 @@ public class User implements Serializable {
     public void setPassword_confirmation(String password_confirmation) {
         this.password_confirmation = password_confirmation;
     }
-
-   
     
 
     @XmlTransient
@@ -188,5 +180,5 @@ public class User implements Serializable {
     public String toString() {
         return "Model.User[ username=" + username + " ]";
     }
-    
+
 }
