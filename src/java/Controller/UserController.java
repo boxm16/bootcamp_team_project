@@ -104,6 +104,13 @@ public class UserController {
        model.addAttribute("star",g);
         return "starpage";
     }
+    @RequestMapping(value="/event.htm",method=RequestMethod.GET)
+        public String homenew(ModelMap model){
+        User user=new User();    
+        user.setUsername("bbb");
+        model.addAttribute("users", user);
+        return "eventpage";
+    }
     
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {

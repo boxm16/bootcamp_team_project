@@ -110,7 +110,7 @@ $(".btn-pref .btn").click(function () {
     </head>
     <body>
             
-        <div class="col-lg-6 col-sm-6">
+        <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
             <img class="card-bkimg" alt="" src="https://ak5.picdn.net/shutterstock/videos/3017425/thumb/1.jpg">
@@ -124,36 +124,41 @@ $(".btn-pref .btn").click(function () {
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="stars" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Rank</div>
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+            <button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                 <div class="hidden-xs">Messages</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <div class="hidden-xs">Personal Infos</div>
             </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/event.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                 <div class="hidden-xs">Events</div>
             </button></a>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            <button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <div class="hidden-xs">Search</div>
             </button>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                <div class="hidden-xs">Log Out</div>
+                </button></a>
         </div>
     </div>
          
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3>Welcome</h3>
+          <h3 style=" text-align: center">Welcome</h3>
         </div>
         
       </div>
