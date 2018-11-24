@@ -35,6 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 public class User implements Serializable {
 
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -46,9 +50,6 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
@@ -103,13 +104,6 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public byte[] getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
-    }
 
     public String getPassword() {
         return password;
@@ -196,6 +190,14 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "Model.User[ username=" + username + " ]";
+    }
+
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
     }
     
 }

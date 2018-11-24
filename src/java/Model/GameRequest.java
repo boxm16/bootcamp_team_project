@@ -43,7 +43,6 @@ public class GameRequest implements Serializable {
     @Basic(optional = false)
     @Column(name = "request_id")
     private int requestId;
-    @Basic(optional = false)
     @Column(name = "status")
     private String status;
     @Column(name = "text")
@@ -62,10 +61,9 @@ public class GameRequest implements Serializable {
         this.id = id;
     }
 
-    public GameRequest(Integer id, int requestId, String status) {
+    public GameRequest(Integer id, int requestId) {
         this.id = id;
         this.requestId = requestId;
-        this.status = status;
     }
 
     public Integer getId() {

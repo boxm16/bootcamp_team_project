@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 
 public class UserController {
-// 22222222222
 
     @Autowired
     private UserDao userDao;
@@ -31,8 +30,6 @@ public class UserController {
 
         List<GameRequest> msg = userDao.fetchmessages();
         model.addAttribute("messages", msg);
-        List<GameRequest> msg2 = userDao.conversation();
-        model.addAttribute("conversation", msg2);
         return "messenger3";
     }
 

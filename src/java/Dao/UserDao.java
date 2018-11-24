@@ -20,23 +20,19 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserDao {
-   @PersistenceContext 
+
+    @PersistenceContext
     private EntityManager em;
-   @Transactional
-   public List<GameRequest> fetchmessages(){
-               List<GameRequest> Conversation;
-        Query q=em.createNativeQuery("SELECT * FROM seek_play.game_request where request_receiver='herc'"
-                + " and status is null order by date;", GameRequest.class);
-        Conversation=q.getResultList();
+
+    @Transactional
+    public List<GameRequest> fetchmessages() {
+        List<GameRequest> Conversation;
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
+                + " join court_reservation on `match`=CourtReservationID"
+                + " where request_receiver='alex' and status is null order by date;", GameRequest.class);
+        Conversation = q.getResultList();
 
         return Conversation;
-   }
-
-public List<GameRequest> conversation(){
-               List<GameRequest> Conversation;
-        Query q=em.createNativeQuery("SELECT * FROM seek_play.game_request where(sender='herc' or receiver='herc') order by date desc limit 1", GameRequest.class);
-        Conversation=q.getResultList();
-        return Conversation;
-   }
+    }
 
 }

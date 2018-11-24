@@ -49,7 +49,7 @@
 
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5> ${message.sender.username} <span class="chat_date">${message.date}</span></h5>
+                  <h5> ${message.match.booker.username} <span class="chat_date">${message.match.date}</span></h5>
                   <p>${message.text}</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@
 
                                            
                     </p>
-                  <span class="time_date"> ${message.date}</span>
+                  <span class="time_date"> ${message.match.date}</span>
                 </div>
               </div>
             </div>
