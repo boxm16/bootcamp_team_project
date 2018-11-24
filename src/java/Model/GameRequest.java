@@ -24,15 +24,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Herc
  */
 @Entity
-@Table(name = "game_requests")
+@Table(name = "game_request")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "GameRequests.findAll", query = "SELECT g FROM GameRequests g")
-    , @NamedQuery(name = "GameRequests.findById", query = "SELECT g FROM GameRequests g WHERE g.id = :id")
-    , @NamedQuery(name = "GameRequests.findByRequestId", query = "SELECT g FROM GameRequests g WHERE g.requestId = :requestId")
-    , @NamedQuery(name = "GameRequests.findByStatus", query = "SELECT g FROM GameRequests g WHERE g.status = :status")
-    , @NamedQuery(name = "GameRequests.findByText", query = "SELECT g FROM GameRequests g WHERE g.text = :text")})
-public class GameRequests implements Serializable {
+    @NamedQuery(name = "GameRequest.findAll", query = "SELECT g FROM GameRequest g")
+    , @NamedQuery(name = "GameRequest.findById", query = "SELECT g FROM GameRequest g WHERE g.id = :id")
+    , @NamedQuery(name = "GameRequest.findByRequestId", query = "SELECT g FROM GameRequest g WHERE g.requestId = :requestId")
+    , @NamedQuery(name = "GameRequest.findByStatus", query = "SELECT g FROM GameRequest g WHERE g.status = :status")
+    , @NamedQuery(name = "GameRequest.findByText", query = "SELECT g FROM GameRequest g WHERE g.text = :text")})
+public class GameRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,14 +55,14 @@ public class GameRequests implements Serializable {
     @ManyToOne(optional = false)
     private User requestReceiver;
 
-    public GameRequests() {
+    public GameRequest() {
     }
 
-    public GameRequests(Integer id) {
+    public GameRequest(Integer id) {
         this.id = id;
     }
 
-    public GameRequests(Integer id, int requestId, String status) {
+    public GameRequest(Integer id, int requestId, String status) {
         this.id = id;
         this.requestId = requestId;
         this.status = status;
@@ -126,10 +126,10 @@ public class GameRequests implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GameRequests)) {
+        if (!(object instanceof GameRequest)) {
             return false;
         }
-        GameRequests other = (GameRequests) object;
+        GameRequest other = (GameRequest) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,7 +138,7 @@ public class GameRequests implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.GameRequests[ id=" + id + " ]";
+        return "Model.GameRequest[ id=" + id + " ]";
     }
     
 }

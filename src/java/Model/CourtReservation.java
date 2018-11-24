@@ -59,7 +59,9 @@ public class CourtReservation implements Serializable {
     @ManyToOne(optional = false)
     private Hours hours;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
-    private Collection<GameRequests> gameRequestsCollection;
+    private Collection<GameRequest> gameRequestCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
+    private Collection<Review> reviewCollection;
 
     public CourtReservation() {
     }
@@ -114,12 +116,21 @@ public class CourtReservation implements Serializable {
     }
 
     @XmlTransient
-    public Collection<GameRequests> getGameRequestsCollection() {
-        return gameRequestsCollection;
+    public Collection<GameRequest> getGameRequestCollection() {
+        return gameRequestCollection;
     }
 
-    public void setGameRequestsCollection(Collection<GameRequests> gameRequestsCollection) {
-        this.gameRequestsCollection = gameRequestsCollection;
+    public void setGameRequestCollection(Collection<GameRequest> gameRequestCollection) {
+        this.gameRequestCollection = gameRequestCollection;
+    }
+
+    @XmlTransient
+    public Collection<Review> getReviewCollection() {
+        return reviewCollection;
+    }
+
+    public void setReviewCollection(Collection<Review> reviewCollection) {
+        this.reviewCollection = reviewCollection;
     }
 
     @Override

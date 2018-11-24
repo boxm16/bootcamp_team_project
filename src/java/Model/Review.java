@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Review.findAll", query = "SELECT r FROM Review r")
     , @NamedQuery(name = "Review.findByReviewID", query = "SELECT r FROM Review r WHERE r.reviewID = :reviewID")
-    , @NamedQuery(name = "Review.findByGame", query = "SELECT r FROM Review r WHERE r.game = :game")
     , @NamedQuery(name = "Review.findByTeamwork", query = "SELECT r FROM Review r WHERE r.teamwork = :teamwork")
     , @NamedQuery(name = "Review.findByAthletism", query = "SELECT r FROM Review r WHERE r.athletism = :athletism")
     , @NamedQuery(name = "Review.findByTechnique", query = "SELECT r FROM Review r WHERE r.technique = :technique")
@@ -42,9 +41,6 @@ public class Review implements Serializable {
     @Basic(optional = false)
     @Column(name = "reviewID")
     private Integer reviewID;
-    @Basic(optional = false)
-    @Column(name = "game")
-    private int game;
     @Column(name = "teamwork")
     private Integer teamwork;
     @Column(name = "athletism")
@@ -53,6 +49,9 @@ public class Review implements Serializable {
     private Integer technique;
     @Column(name = "comments")
     private String comments;
+    @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
+    @ManyToOne(optional = false)
+    private CourtReservation match;
     @JoinColumn(name = "reviewed", referencedColumnName = "username")
     @ManyToOne(optional = false)
     private User reviewed;
@@ -67,25 +66,12 @@ public class Review implements Serializable {
         this.reviewID = reviewID;
     }
 
-    public Review(Integer reviewID, int game) {
-        this.reviewID = reviewID;
-        this.game = game;
-    }
-
     public Integer getReviewID() {
         return reviewID;
     }
 
     public void setReviewID(Integer reviewID) {
         this.reviewID = reviewID;
-    }
-
-    public int getGame() {
-        return game;
-    }
-
-    public void setGame(int game) {
-        this.game = game;
     }
 
     public Integer getTeamwork() {
@@ -118,6 +104,14 @@ public class Review implements Serializable {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public CourtReservation getMatch() {
+        return match;
+    }
+
+    public void setMatch(CourtReservation match) {
+        this.match = match;
     }
 
     public User getReviewed() {
