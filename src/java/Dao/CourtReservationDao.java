@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import Model.FootballReview;
+import Model.CourtReservation;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -16,15 +16,15 @@ import org.springframework.stereotype.Repository;
  * @author Michail Sitmalidis
  */
 @Repository
-public class FootballReviewDao {
+public class CourtReservationDao {
 
     @PersistenceContext
     private EntityManager em;
     
-      @Transactional
-    public void insert(FootballReview footballReview ) {
-    
-    em.persist(footballReview);
+     @Transactional
+    public CourtReservation checkCourtReservationByID(int id) {
+        CourtReservation courtReservation = em.find(CourtReservation.class, id);
+        return courtReservation;
     }
 
 }

@@ -30,12 +30,8 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         User u = (User) o;
-
         String username = u.getUsername().trim();
-        //System.out.println("vname:"+username);
-        //if (!username.startsWith("t")) {
-        //    errors.rejectValue("username", "name.notStartWithT");
-        // }
+
         if (userDao.checkUserByUsername(username) != null) {
             errors.rejectValue("username", "username.Exists");
         }
@@ -48,22 +44,21 @@ public class UserValidator implements Validator {
         if (!password.equals(password_confirmation)) {
             errors.rejectValue("password_confirmation", "pwds.NotMatch");
         }
-        
-         char[] chars = u.getUsername().toCharArray();
-         for (char ch : chars) {
-            
-            if(Character.isWhitespace(ch)){
-                 errors.rejectValue("username", "username.WhiteSpace");
+
+        char[] chars = u.getUsername().toCharArray();
+        for (char ch : chars) {
+
+            if (Character.isWhitespace(ch)) {
+                errors.rejectValue("username", "username.WhiteSpace");
             }
-            
+
             if (ch == '\\') {
                 errors.rejectValue("username", "username.SpecChar1");
             }
             //if we have time, better sanitarization. maybe using regex.
-           
+
         }
 
-        
     }
 
 }

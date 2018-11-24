@@ -25,7 +25,7 @@ public class UserDao {
 
     }
 
-    //method checked, GOOD
+ 
     @Transactional
     public User checkUserByUsername(String username) {
         User user = em.find(User.class, username);

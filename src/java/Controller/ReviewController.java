@@ -5,9 +5,11 @@
  */
 package Controller;
 
-import Dao.FootballReviewDao;
+import Dao.ReviewDao;
+import Dao.CourtReservationDao;
 import Dao.UserDao;
-import Model.FootballReview;
+import Model.CourtReservation;
+import Model.Review;
 import Model.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -33,17 +34,21 @@ public class ReviewController {
 
     @Autowired
     private UserDao userDao;
+    
+    @Autowired
+    private CourtReservationDao courtReservationDao;
 
     @Autowired
-    private FootballReviewDao footballReviewDao;
+    private ReviewDao reviewDao;
 
     @RequestMapping(value = "/bbb.htm", method = RequestMethod.GET)
+
     public String bbb(ModelMap model) {
 
         List<User> playersList = userDao.listAllUsers();
         model.addAttribute("playersList", playersList);
 
-        FootballReview fr = new FootballReview();
+        Review review = new Review();
         List<String> Grades = new ArrayList<>();
         Grades.add("1");
         Grades.add("2");
@@ -57,33 +62,27 @@ public class ReviewController {
         Grades.add("10");
 
         servletContext.setAttribute("Grades", Grades);
-        model.addAttribute("fr", fr);
+        model.addAttribute("review", review);
 
         return "reviews";
     }
 
     @RequestMapping(value = "/reviewFormHandling.htm", method = RequestMethod.POST)
-    public String reviewFormHandler(@ModelAttribute FootballReview fr, HttpSession session, ModelMap model) {
+    public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model) {
 
         User reviewer = (User) session.getAttribute("user");
 
-        fr.setReviewer(reviewer);
+        review.setReviewer(reviewer);
 
-        footballReviewDao.insert(fr);
-        model.addAttribute("fr", fr);
+        CourtReservation match = courtReservationDao.checkCourtReservationByID(4);
+        review.setMatch(match);
 
-        List<User> playersList = userDao.listAllUsers();
-        model.addAttribute("playersList", playersList);
-
-        return "reviews";
-    }
-//dublicate with bbb, for deletion
-
-    @RequestMapping(value = "/listPlayersForReview.htm", method = RequestMethod.GET)
-    public String listPlayers(ModelMap model) {
+        reviewDao.insert(review);
+        model.addAttribute("review", review);
 
         List<User> playersList = userDao.listAllUsers();
         model.addAttribute("playersList", playersList);
+
         return "reviews";
     }
 

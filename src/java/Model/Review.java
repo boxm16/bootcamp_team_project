@@ -24,27 +24,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Michail Sitmalidis
  */
 @Entity
-@Table(name = "football_review")
+@Table(name = "review")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FootballReview.findAll", query = "SELECT f FROM FootballReview f")
-    , @NamedQuery(name = "FootballReview.findByFbreviewID", query = "SELECT f FROM FootballReview f WHERE f.fbreviewID = :fbreviewID")
-    , @NamedQuery(name = "FootballReview.findByGame", query = "SELECT f FROM FootballReview f WHERE f.game = :game")
-    , @NamedQuery(name = "FootballReview.findByTeamwork", query = "SELECT f FROM FootballReview f WHERE f.teamwork = :teamwork")
-    , @NamedQuery(name = "FootballReview.findByAthletism", query = "SELECT f FROM FootballReview f WHERE f.athletism = :athletism")
-    , @NamedQuery(name = "FootballReview.findByTechnique", query = "SELECT f FROM FootballReview f WHERE f.technique = :technique")
-    , @NamedQuery(name = "FootballReview.findByComments", query = "SELECT f FROM FootballReview f WHERE f.comments = :comments")})
-public class FootballReview implements Serializable {
+    @NamedQuery(name = "Review.findAll", query = "SELECT r FROM Review r")
+    , @NamedQuery(name = "Review.findByReviewID", query = "SELECT r FROM Review r WHERE r.reviewID = :reviewID")
+    , @NamedQuery(name = "Review.findByTeamwork", query = "SELECT r FROM Review r WHERE r.teamwork = :teamwork")
+    , @NamedQuery(name = "Review.findByAthletism", query = "SELECT r FROM Review r WHERE r.athletism = :athletism")
+    , @NamedQuery(name = "Review.findByTechnique", query = "SELECT r FROM Review r WHERE r.technique = :technique")
+    , @NamedQuery(name = "Review.findByComments", query = "SELECT r FROM Review r WHERE r.comments = :comments")})
+public class Review implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "fb_reviewID")
-    private Integer fbreviewID;
-    @Basic(optional = false)
-    @Column(name = "game")
-    private int game;
+    @Column(name = "reviewID")
+    private Integer reviewID;
     @Column(name = "teamwork")
     private Integer teamwork;
     @Column(name = "athletism")
@@ -53,6 +49,9 @@ public class FootballReview implements Serializable {
     private Integer technique;
     @Column(name = "comments")
     private String comments;
+    @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
+    @ManyToOne(optional = false)
+    private CourtReservation match;
     @JoinColumn(name = "reviewed", referencedColumnName = "username")
     @ManyToOne(optional = false)
     private User reviewed;
@@ -60,32 +59,19 @@ public class FootballReview implements Serializable {
     @ManyToOne(optional = false)
     private User reviewer;
 
-    public FootballReview() {
+    public Review() {
     }
 
-    public FootballReview(Integer fbreviewID) {
-        this.fbreviewID = fbreviewID;
+    public Review(Integer reviewID) {
+        this.reviewID = reviewID;
     }
 
-    public FootballReview(Integer fbreviewID, int game) {
-        this.fbreviewID = fbreviewID;
-        this.game = game;
+    public Integer getReviewID() {
+        return reviewID;
     }
 
-    public Integer getFbreviewID() {
-        return fbreviewID;
-    }
-
-    public void setFbreviewID(Integer fbreviewID) {
-        this.fbreviewID = fbreviewID;
-    }
-
-    public int getGame() {
-        return game;
-    }
-
-    public void setGame(int game) {
-        this.game = game;
+    public void setReviewID(Integer reviewID) {
+        this.reviewID = reviewID;
     }
 
     public Integer getTeamwork() {
@@ -120,6 +106,14 @@ public class FootballReview implements Serializable {
         this.comments = comments;
     }
 
+    public CourtReservation getMatch() {
+        return match;
+    }
+
+    public void setMatch(CourtReservation match) {
+        this.match = match;
+    }
+
     public User getReviewed() {
         return reviewed;
     }
@@ -139,18 +133,18 @@ public class FootballReview implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (fbreviewID != null ? fbreviewID.hashCode() : 0);
+        hash += (reviewID != null ? reviewID.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FootballReview)) {
+        if (!(object instanceof Review)) {
             return false;
         }
-        FootballReview other = (FootballReview) object;
-        if ((this.fbreviewID == null && other.fbreviewID != null) || (this.fbreviewID != null && !this.fbreviewID.equals(other.fbreviewID))) {
+        Review other = (Review) object;
+        if ((this.reviewID == null && other.reviewID != null) || (this.reviewID != null && !this.reviewID.equals(other.reviewID))) {
             return false;
         }
         return true;
@@ -158,7 +152,7 @@ public class FootballReview implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.FootballReview[ fbreviewID=" + fbreviewID + " ]";
+        return "Model.Review[ reviewID=" + reviewID + " ]";
     }
     
 }

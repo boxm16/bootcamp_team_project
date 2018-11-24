@@ -6,7 +6,6 @@
 package Controller;
 
 import Dao.UserDao;
-import Model.Sport;
 import Model.User;
 import Validation.UserValidator;
 import javax.servlet.http.HttpSession;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 
 public class UserController {
-// 22222222222
 
     @Autowired
     private UserDao userDao;
@@ -37,40 +35,34 @@ public class UserController {
     public String emptyForm(ModelMap model) {
         User user = new User();
         model.addAttribute(user);
-
         return "register";
     }
 
     @RequestMapping(value = "/registerFormHandling.htm", method = RequestMethod.POST)
     public String register(ModelMap model, User user, BindingResult bindingResult) {
-        //  String username = user.getFirstname();
-        //  System.out.println(username);
 
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        Sport sport = new Sport(1, "football");
-        user.setSport(sport);
 
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         userDao.insert(user);
         model.addAttribute("user", user);
         return "success_registration";
-
+        //return "myProfile_page";
     }
 
     @RequestMapping(value = "/loginFormHandling.htm", method = RequestMethod.POST)
     public String login(HttpSession session, ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
         User user = userDao.checkUserByUsername(username);
         if (user != null) {
-            //BCrypt.checkpw(password, user.getPassword())
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.setPassword(null);
                 session.setAttribute("user", user);
 
                 String message = "HI " + user.getUsername();
-                // model.addAttribute("message", message);
+                model.addAttribute("message", message);
                 return "user_page";
             } else {
                 String message = "password is wrong";

@@ -12,9 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -58,14 +56,19 @@ public class User implements Serializable {
 
     @Transient
     private String password_confirmation;
-    
+
+    @OneToMany(mappedBy = "booker")
+    private Collection<CourtReservation> courtReservationCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
+    private Collection<GameRequest> gameRequestCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
-    private Collection<FootballReview> footballReviewCollection;
+    private Collection<Review> reviewCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
-    private Collection<FootballReview> footballReviewCollection1;
-    @JoinColumn(name = "sports", referencedColumnName = "sports_id")
-    @ManyToOne(optional = false)
-    private Sport sport;
+    private Collection<Review> reviewCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    private Collection<Message> messageCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    private Collection<Message> messageCollection1;
 
     public User() {
     }
@@ -129,31 +132,60 @@ public class User implements Serializable {
         this.password_confirmation = password_confirmation;
     }
     
+    
 
     @XmlTransient
-    public Collection<FootballReview> getFootballReviewCollection() {
-        return footballReviewCollection;
+    public Collection<CourtReservation> getCourtReservationCollection() {
+        return courtReservationCollection;
     }
 
-    public void setFootballReviewCollection(Collection<FootballReview> footballReviewCollection) {
-        this.footballReviewCollection = footballReviewCollection;
+    public void setCourtReservationCollection(Collection<CourtReservation> courtReservationCollection) {
+        this.courtReservationCollection = courtReservationCollection;
     }
 
     @XmlTransient
-    public Collection<FootballReview> getFootballReviewCollection1() {
-        return footballReviewCollection1;
+    public Collection<GameRequest> getGameRequestCollection() {
+        return gameRequestCollection;
     }
 
-    public void setFootballReviewCollection1(Collection<FootballReview> footballReviewCollection1) {
-        this.footballReviewCollection1 = footballReviewCollection1;
+    public void setGameRequestCollection(Collection<GameRequest> gameRequestCollection) {
+        this.gameRequestCollection = gameRequestCollection;
     }
 
-    public Sport getSport() {
-        return sport;
+    @XmlTransient
+    public Collection<Review> getReviewCollection() {
+        return reviewCollection;
     }
 
-    public void setSport(Sport sport) {
-        this.sport = sport;
+    public void setReviewCollection(Collection<Review> reviewCollection) {
+        this.reviewCollection = reviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<Review> getReviewCollection1() {
+        return reviewCollection1;
+    }
+
+    public void setReviewCollection1(Collection<Review> reviewCollection1) {
+        this.reviewCollection1 = reviewCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Message> getMessageCollection() {
+        return messageCollection;
+    }
+
+    public void setMessageCollection(Collection<Message> messageCollection) {
+        this.messageCollection = messageCollection;
+    }
+
+    @XmlTransient
+    public Collection<Message> getMessageCollection1() {
+        return messageCollection1;
+    }
+
+    public void setMessageCollection1(Collection<Message> messageCollection1) {
+        this.messageCollection1 = messageCollection1;
     }
 
     @Override

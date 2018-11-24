@@ -47,7 +47,7 @@
 
 
 
-            <spring:form commandName="fr" action="http://localhost:8080/seek_play/reviewFormHandling.htm" method="POST">  
+            <spring:form commandName="review" action="http://localhost:8080/seek_play/reviewFormHandling.htm" method="POST">  
                 <table>
 
                     <td><spring:hidden  path="reviewed.username" id="1"/></td>
