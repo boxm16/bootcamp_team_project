@@ -17,13 +17,13 @@ var $thumbs = $('.chat_people').click(function(e) {
 var name = document.getElementsByClassName(".chat_people");
 $ (".chat_people" ).click(function() {
 
-  var div = this;
-  var text=  $(this).children('#plain_message');
-    alert(text);
+ // var div = this.textContent;
+  var text1=  $(this).find('p').text();
+    //alert(text1);
   //var text=div.textContent;
    // alert(text);
-  var text2=document.getElementsByClassName("received_withd_msg").innerHTML+text;
+ // var text2=document.getElementsByClassName("received_withd_msg").innerHTML+text;
     //alert(text2);
-    $("div.received_withd_msg").text(text2);
+    $("div.received_msg").text(text1);
 
 });
