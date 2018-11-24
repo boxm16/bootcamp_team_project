@@ -84,7 +84,7 @@
             <div class="input_msg_write text-center">
 <!--              <input type="text" class="write_msg" placeholder="Type a message" />-->
                  
-                    <button type="button" class="btn btn-outline-primary btn-rounded waves-effect">Accept</button>
+                <button type="button" onclick="location.href='/accept.htm'" class="btn btn-outline-primary btn-rounded waves-effect">Accept</button>
  
                     <button type="button" class="btn btn-outline-danger btn-rounded waves-effect" >Deny</button>
 

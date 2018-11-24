@@ -33,4 +33,11 @@ public class UserController {
         return "messenger3";
     }
 
+    @RequestMapping(value = "accept", method = RequestMethod.GET)
+    public String answer_request(ModelMap model) {
+
+        userDao.submitrequest();
+        return "messenger3";
+    }
+
 }

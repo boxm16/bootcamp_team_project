@@ -35,4 +35,11 @@ public class UserDao {
         return Conversation;
     }
 
+    @Transactional
+    public void submitrequest(String match, String request_receiver) {
+        Query q = em.createNativeQuery("UPDATE `seek_play`.`game_request` t "
+                + "SET t.`status` = 'yes' WHERE t.`match` = " + match + "and request_receiver=" + request_receiver);
+
+    }
+
 }
