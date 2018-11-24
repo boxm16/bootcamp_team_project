@@ -41,7 +41,7 @@
 
           <div class="inbox_chat">
 
-            <div class="chat_list active_chat">
+            <div class="chat_list ">
              <c:forEach items="${messages}" var="message">
 
                 <div class="chat_people">
@@ -57,7 +57,7 @@
   
             </div>
 
-            <div class="chat_list">
+            <div class="chat_list active_chat">
 
               <div class="chat_people">
 
