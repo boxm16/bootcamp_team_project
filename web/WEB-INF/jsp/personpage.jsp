@@ -12,7 +12,7 @@
             /* USER PROFILE PAGE */
  .card {
     margin-top: 20px;
-    padding: 30px;
+    padding: 80px;
     background-color: rgba(214, 224, 226, 0.2);
     -webkit-border-top-left-radius:5px;
     -moz-border-top-left-radius:5px;
@@ -114,8 +114,7 @@ $(".btn-pref .btn").click(function () {
         <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="https://ak5.picdn.net/shutterstock/videos/3017425/thumb/1.jpg">
-            <!-- http://lorempixel.com/850/280/people/9/ -->
+           <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
         </div>
         <div class="useravatar">
             <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -135,8 +134,8 @@ $(".btn-pref .btn").click(function () {
             </button>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Personal Infos</div>
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
+               
             </button></a>
         </div>
         <div class="btn-group" role="group">

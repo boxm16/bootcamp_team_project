@@ -113,7 +113,7 @@ $(".btn-pref .btn").click(function () {
     <div class="col-lg-12 col-sm-12">
         <div class="card hovercard">
             <div class="card-background">
-                 <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
+                <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
             </div>
             <div class="useravatar">
                 <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -155,8 +155,8 @@ $(".btn-pref .btn").click(function () {
             
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">    
             <div class="btn-group" role="group">
-               <a href="http://localhost:8080/seek_play/eventcreate.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    <div class="hidden-xs">Create</div>
+                <a href="http://localhost:8080/seek_play/eventcreate.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                 <div class="hidden-xs">Create</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
@@ -165,8 +165,8 @@ $(".btn-pref .btn").click(function () {
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/eventdelete.htm" data-toggle="tab"><button type="button" id="delete" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    <div class="hidden-xs">Delete</div>
+                <a href="http://localhost:8080/seek_play/eventdelete.htm" data-toggle="tab"><button type="button" id="delete" class="btn btn-primary" data-toggle="tab"><h4><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></h4>
+                    
                 </button></a>
             </div>            
         </div> 
@@ -174,7 +174,7 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab1">
-                    <h3></h3>
+                    <h3>Delete Here</h3>
                 </div>
             </div>
         </div>

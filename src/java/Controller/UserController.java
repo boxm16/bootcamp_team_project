@@ -6,9 +6,8 @@
 package Controller;
 
 import Dao.UserDao;
-import Model.FootballReview;
-import Model.Grade;
-import Model.Sport;
+import Model.Review;
+
 import Model.User;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +34,9 @@ public class UserController {
        user.setFirstname("v");
        user.setLastname("dv");
        user.setPassword("1");
-       user.setUsername("bbb");
-       Sport sport=new Sport();
-       sport.setSportsId(1);
-       sport.setSports("football");
-       user.setSports(sport);
-       model.addAttribute("users", user);
-       model.addAttribute("sports", sport);
-        return "menupage";
+       user.setUsername("bbb");      
+       model.addAttribute("users", user);     
+       return "menupage";
 
     }
     @RequestMapping(value = "/person", method = RequestMethod.GET)
@@ -52,12 +46,7 @@ public class UserController {
        user.setLastname("dv");
        user.setPassword("1");
        user.setUsername("bbb");
-       Sport sport=new Sport();
-       sport.setSportsId(1);
-       sport.setSports("football");
-       user.setSports(sport);
        model.addAttribute("users", user);
-       model.addAttribute("sports", sport);
         return "personpage";
     }
     @RequestMapping(value = "/editpersinf", method = RequestMethod.GET)
@@ -66,13 +55,8 @@ public class UserController {
        user.setFirstname("v");
        user.setLastname("dv");
        user.setPassword("1");
-       user.setUsername("bbb");
-       Sport sport=new Sport();
-       sport.setSportsId(1);
-       sport.setSports("football");
-       user.setSports(sport);
-       model.addAttribute("users", user);
-       model.addAttribute("sports", sport);
+       user.setUsername("bbb");       
+       model.addAttribute("users", user);    
         return "editpage";
     }
     
@@ -88,20 +72,16 @@ public class UserController {
     @RequestMapping(value="/star.htm",method=RequestMethod.GET)
         public String starnew(ModelMap model,User u){
         User user=new User();
-        FootballReview fr=new FootballReview();
-        Grade g= new Grade();
-       user.setUsername("bbb");
-       Sport sport=new Sport();
-       sport.setSportsId(1);
-       sport.setSports("football");
-       user.setSports(sport);
-       g.setId(5);
-       g.setGrade(5);       
-       fr.setTeamwork(g);
-       model.addAttribute("users", user);
-       model.addAttribute("sports", sport);
-       model.addAttribute("grade",fr);
-       model.addAttribute("star",g);
+        Review fr=new Review();
+       user.setUsername("bbb");           
+       fr.setTeamwork(10);
+       fr.setTechnique(5);
+       fr.setAthletism(6);
+       double grade=((fr.getAthletism()+fr.getTechnique()+fr.getTeamwork())/3);
+       double g=(grade/2);
+       model.addAttribute("users", user);       
+       model.addAttribute("grade",fr);     
+       model.addAttribute("star", g);
         return "starpage";
     }
     @RequestMapping(value="/event.htm",method=RequestMethod.GET)
@@ -111,7 +91,27 @@ public class UserController {
         model.addAttribute("users", user);
         return "eventpage";
     }
-    
+    @RequestMapping(value="/eventcreate.htm",method=RequestMethod.GET)
+        public String homecreate(ModelMap model){
+        User user=new User();    
+        user.setUsername("bbb");
+        model.addAttribute("users", user);
+        return "eventcreatepage";
+    }
+    @RequestMapping(value="/eventedit.htm",method=RequestMethod.GET)
+        public String homeedit(ModelMap model){
+        User user=new User();    
+        user.setUsername("bbb");
+        model.addAttribute("users", user);
+        return "eventeditpage";
+    }
+    @RequestMapping(value="/eventdelete.htm",method=RequestMethod.GET)
+        public String homedelete(ModelMap model){
+        User user=new User();    
+        user.setUsername("bbb");
+        model.addAttribute("users", user);
+        return "eventdeletepage";
+    }
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
     User user=new User();

@@ -155,13 +155,12 @@ $(".btn-pref .btn").click(function () {
             
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">    
             <div class="btn-group" role="group">
-               <a href="http://localhost:8080/seek_play/eventcreate.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    <div class="hidden-xs">Create</div>
+                <a href="http://localhost:8080/seek_play/eventcreate.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                 <div class="hidden-xs">create</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/eventedit.htm" data-toggle="tab"><button type="button" id="edit" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    <div class="hidden-xs">Edit</div>
+                <a href="http://localhost:8080/seek_play/eventedit.htm" data-toggle="tab"><button type="button" id="edit" class="btn btn-primary" data-toggle="tab"><h4><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h4>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
@@ -174,7 +173,7 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab1">
-                    <h3></h3>
+                    <h3>edit Here</h3>
                 </div>
             </div>
         </div>

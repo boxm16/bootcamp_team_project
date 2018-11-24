@@ -12,7 +12,7 @@
             /* USER PROFILE PAGE */
  .card {
     margin-top: 20px;
-    padding: 30px;
+    padding: 80px;
     background-color: rgba(214, 224, 226, 0.2);
     -webkit-border-top-left-radius:5px;
     -moz-border-top-left-radius:5px;
@@ -113,8 +113,7 @@ $(".btn-pref .btn").click(function () {
         <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="https://ak5.picdn.net/shutterstock/videos/3017425/thumb/1.jpg">
-            <!-- http://lorempixel.com/850/280/people/9/ -->
+            <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
         </div>
         <div class="useravatar">
             <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -124,8 +123,8 @@ $(".btn-pref .btn").click(function () {
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">Rank</div>
+            <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
+                
                 </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -164,7 +163,7 @@ $(".btn-pref .btn").click(function () {
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-xs-12 col-md-6 text-center">
-                                <h1 class="rating-num">${grade.getTeamwork().getGrade()}</h1>
+                                <h1 class="rating-num">${star}</h1>
                                 <div class="rating">
                                     <%int i;%>
                                     <% for(i=0;i<5;i++){;%>
