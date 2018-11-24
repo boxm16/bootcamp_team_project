@@ -126,7 +126,7 @@
     
     </div></div>
  
-<script src="<c:url value="/resources/newjavascript.js" />"> </script> 
+<script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"> </script> 
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
