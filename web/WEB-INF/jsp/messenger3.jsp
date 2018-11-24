@@ -39,46 +39,28 @@
 
           <div class="inbox_chat">
 
-            <div class="chat_list ">
+            <div class="chat_list  ">
              <c:forEach items="${messages}" var="message">
 
-                <div class="chat_people">
+                <div class="chat_people" id=${message.match.booker.username}>
                   
-
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                    <div class="chat_img" > <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5> ${message.match.booker.username} <span class="chat_date">${message.match.date}</span></h5>
+                    <h5 class="plain_message"> ${message.match.booker.username} <span class="chat_date">${message.match.date}</span></h5>
                   <p>${message.text}</p>
                 </div>
               </div>
            </c:forEach> 
   
-            </div>
-
-            <div class="chat_list active_chat">
-
-              <div class="chat_people">
-
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-
-                <div class="chat_ib">
-                  <h5>  <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-           
-                    
           </div>
-
-        </div>
+                
           
-
+          </div>
+        </div>
+       
         <div class="mesgs">
 
           <div class="msg_history">
-             <c:forEach items="${messages}" var="message">
 
             <div class="incoming_msg">
 
@@ -89,24 +71,14 @@
                 <div class="received_withd_msg">
 
                     <p>
-                            ${message.text}
-
-                                           
+                                          
                     </p>
                   <span class="time_date"> ${message.match.date}</span>
                 </div>
               </div>
             </div>
 
-<!--            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p></p>
-                <span class="time_date">  </span> </div>
 
-            </div>
-                                </c:forEach> 
-
-          </div>-->
 <br>
           <div >
             <div class="input_msg_write text-center">
@@ -122,7 +94,7 @@
         </div>
 
       </div>
-            
+        
     
     </div></div>
  

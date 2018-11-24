@@ -1,6 +1,29 @@
-$(document).ready(function() {
-$("chat_list active_chat").click(function () {
-    $(this).removeClass(".active_chat");
-    // $(".tab").addClass("active"); // instead of this do the below 
-  
+//
+//$(document).ready(function(){  
+//$(".chat_list").click(function() {
+//    $(this).toggleClass("active_chat");
+//});
+//});
+
+var active = 'active_chat';
+var $thumbs = $('.chat_people').click(function(e) {
+    e.preventDefault();
+    $thumbs.removeClass(active);
+    $(this).addClass(active);
+});
+
+//var button = document.getElementsByClassName(".chat_people active_chat");
+
+var name = document.getElementsByClassName(".chat_people");
+$ (".chat_people" ).click(function() {
+
+  var div = this;
+  var text=  $(this).children('#plain_message');
+    alert(text);
+  //var text=div.textContent;
+   // alert(text);
+  var text2=document.getElementsByClassName("received_withd_msg").innerHTML+text;
+    //alert(text2);
+    $("div.received_withd_msg").text(text2);
+
 });
