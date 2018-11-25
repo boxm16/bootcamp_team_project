@@ -13,7 +13,10 @@
     </head>
     <body>
         <h1>Welcome user ${user.username}</h1><br>
+
+        <a href="http://localhost:8080/seek_play/goToReviewForm.htm">Review Player</a><br>
+        <hr>
+          <a href="http://localhost:8080/seek_play/booking_creation.htm">Go to booking Creation</a>
         
-         <a href="http://localhost:8080/seek_play/bbb.htm">Review Player</a>
     </body>
 </html>

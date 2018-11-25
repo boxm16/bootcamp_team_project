@@ -4,6 +4,7 @@ import Model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,7 @@ public class UserDao {
     @Transactional
     public User checkUserByUsername(String username) {
         User user = em.find(User.class, username);
+        
         return user;
     }
 

@@ -84,7 +84,7 @@
                 document.getElementById("demo").innerHTML = " <h1>Evaluate: " + x + "</h1>";
                 document.getElementById("1").innerHTML = " <h1>Avaluate: " + x + "</h1>";
                 document.getElementById("1").value = x;
-                document.getElementById("1").value = x;
+              
             }
         </script>
     </body>

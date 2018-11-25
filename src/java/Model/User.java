@@ -5,12 +5,14 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -34,6 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+
+@Proxy(lazy=false)
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,7 +62,7 @@ public class User implements Serializable {
     @Transient
     private String password_confirmation;
 
-    @OneToMany(mappedBy = "booker")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
     private Collection<CourtReservation> courtReservationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
     private Collection<GameRequest> gameRequestCollection;
@@ -131,8 +136,6 @@ public class User implements Serializable {
     public void setPassword_confirmation(String password_confirmation) {
         this.password_confirmation = password_confirmation;
     }
-    
-    
 
     @XmlTransient
     public Collection<CourtReservation> getCourtReservationCollection() {

@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -55,7 +56,7 @@ public class CourtReservation implements Serializable {
     @JoinColumn(name = "courtname", referencedColumnName = "name")
     @ManyToOne(optional = false)
     private Court courtname;
-    @JoinColumn(name = "hours", referencedColumnName = "hours_id")
+    @JoinColumn(name = "hours", referencedColumnName = "hours_id" )
     @ManyToOne(optional = false)
     private Hours hours;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")

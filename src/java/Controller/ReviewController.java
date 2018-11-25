@@ -41,9 +41,9 @@ public class ReviewController {
     @Autowired
     private ReviewDao reviewDao;
 
-    @RequestMapping(value = "/bbb.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/goToReviewForm.htm", method = RequestMethod.GET)
 
-    public String bbb(ModelMap model) {
+    public String createReviewForm(ModelMap model) {
 
         List<User> playersList = userDao.listAllUsers();
         model.addAttribute("playersList", playersList);
@@ -74,9 +74,12 @@ public class ReviewController {
 
         review.setReviewer(reviewer);
 
-        CourtReservation match = courtReservationDao.checkCourtReservationByID(4);
-        review.setMatch(match);
+        //CourtReservation match = courtReservationDao.checkCourtReservationByID(4);
+        //review.setMatch(match);
 
+        CourtReservation match=new CourtReservation();
+        review.setMatch(match);
+        
         reviewDao.insert(review);
         model.addAttribute("review", review);
 
