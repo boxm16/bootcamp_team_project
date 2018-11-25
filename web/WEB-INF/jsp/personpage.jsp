@@ -144,9 +144,9 @@ $(".btn-pref .btn").click(function () {
             </button></a>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+             <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <div class="hidden-xs">Search</div>
-            </button>
+                 </button></a>
         </div>
         <div class="btn-group" role="group">
             <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>

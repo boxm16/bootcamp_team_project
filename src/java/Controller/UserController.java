@@ -112,6 +112,13 @@ public class UserController {
         model.addAttribute("users", user);
         return "eventdeletepage";
     }
+    @RequestMapping(value="/search.htm",method=RequestMethod.GET)
+        public String homesearch(ModelMap model){
+        User user=new User();    
+        user.setUsername("bbb");
+        model.addAttribute("users", user);
+        return "searchpage";
+    }
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
     User user=new User();

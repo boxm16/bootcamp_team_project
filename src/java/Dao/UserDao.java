@@ -2,8 +2,10 @@ package Dao;
 
 import Model.User;
 import java.io.IOException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -31,6 +33,13 @@ public class UserDao {
         em.find(User.class,us);
         em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
-    
+    public List<User> check(String s){
+      
+       Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
+       List<User> usr=q.getResultList();
+      
+       return usr;
+    }
+
 
 }

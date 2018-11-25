@@ -1,8 +1,15 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="forms"%>
+<%-- 
+    Document   : menupage
+    Created on : 14 Νοε 2018, 11:44:58 μμ
+    Author     : aroum
+--%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
         <style rel="stylesheet" id="bootstrap-css">
             /* USER PROFILE PAGE */
  .card {
@@ -86,35 +93,12 @@
 .btn-pref .btn {
     -webkit-border-radius:0 !important;
 }
- .main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 400px;
-    padding: 10px 40px;
-	background:#009edf;
-	    color: #FFF;
-    text-shadow: none;
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
- }
-.main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-}
-   
+    
         </style>
        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Page</title>
         
@@ -126,16 +110,36 @@ $(".btn-pref .btn").click(function () {
 });
 });
         </script>  
-        
+         <script>
+          $(document).ready(function(){
+              $("#mytext").keyup(function(){
+                  var text=$(this).val();
+//                  alert(text);
+                    $.ajax({
+                      url:'find.htm?texts='+text,
+                      contentType:'application/json',
+                      success: function (result){
+                          $("#text").empty();
+                          var jsonobj=$.parseJSON(result);
+                         // alert(jsonobj);
+                          $.each(jsonobj,function(i,item){
+                              $tr=$('<tr>').append(
+                                      $('<td>').text(item)
+                              );
+                              $("#text").append($tr);
+                          });
+                      }
+                    });
+              });
+          });
+          </script>
     </head>
     <body>
-        
+          
         <div class="col-lg-12 col-sm-12">
-           
     <div class="card hovercard">
-     
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
+           <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
         </div>
         <div class="useravatar">
             <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -155,8 +159,8 @@ $(".btn-pref .btn").click(function () {
             </button>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
-                
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              <div class="hidden-xs">Personal Infos</div> 
             </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -165,8 +169,8 @@ $(".btn-pref .btn").click(function () {
             </button></a>
         </div>
         <div class="btn-group" role="group">
-             <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                <div class="hidden-xs">Search</div>
+            <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span></h4>
+
                  </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -179,43 +183,17 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-           
-                
-			
-				
-				<h5>Edit Personal Infos</h5>
-					<forms:form modelAttribute="users" action="edit.htm" method="GET">
-												
-                                            <forms:label path="firstname" class="cols-sm-2 control-label"><b>Name</b></forms:label>
-                                                <div class="cols-sm-10">
-                                                        <div class="input-group">
-                                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                                <forms:input path="firstname" class="form-control" id="firstname" placeholder="Enter your Last Name"/>
-                                                        </div>
-                                                </div>
-
-                                            <forms:label path="lastname" class="cols-sm-2 control-label"><b>Last Name</b></forms:label>
-                                            <div class="cols-sm-10">
-                                                    <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                            <forms:input path="lastname" class="form-control" id="lastname"  placeholder="Enter your Last Name"/>
-                                                    </div>
-                                            </div>
-
-                                            <div class="form-group ">
-                                                    <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">CONFIRM</a>
-                                            </div>
-						
-					</forms:form>
-                                
-			
-		
-
-		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-	
+             <input type="text" name="texts" id="mytext" placeholder="Enter text"/>
+            <table><div id="text"></div></table>   
+           <table border="1">
+                <c:forEach items="${books}" var="u">
+            <tr>
+                <td>${u}</td>                      
+            </tr>
+            </c:forEach>
+            </table>
+                        
+        </div>
       </div>
     </div>
     
