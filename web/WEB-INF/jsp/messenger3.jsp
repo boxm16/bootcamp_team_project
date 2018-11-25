@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="forms"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,17 +37,17 @@
                 </span> </div>
             </div>-->
           </div>
-
+         
           <div class="inbox_chat">
 
-            <div class="chat_list  ">
-             <c:forEach items="${messages}" var="message">
+            <div class="chat_list  ">     
 
+             <c:forEach items="${messages}" var="message">
                 <div class="chat_people">
                   
                     <div class="chat_img" > <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                    <h5 > ${message.match.booker.username} <span class="chat_date">${message.match.date}</span></h5>
+                    <h5>${message.match.booker.username} <span class="chat_date">${message.match.date}</span><br> <a style="float: right">${message.match.hours.hour}</a></h5>
                   <p class="plain_message">${message.text}</p>
                 </div>
               </div>
@@ -73,23 +74,27 @@
                     <p>
                                           
                     </p>
-                  <span class="time_date"> ${message.match.date}</span>
+                  <span class="time_date">${message.match.date}</span>
                 </div>
               </div>
             </div>
 
 
 <br>
+
+<form id="reply" action="" method="POST">
+
           <div >
             <div class="input_msg_write text-center">
 <!--              <input type="text" class="write_msg" placeholder="Type a message" />-->
-                 
-                <button type="button" onclick="location.href='/accept.htm'" class="btn btn-outline-primary btn-rounded waves-effect">Accept</button>
+<button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" id="accept">Accept</button>
  
                     <button type="button" class="btn btn-outline-danger btn-rounded waves-effect" >Deny</button>
 
             </div>
           </div>
+      
+    </form>
 
         </div>
 
@@ -102,5 +107,6 @@
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+
     </body>
     </html>

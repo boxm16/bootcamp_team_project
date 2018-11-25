@@ -19,11 +19,28 @@ $ (".chat_people" ).click(function() {
 
  // var div = this.textContent;
   var text1=  $(this).find('p').text();
+  var user=$(this).find('h5').justtext();
+    var date=$(this).find('span').text();
+    var time=$(this).find('a').text();
+//alert(date);
+//alert(user);
+ // alert(user);
     //alert(text1);
   //var text=div.textContent;
    // alert(text);
  // var text2=document.getElementsByClassName("received_withd_msg").innerHTML+text;
-    //alert(text2);
-    $("div.received_msg").text(text1);
-
+    alert(time);
+    alert(date);
+    $("div.received_msg").text(user+" send you a game request for "+date+" at"+time+" ! Read the message: "+text1);
+document.getElementById("reply").action ="/seek_play/accept.htm?username="+user;
 });
+
+jQuery.fn.justtext = function() {
+  
+	return $(this)	.clone()
+			.children()
+			.remove()
+			.end()
+			.text();
+
+};
