@@ -29,21 +29,22 @@ public class UserDao {
         List<GameRequest> Conversation;
         Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
                 + " join court_reservation on `match`=CourtReservationID"
-                + " where request_receiver='alex' and status is null order by date;", GameRequest.class);
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "where request_receiver='alex' and status is null order by date", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
     }
 
     @Transactional
-    public void submitrequest(String match, String request_receiver) {
-        Query q = em.createNativeQuery("UPDATE `seek_play`.`game_request` t "
-                + "SET t.`status` = 'yes' WHERE t.`match` = " + match + "and request_receiver=" + request_receiver);
-
-    }
-
-    public void submitrequest() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void submitrequest(String name, String date, String time) {
+        Query q1 = em.createNativeQuery("sELECT id FROM seek_play.game_request"
+                + " join court_reservation on `match`=CourtReservationID join hours h on court_reservation.hours = h.hours_id\n"
+                + "where booker='" + name + "' and hour='" + time + "' and date='" + date + "';");
+        int a = (int) q1.getResultList().get(0);
+        String sql="UPDATE `seek_play`.`game_request` t SET t.`status` = 'yes' WHERE t.`id` =" + Integer.toString(a)+";";
+        int q2 = em.createNativeQuery(sql).executeUpdate();
+        System.out.println();
     }
 
 }

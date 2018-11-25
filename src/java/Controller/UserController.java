@@ -35,10 +35,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "accept", method = RequestMethod.POST)
-    public @ResponseBody String answer_request(@RequestParam("username") String name,ModelMap model) {
-  //  public  String answer_request(ModelMap model) {
-       userDao.submitrequest();
-        return "index";
+    public @ResponseBody String answer_request(@RequestParam("username") String name,@RequestParam("date") String date,@RequestParam("time") String time,ModelMap model) {
+
+        
+      userDao.submitrequest(name,date,time);
+        return "messenger3";
     }
 
 }

@@ -45,9 +45,9 @@
              <c:forEach items="${messages}" var="message">
                 <div class="chat_people">
                   
-                    <div class="chat_img" > <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                    <h5>${message.match.booker.username} <span class="chat_date">${message.match.date}</span><br> <a style="float: right">${message.match.hours.hour}</a></h5>
+                    <h5>${message.match.booker.username}<span class="chat_date">${message.match.date}</span><br> <a style="float: right">${message.match.hours.hour}</a></h5>
                   <p class="plain_message">${message.text}</p>
                 </div>
               </div>

@@ -19,7 +19,7 @@ $ (".chat_people" ).click(function() {
 
  // var div = this.textContent;
   var text1=  $(this).find('p').text();
-  var user=$(this).find('h5').justtext();
+  var user=$(this).find('h5').justtext().trim();
     var date=$(this).find('span').text();
     var time=$(this).find('a').text();
 //alert(date);
@@ -29,10 +29,12 @@ $ (".chat_people" ).click(function() {
   //var text=div.textContent;
    // alert(text);
  // var text2=document.getElementsByClassName("received_withd_msg").innerHTML+text;
-    alert(time);
-    alert(date);
+   // alert(time);
+    //alert(user);
+    //alert(date);
     $("div.received_msg").text(user+" send you a game request for "+date+" at"+time+" ! Read the message: "+text1);
-document.getElementById("reply").action ="/seek_play/accept.htm?username="+user;
+document.getElementById("reply").action ="/seek_play/accept.htm?username="+user+"&date="+date+"&time="+time;
+//alert(user+"test");
 });
 
 jQuery.fn.justtext = function() {
