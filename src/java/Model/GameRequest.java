@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "GameRequest.findByRequestId", query = "SELECT g FROM GameRequest g WHERE g.requestId = :requestId")
     , @NamedQuery(name = "GameRequest.findByStatus", query = "SELECT g FROM GameRequest g WHERE g.status = :status")
     , @NamedQuery(name = "GameRequest.findByText", query = "SELECT g FROM GameRequest g WHERE g.text = :text")})
+@Proxy(lazy=false)
 public class GameRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

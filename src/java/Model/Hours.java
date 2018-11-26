@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Hours.findAll", query = "SELECT h FROM Hours h")
     , @NamedQuery(name = "Hours.findByHoursId", query = "SELECT h FROM Hours h WHERE h.hoursId = :hoursId")
     , @NamedQuery(name = "Hours.findByHour", query = "SELECT h FROM Hours h WHERE h.hour = :hour")})
+@Proxy(lazy=false)
 public class Hours implements Serializable {
 
     private static final long serialVersionUID = 1L;

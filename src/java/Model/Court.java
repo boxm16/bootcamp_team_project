@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Court.findByName", query = "SELECT c FROM Court c WHERE c.name = :name")
     , @NamedQuery(name = "Court.findByAddress", query = "SELECT c FROM Court c WHERE c.address = :address")
     , @NamedQuery(name = "Court.findByPhone", query = "SELECT c FROM Court c WHERE c.phone = :phone")})
+@Proxy(lazy=false)
 public class Court implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -26,6 +26,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "CourtReservation.findAll", query = "SELECT c FROM CourtReservation c")
     , @NamedQuery(name = "CourtReservation.findByCourtReservationID", query = "SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID")
     , @NamedQuery(name = "CourtReservation.findByDate", query = "SELECT c FROM CourtReservation c WHERE c.date = :date")})
+@Proxy(lazy=false)
 public class CourtReservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
