@@ -40,11 +40,10 @@ public class UserDao {
     public void submitrequest(String name, String date, String time) {
         Query q1 = em.createNativeQuery("sELECT id FROM seek_play.game_request"
                 + " join court_reservation on `match`=CourtReservationID join hours h on court_reservation.hours = h.hours_id\n"
-                + "where booker='" + name + "' and hour='" + time + "' and date='" + date + "';");
+                + "where booker='" + name + "' and hour='" + time + "' and date='" + date + "';");//check wuery!!!
         int a = (int) q1.getResultList().get(0);
         String sql="UPDATE `seek_play`.`game_request` t SET t.`status` = 'yes' WHERE t.`id` =" + Integer.toString(a)+";";
         int q2 = em.createNativeQuery(sql).executeUpdate();
-        System.out.println();
     }
 
 }

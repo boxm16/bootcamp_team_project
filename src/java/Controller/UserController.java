@@ -27,19 +27,19 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping(value = "messenger3", method = RequestMethod.GET)
+    @RequestMapping(value = "/messenger3.htm", method = RequestMethod.GET)
     public String showmessages(ModelMap model) {
         List<GameRequest> msg = userDao.fetchmessages();
         model.addAttribute("messages", msg);
         return "messenger3";
     }
 
-    @RequestMapping(value = "accept", method = RequestMethod.POST)
-    public @ResponseBody String answer_request(@RequestParam("username") String name,@RequestParam("date") String date,@RequestParam("time") String time,ModelMap model) {
+    @RequestMapping(value = "/accept.htm", method = RequestMethod.POST)
+    public  String answer_request(@RequestParam("username") String name,@RequestParam("date") String date,@RequestParam("time") String time,ModelMap model) {
 
         
       userDao.submitrequest(name,date,time);
-        return "messenger3";
+        return "redirect: messenger3.htm";
     }
 
 }
