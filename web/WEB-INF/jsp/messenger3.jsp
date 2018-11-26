@@ -48,7 +48,7 @@
                     <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
                     <h5>${message.match.booker.username}<span class="chat_date">${message.match.date}</span><br> <a style="float: right">${message.match.hours.hour}</a></h5>
-                  <p class="plain_message">${message.text}</p>
+                  <p class="plain_message">${message.courtname}, ${message.text}</p>
                 </div>
               </div>
            </c:forEach> 
