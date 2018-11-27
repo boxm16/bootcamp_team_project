@@ -26,7 +26,7 @@
             $(document).ready(function () {
                 $("#datepicker").change(function () {
                     var text = $(this).val();
-                    alert(text);
+                    //alert(text);
                     $.ajax({
                         url: 'findFilledSlotsByRest.htm?userinput=' + text,
                         contentType: 'application/json',
@@ -38,7 +38,7 @@
                                 alert(item)
                                 $tr = $('<tr>').append(
                                         $('<td>').text(item.username),
-                                        $('<td>').text("item.hour")
+                                        $('<td>').text(item.hours.hour)
 
                                         );
                                 $("#output").append($tr);

@@ -50,7 +50,7 @@ public class EventController {
     public @ResponseBody
     String finduserByRest(@RequestParam(value = "userinput") String date) throws JsonProcessingException {
         
-        List<User> list = courtDao.getFilledSlotsOfDate(date);
+        List<CourtReservation> list = courtDao.getFilledSlotsOfDate(date);
        
         ObjectMapper mapper=new ObjectMapper();
         return mapper.writeValueAsString(list);

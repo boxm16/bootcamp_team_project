@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Collection;
@@ -38,7 +39,7 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
 
-@Proxy(lazy=false)
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,18 +62,23 @@ public class User implements Serializable {
 
     @Transient
     private String password_confirmation;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker", fetch=FetchType.EAGER)
     private Collection<CourtReservation> courtReservationCollection;
+@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
     private Collection<GameRequest> gameRequestCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed", fetch=FetchType.EAGER)
     private Collection<Review> reviewCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer", fetch=FetchType.EAGER)
     private Collection<Review> reviewCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver", fetch=FetchType.EAGER)
     private Collection<Message> messageCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender", fetch=FetchType.EAGER)
     private Collection<Message> messageCollection1;
 
     public User() {

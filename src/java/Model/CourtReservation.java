@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -39,7 +40,7 @@ import org.hibernate.annotations.Proxy;
     @NamedQuery(name = "CourtReservation.findAll", query = "SELECT c FROM CourtReservation c")
     , @NamedQuery(name = "CourtReservation.findByCourtReservationID", query = "SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID")
     , @NamedQuery(name = "CourtReservation.findByDate", query = "SELECT c FROM CourtReservation c WHERE c.date = :date")})
-@Proxy(lazy=false)
+
 public class CourtReservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +63,9 @@ public class CourtReservation implements Serializable {
     @ManyToOne(optional = false)
     private Hours hours;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
+    @JsonIgnore
     private Collection<GameRequest> gameRequestCollection;
+      @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private Collection<Review> reviewCollection;
 

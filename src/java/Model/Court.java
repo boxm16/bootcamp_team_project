@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +34,7 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "Court.findByName", query = "SELECT c FROM Court c WHERE c.name = :name")
     , @NamedQuery(name = "Court.findByAddress", query = "SELECT c FROM Court c WHERE c.address = :address")
     , @NamedQuery(name = "Court.findByPhone", query = "SELECT c FROM Court c WHERE c.phone = :phone")})
-@Proxy(lazy=false)
+
 public class Court implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +47,7 @@ public class Court implements Serializable {
     private String address;
     @Column(name = "phone")
     private Integer phone;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtname", fetch = FetchType.EAGER)
     private Collection<CourtReservation> courtReservationCollection;
 

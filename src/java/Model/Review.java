@@ -34,7 +34,7 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "Review.findByAthletism", query = "SELECT r FROM Review r WHERE r.athletism = :athletism")
     , @NamedQuery(name = "Review.findByTechnique", query = "SELECT r FROM Review r WHERE r.technique = :technique")
     , @NamedQuery(name = "Review.findByComments", query = "SELECT r FROM Review r WHERE r.comments = :comments")})
-@Proxy(lazy=false)
+
 public class Review implements Serializable {
 
     private static final long serialVersionUID = 1L;

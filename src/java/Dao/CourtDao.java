@@ -6,6 +6,7 @@
 package Dao;
 
 import Model.Court;
+import Model.CourtReservation;
 import Model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -40,20 +41,20 @@ public class CourtDao {
     
     
 @Transactional
-    public List<User> getFilledSlotsOfDate(String date) {
-
-       //Query q = em.createNativeQuery("SELECT * FROM user;", User.class);
-        //Query query = em.createNamedQuery("Court.findAll", Court.class);
-       //List<User> resultList = q.getResultList();
-        //return resultList;
+    public List<CourtReservation> getFilledSlotsOfDate(String date) {
 
       
+       Query query = em.createNamedQuery("CourtReservation.findAll", CourtReservation.class);
+     List<CourtReservation> resultList = query.getResultList();
+        return resultList;
+ 
+      /*
       List<User> result=em.createQuery
        ("SELECT u FROM User u WHERE u.username LIKE :name", User.class)
             .setParameter("name", "%")
             .getResultList();
       return result;
-
+*/
     }
 
 }
