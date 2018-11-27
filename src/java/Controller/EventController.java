@@ -6,6 +6,7 @@
 package Controller;
 
 import Dao.CourtDao;
+import Dao.CourtReservationDao;
 import Model.Court;
 import Model.CourtReservation;
 import Model.Hours;
@@ -33,12 +34,15 @@ public class EventController {
 
     @Autowired
     private CourtDao courtDao;
+    
+    @Autowired
+    private CourtReservationDao courtReservationDao;
 
     @RequestMapping(value = "/booking_creation.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
 
-        List<Court> courtList = courtDao.listAllCourts();
-        model.addAttribute("courtList", courtList);
+        //List<Court> courtList = courtDao.listAllCourts();
+     //   model.addAttribute("courtList", courtList);
 
         return "booking_creation";
     }
@@ -49,8 +53,8 @@ public class EventController {
 
     public @ResponseBody
     String finduserByRest(@RequestParam(value = "userinput") String date) throws JsonProcessingException {
-        
-        List<CourtReservation> list = courtDao.getFilledSlotsOfDate(date);
+        System.out.println(date);
+        List<CourtReservation> list = courtReservationDao.getFilledSlotsOfDate(date);
        
         ObjectMapper mapper=new ObjectMapper();
         return mapper.writeValueAsString(list);

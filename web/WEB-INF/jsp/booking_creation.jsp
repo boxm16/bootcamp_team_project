@@ -26,14 +26,14 @@
             $(document).ready(function () {
                 $("#datepicker").change(function () {
                     var text = $(this).val();
-                    //alert(text);
+                    alert(text);
                     $.ajax({
                         url: 'findFilledSlotsByRest.htm?userinput=' + text,
                         contentType: 'application/json',
                         success: function (result) {
                             alert(result)
                             var jsonobj = $.parseJSON(result);
-                            // $("#output").empty()
+                            $("#output").empty()
                             $.each(jsonobj, function (i, item) {
                                 alert(item)
                                 $tr = $('<tr>').append(
@@ -62,10 +62,11 @@
 
         <div id="demo">
         </div>
-        <div id="output"></div>
+
 
 
         <input id="datepicker" type="date" name="bday">
+        <div id="output"></div>
 
 
         <script>

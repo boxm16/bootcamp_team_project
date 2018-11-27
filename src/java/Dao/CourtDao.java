@@ -39,22 +39,6 @@ public class CourtDao {
     }
     
     
-    
-@Transactional
-    public List<CourtReservation> getFilledSlotsOfDate(String date) {
-
-      
-       Query query = em.createNamedQuery("CourtReservation.findAll", CourtReservation.class);
-     List<CourtReservation> resultList = query.getResultList();
-        return resultList;
- 
-      /*
-      List<User> result=em.createQuery
-       ("SELECT u FROM User u WHERE u.username LIKE :name", User.class)
-            .setParameter("name", "%")
-            .getResultList();
-      return result;
-*/
-    }
+  
 
 }
