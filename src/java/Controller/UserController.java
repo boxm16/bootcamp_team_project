@@ -31,7 +31,7 @@ public class UserController {
 
     @RequestMapping(value = "/messenger3.htm", method = RequestMethod.GET)
     public String showmessages(ModelMap model) {
-        List<GameRequest> msg = userDao.fetchmessages();
+        List<GameRequest> msg = userDao.fetchincomingrequests();
         model.addAttribute("messages", msg);
         return "messenger3";
     }
@@ -44,11 +44,11 @@ public class UserController {
         return "redirect: messenger3.htm";
     }
     // how to upload pic
-    @RequestMapping(value ="insertbook", method=RequestMethod.POST, consumes = {"multipart/form-data"})
-    public String insertBook(ModelMap mm, @ModelAttribute Book book,
-            BindingResult result, @RequestParam(value = "cover") MultipartFile fileupload)
-    
-            return "index";
+//    @RequestMapping(value ="insertbook", method=RequestMethod.POST, consumes = {"multipart/form-data"})
+//    public String insertBook(ModelMap mm, @ModelAttribute Book book,
+//            BindingResult result, @RequestParam(value = "cover") MultipartFile fileupload)
+//    
+//            return "index";
     
 
 }

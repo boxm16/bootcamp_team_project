@@ -25,7 +25,7 @@ public class UserDao {
     private EntityManager em;
 
     @Transactional
-    public List<GameRequest> fetchmessages() {
+    public List<GameRequest> fetchincomingrequests() {
         List<GameRequest> Conversation;
         Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
                 + " join court_reservation on `match`=CourtReservationID"
@@ -35,6 +35,32 @@ public class UserDao {
 
         return Conversation;
     }
+    
+    @Transactional
+    public List<GameRequest> fetchoutgoingrequests() {
+        List<GameRequest> Conversation;
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
+                + " join court_reservation on `match`=CourtReservationID"
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "where request_receiver='alex' and status is null order by date", GameRequest.class);//check query
+        Conversation = q.getResultList();
+
+        return Conversation;
+    }
+    
+    @Transactional
+    public List<GameRequest> fetchansweredrequests() {
+        List<GameRequest> Conversation;
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
+                + " join court_reservation on `match`=CourtReservationID"
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "where request_receiver='alex' and status is null order by date", GameRequest.class);//check query
+        Conversation = q.getResultList();
+
+        return Conversation;
+    }   
+    
+    
 
     @Transactional
     public void submitrequest(String name, String date, String time) {

@@ -1,9 +1,4 @@
 
-$(document).ready(function(){  
-$(".chat_list").click(function() {
-    $(this).toggleClass("active_chat");
-});
-});
 
 var active = 'active_chat';
 var $thumbs = $('.chat_people').click(function(e) {
@@ -39,3 +34,13 @@ jQuery.fn.justtext = function() {
 			.text();
 
 };
+
+function myFunction() {
+   var mainFrameOne = document.getElementById("test1"); 
+   var mainFrameTwo = document.getElementById("test2");
+
+   mainFrameOne.style.display = (
+       mainFrameOne.style.display == "none" ? "block" : "none"); 
+   mainFrameTwo.style.display = (
+       mainFrameTwo.style.display == "none" ? "block" : "none"); 
+}
