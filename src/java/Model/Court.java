@@ -48,7 +48,7 @@ public class Court implements Serializable {
     @Column(name = "phone")
     private Integer phone;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtname", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtname")
     private Collection<CourtReservation> courtReservationCollection;
 
     public Court() {

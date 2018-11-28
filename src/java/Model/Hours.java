@@ -44,7 +44,7 @@ public class Hours implements Serializable {
     @Column(name = "hour")
     private String hour;
      @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hours", fetch = FetchType.EAGER )
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hours")
     private Collection<CourtReservation> courtReservationCollection;
 
     public Hours() {

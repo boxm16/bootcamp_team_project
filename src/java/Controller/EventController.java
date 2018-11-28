@@ -41,6 +41,12 @@ public class EventController {
     @RequestMapping(value = "/booking_creation.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
 
+        CourtReservation courtReservation=new CourtReservation();
+        model.addAttribute("courtReservation", courtReservation);
+        
+    
+        
+        
         //List<Court> courtList = courtDao.listAllCourts();
      //   model.addAttribute("courtList", courtList);
 

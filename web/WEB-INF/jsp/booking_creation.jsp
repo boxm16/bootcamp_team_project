@@ -24,18 +24,20 @@
         <script>
 
             $(document).ready(function () {
+                
                 $("#datepicker").change(function () {
+                     $("#output").empty()
                     var text = $(this).val();
-                    alert(text);
+                    //alert(text);
                     $.ajax({
                         url: 'findFilledSlotsByRest.htm?userinput=' + text,
                         contentType: 'application/json',
                         success: function (result) {
-                            alert(result)
+                           // alert(result)
                             var jsonobj = $.parseJSON(result);
-                            $("#output").empty()
+                           
                             $.each(jsonobj, function (i, item) {
-                                alert(item)
+                               // alert(item)
                                 $tr = $('<tr>').append(
                                         $('<td>').text(item.username),
                                         $('<td>').text(item.hours.hour)
@@ -68,18 +70,29 @@
         <input id="datepicker" type="date" name="bday">
         <div id="output"></div>
 
+        <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/controlerName.htm">
+            <form:input id="DateField" path="date"/>
+            <form:input path="date" class="date" />
+            
+            
+            
+            
+            
+            <table>
+                <tr>
+                    <td>Hours</td>
+                    <td><form:select path="hours" items="${hours}" itemLable="Hours" itemValue="hours"></form:select>
+                                 
+                </tr>
+            </table>
+        </form:form>
+
 
         <script>
             function timeSlots() {
                 var selectedDate = document.getElementById("datepicker").value;
                 document.getElementById("demo").innerHTML = " <h1>You selected date:" + selectedDate + "</h1>";
             }
-
-
-
-
-
-
 
             function myFunction() {
 

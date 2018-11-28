@@ -63,22 +63,22 @@ public class User implements Serializable {
     @Transient
     private String password_confirmation;
 @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
     private Collection<CourtReservation> courtReservationCollection;
 @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
     private Collection<GameRequest> gameRequestCollection;
 @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
     private Collection<Review> reviewCollection;
 @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
     private Collection<Review> reviewCollection1;
 @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private Collection<Message> messageCollection;
 @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     private Collection<Message> messageCollection1;
 
     public User() {
