@@ -39,8 +39,8 @@
                             $.each(jsonobj, function (i, item) {
                                // alert(item)
                                 $tr = $('<tr>').append(
-                                        $('<td>').text(item.username),
-                                        $('<td>').text(item.hours.hour)
+                                       // $('<td>').text(item.username),
+                                        $('<h1><td></h1>').text(item.hour)
 
                                         );
                                 $("#output").append($tr);
