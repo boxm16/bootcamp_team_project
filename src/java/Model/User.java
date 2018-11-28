@@ -5,12 +5,15 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -19,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -33,11 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
-public class User implements Serializable {
 
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
+
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,6 +65,27 @@ public class User implements Serializable {
     private Collection<Review> reviewCollection1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private Collection<Message> messageCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    private Collection<Message> messageCollection1;
+
+    @Transient
+    private String password_confirmation;
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
+    private Collection<CourtReservation> courtReservationCollection;
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
+    private Collection<GameRequest> gameRequestCollection;
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
+    private Collection<Review> reviewCollection;
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
+    private Collection<Review> reviewCollection1;
+@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    private Collection<Message> messageCollection;
+@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     private Collection<Message> messageCollection1;
 
@@ -105,12 +128,25 @@ public class User implements Serializable {
     }
 
 
+    public void setProfileimage(byte[] profileimage) {
+        this.profileimage = profileimage;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<CourtReservation> getCourtReservationCollection() {
+        return courtReservationCollection;
+    }
+
+    public void setCourtReservationCollection(Collection<CourtReservation> courtReservationCollection) {
+        this.courtReservationCollection = courtReservationCollection;
     }
 
     @XmlTransient

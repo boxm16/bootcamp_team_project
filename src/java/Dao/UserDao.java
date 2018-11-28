@@ -5,11 +5,19 @@
  */
 package Dao;
 
+<<<<<<< HEAD
 import Model.GameRequest;
 import Model.Message;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+=======
+import Model.User;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+>>>>>>> register
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -62,6 +70,7 @@ public class UserDao {
     
     
 
+<<<<<<< HEAD
     @Transactional
     public void submitrequest(String name, String date, String time) {
         Query q1 = em.createNativeQuery("sELECT id FROM seek_play.game_request"
@@ -70,6 +79,20 @@ public class UserDao {
         int a = (int) q1.getResultList().get(0);
         String sql="UPDATE `seek_play`.`game_request` t SET t.`status` = 'yes' WHERE t.`id` =" + Integer.toString(a)+";";
         int q2 = em.createNativeQuery(sql).executeUpdate();
+=======
+ 
+    @Transactional
+    public User checkUserByUsername(String username) {
+        User user = em.find(User.class, username);
+        
+        return user;
+>>>>>>> register
+    }
+
+    public List<User> listAllUsers() {
+        Query query = em.createNamedQuery("User.findAll", User.class);
+        List<User> resultList = query.getResultList();
+        return resultList;
     }
 
 }

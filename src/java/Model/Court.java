@@ -5,12 +5,14 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -18,10 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Herc
+ * @author Michail Sitmalidis
  */
 @Entity
 @Table(name = "court")
@@ -31,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Court.findByName", query = "SELECT c FROM Court c WHERE c.name = :name")
     , @NamedQuery(name = "Court.findByAddress", query = "SELECT c FROM Court c WHERE c.address = :address")
     , @NamedQuery(name = "Court.findByPhone", query = "SELECT c FROM Court c WHERE c.phone = :phone")})
+
 public class Court implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +47,7 @@ public class Court implements Serializable {
     private String address;
     @Column(name = "phone")
     private Integer phone;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtname")
     private Collection<CourtReservation> courtReservationCollection;
 

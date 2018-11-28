@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,10 +27,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Herc
+ * @author Michail Sitmalidis
  */
 @Entity
 @Table(name = "court_reservation")
@@ -37,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "CourtReservation.findAll", query = "SELECT c FROM CourtReservation c")
     , @NamedQuery(name = "CourtReservation.findByCourtReservationID", query = "SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID")
     , @NamedQuery(name = "CourtReservation.findByDate", query = "SELECT c FROM CourtReservation c WHERE c.date = :date")})
+
 public class CourtReservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,11 +59,13 @@ public class CourtReservation implements Serializable {
     @JoinColumn(name = "courtname", referencedColumnName = "name")
     @ManyToOne(optional = false)
     private Court courtname;
-    @JoinColumn(name = "hours", referencedColumnName = "hours_id")
+    @JoinColumn(name = "hours", referencedColumnName = "hours_id" )
     @ManyToOne(optional = false)
     private Hours hours;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
+    @JsonIgnore
     private Collection<GameRequest> gameRequestCollection;
+      @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private Collection<Review> reviewCollection;
 

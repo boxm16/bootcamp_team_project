@@ -12,7 +12,7 @@
         <p>Welcome to Seek & Play!</p>
 
 
-        <form autocomplete="on" modelAttribute="user" action="${pageContext.request.contextPath}/loginFormHandling.htm" method="POST">
+        <form autocomplete="on"  action="${pageContext.request.contextPath}/loginFormHandling.htm" method="POST">
             <h1>Log in</h1> 
             <p> 
                 <label  > Your username </label>
@@ -32,9 +32,7 @@
             </p>
         </form>
         <a href="http://localhost:8080/seek_play/adduser.htm">Add one user</a><br/>
-
-
-        <a href="http://localhost:8080/seek_play/trialLink.htm">Trial link</a>
+      
 
     </body>
 </html>
