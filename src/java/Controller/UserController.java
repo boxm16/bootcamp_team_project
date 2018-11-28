@@ -6,24 +6,19 @@
 package Controller;
 
 import Dao.UserDao;
-<<<<<<< HEAD
 import Model.GameRequest;
 import java.util.List;
-=======
 import Model.User;
 import Validation.UserValidator;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
->>>>>>> register
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -35,7 +30,10 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
-<<<<<<< HEAD
+
+     @Autowired
+    private UserValidator userValidator;
+
 
     @RequestMapping(value = "/messenger3.htm", method = RequestMethod.GET)
     public String showmessages(ModelMap model) {
@@ -50,10 +48,8 @@ public class UserController {
         
       userDao.submitrequest(name,date,time);
         return "redirect: messenger3.htm";
-=======
-    @Autowired
-    private UserValidator userValidator;
 
+    }
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
         User user = new User();
@@ -110,7 +106,7 @@ public class UserController {
         } else {
             return "error_page";
         }
->>>>>>> register
+
     }
     // how to upload pic
 //    @RequestMapping(value ="insertbook", method=RequestMethod.POST, consumes = {"multipart/form-data"})

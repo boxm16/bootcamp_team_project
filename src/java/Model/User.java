@@ -20,13 +20,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Herc
+ * @author Michail Sitmalidis
  */
 @Entity
 @Table(name = "user")
@@ -52,21 +53,12 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
+    @Lob
+    @Column(name = "profileimage")
+    private byte[] profileimage;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-    @OneToMany(mappedBy = "booker")
-    private Collection<CourtReservation> courtReservationCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
-    private Collection<GameRequest> gameRequestCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
-    private Collection<Review> reviewCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
-    private Collection<Review> reviewCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
-    private Collection<Message> messageCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
-    private Collection<Message> messageCollection1;
 
     @Transient
     private String password_confirmation;
@@ -127,6 +119,9 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
+    public byte[] getProfileimage() {
+        return profileimage;
+    }
 
     public void setProfileimage(byte[] profileimage) {
         this.profileimage = profileimage;
@@ -140,13 +135,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @XmlTransient
-    public Collection<CourtReservation> getCourtReservationCollection() {
-        return courtReservationCollection;
+    public String getPassword_confirmation() {
+        return password_confirmation;
     }
 
-    public void setCourtReservationCollection(Collection<CourtReservation> courtReservationCollection) {
-        this.courtReservationCollection = courtReservationCollection;
+    public void setPassword_confirmation(String password_confirmation) {
+        this.password_confirmation = password_confirmation;
     }
 
     @XmlTransient
@@ -228,12 +222,4 @@ public class User implements Serializable {
         return "Model.User[ username=" + username + " ]";
     }
 
-    public byte[] getProfileimage() {
-        return profileimage;
-    }
-
-    public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
-    }
-    
 }
