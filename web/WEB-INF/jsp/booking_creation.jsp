@@ -28,9 +28,10 @@
                 $("#datepicker").change(function () {
                      $("#output").empty()
                     var text = $(this).val();
+                    var text2=$("#court").val();
                     //alert(text);
                     $.ajax({
-                        url: 'findFilledSlotsByRest.htm?userinput=' + text,
+                        url: 'findFreeTimeSlotsByRest.htm?userinput=' + text+'&userinput2='+text2,
                         contentType: 'application/json',
                         success: function (result) {
                            // alert(result)
@@ -61,6 +62,7 @@
                 <option value="${courtList.name}">${courtList.name}</option>
             </c:forEach>
         </select>
+        <input type="text" id="court">
 
         <div id="demo">
         </div>
@@ -71,8 +73,7 @@
         <div id="output"></div>
 
         <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/controlerName.htm">
-            <form:input id="DateField" path="date"/>
-            <form:input path="date" class="date" />
+       
             
             
             

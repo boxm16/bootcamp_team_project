@@ -34,42 +34,34 @@ public class EventController {
 
     @Autowired
     private CourtDao courtDao;
-    
+
     @Autowired
     private CourtReservationDao courtReservationDao;
 
     @RequestMapping(value = "/booking_creation.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
 
-        CourtReservation courtReservation=new CourtReservation();
+        CourtReservation courtReservation = new CourtReservation();
         model.addAttribute("courtReservation", courtReservation);
-        
-    
-        
-        
-        //List<Court> courtList = courtDao.listAllCourts();
-     //   model.addAttribute("courtList", courtList);
+
+        List<Court> courtList = courtDao.listAllCourts();
+        model.addAttribute("courtList", courtList);
 
         return "booking_creation";
     }
-    
-    
-    
-    @RequestMapping(value = "/findFilledSlotsByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
+
+    @RequestMapping(value = "/findFreeTimeSlotsByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
 
     public @ResponseBody
-    String finduserByRest(@RequestParam(value = "userinput") String date) throws JsonProcessingException {
-   
-        List<CourtReservation> list = courtReservationDao.getFilledSlotsOfDate(date);
-       
-        ObjectMapper mapper=new ObjectMapper();
+    String finduserByRest(@RequestParam(value = "userinput") String date, @RequestParam(value = "userinput2") String court) throws JsonProcessingException {
+
+        System.out.println(court);
+        
+        List<CourtReservation> list = courtReservationDao.getFreeTimeSlots(date);
+
+        ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(list);
 
-    
-
     }
-    
-    
-   
 
 }
