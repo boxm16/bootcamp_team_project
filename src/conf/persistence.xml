@@ -9,6 +9,11 @@
     <class>Model.Review</class>
     <class>Model.Message</class>
     <class>Model.GameRequest</class>
+    <class>Model.PlayerStats</class>
+    <class>Model.Stats</class>
+    <class>Model.PlayerStats2</class>
+    <class>Model.TotalStats</class>
+    <class>Model.PlayerStats1</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://5.189.135.166:3011/seek_play?zeroDateTimeBehavior=convertToNull"/>
