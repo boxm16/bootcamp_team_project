@@ -129,13 +129,13 @@ $(".btn-pref .btn").click(function () {
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/request.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                <div class="hidden-xs">Requests</div>
+            <a href="http://localhost:8080/seek_play/request.htm" data-toggle="tab"><button type="button" id="gamerequest" class="btn btn-primary" href="#tab2" data-toggle="tab"><h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></h4>
+                
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
-               
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
+               <div class="hidden-xs">Personal Infos</div>
             </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -149,7 +149,7 @@ $(".btn-pref .btn").click(function () {
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
                 </button></a>
         </div>
@@ -158,21 +158,7 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-            <h3><div>First Name: ${users.getFirstname()}</div>
-                <div> Last Name: ${users.getLastname()}</div></h3>
-                <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                <div class="hidden-xs">EDIT</div>
-                </button> </a>
-           
-                <H3><div> Change your profile picture</div></h3>
-                        <forms:form method="POST" action="uploadpic" enctype="multipart/form-data">
-                            File to upload: <input type="file" name="img"><br /> 
-                            
-                            <input type="submit" value="Upload">
-                        </forms:form>	
-            
-          </h3>
-                        
+            <h1>Loading</h1>
         </div>
       </div>
     </div>

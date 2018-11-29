@@ -9,7 +9,7 @@
 <html>
     <head>   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <style rel="stylesheet" id="bootstrap-css">
             /* USER PROFILE PAGE */
  .card {
@@ -112,26 +112,39 @@ $(".btn-pref .btn").click(function () {
         </script>  
          <script>
           $(document).ready(function(){
-              $("#mytext").keyup(function(){
-                  var text=$(this).val();
-//                  alert(text);
+              $("#mytext").keyup(function(e){
+                  e.preventDefault();                    
+                  var text=$(this).val();                 
                     $.ajax({
                       url:'find.htm?texts='+text,
+                      cashe:false,
                       contentType:'application/json',
                       success: function (result){
                           $("#text").empty();
                           var jsonobj=$.parseJSON(result);
-                         // alert(jsonobj);
+
                           $.each(jsonobj,function(i,item){
                               $tr=$('<tr>').append(
                                       $('<td>').text(item)
                               );
-                              $("#text").append($tr);
-                          });
-                      }
-                    });
+                              $("#text").append($tr);      
+                            });                              
+                      } 
+                    });              
+                                 
               });
-          });
+         
+              $("#logout").click(function() {                   
+                  $.ajax({
+                    url:"/seek_play/index.htm",
+                    success: function(data) {
+                    alert("ok");
+            }
+                  });
+                });
+            });
+          
+          
           </script>
     </head>
     <body>
@@ -154,9 +167,9 @@ $(".btn-pref .btn").click(function () {
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                <div class="hidden-xs">Messages</div>
-            </button>
+            <a href="http://localhost:8080/seek_play/request.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                <div class="hidden-xs">Requests</div>
+                </button></a>
         </div>
         <div class="btn-group" role="group">
             <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -174,25 +187,19 @@ $(".btn-pref .btn").click(function () {
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
-                </button></a>
+                </button>
         </div>
     </div>
          
         <div class="well">
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
-             <input type="text" name="texts" id="mytext" placeholder="Enter text"/>
+        <div class="tab-pane fade in active">
+            <H3><B>Search for Player</B></H3>
+             <input type="text" name="texts" id="mytext" placeholder="Enter Username"/>
             <table><div id="text"></div></table>   
-           <table border="1">
-                <c:forEach items="${books}" var="u">
-            <tr>
-                <td>${u}</td>                      
-            </tr>
-            </c:forEach>
-            </table>
-                        
+           
         </div>
       </div>
     </div>
