@@ -7,13 +7,9 @@ var $thumbs = $('.chat_people').click(function(e) {
     $(this).addClass(active);
 });
 
-//var button = document.getElementsByClassName(".chat_people active_chat");
-
 var name = document.getElementsByClassName(".chat_people");
 $ (".chat_people" ).click(function() {
-
-
-    
+   
  var div = this.textContent;
   var text1=  $(this).find('p').text();
   var user=$(this).find('h5').justtext().trim();
@@ -36,8 +32,8 @@ jQuery.fn.justtext = function() {
 };
 
 function myFunction() {
-   var mainFrameOne = document.getElementById("test1"); 
-   var mainFrameTwo = document.getElementById("test2");
+   var mainFrameOne = document.getElementById("incoming"); 
+   var mainFrameTwo = document.getElementById("outgoing");
 
    mainFrameOne.style.display = (
        mainFrameOne.style.display == "none" ? "block" : "none"); 

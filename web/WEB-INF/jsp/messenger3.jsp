@@ -58,6 +58,22 @@
 </div>
 </div>
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 <div class="inbox_people" id="outgoing" style="display: none">
 <div class="headind_srch">
@@ -93,9 +109,7 @@
 <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
 <div class="received_msg">
 <div class="received_withd_msg">
-<p>
-
-</p>
+ <p></p>
 <span class="time_date">${message.match.date}</span>
 </div>
 </div>
@@ -111,6 +125,78 @@
 </form>
 </div>
 </div>
+
+
+
+
+
+<div class="inbox_people" id="outgoing" style="display: none">
+<div class="headind_srch">
+<div class="recent_heading">
+<h4>Outgoing requests</h4>
+</div>
+
+<!--            <div class="srch_bar">
+<div class="stylish-input-group">
+<input type="text" class="search-bar"  placeholder="Search" >
+<span class="input-group-addon">
+<button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+</span> </div>
+</div>-->
+</div>
+<div class="inbox_chat">
+<div class="chat_list  ">     
+<div class="chat_people">
+<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+<div class="chat_ib">
+<h5>test<span class="chat_date">${message.match.date}</span><br> <a style="float: right">${message.match.hours.hour}</a></h5>
+<p class="plain_message">${message.match.courtname.name}</p>
+<h6 >${message.text}</h4>
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mesgs">
+<div class="msg_history">
+<div class="incoming_msg">
+<div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+<div class="received_msg">
+<div class="received_withd_msg">
+<p></p>
+<span class="time_date">${message.match.date}</span>
+</div>
+</div>
+</div>
+<br>
+<form id="reply" action="" method="POST">
+<div >
+<div class="input_msg_write text-center">
+<button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" id="accept">Accept</button>
+<button type="button" class="btn btn-outline-danger btn-rounded waves-effect" id="deny">Deny</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <button onclick="myFunction()" >Click me</button>
 <input type="button" value="incoming"  onClick="location.href = 'index.htm'"/>
 <input type="button" value="outgoing"  onClick="location.href = 'messenger3.htm'"/>

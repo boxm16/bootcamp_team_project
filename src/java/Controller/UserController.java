@@ -58,7 +58,7 @@ public class UserController {
         List<GameRequest> outgoing = userDao.fetchoutgoingrequests();
         model.addAttribute("messages2", outgoing);
         List<GameRequest> answered = userDao.fetchansweredrequests();
-        model.addAttribute("messages", answered);
+        model.addAttribute("messages3", answered);
         return "messenger3";
     }
 
