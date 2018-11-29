@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
     <head>        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style rel="stylesheet" id="bootstrap-css">
             /* USER PROFILE PAGE */
  .card {
@@ -112,10 +116,6 @@ box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
    
         </style>
        
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menu Page</title>
         
         <script>$(document).ready(function() {
@@ -170,7 +170,7 @@ $(".btn-pref .btn").click(function () {
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
                 </button></a>
         </div>

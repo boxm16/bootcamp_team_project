@@ -8,9 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style rel="stylesheet" id="bootstrap-css">
+            
             /* USER PROFILE PAGE */
  .card {
     margin-top: 20px;
@@ -96,56 +100,9 @@
     
         </style>
        
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-      
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Menu Page</title>
         
-        <script>$(document).ready(function() {
-$(".btn-pref .btn").click(function () {
-    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-    // $(".tab").addClass("active"); // instead of this do the below 
-    $(this).removeClass("btn-default").addClass("btn-primary");   
-});
-});
-        </script>  
-         <script>
-          $(document).ready(function(){
-              $("#mytext").keyup(function(e){
-                  e.preventDefault();                    
-                  var text=$(this).val();                 
-                    $.ajax({
-                      url:'find.htm?texts='+text,
-                      cashe:false,
-                      contentType:'application/json',
-                      success: function (result){
-                          $("#text").empty();
-                          var jsonobj=$.parseJSON(result);
-
-                          $.each(jsonobj,function(i,item){
-                              $tr=$('<tr>').append(
-                                      $('<td>').text(item)
-                              );
-                              $("#text").append($tr);      
-                            });                              
-                      } 
-                    });              
-                                 
-              });
-         
-              $("#logout").click(function() {                   
-                  $.ajax({
-                    url:"/seek_play/index.htm",
-                    success: function(data) {
-                    alert("ok");
-            }
-                  });
-                });
-            });
-          
-          
-          </script>
     </head>
     <body>
           
@@ -187,9 +144,9 @@ $(".btn-pref .btn").click(function () {
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
-                </button>
+                </button></a>
         </div>
     </div>
          
@@ -204,6 +161,61 @@ $(".btn-pref .btn").click(function () {
       </div>
     </div>
     
-    </div>       
+    </div> 
+        
+        <script>
+            $(document).ready(function() {
+                
+                $(".btn-pref .btn").click(function () {                    
+                 $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    
+                $(this).removeClass("btn-default").addClass("btn-primary");   
+                });
+
+              $("#mytext").keyup(function(){
+                                    
+                  var text=$(this).val();                 
+                    $.ajax({
+                      url:'find.htm?texts='+text,
+                      
+                      contentType:'application/json',
+                      success: function (result){
+                          $("#text").empty();
+                          var jsonobj=$.parseJSON(result);
+
+                          $.each(jsonobj,function(i,item){
+                              $tr=$('<tr>').append(
+                                      $('<td>').text(item)
+                              );
+                              $("#text").append($tr);      
+                            });                               
+                      } 
+                    });              
+                                
+                });
+         
+              $("#logout").click(function() {                   
+                 return $.ajax({
+                     type:"POST",
+                    url:"http://localhost:8080/seek_play/index.htm",
+                    success: function(data) {
+                        $("#mytext").ajaxStop();
+                    }
+                  });
+                });
+               
+               function logout() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/UserController/user',
+                    
+                    success: function (data) { alert(data.result); }
+                });
+                }
+        
+            });
+          
+          
+          </script>
    </body>
 </html>

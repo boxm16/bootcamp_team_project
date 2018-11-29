@@ -33,12 +33,9 @@ public class AjaxController {
     @RequestMapping(value="/find.htm",method=RequestMethod.GET,headers="Accept=*/*",produces="application/json")
     public @ResponseBody String filterusers(ModelMap model, @RequestParam(value="texts") String name) throws JsonProcessingException{        
         List<User> us= usrd.check(name);
-//        us.size();
-//        model.addAttribute("usernames", us);
-////       usrd.insert(u);
-//        usrd.print(usrd.find(u, 2));  
     ObjectMapper mapper =new ObjectMapper();
         System.out.print(mapper.writeValueAsString(us));    
         return mapper.writeValueAsString(us);
     }
+    
 }
