@@ -5,14 +5,12 @@
  */
 package Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,11 +18,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Michail Sitmalidis
+ * @author Herc
  */
 @Entity
 @Table(name = "hours")
@@ -33,7 +30,6 @@ import org.hibernate.annotations.Proxy;
     @NamedQuery(name = "Hours.findAll", query = "SELECT h FROM Hours h")
     , @NamedQuery(name = "Hours.findByHoursId", query = "SELECT h FROM Hours h WHERE h.hoursId = :hoursId")
     , @NamedQuery(name = "Hours.findByHour", query = "SELECT h FROM Hours h WHERE h.hour = :hour")})
-
 public class Hours implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +39,6 @@ public class Hours implements Serializable {
     private Integer hoursId;
     @Column(name = "hour")
     private String hour;
-     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hours")
     private Collection<CourtReservation> courtReservationCollection;
 

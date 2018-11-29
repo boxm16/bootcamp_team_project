@@ -5,14 +5,14 @@
  */
 package Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,25 +20,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Michail Sitmalidis
+ * @author Herc
  */
 @Entity
 @Table(name = "court")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Court.findAll", query = "SELECT c FROM Court c")
+    , @NamedQuery(name = "Court.findById", query = "SELECT c FROM Court c WHERE c.id = :id")
     , @NamedQuery(name = "Court.findByName", query = "SELECT c FROM Court c WHERE c.name = :name")
     , @NamedQuery(name = "Court.findByAddress", query = "SELECT c FROM Court c WHERE c.address = :address")
     , @NamedQuery(name = "Court.findByPhone", query = "SELECT c FROM Court c WHERE c.phone = :phone")})
-
 public class Court implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
@@ -47,20 +50,28 @@ public class Court implements Serializable {
     private String address;
     @Column(name = "phone")
     private Integer phone;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtname")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtId")
     private Collection<CourtReservation> courtReservationCollection;
 
     public Court() {
     }
 
-    public Court(String name) {
-        this.name = name;
+    public Court(Integer id) {
+        this.id = id;
     }
 
-    public Court(String name, String address) {
+    public Court(Integer id, String name, String address) {
+        this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -99,7 +110,7 @@ public class Court implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (name != null ? name.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -110,7 +121,7 @@ public class Court implements Serializable {
             return false;
         }
         Court other = (Court) object;
-        if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -118,7 +129,7 @@ public class Court implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.Court[ name=" + name + " ]";
+        return "Model.Court[ id=" + id + " ]";
     }
     
 }

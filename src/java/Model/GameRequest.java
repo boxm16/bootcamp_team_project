@@ -18,11 +18,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Michail Sitmalidis
+ * @author Herc
  */
 @Entity
 @Table(name = "game_request")
@@ -33,7 +32,6 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "GameRequest.findByRequestId", query = "SELECT g FROM GameRequest g WHERE g.requestId = :requestId")
     , @NamedQuery(name = "GameRequest.findByStatus", query = "SELECT g FROM GameRequest g WHERE g.status = :status")
     , @NamedQuery(name = "GameRequest.findByText", query = "SELECT g FROM GameRequest g WHERE g.text = :text")})
-
 public class GameRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,12 +47,12 @@ public class GameRequest implements Serializable {
     private String status;
     @Column(name = "text")
     private String text;
+    @JoinColumn(name = "request_receiver", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User requestReceiver;
     @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
     @ManyToOne(optional = false)
     private CourtReservation match;
-    @JoinColumn(name = "request_receiver", referencedColumnName = "username")
-    @ManyToOne(optional = false)
-    private User requestReceiver;
 
     public GameRequest() {
     }
@@ -100,20 +98,20 @@ public class GameRequest implements Serializable {
         this.text = text;
     }
 
-    public CourtReservation getMatch() {
-        return match;
-    }
-
-    public void setMatch(CourtReservation match) {
-        this.match = match;
-    }
-
     public User getRequestReceiver() {
         return requestReceiver;
     }
 
     public void setRequestReceiver(User requestReceiver) {
         this.requestReceiver = requestReceiver;
+    }
+
+    public CourtReservation getMatch() {
+        return match;
+    }
+
+    public void setMatch(CourtReservation match) {
+        this.match = match;
     }
 
     @Override

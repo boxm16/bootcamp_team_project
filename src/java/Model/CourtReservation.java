@@ -5,7 +5,6 @@
  */
 package Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -13,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,11 +25,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
- * @author Michail Sitmalidis
+ * @author Herc
  */
 @Entity
 @Table(name = "court_reservation")
@@ -40,7 +37,6 @@ import org.hibernate.annotations.Proxy;
     @NamedQuery(name = "CourtReservation.findAll", query = "SELECT c FROM CourtReservation c")
     , @NamedQuery(name = "CourtReservation.findByCourtReservationID", query = "SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID")
     , @NamedQuery(name = "CourtReservation.findByDate", query = "SELECT c FROM CourtReservation c WHERE c.date = :date")})
-
 public class CourtReservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,19 +49,17 @@ public class CourtReservation implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
-    @JoinColumn(name = "booker", referencedColumnName = "username")
-    @ManyToOne
-    private User booker;
-    @JoinColumn(name = "courtname", referencedColumnName = "name")
+    @JoinColumn(name = "court_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Court courtname;
-    @JoinColumn(name = "hours", referencedColumnName = "hours_id" )
+    private Court courtId;
+    @JoinColumn(name = "hours", referencedColumnName = "hours_id")
     @ManyToOne(optional = false)
     private Hours hours;
+    @JoinColumn(name = "booker", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User booker;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
-    @JsonIgnore
     private Collection<GameRequest> gameRequestCollection;
-      @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private Collection<Review> reviewCollection;
 
@@ -97,20 +91,12 @@ public class CourtReservation implements Serializable {
         this.date = date;
     }
 
-    public User getBooker() {
-        return booker;
+    public Court getCourtId() {
+        return courtId;
     }
 
-    public void setBooker(User booker) {
-        this.booker = booker;
-    }
-
-    public Court getCourtname() {
-        return courtname;
-    }
-
-    public void setCourtname(Court courtname) {
-        this.courtname = courtname;
+    public void setCourtId(Court courtId) {
+        this.courtId = courtId;
     }
 
     public Hours getHours() {
@@ -119,6 +105,14 @@ public class CourtReservation implements Serializable {
 
     public void setHours(Hours hours) {
         this.hours = hours;
+    }
+
+    public User getBooker() {
+        return booker;
+    }
+
+    public void setBooker(User booker) {
+        this.booker = booker;
     }
 
     @XmlTransient
