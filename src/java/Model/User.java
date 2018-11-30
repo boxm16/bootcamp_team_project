@@ -6,16 +6,15 @@
 package Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -23,7 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -34,16 +32,20 @@ import org.hibernate.annotations.Proxy;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+    , @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId")
     , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
     , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "User.findByImage", query = "SELECT u FROM User u WHERE u.image = :image")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
-
-
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "user_id")
+    private Integer userId;
     @Basic(optional = false)
     @Column(name = "username")
     private String username;
@@ -53,46 +55,54 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "lastname")
     private String lastname;
-    @Lob
-    @Column(name = "profileimage")
-    private byte[] profileimage;
+    @Column(name = "image")
+    private String image;
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-
-    @Transient
+    
+     @Transient
     private String password_confirmation;
-@JsonIgnore
+   @JsonIgnore  
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
     private Collection<CourtReservation> courtReservationCollection;
-@JsonIgnore
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
     private Collection<GameRequest> gameRequestCollection;
-@JsonIgnore
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
     private Collection<Review> reviewCollection;
-@JsonIgnore
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
     private Collection<Review> reviewCollection1;
-@JsonIgnore
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private Collection<Message> messageCollection;
-@JsonIgnore
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     private Collection<Message> messageCollection1;
 
     public User() {
     }
 
-    public User(String username) {
-        this.username = username;
+    public User(Integer userId) {
+        this.userId = userId;
     }
 
-    public User(String username, String firstname, String lastname, String password) {
+    public User(Integer userId, String username, String firstname, String lastname, String password) {
+        this.userId = userId;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -119,12 +129,12 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public byte[] getProfileimage() {
-        return profileimage;
+    public String getImage() {
+        return image;
     }
 
-    public void setProfileimage(byte[] profileimage) {
-        this.profileimage = profileimage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getPassword() {
@@ -142,6 +152,7 @@ public class User implements Serializable {
     public void setPassword_confirmation(String password_confirmation) {
         this.password_confirmation = password_confirmation;
     }
+    
 
     @XmlTransient
     public Collection<CourtReservation> getCourtReservationCollection() {
@@ -200,7 +211,7 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (username != null ? username.hashCode() : 0);
+        hash += (userId != null ? userId.hashCode() : 0);
         return hash;
     }
 
@@ -211,7 +222,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
+        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
         return true;
@@ -219,7 +230,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Model.User[ username=" + username + " ]";
+        return "Model.User[ userId=" + userId + " ]";
     }
-
+    
 }

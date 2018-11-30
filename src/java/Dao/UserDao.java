@@ -26,12 +26,18 @@ public class UserDao {
 
     }
 
- 
     @Transactional
     public User checkUserByUsername(String username) {
-        User user = em.find(User.class, username);
-        
-        return user;
+        List<User> userList = em.createQuery(
+                "SELECT u from User u WHERE u.username = :username", User.class).
+                setParameter("username", username).getResultList();
+        if (userList.size() == 1) {
+            User user = userList.get(0);
+            return user;
+        } else {
+            return null;
+        }
+
     }
 
     public List<User> listAllUsers() {

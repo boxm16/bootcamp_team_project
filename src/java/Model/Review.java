@@ -18,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -34,7 +33,6 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "Review.findByAthletism", query = "SELECT r FROM Review r WHERE r.athletism = :athletism")
     , @NamedQuery(name = "Review.findByTechnique", query = "SELECT r FROM Review r WHERE r.technique = :technique")
     , @NamedQuery(name = "Review.findByComments", query = "SELECT r FROM Review r WHERE r.comments = :comments")})
-
 public class Review implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,10 +52,10 @@ public class Review implements Serializable {
     @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
     @ManyToOne(optional = false)
     private CourtReservation match;
-    @JoinColumn(name = "reviewed", referencedColumnName = "username")
+    @JoinColumn(name = "reviewed", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User reviewed;
-    @JoinColumn(name = "reviewer", referencedColumnName = "username")
+    @JoinColumn(name = "reviewer", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User reviewer;
 

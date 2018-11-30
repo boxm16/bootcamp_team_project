@@ -19,7 +19,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -34,7 +33,6 @@ import org.hibernate.annotations.Proxy;
     , @NamedQuery(name = "Message.findByText", query = "SELECT m FROM Message m WHERE m.text = :text")
     , @NamedQuery(name = "Message.findByDate", query = "SELECT m FROM Message m WHERE m.date = :date")
     , @NamedQuery(name = "Message.findBySeenDate", query = "SELECT m FROM Message m WHERE m.seenDate = :seenDate")})
-
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;

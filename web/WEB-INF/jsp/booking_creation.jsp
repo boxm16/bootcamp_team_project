@@ -29,7 +29,7 @@
                      $("#output").empty()
                     var text = $(this).val();
                     var text2=$("#court").val();
-                    //alert(text);
+                    //alert(text2);
                     $.ajax({
                         url: 'findFreeTimeSlotsByRest.htm?userinput=' + text+'&userinput2='+text2,
                         contentType: 'application/json',
@@ -59,10 +59,10 @@
         Select a Court;
         <select id="court" name="court" onchange="myFunction()">
             <c:forEach items="${courtList}" var="courtList">
-                <option value="${courtList.name}">${courtList.name}</option>
+                <option value="${courtList.id}">${courtList.name}</option>
             </c:forEach>
         </select>
-        <input type="text" id="court">
+        
 
         <div id="demo">
         </div>
