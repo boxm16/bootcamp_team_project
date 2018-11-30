@@ -8,6 +8,10 @@
 <!DOCTYPE html>
 <html>
     <head>        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style rel="stylesheet" id="bootstrap-css">
             /* USER PROFILE PAGE */
  .card {
@@ -93,12 +97,9 @@
 }
     
         </style>
-       
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+              
         <title>Menu Page</title>
+        
         <script>$(document).ready(function() {
 $(".btn-pref .btn").click(function () {
     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -106,15 +107,14 @@ $(".btn-pref .btn").click(function () {
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
 });
-        </script>
+        </script>  
     </head>
     <body>
-            
+          
         <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
-           
+           <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
         </div>
         <div class="useravatar">
             <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -129,13 +129,13 @@ $(".btn-pref .btn").click(function () {
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/request.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                <div class="hidden-xs">Requests</div>
+            <a href="http://localhost:8080/seek_play/request.htm" data-toggle="tab"><button type="button" id="gamerequest" class="btn btn-primary" href="#tab2" data-toggle="tab"><h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></h4>
+                
                 </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Personal Infos</div>
+            <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
+               <div class="hidden-xs">Personal Infos</div>
             </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -149,7 +149,7 @@ $(".btn-pref .btn").click(function () {
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
                 </button></a>
         </div>
@@ -158,14 +158,11 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3 style=" text-align: center">Welcome</h3>
+            <h1>Loading</h1>
         </div>
-        
       </div>
     </div>
     
-    </div>
-          
-    
-    </body>
+    </div>       
+   </body>
 </html>

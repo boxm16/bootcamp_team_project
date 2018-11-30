@@ -3,12 +3,18 @@
     Created on : 14 Νοε 2018, 11:44:58 μμ
     Author     : aroum
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>   
+       
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style rel="stylesheet" id="bootstrap-css">
+            
             /* USER PROFILE PAGE */
  .card {
     margin-top: 20px;
@@ -94,27 +100,16 @@
     
         </style>
        
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Menu Page</title>
-        <script>$(document).ready(function() {
-$(".btn-pref .btn").click(function () {
-    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-    // $(".tab").addClass("active"); // instead of this do the below 
-    $(this).removeClass("btn-default").addClass("btn-primary");   
-});
-});
-        </script>
+        
     </head>
     <body>
-            
+          
         <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
-           
+           <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
         </div>
         <div class="useravatar">
             <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
@@ -135,7 +130,7 @@ $(".btn-pref .btn").click(function () {
         </div>
         <div class="btn-group" role="group">
             <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Personal Infos</div>
+              <div class="hidden-xs">Personal Infos</div> 
             </button></a>
         </div>
         <div class="btn-group" role="group">
@@ -144,12 +139,12 @@ $(".btn-pref .btn").click(function () {
             </button></a>
         </div>
         <div class="btn-group" role="group">
-             <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                <div class="hidden-xs">Search</div>
+            <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span></h4>
+
                  </button></a>
         </div>
         <div class="btn-group" role="group">
-            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                 <div class="hidden-xs">Log Out</div>
                 </button></a>
         </div>
@@ -157,15 +152,51 @@ $(".btn-pref .btn").click(function () {
          
         <div class="well">
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
-          <h3 style=" text-align: center">Welcome</h3>
+        <div class="tab-pane fade in active">
+            <H3><B>Search for Player</B></H3>
+             <input type="text" name="texts" id="mytext" placeholder="Enter Username"/>
+            <table><div id="text"></div></table>   
+           
         </div>
-        
       </div>
     </div>
     
-    </div>
-          
+    </div> 
+        
+        <script>
+            $(document).ready(function() {
+                
+                $(".btn-pref .btn").click(function () {                    
+                 $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
     
-    </body>
+                $(this).removeClass("btn-default").addClass("btn-primary");   
+                });
+
+              $("#mytext").keyup(function(){
+                                    
+                  var text=$(this).val();                 
+                    $.ajax({
+                      url:'find.htm?texts='+text,
+                      
+                      contentType:'application/json',
+                      success: function (result){
+                          $("#text").empty();
+                          var jsonobj=$.parseJSON(result);
+
+                          $.each(jsonobj,function(i,item){
+                              $tr=$('<tr>').append(
+                                      $('<td>').text(item)
+                              );
+                              $("#text").append($tr);      
+                            });                               
+                      } 
+                    });              
+                                
+                });
+                             
+            });
+          
+          
+          </script>
+   </body>
 </html>

@@ -10,6 +10,7 @@ import Model.User;
 import java.util.List;
 import Model.User;
 import java.io.IOException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -42,7 +43,18 @@ public class UserDao {
         em.find(User.class,us);
         em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
-    
+    public List<User> check(String s){
+      
+       Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
+       List<User> usr=q.getResultList();
+      
+       return usr;
+    }
+     public int change(String s){
+        int y = Integer.parseInt(s);
+             
+       return y;
+    }
 
     @Transactional
     public List<GameRequest> fetchincomingrequests() {
