@@ -52,10 +52,10 @@ public class Review implements Serializable {
     @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
     @ManyToOne(optional = false)
     private CourtReservation match;
-    @JoinColumn(name = "reviewed", referencedColumnName = "username")
+    @JoinColumn(name = "reviewed", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User reviewed;
-    @JoinColumn(name = "reviewer", referencedColumnName = "username")
+    @JoinColumn(name = "reviewer", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User reviewer;
 

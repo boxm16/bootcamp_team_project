@@ -47,12 +47,12 @@ public class GameRequest implements Serializable {
     private String status;
     @Column(name = "text")
     private String text;
+    @JoinColumn(name = "request_receiver", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User requestReceiver;
     @JoinColumn(name = "match", referencedColumnName = "CourtReservationID")
     @ManyToOne(optional = false)
     private CourtReservation match;
-    @JoinColumn(name = "request_receiver", referencedColumnName = "username")
-    @ManyToOne(optional = false)
-    private User requestReceiver;
 
     public GameRequest() {
     }
@@ -98,20 +98,20 @@ public class GameRequest implements Serializable {
         this.text = text;
     }
 
-    public CourtReservation getMatch() {
-        return match;
-    }
-
-    public void setMatch(CourtReservation match) {
-        this.match = match;
-    }
-
     public User getRequestReceiver() {
         return requestReceiver;
     }
 
     public void setRequestReceiver(User requestReceiver) {
         this.requestReceiver = requestReceiver;
+    }
+
+    public CourtReservation getMatch() {
+        return match;
+    }
+
+    public void setMatch(CourtReservation match) {
+        this.match = match;
     }
 
     @Override

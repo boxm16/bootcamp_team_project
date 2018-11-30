@@ -49,15 +49,15 @@ public class CourtReservation implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
-    @JoinColumn(name = "booker", referencedColumnName = "username")
-    @ManyToOne
-    private User booker;
-    @JoinColumn(name = "courtname", referencedColumnName = "name")
+    @JoinColumn(name = "court_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Court courtname;
+    private Court courtId;
     @JoinColumn(name = "hours", referencedColumnName = "hours_id")
     @ManyToOne(optional = false)
     private Hours hours;
+    @JoinColumn(name = "booker", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User booker;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
     private Collection<GameRequest> gameRequestCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "match")
@@ -91,20 +91,12 @@ public class CourtReservation implements Serializable {
         this.date = date;
     }
 
-    public User getBooker() {
-        return booker;
+    public Court getCourtId() {
+        return courtId;
     }
 
-    public void setBooker(User booker) {
-        this.booker = booker;
-    }
-
-    public Court getCourtname() {
-        return courtname;
-    }
-
-    public void setCourtname(Court courtname) {
-        this.courtname = courtname;
+    public void setCourtId(Court courtId) {
+        this.courtId = courtId;
     }
 
     public Hours getHours() {
@@ -113,6 +105,14 @@ public class CourtReservation implements Serializable {
 
     public void setHours(Hours hours) {
         this.hours = hours;
+    }
+
+    public User getBooker() {
+        return booker;
+    }
+
+    public void setBooker(User booker) {
+        this.booker = booker;
     }
 
     @XmlTransient

@@ -193,26 +193,7 @@
                     });              
                                 
                 });
-         
-              $("#logout").click(function() {                   
-                 return $.ajax({
-                     type:"POST",
-                    url:"http://localhost:8080/seek_play/index.htm",
-                    success: function(data) {
-                        $("#mytext").ajaxStop();
-                    }
-                  });
-                });
-               
-               function logout() {
-                $.ajax({
-                    type: 'GET',
-                    url: '/UserController/user',
-                    
-                    success: function (data) { alert(data.result); }
-                });
-                }
-        
+                             
             });
           
           

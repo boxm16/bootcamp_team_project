@@ -100,11 +100,17 @@ public class UserController {
        fr.setTeamwork(10);
        fr.setTechnique(5);
        fr.setAthletism(6);
+       int teamwork=fr.getTeamwork()*10;
+       int technique=fr.getTechnique()*10;
+       int athletism=fr.getAthletism()*10;
        double grade=((fr.getAthletism()+fr.getTechnique()+fr.getTeamwork())/3);
        double g=(grade/2);
        model.addAttribute("users", user);       
-       model.addAttribute("grade",fr);     
+       model.addAttribute("team",teamwork);
+       model.addAttribute("athlet",athletism);
+       model.addAttribute("tech",technique);
        model.addAttribute("star", g);
+       model.addAttribute("stars",(grade*10));
         return "starpage";
     }
     @RequestMapping(value="/event.htm",method=RequestMethod.GET)

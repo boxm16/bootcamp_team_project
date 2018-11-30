@@ -40,6 +40,11 @@ public class UserDao {
       
        return usr;
     }
+     public int change(String s){
+        int y = Integer.parseInt(s);
+             
+       return y;
+    }
 
 
 }

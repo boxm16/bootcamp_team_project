@@ -6,10 +6,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> 
     <head>        
         
+        
+        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,7 +99,32 @@
 .btn-pref .btn {
     -webkit-border-radius:0 !important;
 }
-    
+ /*---------- star rating ----------*/
+.flex-display {
+    display: flex;
+}
+.star-rating {
+    display: flex;
+    align-items: center;
+    font-size: 3em;
+    justify-content: center;
+    margin-top: 50px;
+}
+.back-stars {
+    display: flex;
+    color: #bb5252;
+    position: relative;
+    text-shadow: 4px 4px 10px #843a3a;
+}
+.front-stars {
+    display: flex;
+    color: #FFBC0B;
+    overflow: hidden;
+    position: absolute;
+    text-shadow: 2px 2px 5px #d29b09;
+    top: 0;
+}
+
         </style>
        
         <title>Menu Page</title>
@@ -157,24 +185,70 @@ $(".btn-pref .btn").click(function () {
          
     <div class="well">
       <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
+        <div class="tab-pane fade in active center" id="tab1">
           <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
+            <div class="row center">
+                <div class="col-xs-12 col-md-12">
                     <div class="well well-sm">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6 text-center">
+                            <div class="col-xs-12 col-md-12 text-center">
                                 <h1 class="rating-num">${star}</h1>
-                                <div class="rating">
-                                    <%int i;%>
-                                    <% for(i=0;i<5;i++){;%>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <%}%>
-                                    <%int s=5-5;%>
-                                    <% for(i=0;i<s;i++){;%>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <%}%>
-                                    
+                                <div class="star-rating">
+                                    <div class="back-stars">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                                        <div class="front-stars" style="width:${stars}%">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-12 col-md-12 text-center">
+                                <div class="row rating-desc">
+                                    <div class="col-xs-2 col-md-2 text-right">
+                                        <span class="fa fa-group" hidden=true"></span>Teamwork
+                                    </div>
+                                    <div class="col-xs-8 col-md-9">
+                                        <div class="progress progress-striped">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="10" style="width:${team}%">
+                                                <span class="sr-only">${team}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end 5 -->
+                                    <div class="col-xs-2 col-md-2 text-right">
+                                        <span class="fa fa-heartbeat"></span>Athletism
+                                    </div>
+                                    <div class="col-xs-8 col-md-9">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: ${athlet}%">
+                                                <span class="sr-only">${athlet}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end 4 -->
+                                   <div class="col-xs-2 col-md-2 text-right">
+                                        <span class="fa fa-line-chart"></span>Technique
+                                    </div>
+                                    <div class="col-xs-8 col-md-9">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style="width:${tech}%">
+                                                <span class="sr-only">${tech}%</span>
+                                            </div>
+                                        </div>
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
