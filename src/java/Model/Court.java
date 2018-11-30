@@ -50,6 +50,7 @@ public class Court implements Serializable {
     private String address;
     @Column(name = "phone")
     private Integer phone;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courtId")
     private Collection<CourtReservation> courtReservationCollection;
 

@@ -48,12 +48,12 @@ public class EventController {
     @RequestMapping(value = "/findFreeTimeSlotsByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
 
     public @ResponseBody
-    String finduserByRest(@RequestParam(value = "userinput") String date, @RequestParam(value = "userinput2") String court) throws JsonProcessingException {
+    String finduserByRest(@RequestParam(value = "userinput") String date, @RequestParam(value = "userinput2") String courtID) throws JsonProcessingException {
 
-        System.out.println(court);
+        System.out.println(courtID);
         
-        List<CourtReservation> list = courtReservationDao.getFreeTimeSlots(date);
-
+        List<CourtReservation> list = courtReservationDao.getFreeTimeSlots(date, courtID);
+   System.out.println(courtID);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(list);
 

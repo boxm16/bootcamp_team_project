@@ -39,6 +39,7 @@ public class Hours implements Serializable {
     private Integer hoursId;
     @Column(name = "hour")
     private String hour;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hours")
     private Collection<CourtReservation> courtReservationCollection;
 

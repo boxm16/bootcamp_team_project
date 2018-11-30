@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -58,14 +59,27 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    
+     @Transient
+    private String password_confirmation;
+   @JsonIgnore  
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "booker")
     private Collection<CourtReservation> courtReservationCollection;
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requestReceiver")
     private Collection<GameRequest> gameRequestCollection;
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewed")
     private Collection<Review> reviewCollection;
+   @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewer")
     private Collection<Review> reviewCollection1;
+   @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    private Collection<Message> messageCollection;
+   @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    private Collection<Message> messageCollection1;
 
     public User() {
     }
@@ -129,6 +143,15 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPassword_confirmation() {
+        return password_confirmation;
+    }
+
+    public void setPassword_confirmation(String password_confirmation) {
+        this.password_confirmation = password_confirmation;
+    }
+    
 
     @XmlTransient
     public Collection<CourtReservation> getCourtReservationCollection() {
