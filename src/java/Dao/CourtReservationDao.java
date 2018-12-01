@@ -52,5 +52,12 @@ public class CourtReservationDao {
       return result;
 */
     }
+    
+    @Transactional
+    public void insert(CourtReservation courtReservation) {
+
+        em.persist(courtReservation);
+
+    }
 
 }

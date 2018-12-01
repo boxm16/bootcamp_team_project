@@ -25,6 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -48,6 +49,7 @@ public class CourtReservation implements Serializable {
     @Basic(optional = false)
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @JoinColumn(name = "court_id", referencedColumnName = "id")
     @ManyToOne(optional = false)

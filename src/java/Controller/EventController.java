@@ -17,9 +17,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,13 +60,37 @@ public class EventController {
     public @ResponseBody
     String finduserByRest(@RequestParam(value = "userinput") String date, @RequestParam(value = "userinput2") String courtID) throws JsonProcessingException {
 
-        System.out.println(courtID);
-        
+      
+
         List<CourtReservation> list = courtReservationDao.getFreeTimeSlots(date, courtID);
-   System.out.println(courtID);
+        
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(list);
 
+    }
+    
+     @InitBinder
+public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
+    final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));    
+}
+    
+
+    @RequestMapping(value = "/handleEventCreationForm.htm", method = RequestMethod.GET)
+    public String filledForm(ModelMap model, HttpSession session, CourtReservation courtReservation) {
+courtReservation.setBooker((User) session.getAttribute("user"));
+        // CourtReservation courtReservation = new CourtReservation();
+        //model.addAttribute("courtReservation", courtReservation);
+        // List<Court> courtList = courtDao.listAllCourts();
+        // model.addAttribute("courtList", courtList);
+        System.out.println("Booker:"+courtReservation.getBooker().getUsername());
+      
+        System.out.println("CourtId.id"+courtReservation.getCourtId().getId());
+     System.out.println("Reservation Date"+courtReservation.getDate());
+        System.out.println("Reservation time slot(hours)"+courtReservation.getHours().getHoursId());
+        
+        courtReservationDao.insert(courtReservation);
+        return "booking_manage";
     }
 
 }
