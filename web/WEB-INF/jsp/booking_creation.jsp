@@ -24,27 +24,28 @@
         <script>
 
             $(document).ready(function () {
-                
+
                 $("#datepicker").change(function () {
-                     $("#output").empty()
+                    $("#output").empty()
                     var text = $(this).val();
-                    var text2=$("#court").val();
+                    var text2 = $("#court").val();
                     //alert(text2);
                     $.ajax({
-                        url: 'findFreeTimeSlotsByRest.htm?userinput=' + text+'&userinput2='+text2,
+                        url: 'findFreeTimeSlotsByRest.htm?userinput=' + text + '&userinput2=' + text2,
                         contentType: 'application/json',
                         success: function (result) {
-                           // alert(result)
+                            //alert(result)
                             var jsonobj = $.parseJSON(result);
-                           
+
                             $.each(jsonobj, function (i, item) {
-                               // alert(item)
-                                $tr = $('<tr>').append(
-                                       // $('<td>').text(item.username),
-                                        $('<h1><td></h1>').text(item.hour)
+
+                                $tr = $("#output").append(
+                                        // $('<td>').text(item.username),
+                                        $('<option value=' + item.hoursId + '>').text(item.hour)
 
                                         );
-                                $("#output").append($tr);
+
+                                // $("#output").append($tr);
                             });
                         }
                     });
@@ -57,50 +58,56 @@
     <body>
         <h1>Let's create a new event</h1>
         Select a Court;
-        <select id="court" name="court" onchange="myFunction()">
-            <c:forEach items="${courtList}" var="courtList">
-                <option value="${courtList.id}">${courtList.name}</option>
-            </c:forEach>
-        </select>
-        
+
+
 
         <div id="demo">
         </div>
 
 
 
-        <input id="datepicker" type="date" name="bday">
-        <div id="output"></div>
-
-        <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/controlerName.htm">
-       
-            
-            
-            
-            
-            
-            <table>
-                <tr>
-                    <td>Hours</td>
-                    <td><form:select path="hours" items="${hours}" itemLable="Hours" itemValue="hours"></form:select>
-                                 
-                </tr>
-            </table>
-        </form:form>
 
 
-        <script>
-            function timeSlots() {
-                var selectedDate = document.getElementById("datepicker").value;
-                document.getElementById("demo").innerHTML = " <h1>You selected date:" + selectedDate + "</h1>";
-            }
 
-            function myFunction() {
+        <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
 
-                var x = document.getElementById("court").value;
-                document.getElementById("demo").innerHTML = " <h1>You selected court:" + x + "</h1>";
-            }
-        </script>
 
-    </body>
+            <form:select id="court" name="court" path="courtId.id" onchange="myFunction()">
+                <c:forEach items="${courtList}" var="courtList">
+                <option value="${courtList.id}">${courtList.name}</option>
+            </c:forEach>
+        </form:select>
+
+     
+     <form:input id="datepicker" type="date"  name="date" path="date"/>
+
+        <form:select id="output" path="hours.hoursId" ></form:select>
+
+
+
+        <form:button id="sh" onclick="show()">Create Event</form:button>
+    </form:form>
+
+
+    <script>
+
+        function show() {
+            var ss = document.getElementById("output").value;
+            alert(ss);
+        }
+        function timeSlots() {
+            var selectedDate = document.getElementById("datepicker").value;
+            document.getElementById("demo").innerHTML = " <h1>You selected date:" + selectedDate + "</h1>";
+        }
+
+        function myFunction() {
+
+            var x = document.getElementById("court").value;
+            alert(x);
+            document.getElementById("demo").innerHTML = " <h1>You selected court:" + x + "</h1>";
+            document.getElementById("hidden_court").value = x;
+        }
+    </script>
+
+</body>
 </html>
