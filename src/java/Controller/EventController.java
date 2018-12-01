@@ -48,16 +48,15 @@ public class EventController {
     @Autowired
     private CourtReservationDao courtReservationDao;
 
-    @RequestMapping(value = "/booking_creation.htm", method = RequestMethod.GET)
-    public String emptyEventForm(ModelMap model) {
+    @RequestMapping(value = "/booking_manage.htm", method = RequestMethod.GET)
+    public String emptyEventForm(ModelMap model, HttpSession session) {
 
         CourtReservation courtReservation = new CourtReservation();
         model.addAttribute("courtReservation", courtReservation);
 
-        List<Court> courtList = courtDao.listAllCourts();
-        model.addAttribute("courtList", courtList);
-
-        return "booking_creation";
+        listCourts();
+        listMyActiveReservations(session);
+        return "booking_manage";
     }
 
     @RequestMapping(value = "/findFreeTimeSlotsByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
@@ -94,26 +93,25 @@ public class EventController {
         return "booking_manage";
     }
 
-    @RequestMapping(value = "/booking_manage.htm", method = RequestMethod.GET)
-    public String managing(ModelMap model, HttpSession session) {
-
-        listMyActiveReservations(session);
-        return "booking_manage";
-    }
-
     public void listMyActiveReservations(HttpSession session) {
         List<CourtReservation> myActiveReservationList = courtReservationDao.showMyActiveEvents(session);
         servletContext.setAttribute("myActiveReservationList", myActiveReservationList);
     }
 
-    
-   
-        @RequestMapping(value = "/booking_delete.htm", method = RequestMethod.GET)
-    public String deleteMyEvent( @RequestParam("id") String id , HttpSession session) {
+    public void listCourts() {
+        List<Court> courtList = courtDao.listAllCourts();
+        servletContext.setAttribute("courtList", courtList);
+    }
+
+    @RequestMapping(value = "/booking_delete.htm", method = RequestMethod.GET)
+    public String deleteMyEvent(ModelMap model, @RequestParam("id") String id, HttpSession session) {
 
         courtReservationDao.deleteCourtReservationByID(id);
-        
         listMyActiveReservations(session);
+
+        CourtReservation courtReservation = new CourtReservation();
+        model.addAttribute("courtReservation", courtReservation);
+
         return "booking_manage";
     }
 

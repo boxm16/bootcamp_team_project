@@ -58,21 +58,13 @@
 
 
         <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-
-
             <form:select id="court" name="court" path="courtId.id">
                 <c:forEach items="${courtList}" var="courtList">
                 <option value="${courtList.id}">${courtList.name}</option>
             </c:forEach>
         </form:select>
-
-
         <form:input id="datepicker" type="date"  name="date" path="date"/>
-
         <form:select id="output" path="hours.hoursId" ></form:select>
-
-
-
         <form:button>Create Event</form:button>
     </form:form>
 
