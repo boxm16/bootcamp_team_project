@@ -16,7 +16,7 @@
 
         <a href="http://localhost:8080/seek_play/goToReviewForm.htm">Review Player</a><br>
         <hr>
-          <a href="http://localhost:8080/seek_play/booking_creation.htm">Go to booking Creation</a>
+          <a href="http://localhost:8080/seek_play/booking_manage.htm">Go to booking room</a>
         
     </body>
 </html>

@@ -42,10 +42,7 @@
                                 $tr = $("#output").append(
                                         // $('<td>').text(item.username),
                                         $('<option value=' + item.hoursId + '>').text(item.hour)
-
                                         );
-
-                                // $("#output").append($tr);
                             });
                         }
                     });
@@ -60,53 +57,31 @@
         Select a Court;
 
 
-
-        <div id="demo">
-        </div>
-
-
-
-
-
-
         <form:form modelAttribute="courtReservation" method="GET" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
 
 
-            <form:select id="court" name="court" path="courtId.id" onchange="myFunction()">
+            <form:select id="court" name="court" path="courtId.id">
                 <c:forEach items="${courtList}" var="courtList">
                 <option value="${courtList.id}">${courtList.name}</option>
             </c:forEach>
         </form:select>
 
-     
-     <form:input id="datepicker" type="date"  name="date" path="date"/>
+
+        <form:input id="datepicker" type="date"  name="date" path="date"/>
 
         <form:select id="output" path="hours.hoursId" ></form:select>
 
 
 
-        <form:button id="sh" onclick="show()">Create Event</form:button>
+        <form:button>Create Event</form:button>
     </form:form>
 
 
     <script>
 
-        function show() {
-            var ss = document.getElementById("output").value;
-            alert(ss);
-        }
-        function timeSlots() {
-            var selectedDate = document.getElementById("datepicker").value;
-            document.getElementById("demo").innerHTML = " <h1>You selected date:" + selectedDate + "</h1>";
-        }
 
-        function myFunction() {
 
-            var x = document.getElementById("court").value;
-            alert(x);
-            document.getElementById("demo").innerHTML = " <h1>You selected court:" + x + "</h1>";
-            document.getElementById("hidden_court").value = x;
-        }
+
     </script>
 
 </body>

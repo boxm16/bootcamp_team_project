@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Create new event</h1>
+        <a href="${pageContext.request.contextPath}/booking_creation.htm"><h1>Delete booking</h1></a><br/>
         <h1>Modify your bookings</h1>
 
     </body>

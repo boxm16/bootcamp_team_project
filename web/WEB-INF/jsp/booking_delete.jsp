@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Select a booking to delete</h1>
+        
     </body>
 </html>
