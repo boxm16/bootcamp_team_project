@@ -35,34 +35,40 @@ public class UserDao {
 
         em.persist(user);
     }
-    public void updatepic(String us, MultipartFile file) throws IOException{
-        em.find(User.class,us);
-        em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
+
+    public void updatepic(String us, MultipartFile file) throws IOException {
+        em.find(User.class, us);
+        em.createQuery("Update user SET profileimage='" + file.getInputStream() + "'WHERE username='" + us + "';").executeUpdate();
     }
-    public void updateinfos(String us, String n, String ln) throws IOException{
-        em.find(User.class,us);
-        em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
+
+    public void updateinfos(String us, String n, String ln) throws IOException {
+        em.find(User.class, us);
+        em.createQuery("Update user SET firstname='" + n + "',lastname='" + ln + "' WHERE username='" + us + "';").executeUpdate();
     }
-    public List<User> check(String s){
-      
-       Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
-       List<User> usr=q.getResultList();
-      
-       return usr;
+
+    public List<User> check(String s) {
+
+        Query q = em.createNativeQuery("SELECT username FROM user WHERE username LIKE '" + s + "%';");
+        List<User> usr = q.getResultList();
+
+        return usr;
     }
-     public int change(String s){
+
+    public int change(String s) {
         int y = Integer.parseInt(s);
-             
-       return y;
+
+        return y;
     }
 
     @Transactional
-    public List<GameRequest> fetchincomingrequests() {
+    public List<GameRequest> fetchincomingrequests(User requester) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
-                + " join court_reservation on `match`=CourtReservationID"
-                + " join hours h on court_reservation.hours = h.hours_id\n"
-                + "where request_receiver='alex' and status is null order by date", GameRequest.class);
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
+" join court_reservation on `match`=CourtReservationID\n" +
+" join hours h on court_reservation.hours = h.hours_id\n" +
+"join user on game_request.request_receiver = user.user_id\n" +
+"  where booker=(select user_id from user where username='"+requester.getUsername()+"')\n" +
+"and status is null order by date;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
