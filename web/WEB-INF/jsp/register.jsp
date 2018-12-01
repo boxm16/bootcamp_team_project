@@ -1,53 +1,112 @@
-<%-- 
-    Document   : emptyForm
-    Created on : Nov 2, 2018, 7:30:30 PM
-    Author     : Michail Sitmalidis
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Register JSP</h1>
+        <section class="login-block">
+            <div class="container">
+                <div class="row">
 
-        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/registerFormHandling.htm" method="POST">  
-            <table>
-                <tr>
-                    <td> <spring:label path="username">Username</spring:label></td>   
-                    <td> <spring:input path="username"/> </td>
-                    <td> <spring:errors path="username" cssClass="error"/></td>
-                </tr>
 
-                <tr>
-                    <td> <spring:label path="firstname">Firstname</spring:label></td>   
-                    <td> <spring:input path="firstname"/> </td>
-                    <td><spring:errors path="firstname" cssClass="error"/></td>
-                </tr>
-                <tr>
-                    <td> <spring:label path="lastname">Lastname</spring:label></td>   
-                    <td> <spring:input path="lastname"/> </td>
-                    <td><spring:errors path="lastname" cssClass="error"/></td>
-                </tr>
+                    <spring:form modelAttribute="user" cssClass="login-form" action="${pageContext.request.contextPath}/registerFormHandling.htm" method="POST">  
+                        <div class="col-md-4 login-sec">
+                            <h2 class="text-center">Create your account</h2>
+                            <div class="form-group">
+                                <spring:label path="username" cssClass="text-uppercase">USERNAME</spring:label>
+                                <spring:input  cssClass="form-control" path="username"/> 
+                                <spring:errors path="username" cssClass="error"/>
 
-                <tr>
-                    <td> <spring:label path="password">Password</spring:label></td>   
-                    <td> <spring:password path="password"/> </td>
-                    <td><spring:errors path="password" cssClass="error"/></td>
-                </tr>
+                            </div>  
+                            <div class="form-group">
+                                <spring:label path="firstname" cssClass="text-uppercase">FIRSNAME</spring:label>
+                                <spring:input  cssClass="form-control" path="firstname"/> 
+                                <spring:errors path="firstname" cssClass="error"/>
 
-                <tr>
-                    <td> <spring:label path="password_confirmation">Password Confirmation</spring:label></td>   
-                    <td> <spring:password path="password_confirmation"/> </td>
-                    <td><spring:errors path="password_confirmation" cssClass="error"/></td>
-                </tr>
+                            </div>  
+                            <div class="form-group">
+                                <spring:label path="lastname" cssClass="text-uppercase">LASTNAME</spring:label>
+                                <spring:input  cssClass="form-control" path="lastname"/> 
+                                <spring:errors path="lastname" cssClass="error"/>
 
-            </table>
-            <input type="submit">
-        </spring:form> 
+                            </div>  
+                            <div class="form-group">
+                                <spring:label path="password" cssClass="text-uppercase">PASSWORD</spring:label>
+                                <spring:input  cssClass="form-control" path="password"/> 
+                                <spring:errors path="password" cssClass="error"/>
+
+                            </div>  
+                            <div class="form-group">
+                                <spring:label path="password_confirmation" cssClass="text-uppercase">CONFIRM PASSWORD</spring:label>
+                                <spring:input  cssClass="form-control" path="password_confirmation"/> 
+                                <spring:errors path="password_confirmation" cssClass="error"/>
+
+                            </div>  
+
+                            <button type="submit" id="submit" class="btn btn-login float-right">Submit</button>
+
+                            <input type="submit" id="submit" class="btn btn-login float-right">
+                        </div>
+
+                        <div class="carousel fade-carousel slide col-md-8 banner-sec" data-ride="carousel" data-interval="4000" id="bs-carousel">
+                            <!-- Overlay -->
+                            <div class="overlay"></div>
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#bs-carousel" data-slide-to="1"></li>
+                                <li data-target="#bs-carousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item slides active">
+                                    <div class="slide-1"></div>
+                                    <div class="hero">
+                                        <hgroup>
+                                            <h1>We are creative</h1>        
+                                            <h3>Get start your next awesome project</h3>
+                                        </hgroup>
+                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                                    </div>
+                                </div>
+                                <div class="item slides">
+                                    <div class="slide-2"></div>
+                                    <div class="hero">        
+                                        <hgroup>
+                                            <h1>We are smart</h1>        
+                                            <h3>Get start your next awesome project</h3>
+                                        </hgroup>       
+                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                                    </div>
+                                </div>
+                                <div class="item slides">
+                                    <div class="slide-3"></div>
+                                    <div class="hero">        
+                                        <hgroup>
+                                            <h1>We are amazing</h1>        
+                                            <h3>Get start your next awesome project</h3>
+                                        </hgroup>
+                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </spring:form> 
+
+
+                </div>           
+            </div>               
+        </section>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     </body>
 </html>
