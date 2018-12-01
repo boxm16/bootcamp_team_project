@@ -40,13 +40,13 @@
                             </div>  
                             <div class="form-group">
                                 <spring:label path="password" cssClass="text-uppercase">PASSWORD</spring:label>
-                                <spring:input  cssClass="form-control" path="password"/> 
+                                <spring:password  cssClass="form-control" path="password"/> 
                                 <spring:errors path="password" cssClass="error"/>
 
                             </div>  
                             <div class="form-group">
                                 <spring:label path="password_confirmation" cssClass="text-uppercase">CONFIRM PASSWORD</spring:label>
-                                <spring:input  cssClass="form-control" path="password_confirmation"/> 
+                                <spring:password   cssClass="form-control" path="password_confirmation"/> 
                                 <spring:errors path="password_confirmation" cssClass="error"/>
 
                             </div>  
