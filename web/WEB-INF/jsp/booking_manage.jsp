@@ -21,11 +21,14 @@
         <table border="1">
             <c:forEach items="${myActiveReservationList}" var="current">
                 <tr>
-                    <td><c:out value="${current.courtReservationID}" /><td>
+
                     <td><c:out value="${current.courtId.name}" /><td>
                     <td><c:out value="${current.date}" /><td>
                     <td><c:out value="${current.hours.hour}" /><td>
-                </tr>
+                    <td><c:out value="${current.courtReservationID}" /><td>
+                    <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
+
+                    </tr>
             </c:forEach>
         </table>
 

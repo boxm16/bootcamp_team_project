@@ -95,7 +95,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/booking_manage.htm", method = RequestMethod.GET)
-    public String deleteMyEvent(ModelMap model, HttpSession session) {
+    public String managing(ModelMap model, HttpSession session) {
 
         listMyActiveReservations(session);
         return "booking_manage";
@@ -104,6 +104,17 @@ public class EventController {
     public void listMyActiveReservations(HttpSession session) {
         List<CourtReservation> myActiveReservationList = courtReservationDao.showMyActiveEvents(session);
         servletContext.setAttribute("myActiveReservationList", myActiveReservationList);
+    }
+
+    
+   
+        @RequestMapping(value = "/booking_delete.htm", method = RequestMethod.GET)
+    public String deleteMyEvent( @RequestParam("id") String id , HttpSession session) {
+
+        courtReservationDao.deleteCourtReservationByID(id);
+        
+        listMyActiveReservations(session);
+        return "booking_manage";
     }
 
 }
