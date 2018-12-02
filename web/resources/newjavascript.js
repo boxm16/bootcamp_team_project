@@ -9,15 +9,17 @@ var $thumbs = $('.chat_people').click(function (e) {
 
 var name = document.getElementsByClassName(".chat_people");
 $(".chat_people").click(function () {
-
     var div = this.textContent;
     var text1 = $(this).find('p').text();
     var user = $(this).find('h5').justtext().trim();
     var date = $(this).find('span').text();
-    var time = $(this).find('a').text();
+    var time = $(this).find('a#text').text();
+    var id = $(this).find('a#incoming_id').text();
 
     $("div.received_msg").text(user + " send you a game request for " + date + " at" + time + " ! Read the message: " + text1);
-    document.getElementById("reply").action = "/seek_play/accept.htm?username=" + user + "&date=" + date + "&time=" + time;
+    document.getElementById("accept").action = "/seek_play/accept.htm?id=" + id;
+    document.getElementById("deny").action = "/seek_play/deny.htm?id=" + id;
+
 //alert(user+"test");
 });
 
@@ -42,8 +44,8 @@ function myFunction() {
             mainFrameTwo.style.display == "none" ? "block" : "none");
 }
 
-$(document).ready(function(){
-    $(".btn").click(function(){
+$(document).ready(function () {
+    $(".btn").click(function () {
         $("div.received_msg").empty();
-   });
     });
+});

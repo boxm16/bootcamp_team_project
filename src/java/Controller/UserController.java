@@ -66,12 +66,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/accept.htm", method = RequestMethod.POST)
-    public String answer_request(@RequestParam("username") String name, @RequestParam("date") String date, @RequestParam("time") String time, ModelMap model) {
+    public String positive_request(@RequestParam("id") String id, ModelMap model) {
 
-        userDao.submitrequest(name, date, time);
+        userDao.submitaccept(id);
         return "redirect: messenger3.htm";
 
     }
+    
+    @RequestMapping(value = "/deny.htm", method = RequestMethod.POST)
+    public String negative_request(@RequestParam("id") String id, ModelMap model) {
+
+        userDao.submitdeny(id);
+        return "redirect: messenger3.htm";
+
+    }
+    
+    
 
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
