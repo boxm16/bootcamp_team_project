@@ -7,7 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html> 
-    <head>       
+    <head>        
+        
+        
+        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -191,8 +194,8 @@ $(".btn-pref .btn").click(function () {
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/unfinished.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                    <div class="hidden-xs">Unfinished Reviews</div>
+                <a href="http://localhost:8080/seek_play/unfinished.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-primary" data-toggle="tab"><h4><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></h4>
+                   
                 </button></a>
             </div>            
         </div>     
