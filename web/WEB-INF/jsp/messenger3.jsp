@@ -33,7 +33,7 @@
                                     <div class="chat_people">
                                         <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                                         <div class="chat_ib"><a id="incoming_id" style="display: block">${incoming_requests.id}</a>
-                                            <h5>${incoming_requests.requestReceiver.username}<span class="chat_date">${incoming_request.match.date}</span><br> <a style="float: right" id="text">${incoming_request.match.hours.hour}</a></h5>
+                                            <h5>${incoming_requests.match.booker.username}<span class="chat_date">${incoming_request.match.date}</span><br> <a style="float: right" id="text">${incoming_request.match.hours.hour}</a></h5>
                                             <p class="plain_message">${incoming_requests.match.courtId.name}</p>
                                             <h6 >${incoming_requests.text}</h4>
                                                 <br>
