@@ -33,19 +33,59 @@ jQuery.fn.justtext = function () {
 
 };
 
-function myFunction() {
+//function myFunction() {
+//    var mainFrameOne = document.getElementById("incoming");
+//    var mainFrameTwo = document.getElementById("outgoing");
+//    var mainFrameThree = document.getElementById("answered");
+//
+//
+//
+//    mainFrameOne.style.display = (
+//            mainFrameOne.style.display == "none" ? "block" : "none");
+//    mainFrameTwo.style.display = (
+//            mainFrameTwo.style.display == "none" ? "block" : "none");
+//    mainFrameThree.style.display = (
+//            mainFrameTwo.style.display == "none" ? "block" : "none");
+//}
+function myFunction1() {
     var mainFrameOne = document.getElementById("incoming");
     var mainFrameTwo = document.getElementById("outgoing");
+    var mainFrameThree = document.getElementById("answered");
 
 
-    mainFrameOne.style.display = (
-            mainFrameOne.style.display == "none" ? "block" : "none");
-    mainFrameTwo.style.display = (
-            mainFrameTwo.style.display == "none" ? "block" : "none");
+
+    mainFrameOne.style.display = "block";
+    mainFrameTwo.style.display = "none";
+    mainFrameThree.style.display = "none";
 }
+;
+function myFunction2() {
+    var mainFrameOne = document.getElementById("incoming");
+    var mainFrameTwo = document.getElementById("outgoing");
+    var mainFrameThree = document.getElementById("answered");
+
+
+
+    mainFrameOne.style.display = "none";
+    mainFrameTwo.style.display = "block";
+    mainFrameThree.style.display = "none";
+};
+
+function myFunction3() {
+    var mainFrameOne = document.getElementById("incoming");
+    var mainFrameTwo = document.getElementById("outgoing");
+    var mainFrameThree = document.getElementById("answered");
+
+
+
+    mainFrameOne.style.display = "none";
+    mainFrameTwo.style.display = "none";
+    mainFrameThree.style.display = "block";
+};
 
 $(document).ready(function () {
     $(".btn").click(function () {
         $("div.received_msg").empty();
     });
-});
+}
+);

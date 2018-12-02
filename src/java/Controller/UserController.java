@@ -57,11 +57,12 @@ public class UserController {
 
         List<GameRequest> incoming = userDao.fetchincomingrequests(user);
         model.addAttribute("incoming_requests", incoming);
-        
+
         List<GameRequest> outgoing = userDao.fetchoutgoingrequests(user);
         model.addAttribute("outgoing_requests", outgoing);
-//        List<GameRequest> answered = userDao.fetchansweredrequests();
-//        model.addAttribute("messages3", answered);
+
+        List < GameRequest > answered = userDao.fetchansweredrequests(user);
+        model.addAttribute("answered_requests", answered);
         return "messenger3";
     }
 
@@ -72,7 +73,7 @@ public class UserController {
         return "redirect: messenger3.htm";
 
     }
-    
+
     @RequestMapping(value = "/deny.htm", method = RequestMethod.POST)
     public String negative_request(@RequestParam("id") String id, ModelMap model) {
 
@@ -80,8 +81,6 @@ public class UserController {
         return "redirect: messenger3.htm";
 
     }
-    
-    
 
     @RequestMapping(value = "/goToRegisterForm.htm", method = RequestMethod.GET)
     public String emptyForm(ModelMap model) {
