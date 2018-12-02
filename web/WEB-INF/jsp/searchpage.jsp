@@ -155,7 +155,7 @@
         <div class="tab-pane fade in active">
             <H3><B>Search for Player</B></H3>
              <input type="text" name="texts" id="mytext" placeholder="Enter Username"/>
-            <table><div id="text"></div></table>   
+            <table><div id="text"></div></table>
            
         </div>
       </div>
@@ -180,12 +180,13 @@
                       
                       contentType:'application/json',
                       success: function (result){
+                          
                           $("#text").empty();
                           var jsonobj=$.parseJSON(result);
 
                           $.each(jsonobj,function(i,item){
                               $tr=$('<tr>').append(
-                                      $('<td>').text(item)
+                                      $('<a href="http://localhost:8080/seek_play/user.htm">').text(item)
                               );
                               $("#text").append($tr);      
                             });                               
