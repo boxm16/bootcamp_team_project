@@ -12,12 +12,13 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
 
     </head>
     <body>
 
         <div class="container" id="incoming">
-            <h3 class=" text-center">Requests</h3>
+            <h3 class=" text-center">Incoming Requests</h3>
             <div class="messaging">
                 <div class="inbox_msg">
                     <div class="inbox_people" >
@@ -69,24 +70,24 @@
                                 </div>
         
          <div class="container" id="outgoing" style="display: none">
-            <h3 class=" text-center">Requests</h3>
+            <h3 class=" text-center">Outgoing Requests</h3>
             <div class="messaging">
                 <div class="inbox_msg">
                     <div class="inbox_people" >
                         <div class="headind_srch">
                             <div class="recent_heading">
-                                <h4>Incoming requests</h4>
+                                <h4>Outgoing requests</h4>
                             </div>
                         </div>
                         <div class="inbox_chat">
                             <div class="chat_list">     
-                                <c:forEach items="${incoming_requests}" var="incoming_requests">
+                                <c:forEach items="${outgoing_requests}" var="outgoing_requests">
                                     <div class="chat_people">
                                         <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                                         <div class="chat_ib">
-                                            <h5>whaaaaaaaaaaaaa<span class="chat_date">${incoming_request.match.date}</span><br> <a style="float: right">${incoming_request.match.hours.hour}</a></h5>
-                                            <p class="plain_message">testttttttttttttttttt${incoming_requests.match.courtId.name}</p>
-                                            <h6 >${incoming_requests.text}</h4>
+                                            <h5>${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right">${outgoing_requests.match.hours.hour}</a></h5>
+                                            <p class="plain_message">testttttttttttttttttt${outgoing_requests.match.courtId.name}</p>
+                                            <h6 >${outgoing_requests.text}</h4>
                                                 <br>
                                                 </div>
                                                 </div>
@@ -107,22 +108,18 @@
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <form id="reply" action="" method="POST">
                                                         <div >
                                                             <div class="input_msg_write text-center">
-                                                                <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect" id="accept">Accept</button>
-                                                                <button type="button" class="btn btn-outline-danger btn-rounded waves-effect" id="deny">Deny</button>
-                                                            </div>
+                                                                </div>
                                                         </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
 
-                                <button onclick="myFunction()" >Click me</button>
+        <button onclick="myFunction()" class="btn">Click me</button>
                                 <input type="button" value="incoming"  onClick="location.href = 'index.htm'"/>
-                                <input type="button" value="outgoing"  onClick="location.href = 'messenger3.htm'"/>
+                                <input type="button" value="outgoing"    onClick="location.href = 'messenger3.htm'"/>
                                 <input type="button" value="answered"  onClick="location.href = 'index.htm'"/>
 
                                 <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 

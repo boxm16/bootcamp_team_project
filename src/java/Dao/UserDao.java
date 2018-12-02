@@ -61,26 +61,28 @@ public class UserDao {
     }
 
     @Transactional
-    public List<GameRequest> fetchincomingrequests(User requester) {
+    public List<GameRequest> fetchoutgoingrequests(User requester) {
         List<GameRequest> Conversation;
         Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
 " join court_reservation on `match`=CourtReservationID\n" +
 " join hours h on court_reservation.hours = h.hours_id\n" +
 "join user on game_request.request_receiver = user.user_id\n" +
 "  where booker=(select user_id from user where username='"+requester.getUsername()+"')\n" +
-"and status is null order by date;", GameRequest.class);
+"and status = 'pending' order by date;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
     }
 
     @Transactional
-    public List<GameRequest> fetchoutgoingrequests() {
+    public List<GameRequest> fetchincomingrequests(User request_receiver) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
-                + " join court_reservation on `match`=CourtReservationID"
-                + " join hours h on court_reservation.hours = h.hours_id\n"
-                + "where request_receiver='alex' and status is null order by date", GameRequest.class);//check query
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
+" join court_reservation on `match`=CourtReservationID\n" +
+" join hours h on court_reservation.hours = h.hours_id\n" +
+"join user on game_request.request_receiver = user.user_id\n" +
+"  where request_receiver=(select user_id from user where username='"+request_receiver.getUsername()+"')\n" +
+"and status = 'pending' order by date;", GameRequest.class);//check query
         Conversation = q.getResultList();
 
         return Conversation;
@@ -92,7 +94,7 @@ public class UserDao {
         Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request"
                 + " join court_reservation on `match`=CourtReservationID"
                 + " join hours h on court_reservation.hours = h.hours_id\n"
-                + "where request_receiver='alex' and status is null order by date", GameRequest.class);//check query
+                + "where request_receiver='alex' and status = 'pending' order by date", GameRequest.class);//check query
         Conversation = q.getResultList();
 
         return Conversation;

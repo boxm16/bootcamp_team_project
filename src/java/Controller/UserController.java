@@ -53,12 +53,12 @@ public class UserController {
 
     @RequestMapping(value = "/messenger3.htm", method = RequestMethod.GET)
     public String showmessages(ModelMap model, HttpSession session) {
-        User requester = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
 
-        List<GameRequest> incoming = userDao.fetchincomingrequests(requester);
+        List<GameRequest> incoming = userDao.fetchincomingrequests(user);
         model.addAttribute("incoming_requests", incoming);
         
-        List<GameRequest> outgoing = userDao.fetchoutgoingrequests();
+        List<GameRequest> outgoing = userDao.fetchoutgoingrequests(user);
         model.addAttribute("outgoing_requests", outgoing);
 //        List<GameRequest> answered = userDao.fetchansweredrequests();
 //        model.addAttribute("messages3", answered);
