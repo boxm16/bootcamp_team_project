@@ -156,7 +156,7 @@ $(".btn-pref .btn").click(function () {
             
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">    
             <div class="btn-group" role="group">
-               <a href="http://localhost:8080/seek_play/eventcreate.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+               <a href="http://localhost:8080/seek_play/booking_creation.htm" data-toggle="tab"><button type="button" id="create" class="btn btn-default" ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <div class="hidden-xs">Create</div>
                     </button></a>
             </div>
