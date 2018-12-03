@@ -105,8 +105,9 @@ public class EventController {
 
     @RequestMapping(value = "/booking_delete.htm", method = RequestMethod.GET)
     public String deleteMyEvent(ModelMap model, @RequestParam("id") String id, HttpSession session) {
-
-        courtReservationDao.deleteCourtReservationByID(id);
+        User me = (User) session.getAttribute("user");
+        int userID = me.getUserId();
+        courtReservationDao.deleteCourtReservationByID(id, userID);
         listMyActiveReservations(session);
 
         CourtReservation courtReservation = new CourtReservation();

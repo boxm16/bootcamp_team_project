@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registerFormHandling.htm", method = RequestMethod.POST)
-    public String register(ModelMap model, User user, BindingResult bindingResult) {
+    public String register(ModelMap model, User user, BindingResult bindingResult, HttpSession session) {
 
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -49,6 +49,8 @@ public class UserController {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         userDao.insert(user);
         model.addAttribute("user", user);
+
+        session.setAttribute("user", user);
         return "success_registration";
         //return "myProfile_page";
     }
@@ -59,6 +61,7 @@ public class UserController {
         if (user != null) {
             if (BCrypt.checkpw(password, user.getPassword())) {
                 user.setPassword(null);
+
                 session.setAttribute("user", user);
 
                 String message = "HI " + user.getUsername();
@@ -79,7 +82,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/trialLink.htm", method = RequestMethod.GET)
-    public String Try(ModelMap model) {
+    public String Try(ModelMap model
+    ) {
         User user = userDao.checkUserByUsername("adfdf1");
         if (user != null) {
             model.addAttribute("userFromDB", user);

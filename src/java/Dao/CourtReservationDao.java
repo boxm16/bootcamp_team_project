@@ -74,8 +74,8 @@ public class CourtReservationDao {
     }
     @Transactional
 
-    public void deleteCourtReservationByID(String id) {
-        Query query = em.createNativeQuery("DELETE FROM court_reservation WHERE CourtReservationID='" + id + "';");
+    public void deleteCourtReservationByID(String id, int userID) {
+        Query query = em.createNativeQuery("DELETE FROM court_reservation WHERE CourtReservationID='" + id + "' and booker='"+userID+"';");
         query.executeUpdate();
     }
 
