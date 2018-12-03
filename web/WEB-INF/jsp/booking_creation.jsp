@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
@@ -69,12 +70,7 @@
     </form:form>
 
 
-    <script>
-
-
-
-
-    </script>
-
+    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 </body>
 </html>

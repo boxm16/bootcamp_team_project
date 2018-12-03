@@ -51,7 +51,7 @@
                 <table>
 
                     <td><spring:hidden  path="reviewed.username" id="1"/></td>
-                  
+
 
                     <tr>
                         <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
@@ -84,8 +84,11 @@
                 document.getElementById("demo").innerHTML = " <h1>Evaluate: " + x + "</h1>";
                 document.getElementById("1").innerHTML = " <h1>Avaluate: " + x + "</h1>";
                 document.getElementById("1").value = x;
-              
+
             }
         </script>
+
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>

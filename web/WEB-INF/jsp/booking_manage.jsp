@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
@@ -52,9 +54,9 @@
         </script>
     </head>
     <body>
-    
-  <!--Creation section -->
-  <h1>Let's create a new event</h1>
+
+        <!--Creation section -->
+        <h1>Let's create a new event</h1>
         Select a Court;
 
 
@@ -68,31 +70,34 @@
         <form:select id="output" path="hours.hoursId" ></form:select>
         <form:button>Create Event</form:button>
     </form:form>
-  
 
 
-        <h1>My Active Events</h1>
+
+    <h1>My Active Events</h1>
 
 
-        <table border="1">
-            <c:forEach items="${myActiveReservationList}" var="current">
-                <tr>
+    <table border="1">
+        <c:forEach items="${myActiveReservationList}" var="current">
+            <tr>
 
-                    <td><c:out value="${current.courtId.name}" /><td>
-                    <td><c:out value="${current.date}" /><td>
-                    <td><c:out value="${current.hours.hour}" /><td>
-                    <td><c:out value="${current.courtReservationID}" /><td>
-                    <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
+                <td><c:out value="${current.courtId.name}" /><td>
+                <td><c:out value="${current.date}" /><td>
+                <td><c:out value="${current.hours.hour}" /><td>
+                <td><c:out value="${current.courtReservationID}" /><td>
+                <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
 
-                </tr>
-            </c:forEach>
-        </table>
+            </tr>
+        </c:forEach>
+    </table>
 
 
-     
-        <br>
-        <a href="${pageContext.request.contextPath}/booking_modify.htm"><h1>Modify booking</h1></a><br/>
-        <br>
-   
-    </body>
+
+    <br>
+    <a href="${pageContext.request.contextPath}/booking_modify.htm"><h1>Modify booking</h1></a><br/>
+    <br>
+
+
+    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+</body>
 </html>

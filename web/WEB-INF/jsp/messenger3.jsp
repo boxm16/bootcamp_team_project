@@ -67,7 +67,7 @@
                                                                 <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left">Accept</button>
                                                             </form>
                                                             <div>
-                                                                <form id="deny" action="" method="POST"style="display:inline">
+                                                                <form id="deny" action="" method="POST" style="display:inline">
                                                                     <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-lg" id="deny" style="float:right">Deny</button>
                                                                 </form>
                                                             </div>

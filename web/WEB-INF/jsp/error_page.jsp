@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +15,8 @@
     </head>
     <body>
         <h1>error_page</h1>
+
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>

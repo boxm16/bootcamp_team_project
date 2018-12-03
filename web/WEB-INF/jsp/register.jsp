@@ -5,11 +5,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+
+
+        <title> JSP Page</title>
     </head>
     <body>
         <section class="login-block">
@@ -108,5 +110,8 @@
         </section>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>

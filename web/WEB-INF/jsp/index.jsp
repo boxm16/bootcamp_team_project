@@ -7,7 +7,7 @@
     <head>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
         <!------ Include the above in your HEAD tag ---------->     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -99,7 +99,8 @@
     </section>  
 
 
-
+    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
