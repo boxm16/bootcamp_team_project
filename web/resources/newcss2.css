@@ -7,10 +7,21 @@ and open the template in the editor.
     Created on : 22-Nov-2018, 10:48:06
     Author     : Herc
 */
+/*borders everywhere*/
 
-.container{max-width:1170px; margin:auto;}
+.centreButtons {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 5%;
+  left: 50%
+}
+
+.container{max-width:1170px; margin:auto;
+  
+}
 img{ max-width:100%;}
-.inbox_people {
+.inbox_people {outline: 1px dashed blue;
     background: #f8f8f8 none repeat scroll 0 0;
     float: left;
     overflow: hidden;
@@ -22,11 +33,7 @@ img{ max-width:100%;}
 
 
 .recent_heading {float: left;}
-.srch_bar {
-    display: inline-block;
-    text-align: center;
-    width: 100%; padding:
-}
+
 
 .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
 
@@ -34,29 +41,21 @@ img{ max-width:100%;}
     color: #05728f;
     font-size: 21px;
     margin: auto;
+  
 }
-.srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
-.srch_bar .input-group-addon button {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: medium none;
-    padding: 0;
-    color: #707070;
-    font-size: 18px;
-}
-.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+
 
 .chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
-.chat_ib h5 span{ font-size:13px; float:right; }
-.chat_ib p{ font-size:14px; color:#989898; margin:auto;  }
+.chat_ib h5 span{ font-size:13px; float:right;}
+.chat_ib p{ font-size:14px; color:#989898; margin:auto;}
 .chat_img {
     float: left;
     width: 11%;
 }
-.chat_ib {
+.chat_ib {outline: 1px dashed red;
     float: left;
     padding: 0 0 0 15px;
     width: 88%;
-
 }
 
 .chat_people{ overflow:hidden; clear:both; cursor: pointer;}
@@ -67,19 +66,14 @@ img{ max-width:100%;}
 }
 .inbox_chat { height: 550px; overflow-y: scroll;}
 
-.active_chat{ background:#ebebeb;
+.active_chat{ background:#B1C1E9;
 
 }
 
-.incoming_msg_img {
-    display: inline-block;
-    width: 6%;
-}
-.received_msg {
-    display: inline-block;
+.incoming_msg_img {width: 6%;}
+.received_msg {   
     padding: 0 0 0 10px;
     vertical-align: top;
-    width: 92%;
 }
 .received_withd_msg p {
     background: #ebebeb none repeat scroll 0 0;
@@ -97,8 +91,7 @@ img{ max-width:100%;}
     margin: 8px 0 0;
 }
 .received_withd_msg { width: 57%;}
-.mesgs {
-    float: left;
+.mesgs {float: left;
     padding: 30px 15px 0 25px;
     width: 60%;
 }
@@ -116,35 +109,13 @@ img{ max-width:100%;}
     float: right;
     width: 46%;
 }
-.input_msg_write input {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: medium none;
-    color: #4c4c4c;
-    font-size: 15px;
-    min-height: 48px;
-    width: 100%;
-
-}
-
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
-.msg_send_btn {
-    background: #05728f none repeat scroll 0 0;
-    border: medium none;
-    border-radius: 50%;
-    color: #fff;
-    cursor: pointer;
-    font-size: 17px;
-    height: 33px;
-    position: absolute;
-    right: 0;
-    top: 11px;
-    width: 33px;
-}
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
     height: 516px;
     overflow-y: auto;
 }
+
+
 
 
 
