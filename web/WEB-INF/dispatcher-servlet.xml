@@ -24,8 +24,8 @@
     <context:component-scan base-package="Controller"/>
     <context:component-scan base-package="Dao"/>
     <context:component-scan base-package="Model"/>
-     <context:component-scan base-package="Validation"/>
-
+    <context:component-scan base-package="Validation"/>
+    <context:component-scan base-package="Filter"/>
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -51,8 +51,8 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
     
-        <bean id="messageSource"
-          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <bean id="messageSource"
+              class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/message_en" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
