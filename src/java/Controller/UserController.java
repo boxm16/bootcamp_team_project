@@ -12,7 +12,6 @@ import Validation.UserValidator;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import Model.Review;
-
 import Model.User;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;

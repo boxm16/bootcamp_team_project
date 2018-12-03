@@ -10,8 +10,9 @@
     <head>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
@@ -47,7 +48,7 @@
                 </div>
                 <div class="btn-group" role="group">
                     <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"> <button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            <div class="hidden-xs">Messages</div>
+                            <div class="hidden-xs">Requests</div>
                         </button></a>
                 </div>
                 <div class="btn-group" role="group">
@@ -56,7 +57,7 @@
                         </button></a>
                 </div>
                 <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/booking_creation.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <a href="http://localhost:8080/seek_play/booking_manage.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                             <div class="hidden-xs">Events</div>
                         </button></a>
                 </div>
@@ -94,7 +95,7 @@
 
         </div>    
 
-        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+
     </body>
 </html>

@@ -20,23 +20,14 @@
         <spring:form method="POST" modelAttribute="book" action="insertbook" enctype=" multipart/form-data"/>
         <table>
             <tr>
-
-                <td>
-                    Image
-
-                </td>
-
+                Image
                 <td>
                     <input type="file" name="cover"/>
                 </td>
                 <td><spring:errors path="image" cssClass="error"> </spring:errors></td>
-
-
                 </tr>
-
-
             </table>             
-    </spring:form>
+         </spring:form>
 
     <h1>Hello World!</h1>
 

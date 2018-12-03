@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,8 +10,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
-
-        <title> JSP Page</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <section class="login-block">
