@@ -90,13 +90,6 @@
         </c:forEach>
     </table>
 
-
-
-    <br>
-    <a href="${pageContext.request.contextPath}/booking_modify.htm"><h1>Modify booking</h1></a><br/>
-    <br>
-
-
     <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
      <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 </body>

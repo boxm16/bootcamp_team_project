@@ -7,15 +7,11 @@ package Dao;
 
 import Model.GameRequest;
 import Model.User;
-import java.util.List;
-import Model.User;
 import java.io.IOException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import javax.persistence.Query;
-import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,28 +55,29 @@ public class UserDao {
 
         return y;
     }
-@Transactional
+
+    @Transactional
     public List<GameRequest> fetchincomingrequests(User request_receiver) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
-" join court_reservation on `match`=CourtReservationID\n" +
-" join hours h on court_reservation.hours = h.hours_id\n" +
-"join user on game_request.request_receiver = user.user_id\n" +
-"  where request_receiver=(select user_id from user where username='"+request_receiver.getUsername()+"')\n" +
-"and status = 'pending' order by date;", GameRequest.class);
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
+                + " join court_reservation on `match`=CourtReservationID\n"
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "join user on game_request.request_receiver = user.user_id\n"
+                + "  where request_receiver=(select user_id from user where username='" + request_receiver.getUsername() + "')\n"
+                + "and status = 'pending' order by date;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
     }
-    
+
     @Transactional
     public List<GameRequest> fetchoutgoingrequests(User requester) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
-" join court_reservation on `match`=CourtReservationID\n" +
-" join hours h on court_reservation.hours = h.hours_id\n" +
-"join user on game_request.request_receiver = user.user_id\n" +
-"  where booker=(select user_id from user where username='"+requester.getUsername()+"') order by date;", GameRequest.class);
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
+                + " join court_reservation on `match`=CourtReservationID\n"
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "join user on game_request.request_receiver = user.user_id\n"
+                + "  where booker=(select user_id from user where username='" + requester.getUsername() + "') order by date;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
@@ -89,34 +86,30 @@ public class UserDao {
     @Transactional
     public List<GameRequest> fetchansweredrequests(User request_receiver) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n" +
-" join court_reservation on `match`=CourtReservationID\n" +
-" join hours h on court_reservation.hours = h.hours_id\n" +
-"join user on game_request.request_receiver = user.user_id\n" +
-"  where request_receiver=(select user_id from user where username='"+request_receiver.getUsername()+"')\n" +
-"and not status = 'pending' order by date;", GameRequest.class);
+        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
+                + " join court_reservation on `match`=CourtReservationID\n"
+                + " join hours h on court_reservation.hours = h.hours_id\n"
+                + "join user on game_request.request_receiver = user.user_id\n"
+                + "  where request_receiver=(select user_id from user where username='" + request_receiver.getUsername() + "')\n"
+                + "and not status = 'pending' order by date;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
     }
-    
 
     @Transactional
     public void submitaccept(String id) {
-       
-        String sql = "UPDATE `seek_play`.`game_request` t SET t.`status` = 'yes' WHERE t.`id` =" +id + ";";
+
+        String sql = "UPDATE `seek_play`.`game_request` t SET t.`status` = 'yes' WHERE t.`id` =" + id + ";";
         int q1 = em.createNativeQuery(sql).executeUpdate();
     }
-    
+
     @Transactional
     public void submitdeny(String id) {
-       
-        String sql = "UPDATE `seek_play`.`game_request` t SET t.`status` = 'no' WHERE t.`id` =" +id + ";";
+
+        String sql = "UPDATE `seek_play`.`game_request` t SET t.`status` = 'no' WHERE t.`id` =" + id + ";";
         int q1 = em.createNativeQuery(sql).executeUpdate();
     }
-    
-    
-    
 
     @Transactional
     public User checkUserByUsername(String username) {

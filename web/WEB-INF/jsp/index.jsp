@@ -31,14 +31,11 @@
                         </div>
                         <div>${message}</div>
                         <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                                <small>Remember Me</small>
-                            </label>
+                            
                             <!--                                     <p class="login button"> 
                                                                <input type="submit" id="submit" value="Login" /> 
                                                             </p>-->
-                            <button type="submit" id="submit" class="btn btn-login float-right">Submit</button>
+                            <button type="submit" id="submit" class="btn btn-login float-right" style="background-color: royalblue">Submit</button>
                         </div>
                         <p class="change_link">
                             Not a member yet ?

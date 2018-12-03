@@ -6,8 +6,6 @@
 package Dao;
 
 import Model.Court;
-import Model.CourtReservation;
-import Model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

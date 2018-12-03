@@ -53,8 +53,6 @@
                             </div>  
 
                             <button type="submit" id="submit" class="btn btn-login float-right">Submit</button>
-
-                            <input type="submit" id="submit" class="btn btn-login float-right">
                         </div>
 
                         <div class="carousel fade-carousel slide col-md-8 banner-sec" data-ride="carousel" data-interval="4000" id="bs-carousel">
