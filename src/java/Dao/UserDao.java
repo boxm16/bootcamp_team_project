@@ -31,10 +31,27 @@ public class UserDao {
 
         em.persist(user);
     }
-
-    public void updatepic(String us, MultipartFile file) throws IOException {
-        em.find(User.class, us);
-        em.createQuery("Update user SET profileimage='" + file.getInputStream() + "'WHERE username='" + us + "';").executeUpdate();
+    public void updatepic(String us, MultipartFile file) throws IOException{
+        em.find(User.class,us);
+        em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
+    }
+    public void updateinfos(String us, String n, String ln) throws IOException{
+        em.find(User.class,us);
+        em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
+    }
+    public List<User> check(String s){
+      
+       Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
+       List<User> usr=q.getResultList();
+      
+       return usr;
+    }
+     public User profile(String s){
+        User u=new User();
+        Query q= em.createNativeQuery("SELECT * FROM user WHERE username='"+s+"';");
+        List<User> usr=q.getResultList();
+             
+       return u;
     }
 
     public void updateinfos(String us, String n, String ln) throws IOException {

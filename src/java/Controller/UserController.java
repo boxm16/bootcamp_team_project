@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -287,7 +288,7 @@ public class UserController {
        model.addAttribute("tech",technique);
        model.addAttribute("star", g);
        model.addAttribute("stars",(grade*10));
-        return "unfinishedreviewpage";
+       return "unfinishedreviewpage";
     }
     @RequestMapping(value="/event.htm",method=RequestMethod.GET)
         public String event(ModelMap model){
@@ -328,7 +329,14 @@ public class UserController {
         model.addAttribute("users", user);
         return "searchpage";
     }
-
+    @RequestMapping(value="/profile/{id}",method=RequestMethod.GET)
+        public String profile(ModelMap model, @PathVariable("id")String username){
+        User user=new User();        
+        
+        model.addAttribute("users", user);
+        
+        return "searchpage";
+    }  
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
         User user = new User();
