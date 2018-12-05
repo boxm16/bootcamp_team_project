@@ -40,12 +40,8 @@ public class UserController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String user(ModelMap model) {
-        User user = new User();
-        user.setFirstname("v");
-        user.setLastname("dv");
-        user.setPassword("1");
-        user.setUsername("bbb");
+    public String user(ModelMap model,HttpSession session) {
+        User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "menupage";
 
@@ -117,7 +113,8 @@ public class UserController {
 
                 String message = "HI " + user.getUsername();
                 model.addAttribute("message", message);
-                return "personpage";
+                model.addAttribute("users",user);
+                return "menupage";
             } else {
                 String message = "password is wrong";
                 model.addAttribute("message", message);

@@ -37,7 +37,7 @@ public class UserDao {
     }
     public void updateinfos(String us, String n, String ln) throws IOException{
         em.find(User.class,us);
-        em.createQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
+        em.createNativeQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
     public List<User> check(String s){
       
@@ -52,19 +52,6 @@ public class UserDao {
         List<User> usr=q.getResultList();
              
        return u;
-    }
-
-    public void updateinfos(String us, String n, String ln) throws IOException {
-        em.find(User.class, us);
-        em.createQuery("Update user SET firstname='" + n + "',lastname='" + ln + "' WHERE username='" + us + "';").executeUpdate();
-    }
-
-    public List<User> check(String s) {
-
-        Query q = em.createNativeQuery("SELECT username FROM user WHERE username LIKE '" + s + "%';");
-        List<User> usr = q.getResultList();
-
-        return usr;
     }
 
     public int change(String s) {
