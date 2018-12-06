@@ -33,25 +33,15 @@
         <h1>Review your co-players</h1>
 
         <div>
+            <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
+                Select a Player;
+                <spring:select id="player" name="player" path="reviewed.userId">
+                    <c:forEach items="${playersList}" var="user">
+                        <option value="${user.userId}">${user.username}</option>
+                    </c:forEach>
+                </spring:select>
 
-            Select a Player;
-            <select id="player" name="player" onchange="myFunction()">
-                <c:forEach items="${playersList}" var="user">
-                    <option value="${user.username}">${user.username}</option>
-                </c:forEach>
-            </select>
-
-            <div id="demo">
-
-            </div>
-
-
-
-            <spring:form commandName="review" action="http://localhost:8080/seek_play/reviewFormHandling.htm" method="POST">  
                 <table>
-
-                    <td><spring:hidden  path="reviewed.username" id="1"/></td>
-
 
                     <tr>
                         <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
@@ -78,14 +68,7 @@
             </spring:form>
         </div>
         <script>
-            function myFunction() {
 
-                var x = document.getElementById("player").value;
-                document.getElementById("demo").innerHTML = " <h1>Evaluate: " + x + "</h1>";
-                document.getElementById("1").innerHTML = " <h1>Avaluate: " + x + "</h1>";
-                document.getElementById("1").value = x;
-
-            }
         </script>
 
         <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 

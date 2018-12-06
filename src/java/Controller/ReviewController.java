@@ -9,6 +9,7 @@ import Dao.ReviewDao;
 import Dao.CourtReservationDao;
 import Dao.UserDao;
 import Model.CourtReservation;
+import Model.GameRequest;
 import Model.Review;
 import Model.User;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ReviewController {
 
     @Autowired
     private UserDao userDao;
-    
+
     @Autowired
     private CourtReservationDao courtReservationDao;
 
@@ -46,8 +47,10 @@ public class ReviewController {
     public String createReviewForm(ModelMap model) {
 
         List<User> playersList = userDao.listAllUsers();
-        model.addAttribute("playersList", playersList);
+       model.addAttribute("playersList", playersList);
 
+       List<GameRequest> requestsForReview=reviewDao.listUsersForReview();
+       
         Review review = new Review();
         List<String> Grades = new ArrayList<>();
         Grades.add("1");
@@ -71,16 +74,13 @@ public class ReviewController {
     public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model) {
 
         User reviewer = (User) session.getAttribute("user");
-
         review.setReviewer(reviewer);
 
-        //CourtReservation match = courtReservationDao.checkCourtReservationByID(4);
-        //review.setMatch(match);
-
-        CourtReservation match=new CourtReservation();
+        CourtReservation match = courtReservationDao.checkCourtReservationByID(150);
         review.setMatch(match);
-        
+
         reviewDao.insert(review);
+        review = new Review();
         model.addAttribute("review", review);
 
         List<User> playersList = userDao.listAllUsers();
