@@ -74,7 +74,7 @@
             </div>
             <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">    
                 <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                    <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                             <div class="hidden-xs">My Reviews</div>
                         </button></a>
                 </div>
@@ -84,7 +84,7 @@
                         </button></a>
                 </div>
                 <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/unfinished.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                             <div class="hidden-xs">Unfinished Reviews</div>
                         </button></a>
                 </div>            

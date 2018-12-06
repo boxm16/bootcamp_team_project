@@ -32,6 +32,28 @@
     <body>
         <h1>Review your co-players</h1>
 
+
+
+        <table border="1">
+            <c:forEach items="${pendingReviewList}" var="current">
+                <tr>
+
+                    <td><c:out value="${current.requestReceiver.username}" /><td>
+                    <td><c:out value="${current.match.courtId.name}" /><td>
+                    <td><c:out value="${current.match.date}" /><td>
+                    <td><c:out value="${current.match.hours.hour}" /><td>
+
+                </tr>
+            </c:forEach>
+        </table>
+
+
+
+
+
+
+
+
         <div>
             <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
                 Select a Player;

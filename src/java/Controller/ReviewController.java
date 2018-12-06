@@ -49,8 +49,8 @@ public class ReviewController {
         List<User> playersList = userDao.listAllUsers();
        model.addAttribute("playersList", playersList);
 
-       List<GameRequest> requestsForReview=reviewDao.listUsersForReview();
-       
+       List<GameRequest> pendingReviewList=reviewDao.listUsersForReview();
+       model.addAttribute("pendingReviewList", pendingReviewList);
         Review review = new Review();
         List<String> Grades = new ArrayList<>();
         Grades.add("1");
