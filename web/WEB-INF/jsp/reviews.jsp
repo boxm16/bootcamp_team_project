@@ -36,12 +36,12 @@
 
         <table border="1">
             <c:forEach items="${pendingReviewList}" var="current">
-                <tr>
+                <tr onclick="selectPersonForReview(event)">
 
-                    <td><c:out value="${current.requestReceiver.username}" /><td>
-                    <td><c:out value="${current.match.courtId.name}" /><td>
-                    <td><c:out value="${current.match.date}" /><td>
-                    <td><c:out value="${current.match.hours.hour}" /><td>
+                    <td>${current.requestReceiver.username}</td>
+                    <td>${current.match.courtId.name}</td>
+                    <td>${current.match.date}</td>
+                    <td>${current.match.hours.hour}</td>
 
                 </tr>
             </c:forEach>
@@ -49,7 +49,7 @@
 
 
 
-
+        <div id="dispaly"></div>
 
 
 
@@ -90,6 +90,12 @@
             </spring:form>
         </div>
         <script>
+
+            function selectPersonForReview(event) {
+                alert(event.target.);
+                document.getElementById("dispaly").innerHTML = "Hello World";
+            }
+
 
         </script>
 
