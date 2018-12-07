@@ -60,7 +60,7 @@
 
 
 
-        <div>
+        <div class="switch">
             <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
                 Select a Player;
                 <spring:select id="player" name="player" path="reviewed.userId">
@@ -73,7 +73,7 @@
 
                     <tr>
                         <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
-                        <td> <spring:radiobuttons path="teamwork" items="${Grades}" label="Teamwork"/> </td>
+                        <td> <spring:radiobuttons path="teamwork" items="${Grades}" label="Teamwork"/></td>
 
                     </tr>
 

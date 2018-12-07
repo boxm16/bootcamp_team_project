@@ -290,9 +290,10 @@ sta requests vazoume div me logo epanw
 
 
 /* USER PROFILE PAGE */
+/* geniki eikona pisw */
 .card {
-    margin-top: 20px;
-    padding: 80px;
+    margin-top: 0px;
+    padding: 150px;
     background-color: rgba(214, 224, 226, 0.2);
     -webkit-border-top-left-radius:5px;
     -moz-border-top-left-radius:5px;
@@ -303,36 +304,34 @@ sta requests vazoume div me logo epanw
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+     
 }
 .card.hovercard {
     position: relative;
     padding-top: 0;
-    overflow: hidden;
     text-align: center;
     background-color: #fff;
     background-color: rgba(255, 255, 255, 1);
 }
+/* komati kartwlwn */
 .card.hovercard .card-background {
-    height: 170px;
+    height: 200px;
+    width:110%;
 }
 .card-background img {
-    -webkit-filter: blur(25px);
-    -moz-filter: blur(25px);
-    -o-filter: blur(25px);
-    -ms-filter: blur(25px);
-    filter: blur(1px);
-    margin-left: -100px;
-    margin-top: -200px;
-    min-width: 130%;
+
+
 }
+/* thesi eikonidio me pic user */
 .card.hovercard .useravatar {
     position: absolute;
     top: 15px;
-    left: 0;
+    left: 600px;
     right: 0;
 }
+/* domi eikonidio me pic user */
 .card.hovercard .useravatar img {
-    width: 100px;
+    width: 200px;
     height: 100px;
     max-width: 100px;
     max-height: 100px;
@@ -341,12 +340,14 @@ sta requests vazoume div me logo epanw
     border-radius: 50%;
     border: 5px solid rgba(255, 255, 255, 0.5);
 }
+/* thesi gramis me username */
 .card.hovercard .card-info {
     position: absolute;
     bottom: 14px;
     left: 0;
     right: 0;
 }
+/* domi grammis me username */
 .card.hovercard .card-info .card-title {
     padding:0 5px;
     font-size: 20px;
@@ -368,9 +369,20 @@ sta requests vazoume div me logo epanw
     padding: 0 20px;
     margin-bottom: 17px;
 }
+/* koumpia menu */
 .btn-pref .btn {
     -webkit-border-radius:0 !important;
+    background-color: rgba(0,0,0, 0.1);;
+    border-color: #B1C1E9;
+    font-weight: bold;
+    color:white;
+border: none;
 }
+.btn-pref .btn:hover{
+    background: #e1f2d2;
+}
+
+
 /*---------- star rating ----------*/
 .flex-display {
     display: flex;
@@ -396,59 +408,3 @@ sta requests vazoume div me logo epanw
     text-shadow: 2px 2px 5px #d29b09;
     top: 0;
 }
-
-.switch {
-  position: relative;
-  width: 14rem;
-  padding: 0 1rem;
-  font-family: verdana;
-}
-.switch:before {
-  content: '  ';
-  position: absolute;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 3rem;
-  background: #000;
-  border-radius: 30px;
-}
-.switch__label {
-  display: inline-block;
-  width: 2rem;
-  padding: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: color 200ms ease-out;
-}
-.switch__label:hover {
-  color: white;
-}
-.switch__indicator {
-  width: 4rem;
-  height: 4rem;
-  position: absolute;
-  top: -.5rem;
-  left: 0;
-  background: blue;
-  border-radius: 50%;
-  transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), background 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-  transform: translate3d(1rem, 0, 0);
-}
-.switch input#one:checked ~ .switch__indicator {
-  background: PaleGreen;
-  transform: translate3d(1.2rem, 0, 0);
-}
-.switch input#two:checked ~ .switch__indicator {
-  background: MediumTurquoise;
-  transform: translate3d(5.5rem, 0, 0);
-}
-.switch input#three:checked ~ .switch__indicator {
-  background: PaleVioletRed;
-  transform: translate3d(10.6rem, 0, 0);
-}
-.switch input[type="radio"]:not(:checked), .switch input[type="radio"]:checked {
-  display: none;
-}
-
-
