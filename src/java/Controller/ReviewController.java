@@ -7,6 +7,8 @@ package Controller;
 
 import Dao.ReviewDao;
 import Dao.CourtReservationDao;
+import Dao.GameRequestDao;
+
 import Dao.UserDao;
 import Model.CourtReservation;
 import Model.GameRequest;
@@ -22,6 +24,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -37,6 +40,9 @@ public class ReviewController {
     private UserDao userDao;
 
     @Autowired
+    private GameRequestDao gameRequestDao;
+
+    @Autowired
     private CourtReservationDao courtReservationDao;
 
     @Autowired
@@ -46,11 +52,8 @@ public class ReviewController {
 
     public String createReviewForm(ModelMap model) {
 
-        List<User> playersList = userDao.listAllUsers();
-       model.addAttribute("playersList", playersList);
-
-       List<GameRequest> pendingReviewList=reviewDao.listUsersForReview();
-       model.addAttribute("pendingReviewList", pendingReviewList);
+        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview();
+        model.addAttribute("pendingReviewList", pendingReviewList);
         Review review = new Review();
         List<String> Grades = new ArrayList<>();
         Grades.add("1");
@@ -71,20 +74,23 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/reviewFormHandling.htm", method = RequestMethod.POST)
-    public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model) {
+    public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model, @RequestParam String gameRequestId) {
+
+        GameRequest gameRequest = gameRequestDao.getGameRequestById(gameRequestId);
+
+        review.setMatch(gameRequest.getMatch());
 
         User reviewer = (User) session.getAttribute("user");
         review.setReviewer(reviewer);
-
-        CourtReservation match = courtReservationDao.checkCourtReservationByID(150);
-        review.setMatch(match);
+User reviewed=gameRequest.getRequestReceiver();
+review.setReviewed(reviewed);
 
         reviewDao.insert(review);
         review = new Review();
         model.addAttribute("review", review);
 
-        List<User> playersList = userDao.listAllUsers();
-        model.addAttribute("playersList", playersList);
+        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview();
+        model.addAttribute("pendingReviewList", pendingReviewList);
 
         return "reviews";
     }
