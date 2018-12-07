@@ -31,14 +31,17 @@ public class UserDao {
 
         em.persist(user);
     }
+     @Transactional
     public void updatepic(String us, MultipartFile file) throws IOException{
         em.find(User.class,us);
         em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
     }
+     @Transactional
     public void updateinfos(String us, String n, String ln) throws IOException{
         em.find(User.class,us);
         em.createNativeQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
+     @Transactional
     public List<User> check(String s){
       
        Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
@@ -46,6 +49,7 @@ public class UserDao {
       
        return usr;
     }
+     @Transactional
      public User profile(String s){
         User u=new User();
         Query q= em.createNativeQuery("SELECT * FROM user WHERE username='"+s+"';");
@@ -53,7 +57,7 @@ public class UserDao {
              
        return u;
     }
-
+      @Transactional
     public int change(String s) {
         int y = Integer.parseInt(s);
 
