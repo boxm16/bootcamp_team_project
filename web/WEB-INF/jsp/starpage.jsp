@@ -31,8 +31,8 @@
 <!--                <div class="card-background">
                     <img class="card-bkimg" alt="" src="https://cdn3.picsart.com/3327595589.jpeg?r1024x1024">
                 </div>-->
-                <div class="useravatar">
-                    <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
+                <div class="useravatar" >
+                    <img alt="" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
                 </div>
                 <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
                 <div class="btn-group" role="group">

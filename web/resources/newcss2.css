@@ -327,10 +327,11 @@ sta requests vazoume div me logo epanw
     position: absolute;
     top: 15px;
     left: 600px;
-    right: 0;
+     right: 500px;
+    
 }
 /* domi eikonidio me pic user */
-.card.hovercard .useravatar img {
+.card.hovercard .useravatar-img {
     width: 200px;
     height: 100px;
     max-width: 100px;
@@ -339,6 +340,15 @@ sta requests vazoume div me logo epanw
     -moz-border-radius: 50%;
     border-radius: 50%;
     border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.profpic {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  object-fit: cover;
 }
 /* thesi gramis me username */
 .card.hovercard .card-info {
