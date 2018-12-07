@@ -69,7 +69,8 @@ function myFunction2() {
     mainFrameOne.style.display = "none";
     mainFrameTwo.style.display = "block";
     mainFrameThree.style.display = "none";
-};
+}
+;
 
 function myFunction3() {
     var mainFrameOne = document.getElementById("incoming");
@@ -81,7 +82,8 @@ function myFunction3() {
     mainFrameOne.style.display = "none";
     mainFrameTwo.style.display = "none";
     mainFrameThree.style.display = "block";
-};
+}
+;
 
 $(document).ready(function () {
     $(".btn").click(function () {
@@ -89,4 +91,5 @@ $(document).ready(function () {
     });
 }
 );
+
 

@@ -62,7 +62,7 @@
                                 <div class="slide-1"></div>
                                 <div class="hero">
                                     <hgroup>
-                                        <h1>We are creative</h1>        
+                                        <h1 style="font-family: Open Sans ">We are creative</h1>        
                                         <h3>Get start your next awesome project</h3>
                                     </hgroup>
                                     <button class="btn btn-hero btn-lg" role="button">See all features</button>

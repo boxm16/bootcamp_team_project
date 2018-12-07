@@ -30,6 +30,7 @@
     <body>
 
         <div class="col-lg-12 col-sm-12" >
+
             <div class="card hovercard">
                 <div class="card-background">
                     <img class="card-bkimg" alt="" src="http://wallpaperhd.online/upload/images/1527071067955/soccer-stadium-jamaica-soccer-stadium-jerseys-soccer-stadium-japan-pitch-blue-sky-1600x900.jpg"  >
@@ -38,21 +39,27 @@
                     <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
                 </div>
                 <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
-
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            <div class="hidden-xs">Log Out</div>
+                        </button></a>
+                </div>  
             </div>
-                <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
+                
+                
+                <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well" >
                 <div class="btn-group" role="group">
                     <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
 
                         </button></a>
                 </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    <div class="btn-group" role="group">
+                        <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab" style="background-color: #f39c12"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                             <div class="hidden-xs">Requests</div>
                         </button></a>
                 </div>
                 <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab" style="background-color: #f39c12"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             <div class="hidden-xs">Personal Infos</div>
                         </button></a>
                 </div>
@@ -90,8 +97,8 @@
                 </div>            
             </div>   
         </div>
-                <div class="well">
-                    <div class="tab-content">
+        <div class="well">
+            <div class="tab-content">
                 <div class="tab-pane fade in active center" id="tab1">
                     <div class="container">
                         <div class="row center">
@@ -113,6 +120,8 @@
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                                        
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

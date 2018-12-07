@@ -9,6 +9,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
@@ -63,7 +69,7 @@
                     </c:forEach>
                 </spring:select>
 
-                <table>
+                <table >
 
                     <tr>
                         <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
@@ -88,18 +94,34 @@
                 </table>
                 <input type="submit">
             </spring:form>
+
+
+
         </div>
-        <script>
 
-            function selectPersonForReview(event) {
-                alert(event.target.);
-                document.getElementById("dispaly").innerHTML = "Hello World";
-            }
+        <div class="switch">
+            <input name="switch" id="one" type="radio" checked/>
+            <label for="one" class="switch__label">One</label>
+            <input name="switch" id="two" type="radio" />
+            <label for="two" class="switch__label">Two</label>
+            <input name="switch" id="three" type="radio" />
+            <label for="three" class="switch__label" >Three</label>
+            <div class="switch__indicator" /></div>
+    </div>
+
+    <script>
+
+        function selectPersonForReview(event) {
+            alert(event.target);
+            document.getElementById("dispaly").innerHTML = "Hello World";
+        }
+
+    </script>
+
+     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+
+    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
 
 
-        </script>
-
-        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
-         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
-    </body>
+</body>
 </html>
