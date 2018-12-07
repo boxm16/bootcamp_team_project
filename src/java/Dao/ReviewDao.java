@@ -43,8 +43,8 @@ public class ReviewDao {
         // em.persist(review);
     }
 
-    public List<GameRequest> listUsersForReview() {
-        String SQL = "SELECT * FROM game_request  inner join court_reservation on game_request.match=court_reservation.CourtReservationID where  game_request.request_receiver not in(Select reviewed from review where review.match=court_reservation.CourtReservationID and review.reviewer=12) and game_request.status='yes' and court_reservation.booker=12 and court_reservation.date<current_date();";
+    public List<GameRequest> listUsersForReview(int userId) {
+        String SQL = "SELECT * FROM game_request  inner join court_reservation on game_request.match=court_reservation.CourtReservationID where  game_request.request_receiver not in(Select reviewed from review where review.match=court_reservation.CourtReservationID and review.reviewer="+userId+") and game_request.status='yes' and court_reservation.booker="+userId+" and court_reservation.date<current_date();";
         Query query = em.createNativeQuery(SQL, GameRequest.class);
         List<GameRequest> resultList = query.getResultList();
         return resultList;
