@@ -195,26 +195,52 @@ public class UserController {
         return "gamerequestpage";
 
     }
-
-    @RequestMapping(value = "/star.htm", method = RequestMethod.GET)
-    public String starnew(ModelMap model, User u,HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-       Ratings r =new Ratings();
-       r.setPlayer(user.getUserId());       
-       int id=r.getPlayer();
-        double teamwork = rd.Status(r.getPlayer());
-        double technique = rd.Status(r.getPlayer());
-        double athletism = rd.Status(r.getPlayer());
-        double grade = ((athletism + technique + teamwork) / 3);
+// to be enabled after alex fix it
+//    @RequestMapping(value = "/star.htm", method = RequestMethod.GET)
+//    public String starnew(ModelMap model, User u,HttpSession session) throws IOException {
+//        User user = (User) session.getAttribute("user");
+//       Ratings r =new Ratings();
+//       r.setPlayer(user.getUserId());       
+//       int id=r.getPlayer();
+//        double teamwork = rd.Status(r.getPlayer());
+//        double technique = rd.Status(r.getPlayer());
+//        double athletism = rd.Status(r.getPlayer());
+//        double grade = ((athletism + technique + teamwork) / 3);
+//        double g = (grade / 2);
+//        model.addAttribute("users", user);
+//        model.addAttribute("team",(teamwork*10));
+//        model.addAttribute("athlet",(athletism*10));
+//        model.addAttribute("tech", (technique*10));
+//        model.addAttribute("star", g);
+//        model.addAttribute("stars", (grade * 10));
+//        return "starpage";
+//    }
+    
+    //to be deleted after alex fix it
+     @RequestMapping(value = "/star.htm", method = RequestMethod.GET)
+    public String starnew(ModelMap model, User u) {
+        User user = new User();
+        Review fr = new Review();
+        user.setUsername("bbb");
+        fr.setTeamwork(10);
+        fr.setTechnique(5);
+        fr.setAthletism(6);
+        int teamwork = fr.getTeamwork() * 10;
+        int technique = fr.getTechnique() * 10;
+        int athletism = fr.getAthletism() * 10;
+        double grade = ((fr.getAthletism() + fr.getTechnique() + fr.getTeamwork()) / 3);
         double g = (grade / 2);
         model.addAttribute("users", user);
-        model.addAttribute("team",(teamwork*10));
-        model.addAttribute("athlet",(athletism*10));
-        model.addAttribute("tech", (technique*10));
+        model.addAttribute("team", teamwork);
+        model.addAttribute("athlet", athletism);
+        model.addAttribute("tech", technique);
         model.addAttribute("star", g);
         model.addAttribute("stars", (grade * 10));
         return "starpage";
     }
+    
+    
+    
         @RequestMapping(value="/myreviews.htm",method=RequestMethod.GET)
         public String myreviewnew(ModelMap model,User u){
         User user=new User();
