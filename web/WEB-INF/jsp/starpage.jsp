@@ -26,23 +26,19 @@
         </script>
     </head>
     <body style='background-image: url("https://cdn3.picsart.com/3327595589.jpeg?r1024x1024")'>
-        <div class="col-lg-12 col-sm-12">
 <!--            <div class="card hovercard">-->
 <!--                <div class="card-background">
                     <img class="card-bkimg" alt="" src="https://cdn3.picsart.com/3327595589.jpeg?r1024x1024">
                 </div>-->
-          <div>
-                <div class="useravatar" >
-                    <img alt="" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
+              <div class="useravatar" style="  display: inline-block;">
+                    <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
                 
             
-                <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
-                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" style="background-color: transparent"><span class="glyphicon glyphicon-off"></span>
-                            <div class="hidden-xs"></div>
+                    <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+                    <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                         </button></a>
                 
           </div>
-            </div>
             
             <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
                 <div class="btn-group" role="group">
@@ -69,11 +65,7 @@
                             <div class="hidden-xs">Search</div>
                         </button></a>
                 </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            <div class="hidden-xs">Log Out</div>
-                        </button></a>
-                </div>
+               
             </div>
             <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
                 <div class="btn-group" role="group">
@@ -161,8 +153,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                   
 <!--            </div>-->
 <!--        </div>-->
 <!--        </div>                                             -->

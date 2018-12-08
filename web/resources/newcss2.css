@@ -409,7 +409,6 @@ domi eikonidio me pic user
 }
 .front-stars {
     display: flex;
-    color: #black;
     overflow: hidden;
     position: absolute;
     color: green;
