@@ -48,6 +48,7 @@ public class ReviewDao {
         Query query = em.createNativeQuery(SQL, GameRequest.class);
         List<GameRequest> resultList = query.getResultList();
         return resultList;
-
-    }
+ }
+    
+   
 }

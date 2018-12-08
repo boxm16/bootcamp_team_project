@@ -86,7 +86,7 @@
                             <td> <spring:textarea  path="comments"  rows="3" cols="100"/></td>
                         </tr>
                     </table>
-                    <input type="submit">
+                        <input type="submit">
                 </spring:form>
             </div>
         </div> 

@@ -9,6 +9,7 @@ import Dao.CourtDao;
 import Dao.CourtReservationDao;
 import Model.Court;
 import Model.CourtReservation;
+import Model.GameRequest;
 import Model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,11 +54,14 @@ public class EventController {
 
         listCourts();
         listMyActiveReservations(session);
+
+        GameRequest gameRequest = new GameRequest();
+        model.addAttribute("gameRequest", gameRequest);
+
         return "booking_manage";
     }
 
     @RequestMapping(value = "/findFreeTimeSlotsByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
-
     public @ResponseBody
     String finduserByRest(@RequestParam(value = "userinput") String date, @RequestParam(value = "userinput2") String courtID) throws JsonProcessingException {
 
@@ -75,7 +79,7 @@ public class EventController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
-    @RequestMapping(value = "/handleEventCreationForm.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/handleEventCreationForm.htm", method = RequestMethod.POST)
     public String filledForm(ModelMap model, HttpSession session, CourtReservation courtReservation) {
         courtReservation.setBooker((User) session.getAttribute("user"));
         courtReservation.getDate().setHours(3);//otherwise, somehow, in db is inserted a date ona day before the actual date
@@ -87,6 +91,8 @@ public class EventController {
          */
         courtReservationDao.insert(courtReservation);
         listMyActiveReservations(session);
+        GameRequest gameRequest = new GameRequest();
+        model.addAttribute("gameRequest", gameRequest);
         return "booking_manage";
     }
 
