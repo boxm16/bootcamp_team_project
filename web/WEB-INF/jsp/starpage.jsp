@@ -91,13 +91,9 @@
 <!--        <div class="well" >-->
             <div class="tab-content">
                 <div class="tab-pane fade in active center" id="tab1">
-                    <div class="container" style="background-color: transparent;>
-<!--                        <div class="row center">-->
-<!--                            <div class="col-xs-12 col-md-12" style="background: rgba(188, 140, 67, 0.2);">-->
+                    <div class="container" style="background-color: transparent;  box-shadow: none;">
 
-<!--                                komati vathmologia-->
 
-                                <div class="well well-sm" style="background-color: transparent;>
                                     <div class="row">
                                         <div class="col-xs-12 col-md-12 text-center">
                                             <h1 class="rating-num">${star}</h1>
