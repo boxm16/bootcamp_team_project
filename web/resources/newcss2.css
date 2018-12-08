@@ -304,7 +304,7 @@ sta requests vazoume div me logo epanw
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-     
+
 }
 .card.hovercard {
     position: relative;
@@ -323,14 +323,11 @@ sta requests vazoume div me logo epanw
 
 }
 /* thesi eikonidio me pic user */
-.card.hovercard.useravatar {
-    position: absolute;
-    top: 15px;
-    left: 600px;
-     right: 500px;
-    
+.useravatar {
+    float:right;
+
 }
- domi eikonidio me pic user 
+domi eikonidio me pic user 
 .card.hovercard .useravatar-img {
     width: 200px;
     height: 100px;
@@ -343,12 +340,9 @@ sta requests vazoume div me logo epanw
 }
 
 .profpic {
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 
 }
 /*
@@ -389,7 +383,7 @@ sta requests vazoume div me logo epanw
     border-color: #B1C1E9;
     font-weight: bold;
     color:white;
-border: none;
+    border: none;
 }
 .btn-pref .btn:hover{
     background: #3a3a3a;
@@ -404,21 +398,22 @@ border: none;
 .star-rating {
     display: flex;
     align-items: center;
-    font-size: 3em;
+    font-size: 2.7em;
     justify-content: center;
     margin-top: 50px;
 }
 .back-stars {
     display: flex;
-    color: #bb5252;
     position: relative;
-    text-shadow: 4px 4px 10px #843a3a;
+    color:#727171;
 }
 .front-stars {
     display: flex;
-    color: #FFBC0B;
+    color: #black;
     overflow: hidden;
     position: absolute;
-    text-shadow: 2px 2px 5px #d29b09;
+    color: green;
     top: 0;
+    -webkit-text-stroke: 1px green;
+
 }

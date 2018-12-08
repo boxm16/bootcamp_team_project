@@ -31,15 +31,19 @@
 <!--                <div class="card-background">
                     <img class="card-bkimg" alt="" src="https://cdn3.picsart.com/3327595589.jpeg?r1024x1024">
                 </div>-->
+          <div>
                 <div class="useravatar" >
                     <img alt="" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
-                </div>
+                
+            
                 <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            <div class="hidden-xs">Log Out</div>
+                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" style="background-color: transparent"><span class="glyphicon glyphicon-off"></span>
+                            <div class="hidden-xs"></div>
                         </button></a>
-                </div>
+                
+          </div>
+            </div>
+            
             <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
                 <div class="btn-group" role="group">
                     <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
@@ -99,17 +103,17 @@
                                             <h1 class="rating-num">${star}</h1>
                                             <div class="star-rating">
                                                 <div class="back-stars">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     <div class="front-stars" style="width:${stars}%">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </div>
                                                 </div>
                                             </div>
