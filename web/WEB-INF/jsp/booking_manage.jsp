@@ -127,7 +127,7 @@
 
         <!--Creation section -->
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white">
-            <h1 style="color: white">Let's create a new event</h1>
+            <h1 style="color: white">Let's create a new event!</h1>
 
             
              <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
