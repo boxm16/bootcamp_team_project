@@ -415,3 +415,7 @@ domi eikonidio me pic user
     -webkit-text-stroke: 1px green;
 
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #006d2b;
+}

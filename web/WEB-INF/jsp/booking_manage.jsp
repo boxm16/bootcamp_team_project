@@ -116,7 +116,7 @@
             </div>
 
         </div>
-
+            <br>
 
 
 
@@ -126,11 +126,11 @@
 
 
         <!--Creation section -->
-        <h1>Let's create a new event</h1>
-        Select a Court;
-        <div class="container" style= width:700px">
+        <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white">
+            <h1 style="color: white">Let's create a new event</h1>
 
-             <form:form id="form1" modelAttribute="courtReservation" method="POST" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+            
+             <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
                  <form:select id="court" name="court" path="courtId.id">
                      <c:forEach items="${courtList}" var="courtList">
                          <option value="${courtList.id}">${courtList.name}</option>
@@ -146,7 +146,7 @@
              <h1>My Active Events</h1>
 
 
-             <table border="1" class="table table-hover" >
+             <table border="1" class="table table-hover" style="color: white" id="booktable">
                  <c:forEach items="${myActiveReservationList}" var="current">
                      <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
 
@@ -155,7 +155,7 @@
                          <td><c:out value="${current.hours.hour}" /><td>
                          <td><c:out value="${current.courtReservationID}" /><td>
 
-                         <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true"></span></a>
+                             <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
 
                      </tr>
                  </c:forEach>
