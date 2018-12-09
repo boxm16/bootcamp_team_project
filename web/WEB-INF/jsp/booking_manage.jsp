@@ -116,23 +116,7 @@
             </div>
 
         </div>
-        <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                        <div class="hidden-xs">My Reviews</div>
-                    </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                        <div class="hidden-xs">Others Reviews</div>
-                    </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                        <div class="hidden-xs">Unfinished Reviews</div>
-                    </button></a>
-            </div>
-        </div>
+
 
 
 
@@ -144,41 +128,41 @@
         <!--Creation section -->
         <h1>Let's create a new event</h1>
         Select a Court;
-        <div class="container">
+        <div class="container" style= width:700px">
 
-            <form:form id="form1" modelAttribute="courtReservation" method="POST" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-                <form:select id="court" name="court" path="courtId.id">
-                    <c:forEach items="${courtList}" var="courtList">
-                        <option value="${courtList.id}">${courtList.name}</option>
-                    </c:forEach>
-                </form:select>
-                <form:input id="datepicker" type="date"  name="date" path="date"/>
-                <form:select id="output" path="hours.hoursId" ></form:select>
-                    <button type="submit">Create Event</button>
-            </form:form>
-
-
-
-            <h1>My Active Events</h1>
+             <form:form id="form1" modelAttribute="courtReservation" method="POST" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+                 <form:select id="court" name="court" path="courtId.id">
+                     <c:forEach items="${courtList}" var="courtList">
+                         <option value="${courtList.id}">${courtList.name}</option>
+                     </c:forEach>
+                 </form:select>
+                 <form:input id="datepicker" type="date"  name="date" path="date"/>
+                 <form:select id="output" path="hours.hoursId" ></form:select>
+                     <button type="submit">Create Event</button>
+             </form:form>
 
 
-            <table border="1" class="table table-hover" >
-                <c:forEach items="${myActiveReservationList}" var="current">
-                    <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
 
-                        <td><c:out value="${current.courtId.name}" /><td>
-                        <td><c:out value="${current.date}" /><td>
-                        <td><c:out value="${current.hours.hour}" /><td>
-                        <td><c:out value="${current.courtReservationID}" /><td>
+             <h1>My Active Events</h1>
 
-                        <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
 
-                    </tr>
-                </c:forEach>
-            </table>
-            <hr>
+             <table border="1" class="table table-hover" >
+                 <c:forEach items="${myActiveReservationList}" var="current">
+                     <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
 
-            <table  border="1" class="table table-hover" id="output1">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+                         <td><c:out value="${current.courtId.name}" /><td>
+                         <td><c:out value="${current.date}" /><td>
+                         <td><c:out value="${current.hours.hour}" /><td>
+                         <td><c:out value="${current.courtReservationID}" /><td>
+
+                         <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true"></span></a>
+
+                     </tr>
+                 </c:forEach>
+             </table>
+             <hr>
+
+             <table  border="1" class="table table-hover" id="output1">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
         </div>
         <script>
 

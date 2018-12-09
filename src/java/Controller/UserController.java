@@ -367,5 +367,12 @@ public class UserController {
         userDao.updatepic(user.getUsername(), file);
         return "menupage";
     }
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout( ModelMap modelMap, HttpSession session) throws IOException {
+       
+        session.invalidate();
+        return "index";
+    }
 
 }
