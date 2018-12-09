@@ -140,10 +140,9 @@ sta requests vazoume div me logo epanw
     background: #DE6262;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
     /* background whole page*/
-    background: linear-gradient(to bottom, #23F15B, #0A561F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, #79abfc, #022660); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     float:left;
     width:100%;
-    padding : 40px 0;
 }
 /* eikona pisw apo carousel*/
 .banner-sec{  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
@@ -158,9 +157,9 @@ sta requests vazoume div me logo epanw
 .login-sec .copy-text i{color:#23F15B;}
 .login-sec .copy-text a{color:#23F15B;}
 /*keimeno epanw apo grammi */
-.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #0A561F;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #022660;}
 /* orizontia grammi*/
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#23F15B; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#022660; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
 /* button submit*/
 .btn-login{background: #23F15B; color:#fff; font-weight:600;}
 .banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
@@ -211,7 +210,7 @@ sta requests vazoume div me logo epanw
 }
 /* keimeno kentrikou element */
 .hero h1 {
-    font-size: 6em;    
+    font-size: 5em;    
     font-weight: bold;
     margin: 0;
     padding: 0;

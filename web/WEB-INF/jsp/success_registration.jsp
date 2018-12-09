@@ -51,7 +51,6 @@
                                     <h1>We are creative</h1>        
                                     <h3>Get start your next awesome project</h3>
                                 </hgroup>
-                                <button class="btn btn-hero btn-lg" role="button">See all features</button>
                             </div>
                         </div>
                         <div class="item slides">
@@ -61,7 +60,6 @@
                                     <h1>We are smart</h1>        
                                     <h3>Get start your next awesome project</h3>
                                 </hgroup>       
-                                <button class="btn btn-hero btn-lg" role="button">See all features</button>
                             </div>
                         </div>
                         <div class="item slides">
@@ -71,7 +69,6 @@
                                     <h1>We are amazing</h1>        
                                     <h3>Get start your next awesome project</h3>
                                 </hgroup>
-                                <button class="btn btn-hero btn-lg" role="button">See all features</button>
                             </div>
                         </div>
                     </div> 

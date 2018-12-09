@@ -9,14 +9,16 @@ var $thumbs = $('.chat_people').click(function (e) {
 
 var name = document.getElementsByClassName(".chat_people");
 $(".chat_people").click(function () {
+
     var div = this.textContent;
-    var text1 = $(this).find('p').text();
+    var court = $(this).find('p').text();
     var user = $(this).find('h5').justtext().trim();
     var date = $(this).find('span').text();
+    var message=$(this).find('h6').text();
     var time = $(this).find('a#text').text();
     var id = $(this).find('a#incoming_id').text();
 
-    $("div.received_msg").text(user + " send you a game request for " + date + " at" + time + " ! Read the message: " + text1);
+    $("div.received_msg").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court+"\n"+"Message: "+message);
     document.getElementById("accept").action = "/seek_play/accept.htm?id=" + id;
     document.getElementById("deny").action = "/seek_play/deny.htm?id=" + id;
 

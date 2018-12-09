@@ -5,25 +5,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> beta Messenger</title>
+        <title> Game Requests</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <style>* {outline: 1px solid red;
-           outline-offset: -1px;}
-        </style>
-        </head>
+
+    </head>
 
 
-        <body style="background-image:url(https://lh6.googleusercontent.com/n-3BhMCe1MnqN-JFA_zydV-sxS2ePDcAf32Tko57nAx2ZCAiygtTZCRWoPnua09twhXfegqdLRNKRL1KGPT9gKYAnhcOwa5IFSi97gU9tLdfpdfgaduXOztry4JJPrENjA); background-size: 100vw 100vh;">
-            <div class="centreButtons">
+    <body style=" background-image: url(resources/new_event.jpg);background-size: cover">
+        <div class="centreButtons">
             <button onclick="myFunction1()" class="btn btn-primary" style="display:inline-block; text-align: center;">Incoming</button>
             <button onclick="myFunction2()" class="btn btn-primary" style="display:inline-block;">Outgoing</button>
             <button onclick="myFunction3()" class="btn btn-primary" style="display:inline-block;">Answered</button>
         </div>
-        <div class="container" id="incoming">
+        <div class="container" id="incoming" style="background-color: transparent;">
 
-            <h3 class=" text-center"> Requests</h3>
+            <h3 class=" text-center" style="color: white"> Requests</h3>
             <div class="messaging">
                 <div class="inbox_msg">
                     <div class="inbox_people" >
@@ -36,12 +34,14 @@
                             <div class="chat_list">     
                                 <c:forEach items="${incoming_requests}" var="incoming_requests">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                        <div class="chat_ib"><a id="incoming_id" style="display: block">${incoming_requests.id}</a>
-                                            <h5>${incoming_requests.match.booker.username}<span class="chat_date">${incoming_request.match.date}</span><br> <a style="float: right" id="text">${incoming_request.match.hours.hour}</a></h5>
-                                            <p class="plain_message">${incoming_requests.match.courtId.name}</p>
-                                            <h6 >${incoming_requests.text}</h4>
-                                                <br>
+                                        <div class="chat_img"> <img src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" alt="https://ptetutorials.com/images/user-profile.png"> </div>
+                                        <div class="chat_ib"><a id="incoming_id" style="display: none">${incoming_requests.id}</a>
+                                            <h5>${incoming_requests.match.booker.username}<span class="chat_date">${incoming_requests.match.date}</span><br>
+                                                <a style="float: right" id="text">${incoming_requests.match.hours.hour}</a>
+                                            </h5>
+                                                <p class="plain_message" style="display: none;">${incoming_requests.match.courtId.name}</p>
+                                            <h6 >${incoming_requests.text}</h6>
+                                                
                                                 </div>
                                                 </div>
                                             </c:forEach> 
@@ -53,9 +53,8 @@
                                                 <div class="msg_history">
                                                     <div class="incoming_msg">
                                                         <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                        <div class="received_msg">
+                                                        <div class="received_msg" style="color:white; white-space: pre-wrap;">
                                                             <div class="received_withd_msg">
-                                                                <p></p>
                                                                 <span class="time_date"></span>
                                                             </div>
                                                         </div>
@@ -64,7 +63,7 @@
                                                     <div >
                                                         <div class="input_msg_write text-center">
                                                             <form id="accept" action="" method="POST"  >
-                                                                <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left">Accept</button>
+                                                                <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left;">Accept</button>
                                                             </form>
                                                             <div>
                                                                 <form id="deny" action="" method="POST" style="display:inline">

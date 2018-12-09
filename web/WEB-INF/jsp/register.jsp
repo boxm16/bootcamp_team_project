@@ -52,7 +52,7 @@
 
                             </div>  
 
-                            <button type="submit" id="submit" class="btn btn-login float-right">Submit</button>
+                                <button type="submit" id="submit" class="btn btn-login float-right" style="background-color: #0c00ff">Submit</button>
                         </div>
 
                         <div class="carousel fade-carousel slide col-md-8 banner-sec" data-ride="carousel" data-interval="4000" id="bs-carousel">
@@ -74,7 +74,6 @@
                                             <h1>We are creative</h1>        
                                             <h3>Get start your next awesome project</h3>
                                         </hgroup>
-                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                     </div>
                                 </div>
                                 <div class="item slides">
@@ -84,7 +83,6 @@
                                             <h1>We are smart</h1>        
                                             <h3>Get start your next awesome project</h3>
                                         </hgroup>       
-                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                     </div>
                                 </div>
                                 <div class="item slides">
@@ -94,7 +92,6 @@
                                             <h1>We are amazing</h1>        
                                             <h3>Get start your next awesome project</h3>
                                         </hgroup>
-                                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                     </div>
                                 </div>
                             </div> 
