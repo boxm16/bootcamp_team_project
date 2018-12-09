@@ -6,8 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,9 +14,9 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
@@ -39,12 +37,81 @@
             }
         </style>
     </head>
-    <body>
+    
+    
+     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
+
+              <div class="useravatar" style="  display: inline-block;">
+                    <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
+                
+            
+                    <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+                    <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+                        </button></a>
+                
+          </div>
+            
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <div class="hidden-xs">Ranks</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            <div class="hidden-xs">Requests</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            <div class="hidden-xs">Personal Infos</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/booking_manage.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            <div class="hidden-xs">Events</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <div class="hidden-xs">Search</div>
+                        </button></a>
+                </div>
+               
+            </div>
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                            <div class="hidden-xs">My Reviews</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                            <div class="hidden-xs">Others Reviews</div>
+                        </button></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                            <div class="hidden-xs">Unfinished Reviews</div>
+                        </button></a>
+                </div>
+            </div>
+<!--        <div class="well" >-->
+              
+    
+    
+    
+    
+    
+    
+    
+    
         <h1>Review your co-players</h1>
         <div class="container">
 
 
             <table border="1" class="table table-hover">
+                
                 <c:forEach items="${pendingReviewList}" var="current">
 
                     <tr onclick="reply_click(this.id)" id ="${current.id}">
@@ -57,12 +124,6 @@
                     </tr>
                 </c:forEach>
             </table>
-
-
-
-
-
-
 
 
             <div>
@@ -100,24 +161,23 @@
 
             function reply_click(clicked_id)
             {
-               
-                document.getElementById("game_request_id").value=clicked_id;
-                 alert(document.getElementById("game_request_id").value);
+
+                document.getElementById("game_request_id").value = clicked_id;
+                alert(document.getElementById("game_request_id").value);
             }
 
-    <script>
 
-        function selectPersonForReview(event) {
-            alert(event.target);
-            document.getElementById("dispaly").innerHTML = "Hello World";
-        }
+            function selectPersonForReview(event) {
+                alert(event.target);
+                document.getElementById("dispaly").innerHTML = "Hello World";
+            }
 
-    </script>
+        </script>
 
-     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
-    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
 
 
-</body>
+    </body>
 </html>

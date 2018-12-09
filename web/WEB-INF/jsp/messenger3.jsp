@@ -13,7 +13,7 @@
     </head>
 
 
-    <body style=" background-image: url(resources/new_event.jpg);background-size: cover">
+    <body style=" background-image: url(resources/game-request.jpeg);background-size: cover">
         <div class="centreButtons">
             <button onclick="myFunction1()" class="btn btn-primary" style="display:inline-block; text-align: center;">Incoming</button>
             <button onclick="myFunction2()" class="btn btn-primary" style="display:inline-block;">Outgoing</button>
@@ -53,7 +53,7 @@
                                                 <div class="msg_history">
                                                     <div class="incoming_msg">
                                                         <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                        <div class="received_msg" style="color:white; white-space: pre-wrap;">
+                                                        <div class="received_msg" style="color:black;   border-radius: 20px; solid #73AD21; white-space: pre-wrap; background-color: #ebebeb">
                                                             <div class="received_withd_msg">
                                                                 <span class="time_date"></span>
                                                             </div>
@@ -76,7 +76,7 @@
                                             </div>
                                     </div>
                                 </div>
-                                <div class="container" id="outgoing" style="display: none">
+                                <div class="container" id="outgoing" style="display: none; background-color: transparent;">
                                     <h3 class=" text-center">Requests</h3>
                                     <div class="messaging">
                                         <div class="inbox_msg">
@@ -93,7 +93,7 @@
                                                                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                                                                 <div class="chat_ib">
                                                                     <h5>${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right" id="text">${outgoing_requests.match.hours.hour}</a></h5>
-                                                                    <p class="plain_message">testttttttttttttttttt${outgoing_requests.match.courtId.name}</p>
+                                                                    <p class="plain_message">${outgoing_requests.match.courtId.name}</p>
                                                                     <h6 >${outgoing_requests.text}</h4>
                                                                         <br>
                                                                         </div>
@@ -107,7 +107,7 @@
                                                                         <div class="msg_history">
                                                                             <div class="incoming_msg">
                                                                                 <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                                                <div class="received_msg">
+                                                                                <div class="received_msg" style="color:black;   border-radius: 20px; solid #73AD21; white-space: pre-wrap; background-color: #ebebeb">
                                                                                     <div class="received_withd_msg">
                                                                                         <p></p>
                                                                                         <span class="time_date"></span>
@@ -123,7 +123,7 @@
                                                                     </div>
                                                             </div>
                                                         </div>
-                                                        <div class="container" id="answered" style="display: none">
+                                                        <div class="container" id="answered" style="display: none;background-color: transparent;">
                                                             <h3 class=" text-center">Requests</h3>
                                                             <div class="messaging">
                                                                 <div class="inbox_msg">
@@ -154,7 +154,7 @@
                                                                                                 <div class="msg_history">
                                                                                                     <div class="incoming_msg">
                                                                                                         <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                                                                        <div class="received_msg">
+                                                                                                        <div class="received_msg" style="color:black;   border-radius: 20px; solid #73AD21; white-space: pre-wrap; background-color: #ebebeb" >
                                                                                                             <div class="received_withd_msg">
                                                                                                                 <p></p>
                                                                                                                 <span class="time_date"></span>

@@ -90,7 +90,7 @@
 
                                     <div class="row">
                                         <div class="col-xs-12 col-md-12 text-center">
-                                            <h1 class="rating-num">${star}</h1>
+                                            <h1 class="rating-num">Your overall rank: ${star}/5</h1>
                                             <div class="star-rating">
                                                 <div class="back-stars">
                                                     <i class="fa fa-futbol-o" aria-hidden="true"></i>
@@ -111,36 +111,36 @@
                                         <div class="col-xs-12 col-md-12 text-center">
                                             <div class="row rating-desc">
                                                 <div class="col-xs-2 col-md-2 text-right">
-                                                    <span class="fa fa-group" hidden=true "></span>Teamwork
+                                                    <span class="fa fa-group" hidden=true "></span>  Teamwork
                                                 </div>
                                                 <div class="col-xs-8 col-md-9 ">
                                                     <div class="progress progress-striped ">
                                                         <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="20 "
-                                                             aria-valuemin="0 " aria-valuemax="10 " style="width:${team}% ">
+                                                             aria-valuemin="0 " aria-valuemax="100 " style="width:${team}%; background-color:  blue;">
                                                             <span class="sr-only ">${team}%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- end 5 -->
                                                 <div class="col-xs-2 col-md-2 text-right ">
-                                                    <span class="fa fa-heartbeat "></span>Athletism
+                                                    <span class="fa fa-heartbeat "></span> Athletism
                                                 </div>
                                                 <div class="col-xs-8 col-md-9 ">
-                                                    <div class="progress ">
-                                                        <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="20 "
-                                                             aria-valuemin="0 " aria-valuemax="100 " style="width: ${athlet}% ">
+                                                    <div class="progress  progress-striped">
+                                                        <div class="progress-bar progress-bar-success" role="progressbar " aria-valuenow="20 "
+                                                             aria-valuemin="0 " aria-valuemax="100 " style="width: ${athlet}%; background-color:  crimson;" >
                                                             <span class="sr-only ">${athlet}%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- end 4 -->
                                                 <div class="col-xs-2 col-md-2 text-right ">
-                                                    <span class="fa fa-line-chart "></span>Technique
+                                                    <span class="fa fa-line-chart "></span>  Technique
                                                 </div>
                                                 <div class="col-xs-8 col-md-9 ">
-                                                    <div class="progress ">
+                                                    <div class="progress  progress-striped">
                                                         <div class="progress-bar progress-bar-info " role="progressbar " aria-valuenow="20 "
-                                                             aria-valuemin="0 " aria-valuemax="100 " style="width:${tech}% ">
+                                                             aria-valuemin="0 " aria-valuemax="100 " style="width:${tech}%; background-color:  darkcyan; ">
                                                             <span class="sr-only ">${tech}%</span>
                                                         </div>
                                                     </div>
