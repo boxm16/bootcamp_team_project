@@ -85,7 +85,7 @@ public class UserDao {
                 + " join court_reservation on `match`=CourtReservationID\n"
                 + " join hours h on court_reservation.hours = h.hours_id\n"
                 + "join user on game_request.request_receiver = user.user_id\n"
-                + "  where booker=(select user_id from user where username='" + requester.getUsername() + "') order by date;", GameRequest.class);
+                + "  where booker=(select user_id from user where username='" + requester.getUsername() + "') order by status;", GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
