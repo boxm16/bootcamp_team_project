@@ -5,7 +5,11 @@
  */
 package Controller;
 
+
+import Dao.RatingsDao;
+import Dao.ReviewDao;
 import Dao.UserDao;
+import Model.Ratings;
 import Model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,12 +31,27 @@ public class AjaxController {
     @Autowired
     private UserDao usrd;
     
+     @Autowired
+    private RatingsDao ratingDao;
+    
     @RequestMapping(value="/find.htm",method=RequestMethod.GET,headers="Accept=*/*",produces="application/json")
     public @ResponseBody String filterusers(ModelMap model, @RequestParam(value="texts") String name) throws JsonProcessingException{        
         List<User> us= usrd.check(name);
     ObjectMapper mapper =new ObjectMapper();
         System.out.print(mapper.writeValueAsString(us));    
         return mapper.writeValueAsString(us);
+    }
+    
+    
+     @RequestMapping(value = "/findAvaliablePlayersForThisGameByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
+    public @ResponseBody
+    String findAvaliablePlayersForThisGame(@RequestParam(value = "courtReservationId") String courtReservationID) throws JsonProcessingException {
+
+       List<Ratings> getAvailablePlayersForGame=ratingDao.getAvalialbePlayersForGame();
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(getAvailablePlayersForGame);
+
     }
     
 }

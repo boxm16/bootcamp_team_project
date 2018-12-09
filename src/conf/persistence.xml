@@ -8,6 +8,7 @@
     <class>Model.Hours</class>
     <class>Model.Court</class>
     <class>Model.GameRequest</class>
+    <class>Model.Ratings</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://5.189.135.166:3011/seek_play?zeroDateTimeBehavior=convertToNull"/>

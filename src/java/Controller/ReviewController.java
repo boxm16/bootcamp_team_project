@@ -50,9 +50,9 @@ public class ReviewController {
 
     @RequestMapping(value = "/goToReviewForm.htm", method = RequestMethod.GET)
 
-    public String createReviewForm(ModelMap model) {
-
-        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview();
+    public String createReviewForm(ModelMap model, HttpSession session) {
+        User me = (User) session.getAttribute("user");
+        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(me.getUserId());
         model.addAttribute("pendingReviewList", pendingReviewList);
         Review review = new Review();
         List<String> Grades = new ArrayList<>();
@@ -82,17 +82,20 @@ public class ReviewController {
 
         User reviewer = (User) session.getAttribute("user");
         review.setReviewer(reviewer);
-User reviewed=gameRequest.getRequestReceiver();
-review.setReviewed(reviewed);
+        User reviewed = gameRequest.getRequestReceiver();
+        review.setReviewed(reviewed);
 
         reviewDao.insert(review);
         review = new Review();
         model.addAttribute("review", review);
 
-        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview();
+        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(reviewer.getUserId());
         model.addAttribute("pendingReviewList", pendingReviewList);
 
         return "reviews";
     }
 
+    
+  
+    
 }
