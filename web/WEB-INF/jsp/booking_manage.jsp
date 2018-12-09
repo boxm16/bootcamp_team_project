@@ -30,6 +30,13 @@
 
             $(document).ready(function () {
 
+                $("#tr").click(function () {
+
+                });
+
+
+
+
                 $("#datepicker").change(function () {
                     $("#output").empty()
                     var text = $(this).val();
@@ -52,38 +59,13 @@
                         }
                     });
                 });
-                
-                
-                
-                
-                $("#datepicker").change(function () {
-                    $("#output").empty()
-                    var text = $(this).val();
-                    var text2 = $("#court").val();
-                    //alert(text2);
-                    $.ajax({
-                        url: 'findFreeTimeSlotsByRest.htm?userinput=' + text + '&userinput2=' + text2,
-                        contentType: 'application/json',
-                        success: function (result) {
-                            //alert(result)
-                            var jsonobj = $.parseJSON(result);
 
-                            $.each(jsonobj, function (i, item) {
-
-                                $tr = $("#output").append(
-                                        // $('<td>').text(item.username),
-                                        $('<option value=' + item.hoursId + '>').text(item.hour)
-                                        );
-                            });
-                        }
-                    });
-                });
-                
-                
             }
             );
 
         </script>
+
+
     </head>
     <body>
 
@@ -92,84 +74,87 @@
         Select a Court;
         <div class="container">
 
-        <form:form id="form1" modelAttribute="courtReservation" method="POST" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-            <form:select id="court" name="court" path="courtId.id">
-                <c:forEach items="${courtList}" var="courtList">
-                <option value="${courtList.id}">${courtList.name}</option>
-            </c:forEach>
-        </form:select>
-        <form:input id="datepicker" type="date"  name="date" path="date"/>
-        <form:select id="output" path="hours.hoursId" ></form:select>
-        <button type="submit">Create Event</button>
-    </form:form>
+            <form:form id="form1" modelAttribute="courtReservation" method="POST" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+                <form:select id="court" name="court" path="courtId.id">
+                    <c:forEach items="${courtList}" var="courtList">
+                        <option value="${courtList.id}">${courtList.name}</option>
+                    </c:forEach>
+                </form:select>
+                <form:input id="datepicker" type="date"  name="date" path="date"/>
+                <form:select id="output" path="hours.hoursId" ></form:select>
+                    <button type="submit">Create Event</button>
+            </form:form>
 
 
 
-    <h1>My Active Events</h1>
+            <h1>My Active Events</h1>
 
 
-    <table border="1" class="table table-hover" >
-        <c:forEach items="${myActiveReservationList}" var="current">
-            <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
-               
-                <td><c:out value="${current.courtId.name}" /><td>
-                <td><c:out value="${current.date}" /><td>
-                <td><c:out value="${current.hours.hour}" /><td>
-                <td><c:out value="${current.courtReservationID}" /><td>
-                
-                <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
+            <table border="1" class="table table-hover" >
+                <c:forEach items="${myActiveReservationList}" var="current">
+                    <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
 
-            </tr>
-        </c:forEach>
-    </table>
-    <hr>
-      <form:form modelAttribute="gameRequest" method="POST" action="${pageContext.request.contextPath}/handleGameRequestForm.htm">
-          <form:input path="status"/>
-        <button type="submit">Send Request</button>
-    </form:form>
-        <div id="output">jjjj</div>
-</div>
+                        <td><c:out value="${current.courtId.name}" /><td>
+                        <td><c:out value="${current.date}" /><td>
+                        <td><c:out value="${current.hours.hour}" /><td>
+                        <td><c:out value="${current.courtReservationID}" /><td>
+
+                        <td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'>DELETE BOOKING</a><td>
+
+                    </tr>
+                </c:forEach>
+            </table>
+            <hr>
+
+            <table  border="1" class="table table-hover" id="output1">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+        </div>
         <script>
-            
+
 
             function reply_click(clicked_id)
             {
-               var courtReservationId=clicked_id;
-               
-               
-                 alert(clicked_id);
-                 
-                 
-              
-                    $("#output").empty()
-                  
-             
-                    $.ajax({
-                        url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId,
-                        contentType: 'application/json',
-                        success: function (result) {
-                            //alert(result)
-                            var jsonobj = $.parseJSON(result);
+                var courtReservationId = clicked_id;
 
-                            $.each(jsonobj, function (i, item) {
+                $("#output1").empty();
 
-                                $tr = $("#output").append(
-                                        // $('<td>').text(item.username),
-                                        $('<option value=' + item.hoursId + '>').text(item.hour)
-                                        );
-                            });
-                        }
-                    });
-                
-                 
-                 
-                 
+                // alert("σδσδσδ");
+                $.ajax({
+
+                    url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId,
+                    contentType: 'application/json',
+                    success: function (result) {
+                        // alert(result)
+                        var jsonobj = $.parseJSON(result);
+
+                        $.each(jsonobj, function (i, item) {
+
+                            $a = $('<a href="${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id">').text("Send request");
+
+                            $tr = $('<tr>').append(
+                                    $('<td>').text(item.player),
+                                    $('<td>').text(item.teamwork),
+                                    $('<td>').text(item.athletism),
+                                    $('<td>').text(item.technique),
+                                    $('<td>').text(item.technique),
+                                    $('<td>').append($a),
+                                    // $('<td>').append(<a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a>)
+                                    //   $('<td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a><td>'),
+                                    //$('<option value=' + item.player + '>').text(item.player)
+                                    );
+                            $("#output1").append($tr);
+                        });
+                    }
+                });
+
+
+
+
             }
 
 
         </script>
 
-    <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
-     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
-</body>
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+    </body>
 </html>
