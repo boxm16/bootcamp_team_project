@@ -38,7 +38,7 @@ public class UserDao {
     }
      @Transactional
     public void updateinfos(String us, String n, String ln) throws IOException{
-        em.find(User.class,us);
+      //  em.find(User.class,us);
         em.createNativeQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
      @Transactional
