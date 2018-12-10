@@ -19,6 +19,7 @@ import Model.User;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -234,13 +235,15 @@ public class UserController {
         BigDecimal teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
         BigDecimal technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
         BigDecimal athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-        BigDecimal overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(30)));
-        BigDecimal grade = (overall.divide(new BigDecimal(2)));
+        BigDecimal overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+        BigDecimal grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         model.addAttribute("users", user);
         model.addAttribute("team", teamwork);
         model.addAttribute("athlet", athletism);
         model.addAttribute("tech", technique);
         model.addAttribute("star", grade);
+        model.addAttribute("overall", overall);
+
         return "starpage";
     }
 
