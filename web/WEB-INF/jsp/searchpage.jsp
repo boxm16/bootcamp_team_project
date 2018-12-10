@@ -100,7 +100,7 @@
 
                             $.each(jsonobj, function (i, item) {
                                 $tr = $('<tr>').append(
-                                        $('<a href="http://localhost:8080/seek_play/user.htm">').text(item)
+                                        $('<a href="http://localhost:8080/seek_play/profile.htm?username="'+item+'".htm">').text(item)
                                         );
                                 $("#text").append($tr);
                             });

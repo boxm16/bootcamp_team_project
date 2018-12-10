@@ -6,8 +6,10 @@
 package Dao;
 
 import Model.Ratings;
+import Model.Stats;
 import Model.User;
 import java.math.BigDecimal;
+import static java.math.BigDecimal.ROUND_FLOOR;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,16 +23,21 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RatingDao {
+
     @PersistenceContext
     private EntityManager em;
 
- @Transactional
- public double Status(int id){
-     em.find(Ratings.class,id);
-      Query q= em.createNativeQuery("SELECT teamwork FROM ratings WHERE Player='"+id+"';");
-     
-     double teamwork = new BigDecimal("'"+q.getResultList()+"'").doubleValue();
-     System.out.println(teamwork);
-     return teamwork;
- }
+    @Transactional
+    public List<Stats> Status(int id) {
+        em.find(Ratings.class, id);
+        Ratings r = new Ratings();
+        List<Stats> stats = em.createQuery("SELECT s FROM Stats s WHERE Player = :id", Stats.class).setParameter("id", id)
+                .getResultList();
+        System.out.println("test");
+        
+//        BigDecimal tw = new BigDecimal("'" + q.getSingleResult().toString() + "'").setScale(2, BigDecimal.ROUND_FLOOR);
+//        float teamwork = new BigDecimal("'" + tw + "'").floatValue();
+//        System.out.println(teamwork);
+     return stats;
+    }
 }

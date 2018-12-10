@@ -35,7 +35,7 @@
                 </div>
                 <div class="useravatar">
                     <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
-                </div>
+                </div>                
                 <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
 
             </div>

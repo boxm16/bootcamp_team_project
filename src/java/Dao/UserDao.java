@@ -32,9 +32,9 @@ public class UserDao {
         em.persist(user);
     }
      @Transactional
-    public void updatepic(String us, MultipartFile file) throws IOException{
+    public void updatepic(String us, String file) throws IOException{
         em.find(User.class,us);
-        em.createQuery("Update user SET profileimage='"+file.getInputStream()+"'WHERE username='"+us+"';").executeUpdate();
+        em.createQuery("Update user SET profileimage='"+file+"'WHERE username='"+us+"';").executeUpdate();
     }
      @Transactional
     public void updateinfos(String us, String n, String ln) throws IOException{
@@ -51,10 +51,12 @@ public class UserDao {
     }
      @Transactional
      public User profile(String s){
-        User u=new User();
+       User u = new User(); 
         Query q= em.createNativeQuery("SELECT * FROM user WHERE username='"+s+"';");
         List<User> usr=q.getResultList();
-             
+       u.setUserId(usr.get(0).getUserId());
+       u.setUsername(usr.get(0).getUsername());
+       u.setImage(usr.get(0).getImage());
        return u;
     }
       @Transactional

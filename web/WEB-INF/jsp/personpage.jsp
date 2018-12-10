@@ -3,6 +3,7 @@
     Created on : 14 Νοε 2018, 11:44:58 μμ
     Author     : aroum
 --%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="forms"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,12 +76,11 @@
                         <div class="hidden-xs">EDIT</div>
                     </button> </a>
 
-                <h3 style="background-color: transparent; color: white;"> Change your profile picture</h3>
-                <forms:form method="POST" action="uploadpic" enctype="multipart/form-data">
-                    <h3 style="background-color: transparent; color: white"> File to upload: <input type="file" name="img"><br /> </h3>
-
-                    <input type="submit" value="Upload">
-                </forms:form>	
+                        <h3><div> Change your profile picture</div></h3>
+                        <forms:form method="POST" action="http://localhost:8080/seek_play/uploadpic.htm" enctype="multipart/form-data">
+                            File to upload: <input type="file" name="img">
+                            <input type="submit" value="Upload">
+                        </forms:form>	
 
             </div>
         </div>
