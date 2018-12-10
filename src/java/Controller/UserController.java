@@ -15,8 +15,10 @@ import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import Model.Review;
 import Model.User;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -169,13 +172,13 @@ public class UserController {
         return "editpage";
     }
 
-    @RequestMapping(value = "/uploadpic", method = RequestMethod.GET)
-    public String picuser(ModelMap model, @ModelAttribute User u, BindingResult result, @RequestParam(value = "img") MultipartFile fileUpload,HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        model.addAttribute("users", user);
-    
-        return "editpage";
-    }
+//    @RequestMapping(value = "/uploadpic", method = RequestMethod.GET)
+//    public String picuser(ModelMap model, @ModelAttribute User u, BindingResult result, @RequestParam(value = "img") MultipartFile fileUpload,HttpSession session) {
+//        User user = (User) session.getAttribute("user");
+//        model.addAttribute("users", user);
+//    
+//        return "editpage";
+//    }
 
     @RequestMapping(value = "/edit.htm", method = RequestMethod.GET)
     public String homenew(ModelMap model, @ModelAttribute User u,HttpSession session)
@@ -201,12 +204,12 @@ public class UserController {
         User user = (User) session.getAttribute("user");
        Ratings r =new Ratings();
        r.setPlayer(user.getUserId());       
-       int id=r.getPlayer();
-        double teamwork = rd.Status(r.getPlayer());
-        double technique = rd.Status(r.getPlayer());
-        double athletism = rd.Status(r.getPlayer());
-        double grade = ((athletism + technique + teamwork) / 3);
-        double g = (grade / 2);
+       int id=r.getPlayer();       
+        float teamwork = rd.Status(r.getPlayer());
+        float technique = rd.Status(r.getPlayer());
+        float athletism = rd.Status(r.getPlayer());
+        float grade = ((athletism + technique + teamwork) / 3);
+        float g = (grade / 2);
         model.addAttribute("users", user);
         model.addAttribute("team",(teamwork*10));
         model.addAttribute("athlet",(athletism*10));
@@ -317,21 +320,23 @@ public class UserController {
         model.addAttribute("users", user);
         return "searchpage";
     }
-    @RequestMapping(value="/profile/{id}",method=RequestMethod.GET)
+    @RequestMapping(value="/profile.htm",method=RequestMethod.GET)
     
-        public String profile(ModelMap model, @PathVariable("id")String username){
+        public String profile(ModelMap model, @RequestParam(value="username")String username){
         User user=new User();        
-        
-        model.addAttribute("users", user);
-        
-        return "searchpage";
+        user=userDao.profile(username);      
+        model.addAttribute("users", user);        
+        return "profilepage";
     }  
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String submit(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
-        User user = new User();
+    @RequestMapping(value = "/uploadpic.htm", method = RequestMethod.POST)
+    public @ResponseBody String submit(@RequestParam("img") MultipartFile file, ModelMap modelMap,HttpSession session) throws IOException {
+        User user = (User) session.getAttribute("user");        
         modelMap.addAttribute("file", file);
-        user.setUsername("bbb");
-        userDao.updatepic(user.getUsername(), file);
+        final Part filepart=(Part)file;
+        final String filename=filepart.getSubmittedFileName();
+        filepart.write("C:\\javacode\\"+filename);
+        File f=new File("C:\\javacode\\"+filename);        
+        userDao.updatepic(user.getUsername(), filename);
         return "menupage";
     }
 

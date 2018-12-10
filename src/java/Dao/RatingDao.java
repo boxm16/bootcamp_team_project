@@ -8,6 +8,7 @@ package Dao;
 import Model.Ratings;
 import Model.User;
 import java.math.BigDecimal;
+import static java.math.BigDecimal.ROUND_FLOOR;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,11 +26,13 @@ public class RatingDao {
     private EntityManager em;
 
  @Transactional
- public double Status(int id){
+ public float Status(int id){
      em.find(Ratings.class,id);
-      Query q= em.createNativeQuery("SELECT teamwork FROM ratings WHERE Player='"+id+"';");
-     
-     double teamwork = new BigDecimal("'"+q.getResultList()+"'").doubleValue();
+     Ratings r=new Ratings();
+     Query q= em.createNativeQuery("SELECT teamwork FROM ratings WHERE Player='"+id+"';");      
+      
+     BigDecimal tw = new BigDecimal("'"+q.getSingleResult().toString()+"'").setScale(2,BigDecimal.ROUND_FLOOR);
+     float teamwork = new BigDecimal("'"+tw+"'").floatValue();
      System.out.println(teamwork);
      return teamwork;
  }
