@@ -211,11 +211,18 @@ public class UserController {
         r.setPlayer(user.getUserId());
         int id = r.getPlayer();
         List<Stats> stats = rd.Status(id);
-        BigDecimal teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-        BigDecimal technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-        BigDecimal athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-        BigDecimal overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
-        BigDecimal grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+        BigDecimal teamwork = new BigDecimal(0);
+        BigDecimal technique = new BigDecimal(0);
+        BigDecimal athletism = new BigDecimal(0);
+        BigDecimal overall = new BigDecimal(0);
+        BigDecimal grade = new BigDecimal(0);
+        if (!stats.isEmpty()) {
+            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
+            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
+            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+        }
         model.addAttribute("users", user);
         model.addAttribute("team", teamwork);
         model.addAttribute("athlet", athletism);
@@ -226,8 +233,10 @@ public class UserController {
         return "starpage";
     }
 
-    @RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
-    public String myreviewnew(ModelMap model, User u) {
+
+
+@RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
+        public String myreviewnew(ModelMap model, User u) {
         User user = new User();
         Review fr = new Review();
         user.setUsername("bbb");
@@ -249,7 +258,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/others.htm", method = RequestMethod.GET)
-    public String othersnew(ModelMap model, User u) {
+        public String othersnew(ModelMap model, User u) {
         User user = new User();
         Review fr = new Review();
         user.setUsername("bbb");
@@ -271,7 +280,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/unfinished.htm", method = RequestMethod.GET)
-    public String unfinishednew(ModelMap model, User u) {
+        public String unfinishednew(ModelMap model, User u) {
         User user = new User();
         Review fr = new Review();
         user.setUsername("bbb");
@@ -293,7 +302,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/event.htm", method = RequestMethod.GET)
-    public String event(ModelMap model) {
+        public String event(ModelMap model) {
         User user = new User();
         user.setUsername("bbb");
         model.addAttribute("users", user);
@@ -301,7 +310,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/eventcreate.htm", method = RequestMethod.GET)
-    public String eventcreate(ModelMap model) {
+        public String eventcreate(ModelMap model) {
         User user = new User();
         user.setUsername("bbb");
         model.addAttribute("users", user);
@@ -309,7 +318,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/eventedit.htm", method = RequestMethod.GET)
-    public String eventedit(ModelMap model) {
+        public String eventedit(ModelMap model) {
         User user = new User();
         user.setUsername("bbb");
         model.addAttribute("users", user);
@@ -317,7 +326,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/eventdelete.htm", method = RequestMethod.GET)
-    public String eventdelete(ModelMap model) {
+        public String eventdelete(ModelMap model) {
         User user = new User();
         user.setUsername("bbb");
         model.addAttribute("users", user);
@@ -325,7 +334,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/search.htm", method = RequestMethod.GET)
-    public String search(ModelMap model) {
+        public String search(ModelMap model) {
         User user = new User();
         user.setUsername("bbb");
         model.addAttribute("users", user);
@@ -334,7 +343,7 @@ public class UserController {
 
     @RequestMapping(value = "/profile.htm", method = RequestMethod.GET)
 
-    public String profile(ModelMap model, @RequestParam(value = "username") String username) {
+        public String profile(ModelMap model, @RequestParam(value = "username") String username) {
         User user = new User();
         user = userDao.profile(username);
         model.addAttribute("users", user);
@@ -342,7 +351,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/uploadpic.htm", method = RequestMethod.POST)
-    public @ResponseBody
+        public @ResponseBody
     String submit(@RequestParam("img") MultipartFile file, ModelMap modelMap, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
         modelMap.addAttribute("file", file);
@@ -355,7 +364,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(ModelMap modelMap, HttpSession session) throws IOException {
+        public String logout(ModelMap modelMap, HttpSession session) throws IOException {
 
         session.invalidate();
         return "index";

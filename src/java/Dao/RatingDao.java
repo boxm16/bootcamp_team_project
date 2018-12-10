@@ -29,15 +29,10 @@ public class RatingDao {
 
     @Transactional
     public List<Stats> Status(int id) {
-        em.find(Ratings.class, id);
+        //em.find(Ratings.class, id);
         Ratings r = new Ratings();
         List<Stats> stats = em.createQuery("SELECT s FROM Stats s WHERE Player = :id", Stats.class).setParameter("id", id)
                 .getResultList();
-        System.out.println("test");
-        
-//        BigDecimal tw = new BigDecimal("'" + q.getSingleResult().toString() + "'").setScale(2, BigDecimal.ROUND_FLOOR);
-//        float teamwork = new BigDecimal("'" + tw + "'").floatValue();
-//        System.out.println(teamwork);
-     return stats;
+             return stats;
     }
 }

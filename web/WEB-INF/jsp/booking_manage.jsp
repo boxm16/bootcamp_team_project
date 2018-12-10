@@ -7,8 +7,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,12 +20,10 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
         <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script>
 
@@ -76,6 +72,7 @@
                 });
             });
         </script>
+        
     </head>
     <body style=" background-image: url(resources/new-event.jpg);background-size: cover">
 
@@ -96,7 +93,7 @@
             </div>
             <div class="btn-group" role="group">
                 <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                        <div class="hidden-xs">Requests</div>
+                        <div hidden-xs">Requests</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
@@ -116,7 +113,7 @@
             </div>
 
         </div>
-            <br>
+        <br>
 
 
 
@@ -129,40 +126,40 @@
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
             <h1 style="color: white">Let's create a new event!</h1>
 
-            
-             <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-                 <form:select id="court" name="court" path="courtId.id">
-                     <c:forEach items="${courtList}" var="courtList">
-                         <option value="${courtList.id}">${courtList.name}</option>
-                     </c:forEach>
-                 </form:select>
-                 <form:input id="datepicker" type="date"  name="date" path="date"/>
-                 <form:select id="output" path="hours.hoursId" ></form:select>
-                     <button type="submit">Create Event</button>
-             </form:form>
+
+            <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+                <form:select id="court" name="court" path="courtId.id">
+                    <c:forEach items="${courtList}" var="courtList">
+                        <option value="${courtList.id}">${courtList.name}</option>
+                    </c:forEach>
+                </form:select>
+                <form:input id="datepicker" type="date"  name="date" path="date"/>
+                <form:select id="output" path="hours.hoursId" ></form:select>
+                    <button type="submit">Create Event</button>
+            </form:form>
 
 
 
-             <h1>My Active Events</h1>
+            <h1>My Active Events</h1>
 
 
-             <table border="1" class="table table-hover" style="color: white" id="booktable">
-                 <c:forEach items="${myActiveReservationList}" var="current">
-                     <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
+            <table border="1" class="table table-hover" style="color: white" id="booktable">
+                <c:forEach items="${myActiveReservationList}" var="current">
+                    <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
 
-                         <td><c:out value="${current.courtId.name}" /><td>
-                         <td><c:out value="${current.date}" /><td>
-                         <td><c:out value="${current.hours.hour}" /><td>
-                         <td><c:out value="${current.courtReservationID}" /><td>
+                        <td><c:out value="${current.courtId.name}" /><td>
+                        <td><c:out value="${current.date}" /><td>
+                        <td><c:out value="${current.hours.hour}" /><td>
+                        <td><c:out value="${current.courtReservationID}" /><td>
 
-                             <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
 
-                     </tr>
-                 </c:forEach>
-             </table>
-             <hr>
+                    </tr>
+                </c:forEach>
+            </table>
+            <hr>
 
-             <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+            <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
         </div>
         <script>
 
