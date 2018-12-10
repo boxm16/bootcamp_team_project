@@ -126,7 +126,7 @@
 
 
         <!--Creation section -->
-        <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white">
+        <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
             <h1 style="color: white">Let's create a new event!</h1>
 
             
@@ -162,7 +162,7 @@
              </table>
              <hr>
 
-             <table  border="1" class="table table-hover" id="output1">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+             <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
         </div>
         <script>
 
