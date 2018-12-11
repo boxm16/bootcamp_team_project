@@ -9,9 +9,8 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
-        <!------ Include the above in your HEAD tag ---------->     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>Welcome to Seek & Play</title>
     </head> 
     <body>
     <section class="login-block">
@@ -31,11 +30,11 @@
                         </div>
                         <div>${message}</div>
                         <div class="form-check">
-                            
+
                             <!--                                     <p class="login button"> 
                                                                <input type="submit" id="submit" value="Login" /> 
                                                             </p>-->
-                            <button type="submit" id="submit" class="btn btn-login float-right" style="background-color: royalblue">Submit</button>
+                            <button type="submit" id="submit" class="btn btn-login float-right" style="background-color: #0c00ff">Submit</button>
                         </div>
                         <p class="change_link">
                             Not a member yet ?
@@ -62,10 +61,9 @@
                                 <div class="slide-1"></div>
                                 <div class="hero">
                                     <hgroup>
-                                        <h1>We are creative</h1>        
+                                        <h1 style="font-family: Open Sans ">We are creative</h1>        
                                         <h3>Get start your next awesome project</h3>
                                     </hgroup>
-                                    <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                 </div>
                             </div>
                             <div class="item slides">
@@ -75,7 +73,6 @@
                                         <h1>We are smart</h1>        
                                         <h3>Get start your next awesome project</h3>
                                     </hgroup>       
-                                    <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                 </div>
                             </div>
                             <div class="item slides">
@@ -85,7 +82,6 @@
                                         <h1>We are amazing</h1>        
                                         <h3>Get start your next awesome project</h3>
                                     </hgroup>
-                                    <button class="btn btn-hero btn-lg" role="button">See all features</button>
                                 </div>
                             </div>
                         </div> 
@@ -95,7 +91,7 @@
         </div>               
     </section>  
 
-     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
     <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

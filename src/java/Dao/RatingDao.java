@@ -6,6 +6,7 @@
 package Dao;
 
 import Model.Ratings;
+import Model.Stats;
 import Model.User;
 import java.math.BigDecimal;
 import static java.math.BigDecimal.ROUND_FLOOR;
@@ -22,18 +23,16 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RatingDao {
+
     @PersistenceContext
     private EntityManager em;
 
- @Transactional
- public float Status(int id){
-     em.find(Ratings.class,id);
-     Ratings r=new Ratings();
-     Query q= em.createNativeQuery("SELECT teamwork FROM ratings WHERE Player='"+id+"';");      
-      
-     BigDecimal tw = new BigDecimal("'"+q.getSingleResult().toString()+"'").setScale(2,BigDecimal.ROUND_FLOOR);
-     float teamwork = new BigDecimal("'"+tw+"'").floatValue();
-     System.out.println(teamwork);
-     return teamwork;
- }
+    @Transactional
+    public List<Stats> Status(int id) {
+        //em.find(Ratings.class, id);
+        Ratings r = new Ratings();
+        List<Stats> stats = em.createQuery("SELECT s FROM Stats s WHERE Player = :id", Stats.class).setParameter("id", id)
+                .getResultList();
+             return stats;
+    }
 }

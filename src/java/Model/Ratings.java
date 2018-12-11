@@ -15,12 +15,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.Immutable;
 
 /**
  *
- * @author aroum
+ * @author Michail Sitmalidis
  */
 @Entity
+@Immutable
 @Table(name = "ratings")
 @XmlRootElement
 @NamedQueries({
@@ -32,10 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Ratings implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    
     @Basic(optional = false)
     @Column(name = "Player")
+    @Id
     private int player;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "teamwork")

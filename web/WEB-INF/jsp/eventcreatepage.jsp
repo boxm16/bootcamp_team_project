@@ -31,7 +31,7 @@
         <div class="col-lg-12 col-sm-12">
             <div class="card hovercard">
                 <div class="card-background">
-                    <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
+                    <img class="card-bkimg" alt="" src="http://wallpaperhd.online/upload/images/1527071067955/soccer-stadium-jamaica-soccer-stadium-jerseys-soccer-stadium-japan-pitch-blue-sky-1600x900.jpg">
                 </div>
                 <div class="useravatar">
                     <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">

@@ -12,7 +12,7 @@
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -28,60 +28,53 @@
             });
         </script>  
     </head>
-    <body>
+    <body style=" background-image: url(resources/mainpage.jpg);background-size: cover">
 
-        <div class="col-lg-12 col-sm-12">
-            <div class="card hovercard">
-                <div class="card-background">
-                    <img class="card-bkimg" alt="" src="https://blog.oxforddictionaries.com/wp-content/uploads/football-1.jpg">
-                </div>
-                <div class="useravatar">
-                    <img alt="" src="https://www.paris2018.com/wp-content/uploads/2016/04/football_228-1-125x125.png">
-                </div>
-                <div class="card-info"><b><span class="card-title">${users.getUsername()}</span></b></div>
+        <div class="useravatar" style="  display: inline-block;">
+            <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
 
+
+            <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+                </button></a>
+
+        </div>
+
+        <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
+            <div class="btn-group" role="group">
+                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <div class="hidden-xs">Ranks</div>
+                    </button></a>
             </div>
-            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                            <div class="hidden-xs">Rank</div>
-                        </button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"> <button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            <div class="hidden-xs">Requests</div>
-                        </button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-primary" href="#tab1" data-toggle="tab"><h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h4>
-
-                        </button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/booking_manage.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            <div class="hidden-xs">Events</div>
-                        </button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                            <div class="hidden-xs">Search</div>
-                        </button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/index.htm" data-toggle="tab"><button type="button" id="logout" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                            <div class="hidden-xs">Log Out</div>
-                        </button></a>
-                </div>
+            <div class="btn-group" role="group">
+                <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        <div class="hidden-xs">Requests</div>
+                    </button></a>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <div class="hidden-xs">Personal Infos</div>
+                    </button></a>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="http://localhost:8080/seek_play/booking_manage.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        <div class="hidden-xs">Events</div>
+                    </button></a>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        <div class="hidden-xs">Search</div>
+                    </button></a>
             </div>
 
-            <div class="well">
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab1">
-                        <h3><div>First Name: ${users.getFirstname()}</div>
-                            <div> Last Name: ${users.getLastname()}</div></h3>
-                        <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                <div class="hidden-xs">EDIT</div>
-                            </button> </a>
+        </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1" >
+                <h3 style="background-color: transparent; color: white">First Name: ${users.getFirstname()}</h3>
+                <h3 style="background-color: transparent; color: white"> Last Name: ${users.getLastname()}</h3>
+                <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <div class="hidden-xs">EDIT</div>
+                    </button> </a>
 
                         <h3><div> Change your profile picture</div></h3>
                         <forms:form method="POST" action="http://localhost:8080/seek_play/uploadpic.htm" enctype="multipart/form-data">
@@ -89,12 +82,11 @@
                             <input type="submit" value="Upload">
                         </forms:form>	
 
-                    </div>
-                </div>
             </div>
+        </div>
 
-        </div>    
 
+        <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
     </body>
