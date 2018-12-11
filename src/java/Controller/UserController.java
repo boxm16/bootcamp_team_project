@@ -389,20 +389,7 @@ public class UserController {
 
         return "profilepage";
     }
-
-    @RequestMapping(value = "/uploadpic.htm", method = RequestMethod.POST)
-        public @ResponseBody
-    String submit(@RequestParam("img") MultipartFile file, ModelMap modelMap, HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-        modelMap.addAttribute("file", file);
-        final Part filepart = (Part) file;
-        final String filename = filepart.getSubmittedFileName();
-        filepart.write("C:\\javacode\\" + filename);
-        File f = new File("C:\\javacode\\" + filename);
-        userDao.updatepic(user.getUsername(), filename);
-        return "menupage";
-    }
-
+    
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
         public String logout(ModelMap modelMap, HttpSession session) throws IOException {
 
