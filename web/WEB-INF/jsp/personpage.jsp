@@ -77,17 +77,73 @@
                     </button> </a>
 
                         <h3><div> Change your profile picture</div></h3>
-                        <forms:form method="POST" action="http://localhost:8080/seek_play/uploadpic.htm" enctype="multipart/form-data">
-                            File to upload: <input type="file" name="img">
-                            <input type="submit" value="Upload">
-                        </forms:form>	
-
+                        <form>                            
+                            File to upload: <input type="file" name="img" multiple="multiple">
+                            <button type="submit" value="Upload">Upload</button>
+                        </form>
+                        <div class="progress">
+                       <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                   </div>
             </div>
         </div>
 
 
         <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+     <script type="text/javascript">
+                $(document).ready(function(){
+                    $('button[type=submit]').click(function(e){
+                        e.preventDefault();
+                        var form=document.forms[0];
+                        var formData=new FormData(form);
+                        var ajaxReq = $.ajax({
+                            url: 'fileUpload.htm',
+                            type: 'POST',
+                            data: formData,
+                            cache: false,
+                            contentType: false, // λεμε να μην βαλει content-type στο request
+                            processData: false, // Να μην το κάνει string για να το στειλει
+                            //Callback for creating the XMLHttpRequest object
+                            xhr: function () {
+                               alert("create request")
+                                //Get XmlHttpRequest object
+                                var xhr = $.ajaxSettings.xhr();
 
+                                //Set onprogress event handler
+                                xhr.upload.onprogress = function (event) {
+                                     alert("sending")
+                                    var perc = Math.round((event.loaded / event.total) * 100);
+                                    $('#progressBar').text(perc + '%');
+                                    $('#progressBar').css('width', perc + '%');
+                                };
+                                return xhr;
+                            },
+                            beforeSend: function (xhr) {
+                                 alert("before send")
+                                //Reset alert message and progress bar
+                                $('#alertMsg').text('');
+                                $('#progressBar').text('');
+                                $('#progressBar').css('width', '0%');
+                            }
+                        });
+
+                        // Called on success of file upload
+                        ajaxReq.done(function (msg) {
+                            alert("done")
+                            $('#alertMsg').text(msg);
+                            $('input[type=file]').val('');
+                            $('button[type=submit]').prop('disabled', false);
+                        });
+
+                        // Called on failure of file upload
+                        ajaxReq.fail(function (jqXHR) {
+                            $('#alertMsg').text(jqXHR.responseText + '(' + jqXHR.status +
+                                    ' - ' + jqXHR.statusText + ')');
+                            $('button[type=submit]').prop('disabled', false);
+                        });
+                    });              
+                });
+            </script>
     </body>
 </html>

@@ -99,8 +99,10 @@
                             var jsonobj = $.parseJSON(result);
 
                             $.each(jsonobj, function (i, item) {
+                               var o= JSON.parse(item);
+                                 alert(o.typeof);
                                 $tr = $('<tr>').append(
-                                        $('<a href="http://localhost:8080/seek_play/profile.htm?username="'+item+'".htm">').text(item)
+                                        $('<a href="http://localhost:8080/seek_play/profile.htm?username="'+o+'".htm">').text(item)
                                         );
                                 $("#text").append($tr);
                             });

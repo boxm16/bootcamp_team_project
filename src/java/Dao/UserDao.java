@@ -52,8 +52,7 @@ public class UserDao {
      @Transactional
      public User profile(String s){
        User u = new User(); 
-        Query q= em.createNativeQuery("SELECT * FROM user WHERE username='"+s+"';");
-        List<User> usr=q.getResultList();
+        List<User> usr = em.createQuery("SELECT u from User u WHERE u.username = :username", User.class).setParameter("username", s).getResultList();
        u.setUserId(usr.get(0).getUserId());
        u.setUsername(usr.get(0).getUsername());
        u.setImage(usr.get(0).getImage());

@@ -8,7 +8,6 @@
     <class>Model.Hours</class>
     <class>Model.Court</class>
     <class>Model.GameRequest</class>
-    <class>Model.Ratings</class>
     <class>Model.Stats</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
