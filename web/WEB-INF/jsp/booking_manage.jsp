@@ -68,7 +68,7 @@
                 });
             });
         </script>
-        
+
     </head>
     <body style=" background-image: url(resources/new-event.jpg);background-size: cover">
 
@@ -155,7 +155,10 @@
             </table>
             <hr>
 
+
+
             <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+            <!--            <a id='requests'>test</a>-->
         </div>
         <script>
 
@@ -163,43 +166,30 @@
             function reply_click(clicked_id)
             {
                 var courtReservationId = clicked_id;
-
                 $("#output1").empty();
-
-                // alert("σδσδσδ");
-                $.ajax({
-
-                    url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId,
-                    contentType: 'application/json',
+                $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result) {
-                        // alert(result)
                         var jsonobj = $.parseJSON(result);
 
-                        $.each(jsonobj, function (i, item) {
 
-                            $a = $('<a href="${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id">').text("Send request");
+                        $(function () {
+                            $.each(jsonobj, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.player),
+                                        $('<td>').text(item.teamwork),
+                                        $('<td>').text(item.athletism),
+                                        $('<td>').text(item.technique),
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '">' + "Send Request" + '</a>')).appendTo('#output1');
+                             
+                             
+                             
+                             
 
-                            $tr = $('<tr>').append(
-                                    $('<td>').text(item.player),
-                                    $('<td>').text(item.teamwork),
-                                    $('<td>').text(item.athletism),
-                                    $('<td>').text(item.technique),
-                                    $('<td>').text(item.technique),
-                                    $('<td>').append($a),
-                                    // $('<td>').append(<a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a>)
-                                    //   $('<td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a><td>'),
-                                    //$('<option value=' + item.player + '>').text(item.player)
-                                    );
-                            $("#output1").append($tr);
+                            });
                         });
                     }
                 });
-
-
-
-
-            }
-
+            };
 
         </script>
 
