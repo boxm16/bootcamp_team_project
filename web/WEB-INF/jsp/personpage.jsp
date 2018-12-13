@@ -77,7 +77,7 @@
                     </button> </a>
 
                         <h3><div> Change your profile picture</div></h3>
-                        <form>                            
+                        <form>      
                             File to upload: <input type="file" name="img" multiple="multiple">
                             <button type="submit" value="Upload">Upload</button>
                         </form>

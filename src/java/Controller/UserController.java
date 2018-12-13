@@ -364,7 +364,7 @@ public class UserController {
 
     @RequestMapping(value = "/profile.htm", method = RequestMethod.GET)
 
-        public String profile(ModelMap model, @RequestParam(value = "username") String username) {
+        public String profile(ModelMap model, @RequestParam(value = "name") String username) {
         User user = new User();
         user = userDao.profile(username);
         Ratings r = new Ratings();
