@@ -5,6 +5,8 @@
  */
 package Dao;
 
+import Model.CourtReservation;
+import Model.Ratings;
 import Model.Stats;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -22,22 +24,20 @@ public class RatingsDao {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Stats> getAvalialbePlayersForGame(String id) {
+    public List<Stats> getAvalialbePlayersForGame(int id) {
 
 //       List<Ratings> availablePlayersForGame=em.createQuery("SELECT r FROM Ratings r", Ratings.class).getResultList();
 //   
 //       return availablePlayersForGame;
-        Query q1 = em.createNativeQuery("select hours,date from court_reservation where CourtReservationID='" + id + "';");
-        String hour = (String) q1.getResultList().get(0);
-        String date = (String) q1.getResultList().get(1);
-
-        Query q2 = em.createNativeQuery("SELECT * from Stats where Player in\n"
+        List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
+       
+        String sql = "SELECT * from Stats where Player in\n"
                 + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
-                + "where court_reservation.date!='" + date + "' and !court_reservation.hours!='" + hour + "');", Stats.class);
+                + "where court_reservation.date!='" + reservation.get(0).getDate() + "' and court_reservation.hours!='" + reservation.get(0).getHours() + "');";
+
+        Query q2 = em.createNativeQuery(sql, Stats.class);
         List<Stats> players = q2.getResultList();
         return players;
     }
 
 }
-
-

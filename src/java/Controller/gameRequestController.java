@@ -38,13 +38,12 @@ public class gameRequestController {
 //        return "error_page";
 //    }
     @RequestMapping(value = "/handleGameRequests.htm", method = RequestMethod.GET)
-    public String sendGameRequests(@RequestParam("user_to_be_invited") String receiver, @RequestParam("date_of_game") String date,
-            @RequestParam("hour_of_game") String hour, @RequestParam("court_of_the_game") String court,
+    public String sendGameRequests(@RequestParam("user_to_be_invited") String receiver, @RequestParam("game") String game, 
             ModelMap model, HttpSession session) {
 
-        User user = (User) session.getAttribute("user");
+        User sender = (User) session.getAttribute("user");
 
-        gameRequestDao.sendRequest(receiver, date, hour, court,user.getUserId());
+        gameRequestDao.sendRequest(sender.getUserId(),receiver, game);
              
         return "booking_manage";
     }

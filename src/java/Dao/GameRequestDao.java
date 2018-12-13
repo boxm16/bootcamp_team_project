@@ -27,14 +27,15 @@ public class GameRequestDao {
         return gameRequest;
     }
 
-    public void sendRequest(String receiver, String date, String hour, String court, Integer userId) {
+    public void sendRequest(int senderid, String receiver, String game) {
 
 //        String sql = "";
 //        Query query = em.createNativeQuery(sql);
 //
 //  Query q=em.createNativeQuery("Select CourtReservationID from court_reservation where court_id='"+Court+"' and hours='"+hour+"' and  date='"+date+"'");
 //  int id=(int) q.getSingleResult();
-}
+System.out.println("test");
+    }
         
         
         

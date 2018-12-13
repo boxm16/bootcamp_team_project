@@ -54,7 +54,7 @@ public class AjaxController {
 
     @RequestMapping(value = "/findAvaliablePlayersForThisGameByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
     public @ResponseBody
-    String findAvaliablePlayersForThisGame(@RequestParam(value = "courtReservationId") String courtReservationID) throws JsonProcessingException {
+    String findAvaliablePlayersForThisGame(@RequestParam(value = "courtReservationId") int courtReservationID) throws JsonProcessingException {
 
         List<Stats> getAvailablePlayersForGame = ratingDao.getAvalialbePlayersForGame(courtReservationID);
 

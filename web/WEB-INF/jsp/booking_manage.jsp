@@ -179,7 +179,7 @@
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
                                         $('<td>').text(item.technique),
-                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '">' + "Send Request" + '</a>')).appendTo('#output1');
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game='+courtReservationId+'">' + "Send Request" + '</a>')).appendTo('#output1');
                              
                              
                              
