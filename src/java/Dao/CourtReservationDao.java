@@ -72,6 +72,7 @@ public class CourtReservationDao {
         List<CourtReservation> resultList = query.getResultList();
         return resultList;
     }
+    
     @Transactional
 
     public void deleteCourtReservationByID(String id, int userID) {

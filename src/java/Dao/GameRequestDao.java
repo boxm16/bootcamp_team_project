@@ -5,10 +5,13 @@
  */
 package Dao;
 
+import Controller.gameRequestController;
 import Model.GameRequest;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -26,7 +29,8 @@ public class GameRequestDao {
         GameRequest gameRequest = em.find(GameRequest.class, Integer.parseInt(gameRequestId));
         return gameRequest;
     }
-
+    
+    @Transactional
     public void sendRequest(int senderid, String receiver, String game) {
 
 //        String sql = "";
@@ -34,11 +38,9 @@ public class GameRequestDao {
 //
 //  Query q=em.createNativeQuery("Select CourtReservationID from court_reservation where court_id='"+Court+"' and hours='"+hour+"' and  date='"+date+"'");
 //  int id=(int) q.getSingleResult();
-System.out.println("test");
+        String sql = ("INSERT INTO `seek_play`.`game_request` (`match`, `request_id`, `request_receiver`, `status`, `text`) VALUES ("+game+", NULL, "+receiver+", DEFAULT, 'NULL');");
+        em.createNativeQuery(sql, GameRequest.class).executeUpdate();
+
     }
-        
-        
-        
-    
 
 }
