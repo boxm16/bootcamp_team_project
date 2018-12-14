@@ -49,10 +49,10 @@ public class ReviewController {
     private ReviewDao reviewDao;
 
     @RequestMapping(value = "/goToReviewForm.htm", method = RequestMethod.GET)
-
     public String createReviewForm(ModelMap model, HttpSession session) {
         User me = (User) session.getAttribute("user");
         List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(me.getUserId());
+        if( !pendingReviewList.isEmpty()){
         model.addAttribute("pendingReviewList", pendingReviewList);
         Review review = new Review();
         List<String> Grades = new ArrayList<>();
@@ -69,7 +69,14 @@ public class ReviewController {
 
         servletContext.setAttribute("Grades", Grades);
         model.addAttribute("review", review);
-
+        
+        return "reviews";
+        }
+        else
+        {
+            model.addAttribute("review1", "No users to review!");
+        }
+        
         return "reviews";
     }
 
@@ -86,13 +93,14 @@ public class ReviewController {
         review.setReviewed(reviewed);
 
         reviewDao.insert(review);
-        review = new Review();
-        model.addAttribute("review", review);
+        //check how redirect works
+//        review = new Review();
+//        model.addAttribute("review", review);
+//
+//        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(reviewer.getUserId());
+//        model.addAttribute("pendingReviewList", pendingReviewList);
 
-        List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(reviewer.getUserId());
-        model.addAttribute("pendingReviewList", pendingReviewList);
-
-        return "reviews";
+        return "redirect:/goToReviewForm.htm";
     }
 
     

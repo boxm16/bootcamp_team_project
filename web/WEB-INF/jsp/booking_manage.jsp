@@ -158,7 +158,8 @@
 
 
             <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
-            <!--            <a id='requests'>test</a>-->
+
+
         </div>
         <script>
 
@@ -172,24 +173,34 @@
                         var jsonobj = $.parseJSON(result);
 
 
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
+
+
+
+
                         $(function () {
                             $.each(jsonobj, function (i, item) {
                                 $('<tr>').append(
-                                        $('<td>').text(item.player),
+                                        $('<td>').text(item.username),
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
                                         $('<td>').text(item.technique),
-                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game='+courtReservationId+'">' + "Send Request" + '</a>')).appendTo('#output1');
-                             
-                             
-                             
-                             
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
+
+
+
+
 
                             });
                         });
                     }
                 });
-            };
+            }
+            ;
 
         </script>
 

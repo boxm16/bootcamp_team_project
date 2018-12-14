@@ -220,7 +220,7 @@ public class UserController {
             teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
             technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         }
         model.addAttribute("users", user);
@@ -233,10 +233,8 @@ public class UserController {
         return "starpage";
     }
 
-
-
-@RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
-        public String myreviewnew(ModelMap model, User u, HttpSession session) throws IOException {
+    @RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
+    public String myreviewnew(ModelMap model, User u, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
         Ratings r = new Ratings();
         r.setPlayer(user.getUserId());
@@ -265,7 +263,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/others.htm", method = RequestMethod.GET)
-        public String othersnew(ModelMap model, User u, HttpSession session) throws IOException {
+    public String othersnew(ModelMap model, User u, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
         Ratings r = new Ratings();
         r.setPlayer(user.getUserId());
@@ -294,7 +292,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/unfinished.htm", method = RequestMethod.GET)
-        public String unfinishednew(ModelMap model, User u, HttpSession session) throws IOException {
+    public String unfinishednew(ModelMap model, User u, HttpSession session) throws IOException {
         User user = (User) session.getAttribute("user");
         Ratings r = new Ratings();
         r.setPlayer(user.getUserId());
@@ -323,35 +321,35 @@ public class UserController {
     }
 
     @RequestMapping(value = "/event.htm", method = RequestMethod.GET)
-        public String event(ModelMap model, HttpSession session) {
+    public String event(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "eventpage";
     }
 
     @RequestMapping(value = "/eventcreate.htm", method = RequestMethod.GET)
-        public String eventcreate(ModelMap model, HttpSession session) {
+    public String eventcreate(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "eventcreatepage";
     }
 
     @RequestMapping(value = "/eventedit.htm", method = RequestMethod.GET)
-        public String eventedit(ModelMap model, HttpSession session) {
+    public String eventedit(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "eventeditpage";
     }
 
     @RequestMapping(value = "/eventdelete.htm", method = RequestMethod.GET)
-        public String eventdelete(ModelMap model, HttpSession session) {
+    public String eventdelete(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "eventdeletepage";
     }
 
     @RequestMapping(value = "/search.htm", method = RequestMethod.GET)
-        public String search(ModelMap model, HttpSession session) {
+    public String search(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("users", user);
         return "searchpage";
@@ -359,8 +357,8 @@ public class UserController {
 
     @RequestMapping(value = "/profile.htm", method = RequestMethod.GET)
 
-        public String profile(ModelMap model, @RequestParam(value = "name") String username,HttpSession session) {
-        User me= (User) session.getAttribute("user");
+    public String profile(ModelMap model, @RequestParam(value = "name") String username, HttpSession session) {
+        User me = (User) session.getAttribute("user");
         User user = userDao.profile(username);
         Ratings r = new Ratings();
         r.setPlayer(user.getUserId());
@@ -376,19 +374,19 @@ public class UserController {
         athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
         overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
         grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
-        model.addAttribute("users",me);
+        model.addAttribute("users", me);
         model.addAttribute("user", user);
         model.addAttribute("team", teamwork);
         model.addAttribute("athlet", athletism);
         model.addAttribute("tech", technique);
         model.addAttribute("star", grade);
-        model.addAttribute("overall",overall);
+        model.addAttribute("overall", overall);
 
         return "profilepage";
     }
-    
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-        public String logout(ModelMap modelMap, HttpSession session) throws IOException {
+    public String logout(ModelMap modelMap, HttpSession session) throws IOException {
 
         session.invalidate();
         return "index";

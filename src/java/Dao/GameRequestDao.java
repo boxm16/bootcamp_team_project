@@ -38,7 +38,7 @@ public class GameRequestDao {
 //
 //  Query q=em.createNativeQuery("Select CourtReservationID from court_reservation where court_id='"+Court+"' and hours='"+hour+"' and  date='"+date+"'");
 //  int id=(int) q.getSingleResult();
-        String sql = ("INSERT INTO `seek_play`.`game_request` (`match`, `request_id`, `request_receiver`, `status`, `text`) VALUES ("+game+", NULL, "+receiver+", DEFAULT, 'NULL');");
+        String sql = ("INSERT INTO `seek_play`.`game_request` (`match`, `request_id`, `request_receiver`, `status`, `text`) VALUES ("+game+", '1', "+receiver+", DEFAULT, 'NULL');");
         em.createNativeQuery(sql, GameRequest.class).executeUpdate();
 
     }
