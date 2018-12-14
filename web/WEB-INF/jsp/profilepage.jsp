@@ -36,44 +36,30 @@
             <a href="http://localhost:8080/seek_play/logout.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
-        </div>
-
+        </div>  
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
+                    <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                            <div class="hidden-xs">Back to Search</div>
                     </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/messenger3.htm" data-toggle="tab"><button type="button" id="messages" class="btn btn-default" href="#tab2" data-toggle="tab" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                        <div class="hidden-xs">Requests</div>
-                    </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/person.htm" data-toggle="tab"><button type="button" id="personalinfos" class="btn btn-default" href="#tab1" data-toggle="tab" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <div class="hidden-xs">Personal Infos</div>
-                    </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/booking_manage.htm" data-toggle="tab"><button type="button" id="event" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <div class="hidden-xs">Events</div>
-                    </button></a>
-            </div>
-            <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        <div class="hidden-xs">Search</div>
-                    </button></a>
-            </div>
-
-        </div>       
-        <!--        <div class="well" >-->
+            </div>               
+        </div>
         <div class="tab-content">
             <div class="tab-pane fade in active center" id="tab1">
                 <div class="container" style="background-color: transparent;  box-shadow: none;">
 
-
                     <div class="row">
                         <div class="col-xs-12 col-md-12 text-center">
-                            <h1 class="rating-num">Your overall rank: ${star}/5</h1>
+                            
+                            
+                            <h1 class="rating-num">${user.getUsername()}</h1>
+                            <div class="profile-header-img">
+                                <img class="img-circle" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" />
+                                <!-- badge -->
+                                <div class="rank-label-container">
+                                    <h1><span>${star} / 5</span></h1>
+                                </div>
+                            </div>
                             <div class="star-rating">
                                 <div class="back-stars">
                                     <i class="fa fa-futbol-o" aria-hidden="true"></i>
@@ -94,7 +80,7 @@
                         <div class="col-xs-12 col-md-12 text-center">
                             <div class="row rating-desc">
                                 <div class="col-xs-2 col-md-2 text-right">
-                                    <span class="fa fa-group" hidden=true "></span>  Teamwork
+                                    <span class="fa fa-group"></span>  Teamwork
                                 </div>
                                 <div class="col-xs-8 col-md-9 ">
                                     <div class="progress progress-striped ">

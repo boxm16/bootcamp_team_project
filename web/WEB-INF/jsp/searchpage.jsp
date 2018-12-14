@@ -96,14 +96,14 @@
                         success: function (result) {
 
                             $("#text").empty();
-                            var jsonobj = $.parseJSON(result);
-
+                             var jsonobj = $.parseJSON(result);
                             $.each(jsonobj, function (i, item) {
-                               var o= JSON.parse(item);
-                                 alert(o.typeof);
-                                $tr = $('<tr>').append(
-                                        $('<a href="http://localhost:8080/seek_play/profile.htm?username="'+o+'".htm">').text(item)
+                                var o =item.username;
+                                console.log(o.valueOf());
+                            
+                                $tr = $('<tr>').append( $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'">').text(item.username)                             
                                         );
+                                
                                 $("#text").append($tr);
                             });
                         }

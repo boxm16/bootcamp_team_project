@@ -44,10 +44,9 @@ public class UserDao {
     
      @Transactional
     public List<User> check(String s){
-      
-       Query q= em.createNativeQuery("SELECT username FROM user WHERE username LIKE '"+s+"%';");
-       List<User> usr=q.getResultList();
-      
+      User u = new User();
+       List<User> usr= em.createQuery("SELECT u FROM User u WHERE u.username LIKE CONCAT(:username,'%')", User.class).setParameter("username", s).getResultList();
+           
        return usr;
     }
      @Transactional
