@@ -29,7 +29,7 @@
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
 
         <div class="useravatar" style="  display: inline-block;">
-            <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
+            <img alt="${users.getUsername()}" src="http://localhost:8080/images/${users.getImage()}.jpg" class="profpic">
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
