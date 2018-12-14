@@ -37,20 +37,20 @@
                 </button></a>
 
         </div>  
+        
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                    <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    <a href="http://localhost:8080/seek_play/search.htm" data-toggle="tab"><button type="button" id="search" class="btn btn-default" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
                             <div class="hidden-xs">Back to Search</div>
                     </button></a>
-            </div>               
+            </div>          
         </div>
-        <div class="tab-content">
+        <div class="col-xs-12 col-md-12 text-center">
             <div class="tab-pane fade in active center" id="tab1">
-                <div class="container" style="background-color: transparent;  box-shadow: none;">
+                <div class="" style="background-color: transparent;  box-shadow: none;">
 
                     <div class="row">
-                        <div class="col-xs-12 col-md-12 text-center">
-                            
+                        <div class="col-xs-12 col-md-12 text-center">                            
                             
                             <h1 class="rating-num">${user.getUsername()}</h1>
                             <div class="profile-header-img">
@@ -120,8 +120,7 @@
                 </div>
             </div>
         </div>
-
-
+        
         <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script>
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
