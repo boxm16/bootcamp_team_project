@@ -76,7 +76,7 @@
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
 
 
-            <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+            <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
             <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
@@ -146,9 +146,8 @@
                         <td><c:out value="${current.courtId.name}" /><td>
                         <td><c:out value="${current.date}" /><td>
                         <td><c:out value="${current.hours.hour}" /><td>
-                        <td><c:out value="${current.courtReservationID}" /><td>
 
-                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+                         <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
 
                     </tr>
                 </c:forEach>

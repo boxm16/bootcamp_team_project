@@ -28,14 +28,14 @@
     <body style=" background-image: url(resources/mainpage.jpg);background-size: cover">
 
               <div class="useravatar" style="  display: inline-block;">
-                    <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
-                
-            
-                    <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
-                    <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
-                        </button></a>
-                
-          </div>
+            <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
+
+
+            <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+                </button></a>
+
+        </div>
             
             <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
                 <div class="btn-group" role="group">
