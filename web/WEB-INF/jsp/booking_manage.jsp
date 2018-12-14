@@ -16,11 +16,7 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -72,12 +68,12 @@
                 });
             });
         </script>
-        
+
     </head>
     <body style=" background-image: url(resources/new-event.jpg);background-size: cover">
 
         <div class="useravatar" style="  display: inline-block;">
-            <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
+            <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
@@ -159,7 +155,11 @@
             </table>
             <hr>
 
+
+
             <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+
+
         </div>
         <script>
 
@@ -167,43 +167,40 @@
             function reply_click(clicked_id)
             {
                 var courtReservationId = clicked_id;
-
                 $("#output1").empty();
-
-                // alert("σδσδσδ");
-                $.ajax({
-
-                    url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId,
-                    contentType: 'application/json',
+                $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result) {
-                        // alert(result)
                         var jsonobj = $.parseJSON(result);
 
-                        $.each(jsonobj, function (i, item) {
 
-                            $a = $('<a href="${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id">').text("Send request");
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
 
-                            $tr = $('<tr>').append(
-                                    $('<td>').text(item.player),
-                                    $('<td>').text(item.teamwork),
-                                    $('<td>').text(item.athletism),
-                                    $('<td>').text(item.technique),
-                                    $('<td>').text(item.technique),
-                                    $('<td>').append($a),
-                                    // $('<td>').append(<a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a>)
-                                    //   $('<td><a href='${pageContext.request.contextPath}/booking_delete.htm?id=clicked_id'>Send Request</a><td>'),
-                                    //$('<option value=' + item.player + '>').text(item.player)
-                                    );
-                            $("#output1").append($tr);
+
+
+
+                        $(function () {
+                            $.each(jsonobj, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.username),
+                                        $('<td>').text(item.teamwork),
+                                        $('<td>').text(item.athletism),
+                                        $('<td>').text(item.technique),
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
+
+
+
+
+
+                            });
                         });
                     }
                 });
-
-
-
-
             }
-
+            ;
 
         </script>
 

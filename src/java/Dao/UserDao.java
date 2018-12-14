@@ -32,15 +32,16 @@ public class UserDao {
         em.persist(user);
     }
      @Transactional
-    public void updatepic(String us, String file) throws IOException{
-        em.find(User.class,us);
-        em.createQuery("Update user SET profileimage='"+file+"'WHERE username='"+us+"';").executeUpdate();
+    public void updatepic(int user_id, String file) throws IOException{
+        em.createNativeQuery("Update user SET image='"+file+"'WHERE user_id='"+user_id+"';").executeUpdate();
     }
+    
      @Transactional
     public void updateinfos(String us, String n, String ln) throws IOException{
       //  em.find(User.class,us);
         em.createNativeQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
     }
+    
      @Transactional
     public List<User> check(String s){
       User u = new User();

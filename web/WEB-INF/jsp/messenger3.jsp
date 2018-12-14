@@ -35,7 +35,7 @@
                             <div class="chat_list">     
                                 <c:forEach items="${incoming_requests}" var="incoming_requests">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" alt="https://ptetutorials.com/images/user-profile.png"> </div>
+                                        <div class="chat_img"> <img src="http://localhost:8080/images/${incoming_requests.match.booker.image}.jpg" alt="https://ptetutorials.com/images/user-profile.png"> </div>
                                         <div class="chat_ib"><a id="incoming_id" style="display: none">${incoming_requests.id}</a>
                                             <h5>${incoming_requests.match.booker.username}<span class="chat_date">${incoming_requests.match.date}</span><br>
                                                 <a style="float: right" id="text">${incoming_requests.match.hours.hour}</a>
@@ -54,7 +54,6 @@
                 <div class="mesgs">
                     <div class="msg_history">
                         <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="http://localhost:8080/images/simpsons.jpg" alt="sunil"> </div>
                             <div class="received_msg" style="color:black; white-space: pre-wrap; background-color: white" id="m1">
                                 <div class="received_withd_msg">
                                     <span class="time_date"></span>
@@ -92,7 +91,7 @@
                             <div class="chat_list">     
                                 <c:forEach items="${outgoing_requests}" var="outgoing_requests">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_img"> <img src="http://localhost:8080/images/${outgoing_requests.requestReceiver.image}.jpg" alt="sunil"> </div>
                                         <div class="chat_ib">
                                             <h5>${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right" id="text">${outgoing_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${outgoing_requests.match.courtId.name}</p>
@@ -109,7 +108,6 @@
                 <div class="mesgs">
                     <div class="msg_history">
                         <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                             <div class="received_msg" style="color:black;   border-radius: 20px; white-space: pre-wrap; background-color: white" id="m2">
                                 <div class="received_withd_msg">
                                     <p></p>
@@ -140,7 +138,7 @@
                             <div class="chat_list">     
                                 <c:forEach items="${answered_requests}" var="answered_requests">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                        <div class="chat_img"> <img src="http://localhost:8080/images/${answered_requests.requestReceiver.username}.jpg" alt=""> </div>
                                         <div class="chat_ib">
                                             <h5>${answered_requests.requestReceiver.username}<span class="chat_date">${answered_requests.match.date}</span><br> <a style="float: right" id="text">${answered_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${answered_requests.match.courtId.name}</p>
@@ -158,7 +156,6 @@
                 <div class="mesgs">
                     <div class="msg_history">
                         <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                             <div class="received_msg" style="color:black;   border-radius: 20px;   white-space: pre-wrap; background-color: white" id="m3">
                                 <div class="received_withd_msg">
                                     <p></p>

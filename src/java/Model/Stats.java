@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author aroum
+ * @author Herc
  */
 @Entity
 @Table(name = "Stats")
@@ -92,5 +92,5 @@ public class Stats implements Serializable {
     public void setTechnique(BigDecimal technique) {
         this.technique = technique;
     }
-    
+
 }

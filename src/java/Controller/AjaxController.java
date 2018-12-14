@@ -9,6 +9,7 @@ import Dao.RatingsDao;
 import Dao.ReviewDao;
 import Dao.UserDao;
 import Model.Ratings;
+import Model.Stats;
 import Model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,9 +54,9 @@ public class AjaxController {
 
     @RequestMapping(value = "/findAvaliablePlayersForThisGameByRest.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
     public @ResponseBody
-    String findAvaliablePlayersForThisGame(@RequestParam(value = "courtReservationId") String courtReservationID) throws JsonProcessingException {
+    String findAvaliablePlayersForThisGame(@RequestParam(value = "courtReservationId") int courtReservationID) throws JsonProcessingException {
 
-        List<Ratings> getAvailablePlayersForGame = ratingDao.getAvalialbePlayersForGame();
+        List<Stats> getAvailablePlayersForGame = ratingDao.getAvalialbePlayersForGame(courtReservationID);
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(getAvailablePlayersForGame);
@@ -62,20 +64,20 @@ public class AjaxController {
     }
 
     @RequestMapping(value = "/fileUpload.htm", method = RequestMethod.POST)
-    public ResponseEntity<String> fileUpload(@RequestParam("img") MultipartFile file)
+    public ResponseEntity<String> fileUpload(@RequestParam("img") MultipartFile file, String filename, HttpSession session)
             throws IOException {
         // Save file on system
+        User user = (User) session.getAttribute("user");
         if (!file.getOriginalFilename().isEmpty()) {
             BufferedOutputStream outputStream = new BufferedOutputStream(
-                    new FileOutputStream(
-                            new File("C:/javacode", file.getOriginalFilename()))); //(path,name)
+                    new FileOutputStream(new File("C:\\Tomcat 8.5\\webapps\\images", user.getUsername()+".jpg"))); //(path,name)
             outputStream.write(file.getBytes());
             outputStream.flush();
             outputStream.close();
         } else {
             return new ResponseEntity<>("Invalid file.", HttpStatus.BAD_REQUEST);
         }
-
+usrd.updatepic(user.getUserId(), user.getUsername());
         return new ResponseEntity<>("File Uploaded Successfully.", HttpStatus.OK);
     }
 }

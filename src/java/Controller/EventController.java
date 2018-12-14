@@ -83,12 +83,7 @@ public class EventController {
     public String filledForm(ModelMap model, HttpSession session, CourtReservation courtReservation) {
         courtReservation.setBooker((User) session.getAttribute("user"));
         courtReservation.getDate().setHours(3);//otherwise, somehow, in db is inserted a date ona day before the actual date
-/*
-        System.out.println("Booker:" + courtReservation.getBooker().getUsername());
-        System.out.println("CourtId.id" + courtReservation.getCourtId().getId());
-        System.out.println("Reservation Date" + courtReservation.getDate());
-        System.out.println("Reservation time slot(hours)" + courtReservation.getHours().getHoursId());
-         */
+
         courtReservationDao.insert(courtReservation);
         listMyActiveReservations(session);
         GameRequest gameRequest = new GameRequest();

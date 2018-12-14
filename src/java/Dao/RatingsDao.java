@@ -5,10 +5,13 @@
  */
 package Dao;
 
+import Model.CourtReservation;
 import Model.Ratings;
+import Model.Stats;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,13 +20,22 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RatingsDao {
-   @PersistenceContext
+
+    @PersistenceContext
     private EntityManager em;
-   
-   public List<Ratings> getAvalialbePlayersForGame() {
-   
-       List<Ratings> availablePlayersForGame=em.createQuery("SELECT r FROM Ratings r", Ratings.class).getResultList();
-   
-       return availablePlayersForGame;
-   }
+
+    public List<Stats> getAvalialbePlayersForGame(int id) {
+
+        List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
+
+        String sql = "SELECT * from Stats where Player in\n"
+                + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
+                + "where (court_reservation.date!='" + reservation.get(0).getDate() + "' and court_reservation.hours!='" + reservation.get(0).getHours()
+                + "') AND (status='yes' OR court_reservation.booker!='" + reservation.get(0).getBooker() + "'));";
+
+        Query q2 = em.createNativeQuery(sql, Stats.class);
+        List<Stats> players = q2.getResultList();
+        return players;
+    }
+
 }
