@@ -28,7 +28,7 @@
                             <label for="exampleInputPassword1" class="text-uppercase">Password</label>
                             <input class="form-control" id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO"/> 
                         </div>
-                        <div>${message}</div>
+                        <div class="error-message">${message}</div>
                         <div class="form-check">
 
                             <!--                                     <p class="login button"> 
@@ -91,7 +91,7 @@
         </div>               
     </section>  
 
-         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+     <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
     <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script> 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
