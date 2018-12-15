@@ -70,7 +70,7 @@
         </script>
 
     </head>
-    <body style=" background-image: url(resources/new-event.jpg);background-size: cover">
+    <body style=" background-image: url(resources/new-event.jpg);">
 
         <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
@@ -147,7 +147,8 @@
                         <td><c:out value="${current.date}" /><td>
                         <td><c:out value="${current.hours.hour}" /><td>
 
-                         <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+
+                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
 
                     </tr>
                 </c:forEach>
@@ -155,10 +156,11 @@
             <hr>
 
 
+            <div style="overflow: auto;width:680px; height:270px;">
+                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
 
-            <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
 
-
+            </div>
         </div>
         <script>
 
@@ -167,6 +169,37 @@
             {
                 var courtReservationId = clicked_id;
                 $("#output1").empty();
+                $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
+                    success: function (result) {
+                        var jsonobj = $.parseJSON(result);
+
+
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
+
+
+
+
+                        $(function () {
+                            $.each(jsonobj, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.username),
+                                        $('<td>').text(item.teamwork),
+                                        $('<td>').text(item.athletism),
+                                        $('<td>').text(item.technique),
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
+
+
+
+
+
+                            });
+                        });
+                    }
+                });
                 $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result) {
                         var jsonobj = $.parseJSON(result);

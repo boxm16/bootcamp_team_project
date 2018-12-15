@@ -67,7 +67,7 @@ public class CourtReservationDao {
 
        // SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
      //   String formattedDate = formatter.format(new Date());
-        Query query = em.createNativeQuery("SELECT * FROM court_reservation WHERE date>current_date() and booker=" + "'" + myID + "'" + ";", CourtReservation.class);
+        Query query = em.createNativeQuery("SELECT * FROM court_reservation  WHERE date>current_date() and booker=" + "'" + myID + "'" + ";", CourtReservation.class);
 
         List<CourtReservation> resultList = query.getResultList();
         return resultList;
