@@ -211,8 +211,7 @@
                                         $('<td>').text(item.username),
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
-                                        $('<td>').text(item.technique),
-                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output2');
+                                        $('<td>').text(item.technique)).appendTo('#output2');
 
                             });
                         });
