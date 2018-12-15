@@ -62,6 +62,19 @@ public class AjaxController {
         return mapper.writeValueAsString(getAvailablePlayersForGame);
 
     }
+    @RequestMapping(value = "/findplayersalreadyinvited.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
+    public @ResponseBody
+    String findplayersalreadyinvited (@RequestParam(value = "courtReservationId") int courtReservationID) throws JsonProcessingException {
+
+        List<Stats> getInvitedPlayersforGame = ratingDao.getInvitedPlayersforGame(courtReservationID);
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(getInvitedPlayersforGame);
+
+    }
+    
+    
+    
 
     @RequestMapping(value = "/fileUpload.htm", method = RequestMethod.POST)
     public ResponseEntity<String> fileUpload(@RequestParam("img") MultipartFile file, String filename, HttpSession session)

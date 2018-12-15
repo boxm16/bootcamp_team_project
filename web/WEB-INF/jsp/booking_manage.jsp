@@ -158,6 +158,8 @@
 
             <div style="overflow: auto;width:680px; height:270px;">
                 <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+                <br>
+                <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>
 
 
             </div>
@@ -170,8 +172,8 @@
                 var courtReservationId = clicked_id;
                 $("#output1").empty();
                 $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
-                    success: function (result) {
-                        var jsonobj = $.parseJSON(result);
+                    success: function (result1) {
+                        var jsonobj1 = $.parseJSON(result1);
 
 
                         $('<tr>').append(
@@ -180,52 +182,37 @@
                                 $('<td>').text("Athletism"),
                                 $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
 
-
-
-
-                        $(function () {
-                            $.each(jsonobj, function (i, item) {
+                            $(function () {
+                            $.each(jsonobj1, function (i, item) {
                                 $('<tr>').append(
                                         $('<td>').text(item.username),
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
                                         $('<td>').text(item.technique),
                                         $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
-
-
-
-
-
                             });
                         });
                     }
                 });
-                $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
-                    success: function (result) {
-                        var jsonobj = $.parseJSON(result);
+                $.ajax({url: 'findplayersalreadyinvited.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
+                    success: function (result2) {
+                        var jsonobj2 = $.parseJSON(result2);
 
 
                         $('<tr>').append(
                                 $('<td>').text("Username"),
                                 $('<td>').text("Teamwork"),
                                 $('<td>').text("Athletism"),
-                                $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
-
-
-
+                                $('<td>').text("Technique")).appendTo('#output2').css("font-weight", "bold");
 
                         $(function () {
-                            $.each(jsonobj, function (i, item) {
+                            $.each(jsonobj2, function (i, item) {
                                 $('<tr>').append(
                                         $('<td>').text(item.username),
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
                                         $('<td>').text(item.technique),
-                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
-
-
-
-
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output2');
 
                             });
                         });
