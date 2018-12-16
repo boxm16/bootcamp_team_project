@@ -88,7 +88,7 @@
                     <div class="inbox_people" style=" background: linear-gradient(to bottom, #2a7a5f, #05563b); opacity: 0.85;border-radius: 4%">
                         <div class="headind_srch">
                             <div class="recent_heading">
-                                <h4>Outgoing</h4>
+                                <h4 style="color: black">Outgoing</h4>
                             </div>
                         </div>
                         <div class="inbox_chat" id="style-5">
@@ -97,7 +97,7 @@
                                     <div class="chat_people">
                                         <div class="chat_img"> <img src="http://localhost:8080/images/${outgoing_requests.requestReceiver.image}.jpg" alt="sunil"> </div>
                                         <div class="chat_ib">
-                                            <h5>${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right" id="text">${outgoing_requests.match.hours.hour}</a></h5>
+                                            <h5 style="color: black">${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right" id="text">${outgoing_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${outgoing_requests.match.courtId.name}</p>
 <!--                                            <h6 >${outgoing_requests.text}</h6>-->
                                             <h2 style="display: none">${outgoing_requests.status}</h2>
@@ -135,16 +135,16 @@
                     <div class="inbox_people" style=" background: linear-gradient(to bottom, #2a7a5f, #05563b); opacity: 0.85;border-radius: 4%">
                         <div class="headind_srch">
                             <div class="recent_heading">
-                                <h4>Answered</h4>
+                                <h4 style="color: black">Answered</h4>
                             </div>
                         </div>
                         <div class="inbox_chat" id="style-5">
                             <div class="chat_list">     
                                 <c:forEach items="${answered_requests}" var="answered_requests">
                                     <div class="chat_people">
-                                        <div class="chat_img"> <img src="http://localhost:8080/images/${answered_requests.requestReceiver.username}.jpg" alt=""> </div>
+                                        <div class="chat_img"> <img src="http://localhost:8080/images/${answered_requests.match.booker.image}.jpg" alt=""> </div>
                                         <div class="chat_ib">
-                                            <h5>${answered_requests.requestReceiver.username}<span class="chat_date">${answered_requests.match.date}</span><br> <a style="float: right" id="text">${answered_requests.match.hours.hour}</a></h5>
+                                            <h5 style="color: black">${answered_requests.match.booker.username}<span class="chat_date">${answered_requests.match.date}</span><br> <a style="float: right" id="text">${answered_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${answered_requests.match.courtId.name}</p>
 <!--                                            <h6 >${answered_requests.text}</h6>-->
                                             <h2 style="display: none">${answered_requests.status}</h2>

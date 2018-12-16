@@ -64,7 +64,7 @@
 
         </div>
 
-            <div class="well main-center"  >
+        <div class="well main-center"  >
             <div class="tab-content center">
                 <div class="tab-pane fade in active">
                     <h3 style="font-family: Verdana; font-size: 30px;"><B>Search for Player</B></h3>
@@ -137,6 +137,8 @@
             });
 
         });
+     
+
 
 
     </script>
