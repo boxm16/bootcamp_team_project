@@ -83,7 +83,7 @@
                                 <div class="slide-3"></div>
                                 <div class="hero">        
                                     <hgroup>
-                                        <h1>We are amazing</h1>        
+                                        <h1 style="font-size: 2.5em">Can't wait to play with your friends?</h1>        
                                         <h3></h3>
                                     </hgroup>
                                 </div>
@@ -92,7 +92,7 @@
                                 <div class="slide-4"></div>
                                 <div class="hero">        
                                     <hgroup>
-                                        <h1 style="font-family: Open Sans; font-size: 3.5em">Welcome!</h1>        
+                                        <h1 style="font-size: 3.5em">Welcome!</h1>        
                                         <h3></h3>
                                     </hgroup>
                                 </div>

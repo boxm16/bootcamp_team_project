@@ -42,6 +42,8 @@
                         <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
                         <li data-target="#bs-carousel" data-slide-to="1"></li>
                         <li data-target="#bs-carousel" data-slide-to="2"></li>
+                        <li data-target="#bs-carousel" data-slide-to="3"></li>
+
                     </ol>
 
                     <!-- Wrapper for slides -->
@@ -50,8 +52,8 @@
                             <div class="slide-1"></div>
                             <div class="hero">
                                 <hgroup>
-                                    <h1>We are creative</h1>        
-                                    <h3>Get start your next awesome project</h3>
+                                    <h1 >Feeling like Giannis?</h1>        
+                                    <h3></h3>
                                 </hgroup>
                             </div>
                         </div>
@@ -59,8 +61,8 @@
                             <div class="slide-2"></div>
                             <div class="hero">        
                                 <hgroup>
-                                    <h1>We are smart</h1>        
-                                    <h3>Get start your next awesome project</h3>
+                                    <h1 style="font-size: 2.5em">Looking for a Roger vs Rafa rivalry?</h1>        
+                                    <h3></h3>
                                 </hgroup>       
                             </div>
                         </div>
@@ -68,8 +70,8 @@
                             <div class="slide-3"></div>
                             <div class="hero">        
                                 <hgroup>
-                                    <h1>We are amazing</h1>        
-                                    <h3>Get start your next awesome project</h3>
+                                    <h1 style="font-size: 2.5em">Can't wait to play with your friends?</h1>        
+                                    <h3></h3>
                                 </hgroup>
                             </div>
                         </div>
@@ -77,8 +79,8 @@
                             <div class="slide-4"></div>
                             <div class="hero">        
                                 <hgroup>
-                                    <h1>We are amazing</h1>        
-                                    <h3>Get start your next awesome project</h3>
+                                    <h1 style="font-size: 3.5em">Welcome!</h1>        
+                                    <h3></h3>
                                 </hgroup>
                             </div>
                         </div>
