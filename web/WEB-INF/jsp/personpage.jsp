@@ -19,7 +19,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-        <title>Menu Page</title>
+        <title>Person Page</title>
 
         <script>$(document).ready(function () {
                 $(".btn-pref .btn").click(function () {

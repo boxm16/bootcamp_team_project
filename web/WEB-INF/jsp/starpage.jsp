@@ -17,7 +17,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Page</title>
+        <title>Ratings</title>
         <script>
             $(document).ready(function () {
                 $(".btn-pref .btn").click(function () {

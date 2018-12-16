@@ -12,7 +12,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
-        <title>JSP Page</title>
+        <title>Registration</title>
     </head>
     <body>
         <section class="login-block">

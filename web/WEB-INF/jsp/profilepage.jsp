@@ -17,7 +17,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Page</title>
+        <title>Profile Page</title>
         <script>
             $(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
@@ -31,7 +31,7 @@
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
 
         <div class="useravatar" style="  display: inline-block;">
-            <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
+            <img alt="${users.getUsername()}" src="http://localhost:8080/images/${users.getImage()}.jpg" class="profpic">
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
@@ -56,7 +56,7 @@
                             
                             <h1 class="rating-num">${user.getUsername()}</h1>
                             <div class="profile-header-img">
-                                <img class="img-circle" src="http://localhost:8080/images/${users.getImage()}.jpg" />
+                                <img class="img-circle" src="http://localhost:8080/images/${user.getImage()}.jpg" />
                                 <!-- badge -->
                                 <div class="rank-label-container">
                                     <h1><span>${star} / 5</span></h1>
