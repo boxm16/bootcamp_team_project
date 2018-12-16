@@ -160,7 +160,7 @@
             <hr>
 
 
-            <div style="overflow: auto;width:680px; height:270px;" id="style-5">
+            <div style="overflow: auto; width:680px; height:270px;" id="style-5">
                 <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
                 <br>
                 <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>

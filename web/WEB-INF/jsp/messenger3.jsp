@@ -35,7 +35,7 @@
                                 <h4 style="color: black">Incoming</h4>
                             </div>
                         </div>
-                        <div class="inbox_chat">
+                        <div class="inbox_chat" id="style-5">
                             <div class="chat_list">     
                                 <c:forEach items="${incoming_requests}" var="incoming_requests">
                                     <div class="chat_people">
@@ -85,13 +85,13 @@
             <h3 class=" text-center" style="color: white">Requests</h3>
             <div class="messaging">
                 <div class="inbox_msg">
-                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #d1d6d3, #383838);">
+                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #2a7a5f, #05563b); opacity: 0.85;border-radius: 4%">
                         <div class="headind_srch">
                             <div class="recent_heading">
                                 <h4>Outgoing</h4>
                             </div>
                         </div>
-                        <div class="inbox_chat">
+                        <div class="inbox_chat" id="style-5">
                             <div class="chat_list">     
                                 <c:forEach items="${outgoing_requests}" var="outgoing_requests">
                                     <div class="chat_people">
@@ -111,8 +111,8 @@
                 </div>
                 <div class="mesgs">
                     <div class="msg_history">
-                        <div class="incoming_msg">
-                            <div class="received_msg" style="color:black;   border-radius: 20px; white-space: pre-wrap; background-color: white" id="m2">
+                        <div class="incoming_msg" style="opacity: 0.8">
+                            <div class="received_msg" style="color: white; white-space: pre-wrap;  background: linear-gradient(to bottom, #2a7a5f, #05563b); border-radius: 4%" id="m2">
                                 <div class="received_withd_msg">
                                     <p></p>
                                     <span class="time_date"></span>
@@ -121,7 +121,7 @@
                         </div>
                         <br>
                         <div >
-                            <div class="input_msg_write text-center">
+                            <div class="input_msg_write text-center" style="color: black">
                             </div>
                         </div>
                     </div>
@@ -132,13 +132,13 @@
             <h3 class=" text-center" style="color: white">Requests</h3>
             <div class="messaging">
                 <div class="inbox_msg">
-                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #d1d6d3, #383838);">
+                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #2a7a5f, #05563b); opacity: 0.85;border-radius: 4%">
                         <div class="headind_srch">
                             <div class="recent_heading">
                                 <h4>Answered</h4>
                             </div>
                         </div>
-                        <div class="inbox_chat">
+                        <div class="inbox_chat" id="style-5">
                             <div class="chat_list">     
                                 <c:forEach items="${answered_requests}" var="answered_requests">
                                     <div class="chat_people">
@@ -159,8 +159,8 @@
                 </div>
                 <div class="mesgs">
                     <div class="msg_history">
-                        <div class="incoming_msg">
-                            <div class="received_msg" style="color:black;   border-radius: 20px;   white-space: pre-wrap; background-color: white" id="m3">
+                        <div class="incoming_msg" style="opacity: 0.8">
+                            <div class="received_msg" style="color: white; white-space: pre-wrap;  background: linear-gradient(to bottom, #2a7a5f, #05563b); border-radius: 4%" id="m3">
                                 <div class="received_withd_msg">
                                     <p></p>
                                     <span class="time_date"></span>
@@ -169,7 +169,7 @@
                         </div>
                         <br>
                         <div >
-                            <div class="input_msg_write text-center">
+                            <div class="input_msg_write text-center" style="color: black">
                             </div>
                         </div>
                     </div>

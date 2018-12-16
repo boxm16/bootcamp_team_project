@@ -31,7 +31,7 @@ public class RatingsDao {
                 + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
                 + "where (court_reservation.date!='" + reservation.get(0).getDate() + "' and court_reservation.hours!='" + reservation.get(0).getHours().getHoursId()
                 + "' AND status!='yes') OR (court_reservation.date!='" + reservation.get(0).getBooker().getUserId() + "' and court_reservation.hours!='"+reservation.get(0).getHours().getHoursId()+"' "
-                + "and court_reservation.booker!='"+reservation.get(0).getBooker().getUserId()+"'));";
+                + "and court_reservation.booker!='"+reservation.get(0).getBooker().getUserId()+"')) and Player!='"+reservation.get(0).getBooker().getUserId()+"';";
 
         Query q2 = em.createNativeQuery(sql1, Stats.class);
         List<Stats> players = q2.getResultList();
