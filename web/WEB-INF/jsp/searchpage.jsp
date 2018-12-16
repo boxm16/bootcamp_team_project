@@ -29,7 +29,7 @@
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/logout.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>
@@ -63,12 +63,29 @@
                
             </div>
     
-            <div class="well">
-                <div class="tab-content">
+            <div class="well main-center" >
+                <div class="tab-content center">
                     <div class="tab-pane fade in active">
                         <H3><B>Search for Player</B></H3>
-                        <input type="text" name="texts" id="mytext" placeholder="Enter Username"/>
-                        <table><div id="text"></div></table>
+                        <input type="text" name="texts" id="mytext" style="color: black"placeholder="Enter Username"/><br>
+                        <table class="display" style="width: 100%">
+                            
+                                <tr>
+                                    <td>Picture</td>
+                                    <td>Username</td>
+                                    <td>First Name</td>
+                                    <td>Last Name</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td></td>
+                                    <td id="text"></td>
+                                    <td id="text2"></td>
+                                    <td id="text3"></td>
+                                </tr>
+                            
+                        </table>
+                        
 
                     </div>
                 </div>
@@ -93,17 +110,22 @@
 
                         contentType: 'application/json',
                         success: function (result) {
-
                             $("#text").empty();
+                            $("#text2").empty();
+                            $("#text3").empty();
                              var jsonobj = $.parseJSON(result);
                             $.each(jsonobj, function (i, item) {
-                                var o =item.username;
-                                console.log(o.valueOf());
-                            
-                                $tr = $('<tr>').append( $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'">').text(item.username)                             
-                                        );
                                 
+                                $tr = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
+                                        $('<td>').text(item.username));                                            
+                                $ts = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
+                                        $('<td>').text(item.firstname));
+                                $th = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
+                                        $('<td>').text(item.lastname));        
+                                        
                                 $("#text").append($tr);
+                                $("#text2").append($ts);
+                                $("#text3").append($th);
                             });
                         }
                     });

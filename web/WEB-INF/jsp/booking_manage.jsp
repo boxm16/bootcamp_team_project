@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="resources/new-event.jpg">
+
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -77,7 +79,7 @@
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/logout.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>
@@ -227,3 +229,11 @@
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>
+
+
+
+<!--eikonidio browser
+eikona kentriki gia carousel
+eikona mainpage
+gramatoseires
+moto gia carousel-->

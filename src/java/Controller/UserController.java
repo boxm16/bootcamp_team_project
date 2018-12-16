@@ -243,7 +243,7 @@ public class UserController {
             teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
             technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         }
         model.addAttribute("users", user);
@@ -272,7 +272,7 @@ public class UserController {
             teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
             technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         }
         model.addAttribute("users", user);
@@ -301,7 +301,7 @@ public class UserController {
             teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
             technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         }
         model.addAttribute("users", user);
@@ -363,11 +363,13 @@ public class UserController {
         BigDecimal athletism = new BigDecimal(0);
         BigDecimal overall = new BigDecimal(0);
         BigDecimal grade = new BigDecimal(0);
-        teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-        technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-        athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-        overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3)));
-        grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+        if (!stats.isEmpty()) {
+            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
+            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
+            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
+            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+        }
         model.addAttribute("users", me);
         model.addAttribute("user", user);
         model.addAttribute("team", teamwork);
