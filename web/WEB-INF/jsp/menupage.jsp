@@ -25,7 +25,7 @@
             });
         </script>
     </head>
-    <body style=" background-image: url(resources/mainpage.jpg);background-size: cover">
+    <body style=" background-image: url(resources/mainpage.jpg); background-size: cover">
 
               <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">

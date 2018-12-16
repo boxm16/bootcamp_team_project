@@ -123,7 +123,7 @@
 
         <!--Creation section -->
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
-            <h1 style="color: white">Let's create a new event!</h1>
+            <h1 style="color: white; font-family: Verdana">Let's create a new event!</h1>
 
 
             <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
@@ -139,7 +139,7 @@
 
 
 
-            <h1>My Active Events</h1>
+                    <h2 style="font-family: Verdana">My Active Events</h2>
 
 
             <table border="1" class="table table-hover" style="color: white" id="booktable">
@@ -234,6 +234,5 @@
 
 <!--eikonidio browser
 eikona kentriki gia carousel
-eikona mainpage
 gramatoseires
 moto gia carousel-->
