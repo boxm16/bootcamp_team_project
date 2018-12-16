@@ -6,10 +6,7 @@
 package Dao;
 
 import Model.CourtReservation;
-import Model.Hours;
-import Model.Ratings;
 import Model.Stats;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

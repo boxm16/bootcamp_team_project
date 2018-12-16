@@ -6,9 +6,7 @@
 package Controller;
 
 import Dao.RatingsDao;
-import Dao.ReviewDao;
 import Dao.UserDao;
-import Model.Ratings;
 import Model.Stats;
 import Model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;

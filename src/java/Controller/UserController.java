@@ -13,25 +13,19 @@ import java.util.List;
 import Validation.UserValidator;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
-import Model.Review;
 import Model.Stats;
 import Model.User;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -126,7 +120,7 @@ public class UserController {
                 model.addAttribute("users", user);
                 return "menupage";
             } else {
-                String message = "password is wrong";
+                String message = "Username or Password is wrong";
                 model.addAttribute("message", message);
                 return "index";
             }

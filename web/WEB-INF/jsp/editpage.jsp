@@ -31,7 +31,7 @@
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/index.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>

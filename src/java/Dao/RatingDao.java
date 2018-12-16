@@ -7,13 +7,9 @@ package Dao;
 
 import Model.Ratings;
 import Model.Stats;
-import Model.User;
-import java.math.BigDecimal;
-import static java.math.BigDecimal.ROUND_FLOOR;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 

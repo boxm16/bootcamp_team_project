@@ -17,20 +17,19 @@
         <script>$(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
                     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-                    // $(".tab").addClass("active"); // instead of this do the below 
                     $(this).removeClass("btn-default").addClass("btn-primary");
                 });
             });
         </script>
     </head>
-    <body style=" background-image: url(resources/mainpage.jpg);background-size: cover">
+    <body style=" background-image: url(resources/game-request.jpeg);background-size: cover">
 
               <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/index.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>

@@ -77,14 +77,15 @@
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/index.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>
 
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
+                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <div class="hidden-xs">Ranks</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
