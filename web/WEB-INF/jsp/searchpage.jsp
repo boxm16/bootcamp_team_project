@@ -79,7 +79,7 @@
                                 </tr>
                             
                                 <tr>
-                                    <td></td>
+                                    <td id="text4"></td>
                                     <td id="text"></td>
                                     <td id="text2"></td>
                                     <td id="text3"></td>
@@ -114,9 +114,11 @@
                             $("#text").empty();
                             $("#text2").empty();
                             $("#text3").empty();
+                            $("#text4").empty();
                              var jsonobj = $.parseJSON(result);
                             $.each(jsonobj, function (i, item) {
-                                
+                                $tp = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
+                                        $('<td>').append('<img src="http://localhost:8080/images/'+item.image+'.jpg">'));             
                                 $tr = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
                                         $('<td>').text(item.username));                                            
                                 $ts = $('<a href="http://localhost:8080/seek_play/profile.htm?name='+item.username+'"><br>').append( 
@@ -127,6 +129,7 @@
                                 $("#text").append($tr);
                                 $("#text2").append($ts);
                                 $("#text3").append($th);
+                                $("#text4").append($tp);
                             });
                         }
                     });
