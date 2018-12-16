@@ -15,7 +15,7 @@
     </head>
 
 
-    <body style=" background-image: url(resources/game-request.jpeg);background-size: cover">
+    <body style=" background-image: url(resources/messenger.jpg);background-size: cover">
 
         <div class="centreButtons">
             <button onclick="myFunction1()" class="btn btn-primary" style="display:inline-block; text-align: center;">Incoming</button>
@@ -24,15 +24,15 @@
             <button onclick="window.location = 'http://localhost:8080/seek_play/star.htm';" class="btn btn-success" style="display:inline-block;">Go to Main Menu</button>
                  
         </div>
-        <div class="container" id="incoming" style="background-color: transparent;">
+        <div class="container" id="incoming" style="background-color: transparent; ">
 
             <h3 class=" text-center" style="color: white"> Requests</h3>
             <div class="messaging" >
                 <div class="inbox_msg">
-                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #d1d6d3, #383838);">
+                    <div class="inbox_people" style=" background: linear-gradient(to bottom, #2a7a5f, #05563b); opacity: 0.85;border-radius: 4%">
                         <div class="headind_srch">
                             <div class="recent_heading">
-                                <h4>Incoming</h4>
+                                <h4 style="color: black">Incoming</h4>
                             </div>
                         </div>
                         <div class="inbox_chat">
@@ -41,7 +41,7 @@
                                     <div class="chat_people">
                                         <div class="chat_img"> <img src="http://localhost:8080/images/${incoming_requests.match.booker.image}.jpg" alt="https://ptetutorials.com/images/user-profile.png"> </div>
                                         <div class="chat_ib"><a id="incoming_id" style="display: none">${incoming_requests.id}</a>
-                                            <h5>${incoming_requests.match.booker.username}<span class="chat_date">${incoming_requests.match.date}</span><br>
+                                            <h5 style="color: black">${incoming_requests.match.booker.username}<span class="chat_date">${incoming_requests.match.date}</span><br>
                                                 <a style="float: right" id="text">${incoming_requests.match.hours.hour}</a>
                                             </h5>
                                             <p class="plain_message" style="display: none;">${incoming_requests.match.courtId.name}</p>
@@ -57,8 +57,8 @@
                 </div>
                 <div class="mesgs">
                     <div class="msg_history">
-                        <div class="incoming_msg">
-                            <div class="received_msg" style="color:black; white-space: pre-wrap; background-color: white" id="m1">
+                        <div class="incoming_msg" style="opacity: 0.8">
+                            <div class="received_msg" style="color: white; white-space: pre-wrap;  background: linear-gradient(to bottom, #2a7a5f, #05563b); border-radius: 4%" id="m1">
                                 <div class="received_withd_msg">
                                     <span class="time_date"></span>
                                 </div>
@@ -66,13 +66,13 @@
                         </div>
                         <br>
                         <div >
-                            <div class="input_msg_write text-center">
+                            <div class="input_msg_write text-center" style="color: black">
                                 <form id="accept" action="" method="POST"  >
-                                    <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left;">Accept</button>
+                                    <button type="submit" class="btn btn-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left;">Accept</button>
                                 </form>
                                 <div>
                                     <form id="deny" action="" method="POST" style="display:inline">
-                                        <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-lg" id="deny" style="float:right">Deny</button>
+                                        <button type="submit" class="btn btn-danger btn-rounded waves-effect btn-lg" id="deny" style="float:right">Deny</button>
                                     </form>
                                 </div>
                             </div>

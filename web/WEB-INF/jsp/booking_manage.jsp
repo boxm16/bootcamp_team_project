@@ -233,7 +233,6 @@
 
 
 
-<!--eikonidio browser
-eikona kentriki gia carousel
+<!--
 gramatoseires
 moto gia carousel-->

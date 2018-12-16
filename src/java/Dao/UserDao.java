@@ -28,7 +28,9 @@ public class UserDao {
     @Transactional
     public void insert(User user) {
 
-        em.persist(user);
+       // em.persist(user); gia kapoio logo to default tou image de leitourgei me persist
+       em.createNativeQuery("INSERT INTO `seek_play`.`user` (`username`, `firstname`, `lastname`, `image`, `password`) VALUES ('"+user.getUsername()+"', '"+user.getFirstname()+"', '"+user.getLastname()+"', DEFAULT, '"+user.getPassword()+"');",User.class).executeUpdate();
+
     }
      @Transactional
     public void updatepic(int user_id, String file) throws IOException{
