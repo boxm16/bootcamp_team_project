@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+                <link rel="icon" href="resources/logo.jpg">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -98,6 +100,15 @@
                                         </hgroup>
                                     </div>
                                 </div>
+                                <div class="item slides">
+                                <div class="slide-4"></div>
+                                <div class="hero">        
+                                    <hgroup>
+                                        <h1>We are amazing</h1>        
+                                        <h3>Get start your next awesome project</h3>
+                                    </hgroup>
+                                </div>
+                            </div>
                             </div> 
                         </div>
                     </spring:form> 

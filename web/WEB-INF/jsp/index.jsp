@@ -5,6 +5,8 @@
 
 <html>
     <head>
+        <link rel="icon" href="resources/logo.jpg">
+
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
@@ -53,6 +55,8 @@
                             <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
                             <li data-target="#bs-carousel" data-slide-to="1"></li>
                             <li data-target="#bs-carousel" data-slide-to="2"></li>
+                            <li data-target="#bs-carousel" data-slide-to="3"></li>
+
                         </ol>
 
                         <!-- Wrapper for slides -->
@@ -70,13 +74,22 @@
                                 <div class="slide-2"></div>
                                 <div class="hero">        
                                     <hgroup>
-                                        <h1>We are smart</h1>        
+                                        <h1 style="font-family: Verdana">We are smart</h1>        
                                         <h3>Get start your next awesome project</h3>
                                     </hgroup>       
                                 </div>
                             </div>
                             <div class="item slides">
                                 <div class="slide-3"></div>
+                                <div class="hero">        
+                                    <hgroup>
+                                        <h1>We are amazing</h1>        
+                                        <h3>Get start your next awesome project</h3>
+                                    </hgroup>
+                                </div>
+                            </div>
+                            <div class="item slides">
+                                <div class="slide-4"></div>
                                 <div class="hero">        
                                     <hgroup>
                                         <h1>We are amazing</h1>        

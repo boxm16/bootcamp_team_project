@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+                <link rel="icon" href="resources/logo.jpg">
+
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -54,7 +56,7 @@
                             
                             <h1 class="rating-num">${user.getUsername()}</h1>
                             <div class="profile-header-img">
-                                <img class="img-circle" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" />
+                                <img class="img-circle" src="http://localhost:8080/images/${users.getImage()}.jpg" />
                                 <!-- badge -->
                                 <div class="rank-label-container">
                                     <h1><span>${star} / 5</span></h1>

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html> 
     <head>        
+        <link rel="icon" href="resources/logo.jpg">
 
 
 

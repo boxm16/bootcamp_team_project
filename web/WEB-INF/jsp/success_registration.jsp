@@ -5,6 +5,8 @@
 
 <html>
     <head>
+        <link rel="icon" href="resources/logo.jpg">
+
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script>setTimeout(function () {
@@ -64,6 +66,15 @@
                         </div>
                         <div class="item slides">
                             <div class="slide-3"></div>
+                            <div class="hero">        
+                                <hgroup>
+                                    <h1>We are amazing</h1>        
+                                    <h3>Get start your next awesome project</h3>
+                                </hgroup>
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-4"></div>
                             <div class="hero">        
                                 <hgroup>
                                     <h1>We are amazing</h1>        

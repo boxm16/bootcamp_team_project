@@ -12,7 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="resources/new-event.jpg">
+                <link rel="icon" href="resources/logo.jpg">
+
 
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 

@@ -195,7 +195,7 @@ sta requests vazoume div me logo epanw
 /* kentriko element eikonwn */
 .hero {
     position: absolute;
-    top: 50%;
+    top: 72%;
     left: 50%;
     z-index: 3;
     color: #fff;
@@ -212,7 +212,6 @@ sta requests vazoume div me logo epanw
 .hero h1 {
     font-size: 5em;    
     font-weight: bold;
-    margin: 0;
     padding: 0;
 }
 .fade-carousel .carousel-inner .item .hero {
@@ -262,7 +261,8 @@ sta requests vazoume div me logo epanw
 /********************************/
 .fade-carousel .slides .slide-1, 
 .fade-carousel .slides .slide-2,
-.fade-carousel .slides .slide-3 {
+.fade-carousel .slides .slide-3,
+.fade-carousel .slides .slide-4 {
     height: 100vh;
     background-size: cover;
     background-position: center center;
@@ -276,6 +276,9 @@ sta requests vazoume div me logo epanw
 }
 .fade-carousel .slides .slide-3 {
     background-image: url(soccer.jpg);
+}
+.fade-carousel .slides .slide-4 {
+    background-image: url(banner.jpg);
 }
 /********************************/
 /*          Media Queries       */

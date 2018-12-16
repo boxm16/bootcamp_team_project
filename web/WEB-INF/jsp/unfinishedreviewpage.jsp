@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html> 
     <head>        
+        <link rel="icon" href="resources/logo.jpg">
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
