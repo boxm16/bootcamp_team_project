@@ -466,3 +466,19 @@ domi eikonidio me pic user
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #006d2b;
 }
+.main-center{
+        position: fixed; 
+        text-align: center;
+        width:100%; 
+        margin:0 auto;
+ 	background:transparent;
+	    color: #FFF;
+        text-shadow: 2px;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+.main{
+ 	margin:50px 15px;
+}
