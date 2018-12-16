@@ -37,7 +37,7 @@ public class UserValidator implements Validator {
         }
 
         String password = u.getPassword();
-        if (password.length() < 3) {
+        if (password.length() < 4) {
             errors.rejectValue("password", "pwd.Short");
         }
         String password_confirmation = u.getPassword_confirmation();

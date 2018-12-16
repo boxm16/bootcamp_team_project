@@ -19,6 +19,8 @@
             <button onclick="myFunction1()" class="btn btn-primary" style="display:inline-block; text-align: center;">Incoming</button>
             <button onclick="myFunction2()" class="btn btn-primary" style="display:inline-block;">Outgoing</button>
             <button onclick="myFunction3()" class="btn btn-primary" style="display:inline-block;">Answered</button>
+            <button onclick="window.location = 'http://localhost:8080/seek_play/star.htm';" class="btn btn-success" style="display:inline-block;">Go to Main Menu</button>
+                 
         </div>
         <div class="container" id="incoming" style="background-color: transparent;">
 
@@ -41,7 +43,7 @@
                                                 <a style="float: right" id="text">${incoming_requests.match.hours.hour}</a>
                                             </h5>
                                             <p class="plain_message" style="display: none;">${incoming_requests.match.courtId.name}</p>
-                                            <h6>${incoming_requests.text}</h6>
+<!--                                            <h6>${incoming_requests.text}</h6>-->
                                             <h2 style="display: none">${incoming_requests.status}</h2>
 
                                         </div>
@@ -95,7 +97,7 @@
                                         <div class="chat_ib">
                                             <h5>${outgoing_requests.requestReceiver.username}<span class="chat_date">${outgoing_requests.match.date}</span><br> <a style="float: right" id="text">${outgoing_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${outgoing_requests.match.courtId.name}</p>
-                                            <h6 >${outgoing_requests.text}</h6>
+<!--                                            <h6 >${outgoing_requests.text}</h6>-->
                                             <h2 style="display: none">${outgoing_requests.status}</h2>
                                             <br>
                                         </div>
@@ -142,7 +144,7 @@
                                         <div class="chat_ib">
                                             <h5>${answered_requests.requestReceiver.username}<span class="chat_date">${answered_requests.match.date}</span><br> <a style="float: right" id="text">${answered_requests.match.hours.hour}</a></h5>
                                             <p class="plain_message" style="display: none">${answered_requests.match.courtId.name}</p>
-                                            <h6 >${answered_requests.text}</h6>
+<!--                                            <h6 >${answered_requests.text}</h6>-->
                                             <h2 style="display: none">${answered_requests.status}</h2>
 
                                             <br>

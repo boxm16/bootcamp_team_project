@@ -6,7 +6,6 @@
 package Dao;
 
 import Model.CourtReservation;
-import Model.Ratings;
 import Model.Stats;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -28,14 +27,32 @@ public class RatingsDao {
 
         List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
 
-        String sql = "SELECT * from Stats where Player in\n"
+        String sql1 = "SELECT * from Stats where Player in\n"
                 + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
-                + "where (court_reservation.date!='" + reservation.get(0).getDate() + "' and court_reservation.hours!='" + reservation.get(0).getHours()
-                + "') AND (status='yes' OR court_reservation.booker!='" + reservation.get(0).getBooker() + "'));";
+                + "where (court_reservation.date!='" + reservation.get(0).getDate() + "' and court_reservation.hours!='" + reservation.get(0).getHours().getHoursId()
+                + "' AND status!='yes') OR (court_reservation.date!='" + reservation.get(0).getBooker().getUserId() + "' and court_reservation.hours!='"+reservation.get(0).getHours().getHoursId()+"' "
+                + "and court_reservation.booker!='"+reservation.get(0).getBooker().getUserId()+"'));";
 
-        Query q2 = em.createNativeQuery(sql, Stats.class);
+        Query q2 = em.createNativeQuery(sql1, Stats.class);
         List<Stats> players = q2.getResultList();
         return players;
+    }
+
+    public List<Stats> getInvitedPlayersforGame(int id) {
+
+        List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
+
+        
+        
+        String sql2 = "SELECT * from Stats where Player in\n"
+                + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
+                + "where (court_reservation.date='" + reservation.get(0).getDate() + "' and court_reservation.hours='" + reservation.get(0).getHours().getHoursId()
+                + "' AND court_reservation.booker='" + reservation.get(0).getBooker().getUserId() + "'));";
+
+        Query q1 = em.createNativeQuery(sql2, Stats.class);
+        List<Stats> players = q1.getResultList();
+        return players;
+
     }
 
 }

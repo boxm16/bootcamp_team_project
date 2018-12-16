@@ -22,10 +22,10 @@ and open the template in the editor.
 }
 img{ max-width:100%;}
 .inbox_people {
-               background: #f8f8f8 none repeat scroll 0 0;
-               float: left;
-               overflow: hidden;
-               width: 40%; border-right:1px solid #c4c4c4;
+    background: #f8f8f8 none repeat scroll 0 0;
+    float: left;
+    overflow: hidden;
+    width: 40%; border-right:1px solid #c4c4c4;
 }
 
 
@@ -464,8 +464,46 @@ domi eikonidio me pic user
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #006d2b;
+    background-color: #006d2b;
 }
+
+
+
+/*validator style*/
+
+
+.error-message {
+    color: #cc0033;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 15px;
+    margin: 5px 0 0;
+}
+
+/*scrollbar*/ 
+#style-5::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#style-5::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-5::-webkit-scrollbar-thumb
+{
+    background-color: #0ae;
+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%,
+        color-stop(.5, rgba(255, 255, 255, .2)),
+        color-stop(.5, transparent), to(transparent));
+}
+
+
+
 .main-center{
         position: fixed; 
         text-align: center;

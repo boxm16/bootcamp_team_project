@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="resources/new-event.jpg">
+
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -70,21 +72,22 @@
         </script>
 
     </head>
-    <body style=" background-image: url(resources/new-event.jpg);background-size: cover">
+    <body style=" background-image: url(resources/new-event.jpg);">
 
         <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${user.getImage()}.jpg" class="profpic">
 
 
             <div style=" display: inline-block; color: white;"><b><span class="card-title">${user.getUsername()}</span></b></div>
-            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+            <a href="http://localhost:8080/seek_play/logout.htm"><button title="Log out" type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
                 </button></a>
 
         </div>
 
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
+                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <div class="hidden-xs">Ranks</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
@@ -120,7 +123,7 @@
 
         <!--Creation section -->
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
-            <h1 style="color: white">Let's create a new event!</h1>
+            <h1 style="color: white; font-family: Verdana">Let's create a new event!</h1>
 
 
             <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
@@ -136,7 +139,7 @@
 
 
 
-            <h1>My Active Events</h1>
+                    <h2 style="font-family: Verdana">My Active Events</h2>
 
 
             <table border="1" class="table table-hover" style="color: white" id="booktable">
@@ -147,7 +150,8 @@
                         <td><c:out value="${current.date}" /><td>
                         <td><c:out value="${current.hours.hour}" /><td>
 
-                         <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+
+                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
 
                     </tr>
                 </c:forEach>
@@ -155,10 +159,13 @@
             <hr>
 
 
+            <div style="overflow: auto;width:680px; height:270px;" id="style-5">
+                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+                <br>
+                <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>
 
-            <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
 
-
+            </div>
         </div>
         <script>
 
@@ -168,8 +175,8 @@
                 var courtReservationId = clicked_id;
                 $("#output1").empty();
                 $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
-                    success: function (result) {
-                        var jsonobj = $.parseJSON(result);
+                    success: function (result1) {
+                        var jsonobj1 = $.parseJSON(result1);
 
 
                         $('<tr>').append(
@@ -178,21 +185,36 @@
                                 $('<td>').text("Athletism"),
                                 $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
 
-
-
-
-                        $(function () {
-                            $.each(jsonobj, function (i, item) {
+                            $(function () {
+                            $.each(jsonobj1, function (i, item) {
                                 $('<tr>').append(
                                         $('<td>').text(item.username),
                                         $('<td>').text(item.teamwork),
                                         $('<td>').text(item.athletism),
                                         $('<td>').text(item.technique),
                                         $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
+                            });
+                        });
+                    }
+                });
+                $.ajax({url: 'findplayersalreadyinvited.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
+                    success: function (result2) {
+                        var jsonobj2 = $.parseJSON(result2);
 
 
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output2').css("font-weight", "bold");
 
-
+                        $(function () {
+                            $.each(jsonobj2, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.username),
+                                        $('<td>').text(item.teamwork),
+                                        $('<td>').text(item.athletism),
+                                        $('<td>').text(item.technique)).appendTo('#output2');
 
                             });
                         });
@@ -207,3 +229,10 @@
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>
+
+
+
+<!--eikonidio browser
+eikona kentriki gia carousel
+gramatoseires
+moto gia carousel-->

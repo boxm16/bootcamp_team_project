@@ -14,15 +14,21 @@ $(".chat_people").click(function () {
     var court = $(this).find('p').text();
     var user = $(this).find('h5').justtext().trim();
     var date = $(this).find('span').text();
-    var message = $(this).find('h6').text();
+//    var message = $(this).find('h6').text();
     var time = $(this).find('a#text').text();
     var id = $(this).find('a#incoming_id').text();
     var status = $(this).find('h2').text();
 
 
-    $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message+ "\n" + "Status: " + status);
-    $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Your message: " + message+ "\n" + "Status: " + status);
-    $("div.received_msg#m3").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message+ "\n" + "Status: " + status);
+/*    $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
+    $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Your message: " + message + "\n" + "Status: " + status);
+    $("div.received_msg#m3").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
+*/
+    $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
+    $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
+    $("div.received_msg#m3").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
+
+
 
     document.getElementById("accept").action = "/seek_play/accept.htm?id=" + id;
     document.getElementById("deny").action = "/seek_play/deny.htm?id=" + id;
@@ -40,20 +46,6 @@ jQuery.fn.justtext = function () {
 
 };
 
-//function myFunction() {
-//    var mainFrameOne = document.getElementById("incoming");
-//    var mainFrameTwo = document.getElementById("outgoing");
-//    var mainFrameThree = document.getElementById("answered");
-//
-//
-//
-//    mainFrameOne.style.display = (
-//            mainFrameOne.style.display == "none" ? "block" : "none");
-//    mainFrameTwo.style.display = (
-//            mainFrameTwo.style.display == "none" ? "block" : "none");
-//    mainFrameThree.style.display = (
-//            mainFrameTwo.style.display == "none" ? "block" : "none");
-//}
 function myFunction1() {
     var mainFrameOne = document.getElementById("incoming");
     var mainFrameTwo = document.getElementById("outgoing");
