@@ -8,12 +8,18 @@ package Controller;
 import Dao.ReviewDao;
 import Dao.CourtReservationDao;
 import Dao.GameRequestDao;
+import Dao.RatingDao;
 
 import Dao.UserDao;
 import Model.CourtReservation;
 import Model.GameRequest;
+import Model.Ratings;
 import Model.Review;
+import Model.Stats;
 import Model.User;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -34,6 +40,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ReviewController {
 
     @Autowired
+    private RatingDao ratingDAO;
+    @Autowired
     ServletContext servletContext;
 
     @Autowired
@@ -52,31 +60,29 @@ public class ReviewController {
     public String createReviewForm(ModelMap model, HttpSession session) {
         User me = (User) session.getAttribute("user");
         List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(me.getUserId());
-        if( !pendingReviewList.isEmpty()){
-        model.addAttribute("pendingReviewList", pendingReviewList);
-        Review review = new Review();
-        List<String> Grades = new ArrayList<>();
-        Grades.add("1");
-        Grades.add("2");
-        Grades.add("3");
-        Grades.add("4");
-        Grades.add("5");
-        Grades.add("6");
-        Grades.add("7");
-        Grades.add("8");
-        Grades.add("9");
-        Grades.add("10");
+        if (!pendingReviewList.isEmpty()) {
+            model.addAttribute("pendingReviewList", pendingReviewList);
+            Review review = new Review();
+            List<String> Grades = new ArrayList<>();
+            Grades.add("1");
+            Grades.add("2");
+            Grades.add("3");
+            Grades.add("4");
+            Grades.add("5");
+            Grades.add("6");
+            Grades.add("7");
+            Grades.add("8");
+            Grades.add("9");
+            Grades.add("10");
 
-        servletContext.setAttribute("Grades", Grades);
-        model.addAttribute("review", review);
-        
-        return "reviews";
-        }
-        else
-        {
+            servletContext.setAttribute("Grades", Grades);
+            model.addAttribute("review", review);
+
+            return "reviews";
+        } else {
             model.addAttribute("review1", "No users to review!");
         }
-        
+
         return "reviews";
     }
 
@@ -103,7 +109,62 @@ public class ReviewController {
         return "redirect:/goToReviewForm.htm";
     }
 
-    
-  
-    
+    @RequestMapping(value = "/star.htm", method = RequestMethod.GET)
+    public String starnew(ModelMap model, User u, HttpSession session) throws IOException {
+        User user = (User) session.getAttribute("user");
+        Ratings r = new Ratings();
+        r.setPlayer(user.getUserId());
+        int id = r.getPlayer();
+        List<Stats> stats = ratingDAO.Status(id);
+        BigDecimal teamwork = new BigDecimal(0);
+        BigDecimal technique = new BigDecimal(0);
+        BigDecimal athletism = new BigDecimal(0);
+        BigDecimal overall = new BigDecimal(0);
+        BigDecimal grade = new BigDecimal(0);
+        if (!stats.isEmpty()) {
+            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
+            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
+            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
+            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+        }
+        /* model.addAttribute("users", user);
+        model.addAttribute("team", teamwork);
+        model.addAttribute("athlet", athletism);
+        model.addAttribute("tech", technique);
+        model.addAttribute("star", grade);
+        model.addAttribute("overall", overall);
+         */
+
+        servletContext.setAttribute("team", teamwork);
+        servletContext.setAttribute("athlet", athletism);
+        servletContext.setAttribute("tech", technique);
+        servletContext.setAttribute("star", grade);
+        servletContext.setAttribute("overall", overall);
+
+        return "starpage";
+    }
+
+    @RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
+    public String myreviewnew(ModelMap model, HttpSession session) throws IOException {
+
+        User me = (User) session.getAttribute("user");
+        List<Review> myReviewsList = reviewDao.listMyReviews(me);
+        if (!myReviewsList.isEmpty()) {
+            model.addAttribute("myReviews", myReviewsList);
+        } else {
+            model.addAttribute("myReviewsEmpty", "You had never been reviewed!");
+        }
+
+        return "myreviewspage";
+    }
+
+    @RequestMapping(value = "/others.htm", method = RequestMethod.GET)
+    public String othersnew(ModelMap model, HttpSession session) throws IOException {
+        User me = (User) session.getAttribute("user");
+
+        List<Review> listOthersReviews = reviewDao.listOthersReviews(me);
+        return "othersreviewpage";
+    }
+
 }
