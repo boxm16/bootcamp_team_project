@@ -30,7 +30,15 @@
         </script>
     </head>
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
+        <div class="useravatar" style="  display: inline-block;">
+            <img alt="${users.getUsername()}" src="https://media.licdn.com/dms/image/C5603AQF_gHn6AmLcFQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=da7MT2GIQ56_Q9WLjb7QjX0dUDFMxsrQB41UYjDFma0" class="profpic">
 
+
+            <div style=" display: inline-block; color: white;"><b><span class="card-title">${users.getUsername()}</span></b></div>
+            <a href="http://localhost:8080/seek_play/index.htm"><button type="button" class="btn-pref btn" style="background-color: transparent; border-color: transparent; color: white; "><span class="glyphicon glyphicon-off"></span>
+                </button></a>
+
+        </div>
         <div class="col-lg-12 col-sm-12">
             <!--     <div class="card hovercard">
                   <div class="card-background">
@@ -147,7 +155,7 @@
 
                 <div class="container">
                     <div id="11">
-                    
+
                         ${myReviewsEmpty}
                         <c:if test="${not empty myReviews}">
                             <table border="1" class="table table-hover">

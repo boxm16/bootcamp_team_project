@@ -163,7 +163,13 @@ public class ReviewController {
     public String othersnew(ModelMap model, HttpSession session) throws IOException {
         User me = (User) session.getAttribute("user");
 
-        List<Review> listOthersReviews = reviewDao.listOthersReviews(me);
+        List<Review> OthersReviewsList = reviewDao.listOthersReviews(me);
+        if (!OthersReviewsList.isEmpty()) {
+            model.addAttribute("othersReviews", OthersReviewsList);
+
+        } else {
+            model.addAttribute("othersReviewsEmpty", "You have never made any review!");
+        }
         return "othersreviewpage";
     }
 
