@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <link rel="icon" href="resources/logo.jpg">
+        <link rel="icon" href="resources/logo.jpg">
 
 
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
@@ -140,7 +140,7 @@
 
 
 
-                    <h2 style="font-family: Verdana">My Active Events</h2>
+            <h2 style="font-family: Verdana">My Active Events</h2>
 
 
             <table border="1" class="table table-hover" style="color: white" id="booktable">
@@ -161,7 +161,9 @@
 
 
             <div style="overflow: auto; width:680px; height:270px;" id="style-5">
-                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS BASED ON THEIR RATING</table>
+                <br>
+                <table  border="1" class="table table-hover" id="output3" style="color: white;">SELECT AVAILABLE PLAYERS NOT YET REVIEWED</table>
                 <br>
                 <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>
 
@@ -175,9 +177,14 @@
             {
                 var courtReservationId = clicked_id;
                 $("#output1").empty();
+                $("#output2").empty();
+                $("#output3").empty();
+
                 $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result1) {
                         var jsonobj1 = $.parseJSON(result1);
+
+                        //  $('table').text("SELECT AVAILABLE PLAYERS FOR YOUR GAME").appendTo('#output1');
 
 
                         $('<tr>').append(
@@ -186,7 +193,7 @@
                                 $('<td>').text("Athletism"),
                                 $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
 
-                            $(function () {
+                        $(function () {
                             $.each(jsonobj1, function (i, item) {
                                 $('<tr>').append(
                                         $('<td>').text(item.username),
@@ -195,9 +202,35 @@
                                         $('<td>').text(item.technique),
                                         $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
                             });
+
                         });
                     }
                 });
+
+                $.ajax({url: 'findPlayersnotyetReviewed.htm', contentType: 'application/json',
+                    success: function (result3) {
+                        var jsonobj3 = $.parseJSON(result3);
+
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output3').css("font-weight", "bold");
+
+                        $(function () {
+                            $.each(jsonobj3, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.username),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output3');
+                            });
+                        });
+                    }
+                });
+
+
                 $.ajax({url: 'findplayersalreadyinvited.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result2) {
                         var jsonobj2 = $.parseJSON(result2);

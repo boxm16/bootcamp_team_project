@@ -7,6 +7,7 @@ package Dao;
 
 import Model.CourtReservation;
 import Model.Stats;
+import Model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -51,6 +52,21 @@ public class RatingsDao {
 
         Query q1 = em.createNativeQuery(sql2, Stats.class);
         List<Stats> players = q1.getResultList();
+        return players;
+
+    }
+    
+    
+    public List<User> getPlayersnotyetReviewed() {
+
+      //  List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
+
+        
+        
+        String sql2 = "select * from user where user_id not in (select Player from Stats)";
+
+        Query q1 = em.createNativeQuery(sql2, User.class);
+        List<User> players = q1.getResultList();
         return players;
 
     }
