@@ -146,12 +146,7 @@ public class UserController {
 
     }
 
-    // how to upload pic
-//    @RequestMapping(value ="insertbook", method=RequestMethod.POST, consumes = {"multipart/form-data"})
-//    public String insertBook(ModelMap mm, @ModelAttribute Book book,
-//            BindingResult result, @RequestParam(value = "cover") MultipartFile fileupload)
-//    
-//            return "index";
+ 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     public String showuser(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -168,13 +163,6 @@ public class UserController {
         return "editpage";
     }
 
-//    @RequestMapping(value = "/uploadpic", method = RequestMethod.GET)
-//    public String picuser(ModelMap model, @ModelAttribute User u, BindingResult result, @RequestParam(value = "img") MultipartFile fileUpload,HttpSession session) {
-//        User user = (User) session.getAttribute("user");
-//        model.addAttribute("users", user);
-//    
-//        return "editpage";
-//    }
     @RequestMapping(value = "/edit.htm", method = RequestMethod.POST)
     public String homenew(ModelMap model, @ModelAttribute User u, HttpSession session)
             throws IOException {
@@ -196,122 +184,6 @@ public class UserController {
         model.addAttribute("users", user);
         return "gamerequestpage";
 
-    }
-
-    @RequestMapping(value = "/star.htm", method = RequestMethod.GET)
-    public String starnew(ModelMap model, User u, HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-        Ratings r = new Ratings();
-        r.setPlayer(user.getUserId());
-        int id = r.getPlayer();
-        List<Stats> stats = rd.Status(id);
-        BigDecimal teamwork = new BigDecimal(0);
-        BigDecimal technique = new BigDecimal(0);
-        BigDecimal athletism = new BigDecimal(0);
-        BigDecimal overall = new BigDecimal(0);
-        BigDecimal grade = new BigDecimal(0);
-        if (!stats.isEmpty()) {
-            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
-            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
-        }
-        model.addAttribute("users", user);
-        model.addAttribute("team", teamwork);
-        model.addAttribute("athlet", athletism);
-        model.addAttribute("tech", technique);
-        model.addAttribute("star", grade);
-        model.addAttribute("overall", overall);
-
-        return "starpage";
-    }
-
-    @RequestMapping(value = "/myreviews.htm", method = RequestMethod.GET)
-    public String myreviewnew(ModelMap model, User u, HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-        Ratings r = new Ratings();
-        r.setPlayer(user.getUserId());
-        int id = r.getPlayer();
-        List<Stats> stats = rd.Status(id);
-        BigDecimal teamwork = new BigDecimal(0);
-        BigDecimal technique = new BigDecimal(0);
-        BigDecimal athletism = new BigDecimal(0);
-        BigDecimal overall = new BigDecimal(0);
-        BigDecimal grade = new BigDecimal(0);
-        if (!stats.isEmpty()) {
-            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
-            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
-        }
-        model.addAttribute("users", user);
-        model.addAttribute("team", teamwork);
-        model.addAttribute("athlet", athletism);
-        model.addAttribute("tech", technique);
-        model.addAttribute("star", grade);
-        model.addAttribute("overall", overall);
-
-        return "myreviewspage";
-    }
-
-    @RequestMapping(value = "/others.htm", method = RequestMethod.GET)
-    public String othersnew(ModelMap model, User u, HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-        Ratings r = new Ratings();
-        r.setPlayer(user.getUserId());
-        int id = r.getPlayer();
-        List<Stats> stats = rd.Status(id);
-        BigDecimal teamwork = new BigDecimal(0);
-        BigDecimal technique = new BigDecimal(0);
-        BigDecimal athletism = new BigDecimal(0);
-        BigDecimal overall = new BigDecimal(0);
-        BigDecimal grade = new BigDecimal(0);
-        if (!stats.isEmpty()) {
-            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
-            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
-        }
-        model.addAttribute("users", user);
-        model.addAttribute("team", teamwork);
-        model.addAttribute("athlet", athletism);
-        model.addAttribute("tech", technique);
-        model.addAttribute("star", grade);
-        model.addAttribute("overall", overall);
-
-        return "othersreviewpage";
-    }
-
-    @RequestMapping(value = "/unfinished.htm", method = RequestMethod.GET)
-    public String unfinishednew(ModelMap model, User u, HttpSession session) throws IOException {
-        User user = (User) session.getAttribute("user");
-        Ratings r = new Ratings();
-        r.setPlayer(user.getUserId());
-        int id = r.getPlayer();
-        List<Stats> stats = rd.Status(id);
-        BigDecimal teamwork = new BigDecimal(0);
-        BigDecimal technique = new BigDecimal(0);
-        BigDecimal athletism = new BigDecimal(0);
-        BigDecimal overall = new BigDecimal(0);
-        BigDecimal grade = new BigDecimal(0);
-        if (!stats.isEmpty()) {
-            teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
-            technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
-            athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
-            grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
-        }
-        model.addAttribute("users", user);
-        model.addAttribute("team", teamwork);
-        model.addAttribute("athlet", athletism);
-        model.addAttribute("tech", technique);
-        model.addAttribute("star", grade);
-        model.addAttribute("overall", overall);
-
-        return "unfinishedreviewpage";
     }
 
     @RequestMapping(value = "/event.htm", method = RequestMethod.GET)
@@ -367,7 +239,7 @@ public class UserController {
             teamwork = stats.get(0).getTeamwork().multiply(new BigDecimal(10));
             technique = stats.get(0).getTechnique().multiply(new BigDecimal(10));
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
-            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3),RoundingMode.CEILING));
+            overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), RoundingMode.CEILING));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
         }
         model.addAttribute("users", me);

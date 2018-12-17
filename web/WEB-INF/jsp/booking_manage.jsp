@@ -12,12 +12,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="resources/new-event.jpg">
+        <link rel="icon" href="resources/logo.jpg">
+
 
         <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Booking section</title>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -115,58 +116,57 @@
         <br>
 
 
-
-
-
-
-
-
         <!--Creation section -->
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
             <h1 style="color: white; font-family: Verdana">Let's create a new event!</h1>
 
+            <div style="overflow: auto; width:680px; height:525px;" id="style-5">
 
-            <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-                <form:select id="court" name="court" path="courtId.id">
-                    <c:forEach items="${courtList}" var="courtList">
-                        <option value="${courtList.id}">${courtList.name}</option>
+                <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+                    <form:select id="court" name="court" path="courtId.id">
+                        <c:forEach items="${courtList}" var="courtList">
+                            <option value="${courtList.id}">${courtList.name}</option>
+                        </c:forEach>
+
+                    </form:select>
+                    <form:input id="datepicker" type="date"  name="date" path="date"/>
+                    <form:select id="output" path="hours.hoursId" ></form:select>
+                        <button type="submit">Create Event</button>
+                </form:form>
+
+
+                <h2 style="font-family: Verdana">My Active Events</h2>
+
+                <!--                <div style="overflow: auto; width:680px; height:270px;" id="style-5">-->
+
+                <table border="1" class="table table-hover" style="color: white" id="booktable">
+                    <c:forEach items="${myActiveReservationList}" var="current">
+                        <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
+
+                            <td><c:out value="${current.courtId.name}" /><td>
+                            <td><c:out value="${current.date}" /><td>
+                            <td><c:out value="${current.hours.hour}" /><td>
+
+
+                                <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+
+                        </tr>
                     </c:forEach>
-                </form:select>
-                <form:input id="datepicker" type="date"  name="date" path="date"/>
-                <form:select id="output" path="hours.hoursId" ></form:select>
-                    <button type="submit">Create Event</button>
-            </form:form>
+                </table>
 
 
-
-                    <h2 style="font-family: Verdana">My Active Events</h2>
-
-
-            <table border="1" class="table table-hover" style="color: white" id="booktable">
-                <c:forEach items="${myActiveReservationList}" var="current">
-                    <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
-
-                        <td><c:out value="${current.courtId.name}" /><td>
-                        <td><c:out value="${current.date}" /><td>
-                        <td><c:out value="${current.hours.hour}" /><td>
-
-
-                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
-
-                    </tr>
-                </c:forEach>
-            </table>
-            <hr>
-
-
-            <div style="overflow: auto;width:680px; height:270px;" id="style-5">
-                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS FOR YOUR GAME</table>
+                <!--                    <div style="overflow: auto; width:680px; height:270px;" id="style-5">-->
+                <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS BASED ON THEIR RATING</table>
+                <br>
+                <table  border="1" class="table table-hover" id="output3" style="color: white;">SELECT AVAILABLE PLAYERS NOT YET REVIEWED</table>
                 <br>
                 <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>
 
 
+                <!--                    </div>-->
             </div>
         </div>
+
         <script>
 
 
@@ -174,9 +174,14 @@
             {
                 var courtReservationId = clicked_id;
                 $("#output1").empty();
+                $("#output2").empty();
+                $("#output3").empty();
+
                 $.ajax({url: 'findAvaliablePlayersForThisGameByRest.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result1) {
                         var jsonobj1 = $.parseJSON(result1);
+
+                        //  $('table').text("SELECT AVAILABLE PLAYERS FOR YOUR GAME").appendTo('#output1');
 
 
                         $('<tr>').append(
@@ -185,7 +190,7 @@
                                 $('<td>').text("Athletism"),
                                 $('<td>').text("Technique")).appendTo('#output1').css("font-weight", "bold");
 
-                            $(function () {
+                        $(function () {
                             $.each(jsonobj1, function (i, item) {
                                 $('<tr>').append(
                                         $('<td>').text(item.username),
@@ -194,9 +199,35 @@
                                         $('<td>').text(item.technique),
                                         $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output1');
                             });
+
                         });
                     }
                 });
+
+                $.ajax({url: 'findPlayersnotyetReviewed.htm', contentType: 'application/json',
+                    success: function (result3) {
+                        var jsonobj3 = $.parseJSON(result3);
+
+                        $('<tr>').append(
+                                $('<td>').text("Username"),
+                                $('<td>').text("Teamwork"),
+                                $('<td>').text("Athletism"),
+                                $('<td>').text("Technique")).appendTo('#output3').css("font-weight", "bold");
+
+                        $(function () {
+                            $.each(jsonobj3, function (i, item) {
+                                $('<tr>').append(
+                                        $('<td>').text(item.username),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').text("N/A"),
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output3');
+                            });
+                        });
+                    }
+                });
+
+
                 $.ajax({url: 'findplayersalreadyinvited.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result2) {
                         var jsonobj2 = $.parseJSON(result2);
@@ -229,10 +260,3 @@
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>
-
-
-
-<!--eikonidio browser
-eikona kentriki gia carousel
-gramatoseires
-moto gia carousel-->

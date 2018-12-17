@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+                <link rel="icon" href="resources/logo.jpg">
+
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -29,7 +31,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-        <title>Menu Page</title>
+        <title>Person Page</title>
 
         <script>$(document).ready(function () {
                 $(".btn-pref .btn").click(function () {

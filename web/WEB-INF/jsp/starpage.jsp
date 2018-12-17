@@ -9,18 +9,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="resources/logo.jpg">
+
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Page</title>
+        <title>Ratings</title>
         <script>
             $(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
                     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-                    // $(".tab").addClass("active"); // instead of this do the below 
                     $(this).removeClass("btn-default").addClass("btn-primary");
                 });
             });
@@ -67,90 +68,97 @@
         </div>
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" style="color: #1988F2"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                         <div class="hidden-xs">My Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                         <div class="hidden-xs">Others Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                         <div class="hidden-xs">Unfinished Reviews</div>
                     </button></a>
             </div>
         </div>
-        <!--        <div class="well" >-->
-        <div class="tab-content">
-            <div class="tab-pane fade in active center" id="tab1">
-                <div class="container" style="background-color: transparent;  box-shadow: none;">
 
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 text-center">
-                            <h1 class="rating-num">Your overall rank: ${star}/5</h1>
-                            <div class="star-rating">
-                                <div class="back-stars">
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                    <div class="front-stars" style="width:${overall}%">
+        ${myReviewsEmpty}
+
+        <c:if test="${not empty overall}">
+
+            <!--        <div class="well" >-->
+            <div class="tab-content">
+                <div class="tab-pane fade in active center" id="tab1">
+                    <div class="container" style="background-color: transparent;  box-shadow: none;">
+
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 text-center">
+                                <h1 class="rating-num" style="font-family: Verdana">Your overall rank: ${star}/5</h1>
+                                <div class="star-rating">
+                                    <div class="back-stars">
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                        <div class="front-stars" style="width:${overall}%">
+                                            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-md-12 text-center">
-                            <div class="row rating-desc">
-                                <div class="col-xs-2 col-md-2 text-right">
-                                    <span class="fa fa-group" hidden=true "></span>  Teamwork
-                                </div>
-                                <div class="col-xs-8 col-md-9 ">
-                                    <div class="progress progress-striped ">
-                                        <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="20 "
-                                             aria-valuemin="0 " aria-valuemax="100 " style="width:${team}%; background-color:  blue;">
-                                            <span class="sr-only ">${team}%</span>
+                            <div class="col-xs-12 col-md-12 text-center">
+                                <div class="row rating-desc">
+                                    <div class="col-xs-2 col-md-2 text-right">
+                                        <span class="fa fa-group" hidden=true "></span>  Teamwork
+                                    </div>
+                                    <div class="col-xs-8 col-md-9 ">
+                                        <div class="progress progress-striped ">
+                                            <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="20 "
+                                                 aria-valuemin="0 " aria-valuemax="100 " style="width:${team}%; background-color:  blue;">
+                                                <span class="sr-only ">${team}%</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end 5 -->
-                                <div class="col-xs-2 col-md-2 text-right ">
-                                    <span class="fa fa-heartbeat "></span> Athletism
-                                </div>
-                                <div class="col-xs-8 col-md-9 ">
-                                    <div class="progress  progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar " aria-valuenow="20 "
-                                             aria-valuemin="0 " aria-valuemax="100 " style="width: ${athlet}%; background-color:  crimson;" >
-                                            <span class="sr-only ">${athlet}%</span>
+                                    <!-- end 5 -->
+                                    <div class="col-xs-2 col-md-2 text-right ">
+                                        <span class="fa fa-heartbeat "></span> Athletism
+                                    </div>
+                                    <div class="col-xs-8 col-md-9 ">
+                                        <div class="progress  progress-striped">
+                                            <div class="progress-bar progress-bar-success" role="progressbar " aria-valuenow="20 "
+                                                 aria-valuemin="0 " aria-valuemax="100 " style="width: ${athlet}%; background-color:  crimson;" >
+                                                <span class="sr-only ">${athlet}%</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end 4 -->
-                                <div class="col-xs-2 col-md-2 text-right ">
-                                    <span class="fa fa-line-chart "></span>  Technique
-                                </div>
-                                <div class="col-xs-8 col-md-9 ">
-                                    <div class="progress  progress-striped">
-                                        <div class="progress-bar progress-bar-info " role="progressbar " aria-valuenow="20 "
-                                             aria-valuemin="0 " aria-valuemax="100 " style="width:${tech}%; background-color:  darkcyan; ">
-                                            <span class="sr-only ">${tech}%</span>
-                                        </div>
+                                    <!-- end 4 -->
+                                    <div class="col-xs-2 col-md-2 text-right ">
+                                        <span class="fa fa-line-chart "></span>  Technique
                                     </div>
-                                </div>                                   
+                                    <div class="col-xs-8 col-md-9 ">
+                                        <div class="progress  progress-striped">
+                                            <div class="progress-bar progress-bar-info " role="progressbar " aria-valuenow="20 "
+                                                 aria-valuemin="0 " aria-valuemax="100 " style="width:${tech}%; background-color:  darkcyan; ">
+                                                <span class="sr-only ">${tech}%</span>
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </c:if>
 
 
         <script src="<c:url value="/resources/newjavascript.js?$$REVISION$$" />"></script>
@@ -158,3 +166,7 @@
 
     </body>
 </html>
+
+
+<!--messenger buttons
+reviews css-->

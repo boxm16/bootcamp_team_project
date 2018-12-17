@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="resources/logo.jpg">
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -40,7 +41,7 @@
 
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
 
-        <div class="useravatar" style="  display: inline-block;">
+         <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${users.getImage()}.jpg" class="profpic">
 
 
@@ -52,8 +53,7 @@
 
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-default" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <div class="hidden-xs">Ranks</div>
+                <a href="http://localhost:8080/seek_play/star.htm" data-toggle="tab"><button type="button" id="rank" class="btn btn-primary" ><h4><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
@@ -80,22 +80,21 @@
         </div>
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" style="color: #1988F2"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                         <div class="hidden-xs">My Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                         <div class="hidden-xs">Others Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                         <div class="hidden-xs">Unfinished Reviews</div>
                     </button></a>
             </div>
         </div>
-        <!--        <div class="well" >-->
 
 
 
@@ -104,12 +103,11 @@
 
 
 
+            <div style="display: inline-block">  <h1 style="font-family: Verdana">Review your co-players</h1></div>
+        <div class="container" style=" background-color: transparent">
 
-        <h1>Review your co-players</h1>
-        <div class="container">
 
-
-            <table border="1" class="table table-hover">
+            <table border="1" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
 
                 <c:forEach items="${pendingReviewList}" var="current">
 
@@ -125,8 +123,8 @@
             </table>
 
 
-            <div>
-                ${review1}
+            <div style="display: inline-block;">
+                <h3 style="font-family: Verdana;"> ${review1}</h3>
                 <c:if test="${not empty review}">
                     <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
                         

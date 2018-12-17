@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>   
+        <link rel="icon" href="resources/logo.jpg">
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Page</title>
+        <title>Search</title>
         <script>$(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
                     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -63,7 +64,7 @@
 
         </div>
 
-            <div class="well main-center"  >
+        <div class="well main-center"  >
             <div class="tab-content center">
                 <div class="tab-pane fade in active">
                     <h3 style="font-family: Verdana; font-size: 30px;"><B>Search for Player</B></h3>
@@ -136,6 +137,8 @@
             });
 
         });
+     
+
 
 
     </script>
