@@ -146,12 +146,7 @@ public class UserController {
 
     }
 
-    // how to upload pic
-//    @RequestMapping(value ="insertbook", method=RequestMethod.POST, consumes = {"multipart/form-data"})
-//    public String insertBook(ModelMap mm, @ModelAttribute Book book,
-//            BindingResult result, @RequestParam(value = "cover") MultipartFile fileupload)
-//    
-//            return "index";
+ 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     public String showuser(ModelMap model, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -168,13 +163,6 @@ public class UserController {
         return "editpage";
     }
 
-//    @RequestMapping(value = "/uploadpic", method = RequestMethod.GET)
-//    public String picuser(ModelMap model, @ModelAttribute User u, BindingResult result, @RequestParam(value = "img") MultipartFile fileUpload,HttpSession session) {
-//        User user = (User) session.getAttribute("user");
-//        model.addAttribute("users", user);
-//    
-//        return "editpage";
-//    }
     @RequestMapping(value = "/edit.htm", method = RequestMethod.POST)
     public String homenew(ModelMap model, @ModelAttribute User u, HttpSession session)
             throws IOException {

@@ -28,38 +28,41 @@ public class UserDao {
     @Transactional
     public void insert(User user) {
 
-       // em.persist(user); gia kapoio logo to default tou image de leitourgei me persist
-       em.createNativeQuery("INSERT INTO `seek_play`.`user` (`username`, `firstname`, `lastname`, `image`, `password`) VALUES ('"+user.getUsername()+"', '"+user.getFirstname()+"', '"+user.getLastname()+"', DEFAULT, '"+user.getPassword()+"');",User.class).executeUpdate();
+        // em.persist(user); gia kapoio logo to default tou image de leitourgei me persist
+        em.createNativeQuery("INSERT INTO `seek_play`.`user` (`username`, `firstname`, `lastname`, `image`, `password`) VALUES ('" + user.getUsername() + "', '" + user.getFirstname() + "', '" + user.getLastname() + "', DEFAULT, '" + user.getPassword() + "');", User.class).executeUpdate();
 
     }
-     @Transactional
-    public void updatepic(int user_id, String file) throws IOException{
-        em.createNativeQuery("Update user SET image='"+file+"'WHERE user_id='"+user_id+"';").executeUpdate();
+
+    @Transactional
+    public void updatepic(int user_id, String file) throws IOException {
+        em.createNativeQuery("Update user SET image='" + file + "'WHERE user_id='" + user_id + "';").executeUpdate();
     }
-    
-     @Transactional
-    public void updateinfos(String us, String n, String ln) throws IOException{
-      //  em.find(User.class,us);
-        em.createNativeQuery("Update user SET firstname='"+n+"',lastname='"+ln+"' WHERE username='"+us+"';").executeUpdate();
+
+    @Transactional
+    public void updateinfos(String us, String n, String ln) throws IOException {
+        //  em.find(User.class,us);
+        em.createNativeQuery("Update user SET firstname='" + n + "',lastname='" + ln + "' WHERE username='" + us + "';").executeUpdate();
     }
-    
-     @Transactional
-    public List<User> check(String s){
-      User u = new User();
-       List<User> usr= em.createQuery("SELECT u FROM User u WHERE u.username LIKE CONCAT(:username,'%')", User.class).setParameter("username", s).getResultList();
-           
-       return usr;
+
+    @Transactional
+    public List<User> check(String s) {
+        User u = new User();
+        List<User> usr = em.createQuery("SELECT u FROM User u WHERE u.username LIKE CONCAT(:username,'%')", User.class).setParameter("username", s).getResultList();
+
+        return usr;
     }
-     @Transactional
-     public User profile(String s){
-       User u = new User(); 
+
+    @Transactional
+    public User profile(String s) {
+        User u = new User();
         List<User> usr = em.createQuery("SELECT u from User u WHERE u.username = :username", User.class).setParameter("username", s).getResultList();
-       u.setUserId(usr.get(0).getUserId());
-       u.setUsername(usr.get(0).getUsername());
-       u.setImage(usr.get(0).getImage());
-       return u;
+        u.setUserId(usr.get(0).getUserId());
+        u.setUsername(usr.get(0).getUsername());
+        u.setImage(usr.get(0).getImage());
+        return u;
     }
-      @Transactional
+
+    @Transactional
     public int change(String s) {
         int y = Integer.parseInt(s);
 
@@ -69,12 +72,13 @@ public class UserDao {
     @Transactional
     public List<GameRequest> fetchincomingrequests(User request_receiver) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
+        String sql=("sELECT * FROM seek_play.game_request\n"
                 + " join court_reservation on `match`=CourtReservationID\n"
                 + " join hours h on court_reservation.hours = h.hours_id\n"
                 + "join user on game_request.request_receiver = user.user_id\n"
                 + "  where request_receiver=(select user_id from user where username='" + request_receiver.getUsername() + "')\n"
-                + "and status = 'pending' order by date;", GameRequest.class);
+                + "and status = 'pending' order by date;");
+        Query q = em.createNativeQuery(sql, GameRequest.class);
         Conversation = q.getResultList();
 
         return Conversation;
@@ -141,8 +145,4 @@ public class UserDao {
         return resultList;
     }
 
-  
-
-
-     
 }

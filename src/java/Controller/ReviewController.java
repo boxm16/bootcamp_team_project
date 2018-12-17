@@ -60,6 +60,8 @@ public class ReviewController {
     public String createReviewForm(ModelMap model, HttpSession session) {
         User me = (User) session.getAttribute("user");
         List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(me.getUserId());
+        model.addAttribute("users", me);
+
         if (!pendingReviewList.isEmpty()) {
             model.addAttribute("pendingReviewList", pendingReviewList);
             Review review = new Review();
@@ -115,6 +117,9 @@ public class ReviewController {
         Ratings r = new Ratings();
         r.setPlayer(user.getUserId());
         int id = r.getPlayer();
+
+        model.addAttribute("users", user);
+
         List<Stats> stats = ratingDAO.Status(id);
         BigDecimal teamwork = new BigDecimal(0);
         BigDecimal technique = new BigDecimal(0);
@@ -127,20 +132,14 @@ public class ReviewController {
             athletism = stats.get(0).getAthletism().multiply(new BigDecimal(10));
             overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
+            servletContext.setAttribute("team", teamwork);
+            servletContext.setAttribute("athlet", athletism);
+            servletContext.setAttribute("tech", technique);
+            servletContext.setAttribute("star", grade);
+            servletContext.setAttribute("overall", overall);
+        } else {
+            model.addAttribute("myReviewsEmpty", "You have never been reviewed!");
         }
-        /* model.addAttribute("users", user);
-        model.addAttribute("team", teamwork);
-        model.addAttribute("athlet", athletism);
-        model.addAttribute("tech", technique);
-        model.addAttribute("star", grade);
-        model.addAttribute("overall", overall);
-         */
-
-        servletContext.setAttribute("team", teamwork);
-        servletContext.setAttribute("athlet", athletism);
-        servletContext.setAttribute("tech", technique);
-        servletContext.setAttribute("star", grade);
-        servletContext.setAttribute("overall", overall);
 
         return "starpage";
     }
@@ -149,11 +148,13 @@ public class ReviewController {
     public String myreviewnew(ModelMap model, HttpSession session) throws IOException {
 
         User me = (User) session.getAttribute("user");
+        model.addAttribute("users", me);
+
         List<Review> myReviewsList = reviewDao.listMyReviews(me);
         if (!myReviewsList.isEmpty()) {
             model.addAttribute("myReviews", myReviewsList);
         } else {
-            model.addAttribute("myReviewsEmpty", "You had never been reviewed!");
+            model.addAttribute("myReviewsEmpty", "You have never been reviewed!");
         }
 
         return "myreviewspage";
@@ -162,6 +163,7 @@ public class ReviewController {
     @RequestMapping(value = "/others.htm", method = RequestMethod.GET)
     public String othersnew(ModelMap model, HttpSession session) throws IOException {
         User me = (User) session.getAttribute("user");
+        model.addAttribute("users", me);
 
         List<Review> OthersReviewsList = reviewDao.listOthersReviews(me);
         if (!OthersReviewsList.isEmpty()) {

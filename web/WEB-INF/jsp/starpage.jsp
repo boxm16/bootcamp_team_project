@@ -22,7 +22,6 @@
             $(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
                     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-                    // $(".tab").addClass("active"); // instead of this do the below 
                     $(this).removeClass("btn-default").addClass("btn-primary");
                 });
             });
@@ -69,26 +68,26 @@
         </div>
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="well">
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" ><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/myreviews.htm" data-toggle="tab"><button type="button" id="my" class="btn btn-default" style="color: #1988F2"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                         <div class="hidden-xs">My Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/others.htm" data-toggle="tab"><button type="button" id="others" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                         <div class="hidden-xs">Others Reviews</div>
                     </button></a>
             </div>
             <div class="btn-group" role="group">
-                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                <a href="http://localhost:8080/seek_play/goToReviewForm.htm" data-toggle="tab"><button type="button" id="unfinished" class="btn btn-default" data-toggle="tab" style="color: #1988F2"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                         <div class="hidden-xs">Unfinished Reviews</div>
                     </button></a>
             </div>
         </div>
 
 
-        ${review}
+        ${myReviewsEmpty}
 
-        <c:if test="${not empty users}">
+        <c:if test="${not empty overall}">
 
             <!--        <div class="well" >-->
             <div class="tab-content">
@@ -98,7 +97,7 @@
 
                         <div class="row">
                             <div class="col-xs-12 col-md-12 text-center">
-                                <h1 class="rating-num">Your overall rank: ${star}/5</h1>
+                                <h1 class="rating-num" style="font-family: Verdana">Your overall rank: ${star}/5</h1>
                                 <div class="star-rating">
                                     <div class="back-stars">
                                         <i class="fa fa-futbol-o" aria-hidden="true"></i>
@@ -167,3 +166,7 @@
 
     </body>
 </html>
+
+
+<!--messenger buttons
+reviews css-->

@@ -43,8 +43,7 @@ public class RatingsDao {
 
         List<CourtReservation> reservation = em.createQuery("SELECT c FROM CourtReservation c WHERE c.courtReservationID = :courtReservationID", CourtReservation.class).setParameter("courtReservationID", id).getResultList();
 
-        
-        
+              
         String sql2 = "SELECT * from Stats where Player in\n"
                 + "(select game_request.request_receiver from game_request inner join court_reservation on CourtReservationID=game_request.match \n"
                 + "where (court_reservation.date='" + reservation.get(0).getDate() + "' and court_reservation.hours='" + reservation.get(0).getHours().getHoursId()

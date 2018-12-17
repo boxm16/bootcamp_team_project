@@ -116,51 +116,46 @@
         <br>
 
 
-
-
-
-
-
-
         <!--Creation section -->
         <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer">
             <h1 style="color: white; font-family: Verdana">Let's create a new event!</h1>
 
+            <div style="overflow: auto; width:680px; height:525px;" id="style-5">
 
-            <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
-                <form:select id="court" name="court" path="courtId.id">
-                    <c:forEach items="${courtList}" var="courtList">
-                        <option value="${courtList.id}">${courtList.name}</option>
+                <form:form id="form1" modelAttribute="courtReservation" method="POST" cssStyle="color: black" name="form1" action="${pageContext.request.contextPath}/handleEventCreationForm.htm">
+                    <form:select id="court" name="court" path="courtId.id">
+                        <c:forEach items="${courtList}" var="courtList">
+                            <option value="${courtList.id}">${courtList.name}</option>
+                        </c:forEach>
+
+                    </form:select>
+                    <form:input id="datepicker" type="date"  name="date" path="date"/>
+                    <form:select id="output" path="hours.hoursId" ></form:select>
+                        <button type="submit">Create Event</button>
+                </form:form>
+
+
+                <h2 style="font-family: Verdana">My Active Events</h2>
+
+                <!--                <div style="overflow: auto; width:680px; height:270px;" id="style-5">-->
+
+                <table border="1" class="table table-hover" style="color: white" id="booktable">
+                    <c:forEach items="${myActiveReservationList}" var="current">
+                        <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
+
+                            <td><c:out value="${current.courtId.name}" /><td>
+                            <td><c:out value="${current.date}" /><td>
+                            <td><c:out value="${current.hours.hour}" /><td>
+
+
+                                <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
+
+                        </tr>
                     </c:forEach>
-                </form:select>
-                <form:input id="datepicker" type="date"  name="date" path="date"/>
-                <form:select id="output" path="hours.hoursId" ></form:select>
-                    <button type="submit">Create Event</button>
-            </form:form>
+                </table>
 
 
-
-            <h2 style="font-family: Verdana">My Active Events</h2>
-
-
-            <table border="1" class="table table-hover" style="color: white" id="booktable">
-                <c:forEach items="${myActiveReservationList}" var="current">
-                    <tr onclick="reply_click(this.id)" id ="${current.courtReservationID}">
-
-                        <td><c:out value="${current.courtId.name}" /><td>
-                        <td><c:out value="${current.date}" /><td>
-                        <td><c:out value="${current.hours.hour}" /><td>
-
-
-                            <a href='${pageContext.request.contextPath}/booking_delete.htm?id=${current.courtReservationID}'><span class="fa fa-trash" aria-hidden="true" style="color: white"></span></a>
-
-                    </tr>
-                </c:forEach>
-            </table>
-            <hr>
-
-
-            <div style="overflow: auto; width:680px; height:270px;" id="style-5">
+                <!--                    <div style="overflow: auto; width:680px; height:270px;" id="style-5">-->
                 <table  border="1" class="table table-hover" id="output1" style="color: white;">SELECT AVAILABLE PLAYERS BASED ON THEIR RATING</table>
                 <br>
                 <table  border="1" class="table table-hover" id="output3" style="color: white;">SELECT AVAILABLE PLAYERS NOT YET REVIEWED</table>
@@ -168,8 +163,10 @@
                 <table  border="1" class="table table-hover" id="output2" style="color: white;">PLAYERS ALREADY INVITED</table>
 
 
+                <!--                    </div>-->
             </div>
         </div>
+
         <script>
 
 
@@ -263,9 +260,3 @@
          <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
     </body>
 </html>
-
-
-
-<!--
-gramatoseires
-moto gia carousel-->
