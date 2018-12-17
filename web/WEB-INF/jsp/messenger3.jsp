@@ -19,7 +19,7 @@
             <button onclick="myFunction1()" class="btn btn-primary" style="display:inline-block; text-align: center;">Incoming</button>
             <button onclick="myFunction2()" class="btn btn-primary" style="display:inline-block;">Outgoing</button>
             <button onclick="myFunction3()" class="btn btn-primary" style="display:inline-block;">Answered</button>
-            <button onclick="window.location = 'http://localhost:8080/seek_play/star.htm';" class="btn btn-success" style="display:inline-block;">Go to Main Menu</button>
+            <button onclick="window.location = 'http://localhost:8080/seek_play/user.htm';" class="btn btn-success" style="display:inline-block;">Go to Main Menu</button>
                  
         </div>
         <div class="container" id="incoming" style="background-color: transparent;">

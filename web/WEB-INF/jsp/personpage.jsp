@@ -12,6 +12,18 @@
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Website Font style -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -69,22 +81,38 @@
 
         </div>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="tab1" >
-                <h3 style="background-color: transparent; color: white">First Name: ${users.getFirstname()}</h3>
-                <h3 style="background-color: transparent; color: white"> Last Name: ${users.getLastname()}</h3>
-                <a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="following" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        <div class="hidden-xs">EDIT</div>
-                    </button> </a>
-
-                <h3><div> Change your profile picture</div></h3>
-                <form>     
+            <div class="row main">
+                <div class="main-login main-center">
+                <table class="">
+                    <tr>
+                        <td><h3 style="background-color: transparent; color: white">First Name:</h3></td>
+                        <td><h3 style="background-color: transparent; color: white">${users.getFirstname()}</h3></td>
+                        <td rowspan="2"><a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="edit" style="height:100%"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            Edit
+                        </button> </a></td>
+                    </tr>
+                    <tr>
+                        <td><h3 style="background-color: transparent; color: white">Last Name:</h3></td>
+                        <td><h3 style="background-color: transparent; color: white">${users.getLastname()}</h3></td>
+                    </tr>
                     
-                    File to upload: <input type="file" name="img" multiple="multiple">
-                    <button type="submit" value="Upload">Upload</button>
-                </form>
-                <div class="progress">
-                    <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar"
-                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                    <tr>
+                        <td><h3><div style="color: whitesmoke"> Change your profile picture:</div></h3></td>
+                        <td colspan="2">
+                        <form>                      
+                            <input type="file" name="img" multiple="multiple"><button type="submit" value="Upload">Upload</button>
+                        </form>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                        <div class="progress">
+                        <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                        </div>
+                        </td>
+                    </tr>
+                </table>  
                 </div>
             </div>
         </div>
