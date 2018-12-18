@@ -70,7 +70,7 @@
         </div>
         <div class="container" style="background-color: transparent; padding: 20%; box-shadow: 1px;" >
             <div class="row main">                
-                <table class="main-centers main-login"style="width: 100%;">
+                <table class="main-centers main-login"style="width: 100%;" border: 100px;>
                     <tr>
                         <td><h3 style="background-color: transparent; color: black">First Name:</h3></td>
                         <td><h3 style="background-color: transparent; color: black">${users.getFirstname()}</h3></td>

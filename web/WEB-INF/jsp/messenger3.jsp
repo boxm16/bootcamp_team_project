@@ -68,11 +68,11 @@
                         <div >
                             <div class="input_msg_write text-center" style="color: black">
                                 <form id="accept" action="" method="POST"  >
-                                    <button type="submit" class="btn btn-primary btn-rounded waves-effect btn-lg" id="accept" style="float:left;">Accept</button>
+                                    <button type="submit" class="btn btn-primary btn-rounded waves-effect btn-lg" id="acceptBtn" style="float:left;" disabled="">Accept</button>
                                 </form>
                                 <div>
                                     <form id="deny" action="" method="POST" style="display:inline">
-                                        <button type="submit" class="btn btn-danger btn-rounded waves-effect btn-lg" id="deny" style="float:right">Deny</button>
+                                        <button type="submit" class="btn btn-danger btn-rounded waves-effect btn-lg" id="denyBtn" style="float:right;" disabled="">Deny</button>
                                     </form>
                                 </div>
                             </div>

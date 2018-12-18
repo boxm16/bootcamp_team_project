@@ -10,6 +10,8 @@ var $thumbs = $('.chat_people').click(function (e) {
 var name = document.getElementsByClassName(".chat_people");
 $(".chat_people").click(function () {
 
+
+
     var div = this.textContent;
     var court = $(this).find('p').text();
     var user = $(this).find('h5').justtext().trim();
@@ -20,14 +22,17 @@ $(".chat_people").click(function () {
     var status = $(this).find('h2').text();
 
 
-/*    $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
-    $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Your message: " + message + "\n" + "Status: " + status);
-    $("div.received_msg#m3").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
-*/
+    /*    $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
+     $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Your message: " + message + "\n" + "Status: " + status);
+     $("div.received_msg#m3").text(user + " sssssend you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Message: " + message + "\n" + "Status: " + status);
+     */
     $("div.received_msg#m1").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
     $("div.received_msg#m2").text(" You send " + user + " a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
     $("div.received_msg#m3").text(user + " send you a game request!\nDate: " + date + " at " + time + " \nCourt: " + court + "\n" + "Status: " + status);
 
+
+    document.getElementById("acceptBtn").disabled = false;
+    document.getElementById("denyBtn").disabled = false;
 
 
     document.getElementById("accept").action = "/seek_play/accept.htm?id=" + id;
@@ -53,9 +58,14 @@ function myFunction1() {
 
 
 
+
+
+
     mainFrameOne.style.display = "block";
     mainFrameTwo.style.display = "none";
     mainFrameThree.style.display = "none";
+
+
 }
 ;
 function myFunction2() {
@@ -68,6 +78,7 @@ function myFunction2() {
     mainFrameOne.style.display = "none";
     mainFrameTwo.style.display = "block";
     mainFrameThree.style.display = "none";
+
 }
 ;
 
@@ -81,6 +92,7 @@ function myFunction3() {
     mainFrameOne.style.display = "none";
     mainFrameTwo.style.display = "none";
     mainFrameThree.style.display = "block";
+
 }
 ;
 
@@ -90,3 +102,4 @@ $(document).ready(function () {
     });
 }
 );
+
