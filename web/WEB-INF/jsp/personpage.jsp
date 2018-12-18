@@ -68,23 +68,23 @@
             </div>
 
         </div>
-        <div class="container" style="float: bottom">
+        <div class="container" style="background-color: transparent; padding: 20%; box-shadow: 1px;" >
             <div class="row main">                
-                <table class="main-centers main-login" style="width: 100%">
+                <table class="main-centers main-login"style="width: 100%;">
                     <tr>
-                        <td><h3 style="background-color: transparent; color: white">First Name:</h3></td>
-                        <td><h3 style="background-color: transparent; color: white">${users.getFirstname()}</h3></td>
+                        <td><h3 style="background-color: transparent; color: black">First Name:</h3></td>
+                        <td><h3 style="background-color: transparent; color: black">${users.getFirstname()}</h3></td>
                         <td rowspan="2"><a href="http://localhost:8080/seek_play/editpersinf.htm" data-toggle="tab"><button type="button" id="edit" style="height:100%"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             Edit
                         </button> </a></td>
                     </tr>
                     <tr>
-                        <td><h3 style="background-color: transparent; color: white">Last Name:</h3></td>
-                        <td><h3 style="background-color: transparent; color: white">${users.getLastname()}</h3></td>
+                        <td><h3 style="background-color: transparent; color: black">Last Name:</h3></td>
+                        <td><h3 style="background-color: transparent; color: black">${users.getLastname()}</h3></td>
                     </tr>
                     
                     <tr>
-                        <td><div style="color: whitesmoke"><h3> Change your profile picture:</h3></div></td>
+                        <td><h3><div style="color: black"> Change your profile picture:</div></h3></td>
                         <td colspan="2">
                         <form>                      
                             <input type="file" name="img" multiple="multiple"><button type="submit" value="Upload">Upload</button>

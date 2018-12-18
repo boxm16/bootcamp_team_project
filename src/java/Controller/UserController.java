@@ -243,14 +243,15 @@ public class UserController {
             overall = ((athletism.add(technique).add(teamwork)).divide(new BigDecimal(3), RoundingMode.CEILING));
             grade = (overall.divide(new BigDecimal(20))).setScale(2, RoundingMode.CEILING);
 
-            model.addAttribute("team", teamwork);
-            model.addAttribute("athlet", athletism);
-            model.addAttribute("tech", technique);
-            model.addAttribute("star", grade);
-            model.addAttribute("overall", overall);
         } else {
             model.addAttribute("othersReviewsEmpty", "No available reviews yet!");
         }
+        model.addAttribute("team", teamwork);
+        model.addAttribute("athlet", athletism);
+        model.addAttribute("tech", technique);
+        model.addAttribute("star", grade);
+        model.addAttribute("overall", overall);
+
         return "profilepage";
     }
 

@@ -61,7 +61,8 @@
                                 <img class="img-circle" src="http://localhost:8080/images/${user.getImage()}.jpg" />
                                 <!-- badge -->
                                 <h2 > ${othersReviewsEmpty}</h2>
-                                <c:if test="${not empty overall}">
+                                <c:if test="${empty othersReviewsEmpty}">
+                                    <h2 > ${othersReviewsEmpty}</h2>
                                     <div class="rank-label-container">
                                         <h1><span>${star} / 5</span></h1>
                                     </div>
