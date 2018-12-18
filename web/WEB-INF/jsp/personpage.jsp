@@ -14,19 +14,6 @@
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-		<!-- Website CSS style -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-
-		<!-- Website Font style -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style.css">
-		<!-- Google Fonts -->
-		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -81,10 +68,9 @@
             </div>
 
         </div>
-        <div class="tab-content">
-            <div class="row main">
-                <div class="main-login main-center">
-                <table class="">
+        <div class="container" style="float: bottom">
+            <div class="row main">                
+                <table class="main-centers main-login"style="width: 100%">
                     <tr>
                         <td><h3 style="background-color: transparent; color: white">First Name:</h3></td>
                         <td><h3 style="background-color: transparent; color: white">${users.getFirstname()}</h3></td>
@@ -114,7 +100,7 @@
                         </td>
                     </tr>
                 </table>  
-                </div>
+                
             </div>
         </div>
 

@@ -520,11 +520,23 @@ domi eikonidio me pic user
 box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 
 }
+.main-centers{
+ 	position: fixed; 
+        text-align: center;
+        
+	background:transparent;
+        color:black;
+        text-shadow: 2px;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
 .main{
  	margin:50px 15px;
 }
 .main-login{
- 	background-color: #fff;
+ 	background-color: transparent;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
