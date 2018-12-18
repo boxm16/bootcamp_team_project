@@ -69,9 +69,9 @@
             </div>
 
         </div>
-        <div class="container" style="background-color: transparent; padding: 20%; box-shadow: 1px;" >
+        <div class="container" style= "width:700px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: pointer; margin-top: 18%" >
             <div class="row main">                
-                <table class="main-centers main-login"style="width: 100%;">
+                <table border="1" class="main-centers main-login"style="width: 100%;padding: 100%;">
                     <tr>
                         <td><h3 style="background-color: transparent; color: black">First Name:</h3></td>
                         <td><h3 style="background-color: transparent; color: black">${users.getFirstname()}</h3></td>
@@ -83,15 +83,16 @@
                         <td><h3 style="background-color: transparent; color: black">Last Name:</h3></td>
                         <td><h3 style="background-color: transparent; color: black">${users.getLastname()}</h3></td>
                     </tr>
-                    
+                    <form>
                     <tr>
                         <td><h3><div style="color: black"> Change your profile picture:</div></h3></td>
-                        <td colspan="2">
-                        <form>                      
-                            <input type="file" name="img" multiple="multiple"><button type="submit" value="Upload">Upload</button>
-                        </form>
-                        </td>                        
+                        <td>                                           
+                            <input type="file" name="img" multiple="multiple">                        
+                        </td>         
+                        <td><button type="submit" value="Upload" style="color: black">Upload</button></td>
                     </tr>
+                    </form>
+                    
                     <tr>
                         <td colspan="3">
                         <div class="progress">
