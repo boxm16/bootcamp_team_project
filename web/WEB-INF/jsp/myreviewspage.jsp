@@ -20,7 +20,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Menu Page</title>
+        <title>My Reviews</title>
         <script>$(document).ready(function () {
                 $(".btn-pref .btn").click(function () {
                     $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -93,7 +93,7 @@
               
                 <div id="11" style="display: inline-block">
 
-                    ${myReviewsEmpty}
+                    <h2>${myReviewsEmpty}</h2>
                     <c:if test="${not empty myReviews}">
                         <table border="1" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
                             <thead >

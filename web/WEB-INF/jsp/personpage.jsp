@@ -70,7 +70,7 @@
         </div>
         <div class="container" style="float: bottom">
             <div class="row main">                
-                <table class="main-centers main-login"style="width: 100%">
+                <table class="main-centers main-login" style="width: 100%">
                     <tr>
                         <td><h3 style="background-color: transparent; color: white">First Name:</h3></td>
                         <td><h3 style="background-color: transparent; color: white">${users.getFirstname()}</h3></td>
@@ -84,7 +84,7 @@
                     </tr>
                     
                     <tr>
-                        <td><h3><div style="color: whitesmoke"> Change your profile picture:</div></h3></td>
+                        <td><div style="color: whitesmoke"><h3> Change your profile picture:</h3></div></td>
                         <td colspan="2">
                         <form>                      
                             <input type="file" name="img" multiple="multiple"><button type="submit" value="Upload">Upload</button>
@@ -122,13 +122,11 @@
                         processData: false, // Να μην το κάνει string για να το στειλει
                         //Callback for creating the XMLHttpRequest object
                         xhr: function () {
-                            alert("create request")
                             //Get XmlHttpRequest object
                             var xhr = $.ajaxSettings.xhr();
 
                             //Set onprogress event handler
                             xhr.upload.onprogress = function (event) {
-                                alert("sending")
                                 var perc = Math.round((event.loaded / event.total) * 100);
                                 $('#progressBar').text(perc + '%');
                                 $('#progressBar').css('width', perc + '%');
@@ -136,7 +134,6 @@
                             return xhr;
                         },
                         beforeSend: function (xhr) {
-                            alert("before send")
                             //Reset alert message and progress bar
                             $('#alertMsg').text('');
                             $('#progressBar').text('');
@@ -146,7 +143,6 @@
 
                     // Called on success of file upload
                     ajaxReq.done(function (msg) {
-                        alert("done")
                         $('#alertMsg').text(msg);
                         $('input[type=file]').val('');
                         $('button[type=submit]').prop('disabled', false);

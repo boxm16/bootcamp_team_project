@@ -99,11 +99,13 @@
 
 
 
+<div class="col-xs-12 col-md-12 text-center">
 
+                <h1 style="font-family: Verdana">Review your Co-Players</h1>
 
-
-
-            <div style="display: inline-block">  <h1 style="font-family: Verdana">Review your co-players</h1></div>
+            </div>
+            
+            
         <div class="container" style=" background-color: transparent">
 
 
@@ -111,7 +113,7 @@
 
                 <c:forEach items="${pendingReviewList}" var="current">
 
-                    <tr onclick="reply_click(this.id)" id ="${current.id}">
+                    <tr onclick="reply_click(this.id)" id="${current.id}">
                         <td>${current.id}</td>
                         <td>${current.requestReceiver.username}</td>
                         <td>${current.match.courtId.name}</td>

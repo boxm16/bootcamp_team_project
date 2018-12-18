@@ -31,6 +31,7 @@
         </script>
     </head>
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
+        
         <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${users.getImage()}.jpg" class="profpic">
 
@@ -92,14 +93,14 @@
         <div class="col-xs-12 col-md-12 text-center" >
 
 
-            <div class="container" style=" background-color: transparent">
+            <div class="container " style=" background-color: transparent">
                 <div id="11" >
 
-                    <div> <h3 style="font-family: Verdana;"> ${othersReviewsEmpty}</h3></div>
+                    <h2 > ${othersReviewsEmpty}</h2>
                     <c:if test="${not empty othersReviews}">
                         <table border="1" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
                             <thead >
-                                <tr style="color:green" style="font-weight: bold">
+                                <tr style="color:green; font-weight: bold">
                                     <td>Court Name</td>
                                     <td>Game Date</td>
                                     <td>Game Time</td>
