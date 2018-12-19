@@ -73,9 +73,9 @@ public class AjaxController {
     
     @RequestMapping(value = "/findPlayersnotyetReviewed.htm", method = RequestMethod.GET, headers = "Accept=*/*", produces = "application/json")
     public @ResponseBody
-    String findplayersalreadyinvited ()throws JsonProcessingException {
+    String playersnotyetreviewed (@RequestParam(value = "courtReservationId") int courtReservationID)throws JsonProcessingException {
 
-        List<User> getPlayersnotyetReviewed = ratingDao.getPlayersnotyetReviewed();
+        List<User> getPlayersnotyetReviewed = ratingDao.getPlayersnotyetReviewed( courtReservationID);
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(getPlayersnotyetReviewed);

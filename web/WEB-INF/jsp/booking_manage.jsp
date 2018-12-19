@@ -204,7 +204,7 @@
                     }
                 });
 
-                $.ajax({url: 'findPlayersnotyetReviewed.htm', contentType: 'application/json',
+                $.ajax({url: 'findPlayersnotyetReviewed.htm?courtReservationId=' + courtReservationId, contentType: 'application/json',
                     success: function (result3) {
                         var jsonobj3 = $.parseJSON(result3);
 

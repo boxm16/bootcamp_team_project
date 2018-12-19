@@ -6,6 +6,7 @@
 package Dao;
 
 import Model.GameRequest;
+import Model.Stats;
 import Model.User;
 import java.io.IOException;
 import java.util.List;
@@ -72,7 +73,7 @@ public class UserDao {
     @Transactional
     public List<GameRequest> fetchincomingrequests(User request_receiver) {
         List<GameRequest> Conversation;
-        String sql=("sELECT * FROM seek_play.game_request\n"
+        String sql = ("sELECT * FROM seek_play.game_request\n"
                 + " join court_reservation on `match`=CourtReservationID\n"
                 + " join hours h on court_reservation.hours = h.hours_id\n"
                 + "join user on game_request.request_receiver = user.user_id\n"
@@ -87,11 +88,21 @@ public class UserDao {
     @Transactional
     public List<GameRequest> fetchoutgoingrequests(User requester) {
         List<GameRequest> Conversation;
-        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
-                + " join court_reservation on `match`=CourtReservationID\n"
-                + " join hours h on court_reservation.hours = h.hours_id\n"
-                + "join user on game_request.request_receiver = user.user_id\n"
-                + "  where booker=(select user_id from user where username='" + requester.getUsername() + "') order by date;", GameRequest.class);
+//        Query q = em.createNativeQuery("sELECT * FROM seek_play.game_request\n"
+//                + " join court_reservation on `match`=CourtReservationID\n"
+//                + " join hours h on court_reservation.hours = h.hours_id\n"
+//                + "join user on game_request.request_receiver = user.user_id\n"  Query q = em.createNativeQuery(
+//                + "  where booker=(select user_id from user where username='" + requester.getUsername() + "') order by date;", GameRequest.class);
+//     
+        String sql = "SELECT * FROM Stats where player not in (select game_request.request_receiver from game_request  where\n"
+                + "game_request.match \n"
+                + " in(Select court_reservation.CourtReservationID from court_reservation where court_reservation.date='2018-12-27' and court_reservation.hours='5' and booker='4')) \n"
+                + " and player not in (Select booker from court_reservation where  court_reservation.date='2018-12-27' and court_reservation.hours='5' )  \n"
+                + " and player not in(select game_request.request_receiver from game_request where game_request.status='yes' and\n"
+                + "game_request.match in(Select court_reservation.CourtReservationID from court_reservation where !court_reservation.date='2018-12-27' and !court_reservation.hours='4'))";
+
+        Query q = em.createNativeQuery(sql, Stats.class);
+
         Conversation = q.getResultList();
 
         return Conversation;
