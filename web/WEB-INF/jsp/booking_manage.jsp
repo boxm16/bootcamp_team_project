@@ -221,7 +221,7 @@
                                         $('<td>').text("N/A"),
                                         $('<td>').text("N/A"),
                                         $('<td>').text("N/A"),
-                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.player + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output3');
+                                        $('<td>').append('<a href="${pageContext.request.contextPath}/handleGameRequests.htm?user_to_be_invited=' + item.userId + '&game=' + courtReservationId + '">' + "Send Request" + '</a>')).appendTo('#output3');
                             });
                         });
                     }
