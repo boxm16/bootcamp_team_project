@@ -32,16 +32,14 @@
                 padding: 8px;
             }
 
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
+
         </style>
     </head>
 
 
     <body style=" background-image: url(resources/star.jpeg);background-size: cover">
 
-         <div class="useravatar" style="  display: inline-block;">
+        <div class="useravatar" style="  display: inline-block;">
             <img alt="${users.getUsername()}" src="http://localhost:8080/images/${users.getImage()}.jpg" class="profpic">
 
 
@@ -99,22 +97,31 @@
 
 
 
-<div class="col-xs-12 col-md-12 text-center">
+        <div class="col-xs-12 col-md-12 text-center">
 
-                <h1 style="font-family: Verdana">Review your Co-Players</h1>
+            <h1 style="font-family: Verdana">Review your Co-Players</h1>
 
-            </div>
-            
-            
+        </div>
+
+
         <div class="container" style=" background-color: transparent">
 
 
-            <table border="1" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
+            <table border="1" id="gamesTable" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
 
+                <thead>
+                    <tr>
+                        <td>Player </td>
+                        <td>Court name</td>
+                        <td>Game date</td>
+                        <td>Game time</td>
+
+                    </tr>
+                </thead>
                 <c:forEach items="${pendingReviewList}" var="current">
 
                     <tr onclick="reply_click(this.id)" id="${current.id}">
-                        <td>${current.id}</td>
+
                         <td>${current.requestReceiver.username}</td>
                         <td>${current.match.courtId.name}</td>
                         <td>${current.match.date}</td>
@@ -124,30 +131,31 @@
                 </c:forEach>
             </table>
 
-
+            <h3>${gameRequestIDError}</h3>
             <div style="display: inline-block;">
                 <h3 style="font-family: Verdana;"> ${review1}</h3>
                 <c:if test="${not empty review}">
                     <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
-                        
-                        <div id="dispaly"></div>
+
+                   
                         <input type="hidden" id="game_request_id" name="gameRequestId" value="" />
                         <table>
 
+
                             <tr>
                                 <td> <spring:label path="teamwork">Teamwork</spring:label></td> 
-                                <td> <spring:radiobuttons path="teamwork" items="${Grades}" label="Teamwork"/> </td>
+                                <td> <spring:radiobuttons path="teamwork" items="${Grades}" label="Teamwork"/>  <spring:errors path="teamwork" cssClass="error"/></td>
 
                             </tr>
 
                             <tr>
                                 <td> <spring:label path="athletism">Athletism</spring:label></td> 
-                                <td> <spring:radiobuttons path="athletism" items="${Grades}" label="Athletism"/> </td>
+                                <td> <spring:radiobuttons path="athletism" items="${Grades}" label="Athletism"/>  <spring:errors path="athletism" cssClass="error"/></td>
 
                             </tr> 
                             <tr>
                                 <td> <spring:label path="technique">Technique</spring:label></td> 
-                                <td> <spring:radiobuttons path="technique" items="${Grades}" label="Technique"/> </td>
+                                <td> <spring:radiobuttons path="technique" items="${Grades}" label="Technique"/>  <spring:errors path="technique" cssClass="error"/></td>
 
                             </tr>
                             <tr> 
@@ -167,14 +175,15 @@
             {
 
                 document.getElementById("game_request_id").value = clicked_id;
-                alert(document.getElementById("game_request_id").value);
+
+
+
+                document.getElementById(clicked_id).style.color = "blue";
+                document.getElementById(clicked_id).style.backgroundColor = "red";
             }
 
 
-            function selectPersonForReview(event) {
-                alert(event.target);
-                document.getElementById("dispaly").innerHTML = "Hello World";
-            }
+
 
         </script>
 

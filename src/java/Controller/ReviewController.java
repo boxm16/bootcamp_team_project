@@ -17,6 +17,7 @@ import Model.Ratings;
 import Model.Review;
 import Model.Stats;
 import Model.User;
+import Validation.ReviewValidator;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +58,9 @@ public class ReviewController {
     @Autowired
     private ReviewDao reviewDao;
 
+    @Autowired
+    private ReviewValidator reviewValidator;
+
     @RequestMapping(value = "/goToReviewForm.htm", method = RequestMethod.GET)
     public String createReviewForm(ModelMap model, HttpSession session) {
         User me = (User) session.getAttribute("user");
@@ -63,7 +68,7 @@ public class ReviewController {
         model.addAttribute("users", me);
 
         if (!pendingReviewList.isEmpty()) {
-            model.addAttribute("pendingReviewList", pendingReviewList);
+            servletContext.setAttribute("pendingReviewList", pendingReviewList);
             Review review = new Review();
             List<String> Grades = new ArrayList<>();
             Grades.add("1");
@@ -89,8 +94,13 @@ public class ReviewController {
     }
 
     @RequestMapping(value = "/reviewFormHandling.htm", method = RequestMethod.POST)
-    public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model, @RequestParam String gameRequestId) {
-
+    public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model, @RequestParam String gameRequestId, BindingResult bindingResult) {
+        if (gameRequestId.equals("")) {
+            String errorMessage = "You did not choose a player for evaluation.";
+            model.addAttribute("review", review);
+            model.addAttribute("gameRequestIDError", errorMessage);
+            return "reviews";
+        }
         GameRequest gameRequest = gameRequestDao.getGameRequestById(gameRequestId);
 
         review.setMatch(gameRequest.getMatch());
@@ -99,6 +109,13 @@ public class ReviewController {
         review.setReviewer(reviewer);
         User reviewed = gameRequest.getRequestReceiver();
         review.setReviewed(reviewed);
+
+        reviewValidator.validate(review, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("review", review);
+            return "reviews";
+        }
 
         reviewDao.insert(review);
         //check how redirect works
