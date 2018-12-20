@@ -107,7 +107,7 @@
         <div class="container" style=" background-color: transparent">
 
 
-            <table border="1" id="gamesTable" class="table table-hover" style= "width:1100px; background: linear-gradient(to bottom, #606060, #282828); color: white; cursor: crosshair">
+            <table border="1"  class="table table-hover" style= "width:1100px; background: black; color: white; cursor: crosshair">
 
                 <thead>
                     <tr>
@@ -118,6 +118,7 @@
 
                     </tr>
                 </thead>
+                <tbody id="gamesTable">
                 <c:forEach items="${pendingReviewList}" var="current">
 
                     <tr onclick="reply_click(this.id)" id="${current.id}">
@@ -129,6 +130,7 @@
 
                     </tr>
                 </c:forEach>
+                    </tbody>
             </table>
 
             <h3>${gameRequestIDError}</h3>
@@ -137,7 +139,7 @@
                 <c:if test="${not empty review}">
                     <spring:form modelAttribute="review" action="${pageContext.request.contextPath}/reviewFormHandling.htm" method="POST">  
 
-                   
+
                         <input type="hidden" id="game_request_id" name="gameRequestId" value="" />
                         <table>
 
@@ -176,10 +178,11 @@
 
                 document.getElementById("game_request_id").value = clicked_id;
 
+                $("#gamesTable").children().css("background-color", "black");
 
- document.
-                document.getElementById(clicked_id).style.color = "blue";
-                document.getElementById(clicked_id).style.backgroundColor = "red";
+
+               // document.getElementById(clicked_id).style.color = "blue";
+                document.getElementById(clicked_id).style.backgroundColor = "blue";
             }
 
 
