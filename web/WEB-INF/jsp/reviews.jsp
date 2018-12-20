@@ -177,7 +177,7 @@
                 document.getElementById("game_request_id").value = clicked_id;
 
 
-
+ document.
                 document.getElementById(clicked_id).style.color = "blue";
                 document.getElementById(clicked_id).style.backgroundColor = "red";
             }

@@ -1,15 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
     <head>
         <link rel="icon" href="resources/logo.jpg">
 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link href="<c:url value="/resources/newcss2.css" />" rel="stylesheet">
+        
+        <link href="${pageContext.request.contextPath}/resources/newcss2.css" rel="stylesheet" >
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to Seek & Play</title>
