@@ -59,7 +59,7 @@ public class AuthenticationFilter implements Filter {
         boolean loginKarouselPictureURI4Request = request.getRequestURI().equals(loginKarouselPictureURI4);
         boolean javascriptFileRequest = request.getRequestURI().equals(javascriptFile);
         boolean cssFileRequest = request.getRequestURI().equals(cssFile);
-        System.out.println(new Date() + "URI:" + request.getRequestURI());
+        //System.out.println(new Date() + "URI:" + request.getRequestURI());
 
         if (loggedIn || loginRequest || logingRequest || registerRequest || registeringRequest || loginKarouselPictureURIRequest || loginKarouselPictureURI1Request || loginKarouselPictureURI2Request || loginKarouselPictureURI3Request || loginKarouselPictureURI4Request || javascriptFileRequest || cssFileRequest) {
             chain.doFilter(request, response);

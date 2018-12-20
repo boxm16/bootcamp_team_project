@@ -133,18 +133,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/trialLink.htm", method = RequestMethod.GET)
-    public String Try(ModelMap model
-    ) {
-        User user = userDao.checkUserByUsername("adfdf1");
-        if (user != null) {
-            model.addAttribute("userFromDB", user);
-            return "success_registration";
-        } else {
-            return "error_page";
-        }
-
-    }
+  
 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     public String showuser(ModelMap model, HttpSession session) {

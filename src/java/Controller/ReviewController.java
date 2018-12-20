@@ -68,7 +68,7 @@ public class ReviewController {
         model.addAttribute("users", me);
 
         if (!pendingReviewList.isEmpty()) {
-            servletContext.setAttribute("pendingReviewList", pendingReviewList);
+            model.addAttribute("pendingReviewList", pendingReviewList);
             Review review = new Review();
             List<String> Grades = new ArrayList<>();
             Grades.add("1");
@@ -97,6 +97,7 @@ public class ReviewController {
     public String reviewFormHandler(@ModelAttribute Review review, HttpSession session, ModelMap model, @RequestParam String gameRequestId, BindingResult bindingResult) {
         if (gameRequestId.equals("")) {
             String errorMessage = "You did not choose a player for evaluation.";
+
             model.addAttribute("review", review);
             model.addAttribute("gameRequestIDError", errorMessage);
             return "reviews";
@@ -105,14 +106,16 @@ public class ReviewController {
 
         review.setMatch(gameRequest.getMatch());
 
-        User reviewer = (User) session.getAttribute("user");
-        review.setReviewer(reviewer);
+        User me = (User) session.getAttribute("user");
+        review.setReviewer(me);
         User reviewed = gameRequest.getRequestReceiver();
         review.setReviewed(reviewed);
 
         reviewValidator.validate(review, bindingResult);
 
         if (bindingResult.hasErrors()) {
+            List<GameRequest> pendingReviewList = reviewDao.listUsersForReview(me.getUserId());
+            model.addAttribute("pendingReviewList", pendingReviewList);
             model.addAttribute("review", review);
             return "reviews";
         }
